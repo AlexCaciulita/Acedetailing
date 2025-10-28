@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politici și Termeni - Detailer's Vision</title>
+    <title>Politici și Termeni - Scuderia Vision</title>
+    <meta name="description" content="Termeni și condiții, politica de confidențialitate și politici de utilizare pentru serviciile Scuderia Vision.">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#1E40AF">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#059669', 
+                        accent: '#EA580C'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
+                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
+                </div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Acasă</a>
+                    <a href="/servicii.html" class="text-gray-700 hover:text-primary transition-colors">Servicii</a>
+                    <a href="/configurator.html" class="text-gray-700 hover:text-primary transition-colors">Configurator</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Rezervare</a>
+                    <a href="/contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-24 pb-12 bg-gradient-to-br from-primary to-blue-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold text-white mb-6">Politici și Termeni</h1>
+            <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                Transparența și confidențialitatea sunt prioritățile noastre.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="prose prose-lg max-w-none">
+                
+                <!-- Terms and Conditions -->
+                <div id="termeni" class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Termeni și Condiții</h2>
+                    <p class="text-gray-600 mb-6"><strong>Ultima actualizare:</strong> 1 ianuarie 2025</p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Despre Servicii</h3>
+                    <p class="text-gray-700 mb-4">
+                        Scuderia Vision oferă servicii profesionale de auto detailing, incluzând spălare exterior, 
+                        curățare interior, protecție ceramică, polish faruri și eliminare mirosuri. Toate serviciile 
+                        sunt efectuate de personal calificat folosind echipamente și produse premium.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Rezervări și Plăți</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Rezervările se confirmă cu plata unui avans de 30% din valoarea totală</li>
+                        <li>Avansul se plătește sigur prin PayU România</li>
+                        <li>Restul de 70% se achită la finalizarea serviciului</li>
+                        <li>Acceptăm plăți în numerar sau cu cardul</li>
+                        <li>Factură fiscală disponibilă la cerere</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Anulări și Reprogramări</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Anularea cu minimum 24 ore înainte = rambursarea completă a avansului</li>
+                        <li>Anularea cu mai puțin de 24 ore = pierderea avansului</li>
+                        <li>Prima reprogramare în 48 ore de la rezervare este gratuită</li>
+                        <li>Reprogramările ulterioare sau de urgență pot atrage o taxă de 50 RON</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">4. Garanții</h3>
+                    <p class="text-gray-700 mb-4">
+                        Oferim "Standard Garanția Reflex" - garanție de satisfacție 100%. Dacă nu ești mulțumit 
+                        de rezultat, refacem serviciul gratuit sau îți returnăm banii în primele 7 zile. 
+                        Pentru protecția ceramică oferim garanție tehnică de 12 luni.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">5. Responsabilități</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Clientul răspunde pentru obiectele valoroase lăsate în mașină</li>
+                        <li>Scuderia Vision nu răspunde pentru defecțiuni preexistente</li>
+                        <li>Inspectăm mașina înainte de serviciu și raportăm eventualele probleme</li>
+                        <li>Asigurare răspundere civilă în vigoare</li>
+                    </ul>
+                </div>
+
+                <!-- Privacy Policy -->
+                <div id="confidentialitate" class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Politica de Confidențialitate</h2>
+                    <p class="text-gray-600 mb-6"><strong>Ultima actualizare:</strong> 1 ianuarie 2025</p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Ce Date Colectăm</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li><strong>Date de identificare:</strong> nume, telefon, email, adresă</li>
+                        <li><strong>Date despre mașină:</strong> marca, model, anul, numărul de înmatriculare</li>
+                        <li><strong>Date de plată:</strong> procesate sigur prin PayU (nu stocăm date cardurilor)</li>
+                        <li><strong>Preferințe servicii:</strong> istoricul rezervărilor și serviciilor</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Cum Folosim Datele</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Prestarea serviciilor contractate</li>
+                        <li>Comunicarea despre rezervări și confirmări</li>
+                        <li>Îmbunătățirea calității serviciilor</li>
+                        <li>Marketing direct doar cu acordul explicit</li>
+                        <li>Respectarea obligațiilor legale (facturare, contabilitate)</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Partajarea Datelor</h3>
+                    <p class="text-gray-700 mb-4">
+                        Nu vindem, închiriem sau partajăm datele personale cu terțe părți, cu excepția:
+                    </p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>PayU România (procesare plăți)</li>
+                        <li>Furnizori servicii IT (găzduire, backup)</li>
+                        <li>Autorități competente (la cerere legală)</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">4. Drepturile Tale</h3>
+                    <p class="text-gray-700 mb-2">Conform GDPR ai dreptul la:</p>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Accesul la datele personale</li>
+                        <li>Rectificarea datelor incorecte</li>
+                        <li>Ștergerea datelor ("dreptul de a fi uitat")</li>
+                        <li>Portabilitatea datelor</li>
+                        <li>Opoziția la prelucrare</li>
+                        <li>Plângere la ANSPDCP</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">5. Securitatea Datelor</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li>Criptare SSL pentru transmisia datelor</li>
+                        <li>Backup-uri regulate și sigure</li>
+                        <li>Acces limitat la datele personale</li>
+                        <li>Monitorizare continuă pentru vulnerabilități</li>
+                        <li>Politici interne stricte de confidențialitate</li>
+                    </ul>
+                </div>
+
+                <!-- Cookie Policy -->
+                <div id="cookies" class="mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Politica Cookie-urilor</h2>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Ce sunt Cookie-urile</h3>
+                    <p class="text-gray-700 mb-4">
+                        Cookie-urile sunt mici fișiere text stocate în browserul tău când vizitezi website-ul nostru. 
+                        Ne ajută să îți oferim o experiență personalizată și să analizăm traficul pe site.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Tipuri de Cookie-uri</h3>
+                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                        <li><strong>Esențiale:</strong> necesare pentru funcționarea site-ului</li>
+                        <li><strong>Funcționale:</strong> memorează preferințele configuratorului</li>
+                        <li><strong>Analiză:</strong> Google Analytics pentru îmbunătățiri</li>
+                        <li><strong>Marketing:</strong> doar cu acordul explicit</li>
+                    </ul>
+                    
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Gestionarea Cookie-urilor</h3>
+                    <p class="text-gray-700 mb-4">
+                        Poți controla cookie-urile prin setările browserului sau prin banner-ul de cookie-uri 
+                        de pe site. Dezactivarea anumitor cookie-uri poate afecta funcționarea site-ului.
+                    </p>
+                </div>
+
+                <!-- Contact for Policies -->
+                <div class="bg-gray-50 rounded-2xl p-8">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Întrebări despre Politici?</h3>
+                    <p class="text-gray-700 mb-6">
+                        Pentru orice întrebare despre aceste politici sau pentru exercitarea drepturilor GDPR, 
+                        ne poți contacta:
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-semibold text-gray-900">Email:</p>
+                            <p class="text-primary">gdpr@detailers-vision.ro</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Telefon:</p>
+                            <p class="text-gray-700">+40 742 122 222</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">Adresă:</p>
+                            <p class="text-gray-700">Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900">DPO:</p>
+                            <p class="text-gray-700">dpo@scuderia-vision.ro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
+                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Detaliu care se vede. Luciu care rămâne.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Navigație</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/servicii.html" class="text-gray-400 hover:text-white transition-colors">Servicii</a></li>
+                        <li><a href="/configurator.html" class="text-gray-400 hover:text-white transition-colors">Configurator</a></li>
+                        <li><a href="/rezervare.html" class="text-gray-400 hover:text-white transition-colors">Rezervare</a></li>
+                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📞 +40 742 122 222</li>
+                        <li>📧 contact@scuderiavision.ro</li>
+                        <li>📍 Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="/politici.html" class="text-white font-semibold">Politici</a>
+                    <a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Chat Assistant -->
+    <script>
+        // Chat Assistant for Detailer's Vision
+        class ChatAssistant {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.isTyping = false;
+                this.apiKey = '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';
+                this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+                this.model = 'gpt-oss-120b';
+                
+                this.commonQuestions = [
+                    "Cât costă o spălare completă?",
+                    "Cât durează serviciul de protecție ceramică?",
+                    "Oferiți garanție pentru servicii?",
+                    "Cum pot programa o întâlnire?",
+                    "Ce include pachetul premium?",
+                    "Lucrați și în weekend?",
+                    "Acceptați plăți cu cardul?",
+                    "Pot să rămân cu mașina în timpul serviciului?",
+                    "Ce produse folosiți pentru curățare?",
+                    "Aveți reduceri pentru clienții fideli?"
+                ];
+                
+                this.systemPrompt = `Ești asistentul virtual pentru Detailer's Vision, o companie premium de auto detailing din România.
+
+INFORMAȚII DESPRE COMPANIE:
+- Servicii: spălare exterior, curățare interior, protecție ceramică, polish faruri, eliminare mirosuri, curățare motor
+- Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
+- Program: Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00, Duminică 10:00-15:00
+- Contact: +40 742 122 222, contact@scuderiavision.ro
+- Adresă: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
+- Plată avans: 30% prin PayU România, restul la finalizare
+- Garanție: 100% satisfacție, 12 luni pentru protecția ceramică
+- Anulare: cu 24h înainte pentru rambursarea avansului
+
+INSTRUCȚIUNI:
+- Răspunde DOAR în română
+- Fii prietenos, profesional și util
+- Oferă informații precise despre servicii și prețuri
+- Îndrumă clienții către configurator sau rezervare când e cazul
+- Pentru întrebări complexe, recomandă contactul direct
+- Folosește informațiile de mai sus pentru răspunsuri precise
+- Nu inventa prețuri sau servicii care nu există`;
+                
+                // Initialize when DOM is ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.init());
+                } else {
+                    this.init();
+                }
+            }
+            
+            init() {
+                console.log('Chat Assistant initializing...');
+                this.createChatInterface();
+                this.attachEventListeners();
+                this.addWelcomeMessage();
+                console.log('Chat Assistant initialized successfully');
+            }
+            
+            createChatInterface() {
+                console.log('Creating chat interface...');
+                
+                // Remove existing chat elements if they exist
+                const existingButton = document.getElementById('chat-toggle');
+                const existingContainer = document.getElementById('chat-container');
+                if (existingButton) existingButton.remove();
+                if (existingContainer) existingContainer.remove();
+                
+                // Chat toggle button
+                const chatButton = document.createElement('div');
+                chatButton.id = 'chat-toggle';
+                chatButton.style.cssText = `
+                    position: fixed;
+                    bottom: 24px;
+                    right: 24px;
+                    width: 56px;
+                    height: 56px;
+                    background-color: #007AFF;
+                    border-radius: 50%;
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    transition: all 0.2s ease;
+                `;
+                chatButton.innerHTML = `
+                    <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                `;
+                
+                // Chat container
+                const chatContainer = document.createElement('div');
+                chatContainer.id = 'chat-container';
+                chatContainer.style.cssText = `
+                    position: fixed;
+                    bottom: 96px;
+                    right: 24px;
+                    width: 384px;
+                    height: 500px;
+                    max-width: calc(100vw - 48px);
+                    background-color: white;
+                    border-radius: 16px;
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+                    z-index: 9998;
+                    transform: translateY(100%);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                `;
+                chatContainer.innerHTML = `
+                    <!-- Header -->
+                    <div style="background-color: #007AFF; color: white; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 32px; height: 32px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; font-size: 14px;">Asistent Scuderia Vision</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">Online acum</div>
+                            </div>
+                        </div>
+                        <button id="chat-close" style="color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 4px;">
+                            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Messages -->
+                    <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Messages will be added here -->
+                    </div>
+                    
+                    <!-- Common Questions -->
+                    <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
+                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebări frecvente:</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                            ${this.commonQuestions.slice(0, 3).map(q => 
+                                `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Input -->
+                    <div style="border-top: 1px solid #E5E7EB; padding: 16px;">
+                        <div style="display: flex; gap: 8px;">
+                            <input 
+                                type="text" 
+                                id="chat-input" 
+                                placeholder="Scrie mesajul tău..." 
+                                style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
+                            >
+                            <button 
+                                id="chat-send" 
+                                style="width: 40px; height: 40px; background-color: #007AFF; color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;"
+                            >
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(chatButton);
+                document.body.appendChild(chatContainer);
+                
+                console.log('Chat interface created successfully');
+            }
+            
+            attachEventListeners() {
+                console.log('Attaching event listeners...');
+                
+                const chatToggle = document.getElementById('chat-toggle');
+                const chatClose = document.getElementById('chat-close');
+                const chatInput = document.getElementById('chat-input');
+                const chatSend = document.getElementById('chat-send');
+                const chatContainer = document.getElementById('chat-container');
+                
+                if (!chatToggle) {
+                    console.error('Chat toggle button not found!');
+                    return;
+                }
+                
+                chatToggle.addEventListener('click', () => this.toggleChat());
+                if (chatClose) chatClose.addEventListener('click', () => this.closeChat());
+                if (chatSend) chatSend.addEventListener('click', () => this.sendMessage());
+                
+                if (chatInput) {
+                    chatInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.sendMessage();
+                        }
+                    });
+                }
+                
+                // Suggestion buttons
+                if (chatContainer) {
+                    chatContainer.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('suggestion-btn')) {
+                            const question = e.target.dataset.question;
+                            this.sendMessage(question);
+                        }
+                    });
+                }
+                
+                // Close chat when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (this.isOpen && chatContainer && chatToggle && 
+                        !chatContainer.contains(e.target) && !chatToggle.contains(e.target)) {
+                        this.closeChat();
+                    }
+                });
+                
+                console.log('Event listeners attached successfully');
+            }
+            
+            toggleChat() {
+                console.log('Toggle chat called, isOpen:', this.isOpen);
+                if (this.isOpen) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+            
+            openChat() {
+                console.log('Opening chat...');
+                const container = document.getElementById('chat-container');
+                if (container) {
+                    container.style.transform = 'translateY(0)';
+                    container.style.opacity = '1';
+                }
+                this.isOpen = true;
+                
+                // Focus input
+                setTimeout(() => {
+                    const input = document.getElementById('chat-input');
+                    if (input) input.focus();
+                }, 300);
+                
+                console.log('Chat opened');
+            }
+            
+            closeChat() {
+                console.log('Closing chat...');
+                const container = document.getElementById('chat-container');
+                if (container) {
+                    container.style.transform = 'translateY(100%)';
+                    container.style.opacity = '0';
+                }
+                this.isOpen = false;
+                
+                console.log('Chat closed');
+            }
+            
+            addWelcomeMessage() {
+                const welcomeMessage = {
+                    type: 'bot',
+                    content: 'Bună ziua! Sunt asistentul virtual Scuderia Vision. Cum vă pot ajuta astăzi cu serviciile noastre de auto detailing?',
+                    timestamp: new Date()
+                };
+                this.messages.push(welcomeMessage);
+                this.renderMessage(welcomeMessage);
+            }
+            
+            async sendMessage(messageText = null) {
+                const input = document.getElementById('chat-input');
+                const message = messageText || (input ? input.value.trim() : '');
+                
+                if (!message) return;
+                
+                // Clear input
+                if (!messageText && input) {
+                    input.value = '';
+                }
+                
+                // Add user message
+                const userMessage = {
+                    type: 'user',
+                    content: message,
+                    timestamp: new Date()
+                };
+                this.messages.push(userMessage);
+                this.renderMessage(userMessage);
+                
+                // Hide suggestions after first user message
+                this.hideSuggestions();
+                
+                // Show typing indicator
+                this.showTypingIndicator();
+                
+                try {
+                    // Call OpenRouter API
+                    const response = await this.callOpenRouterAPI(message);
+                    
+                    // Add bot response
+                    const botMessage = {
+                        type: 'bot',
+                        content: response,
+                        timestamp: new Date()
+                    };
+                    this.messages.push(botMessage);
+                    this.hideTypingIndicator();
+                    this.renderMessage(botMessage);
+                    
+                } catch (error) {
+                    console.error('Chat API Error:', error);
+                    this.hideTypingIndicator();
+                    
+                    const errorMessage = {
+                        type: 'bot',
+                        content: 'Ne pare rău, am întâmpinat o problemă tehnică. Vă rugăm să ne contactați direct la +40 742 122 222 pentru asistență.',
+                        timestamp: new Date()
+                    };
+                    this.messages.push(errorMessage);
+                    this.renderMessage(errorMessage);
+                }
+            }
+            
+            async callOpenRouterAPI(message) {
+                const response = await fetch(this.apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${this.apiKey}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': window.location.origin,
+                        'X-Title': 'Scuderia Vision Chat Assistant'
+                    },
+                    body: JSON.stringify({
+                        model: this.model,
+                        messages: [
+                            { role: 'system', content: this.systemPrompt },
+                            ...this.messages.slice(-5).map(msg => ({
+                                role: msg.type === 'user' ? 'user' : 'assistant',
+                                content: msg.content
+                            })),
+                            { role: 'user', content: message }
+                        ],
+                        max_tokens: 300,
+                        temperature: 0.7
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data.choices[0].message.content;
+            }
+            
+            renderMessage(message) {
+                const messagesContainer = document.getElementById('chat-messages');
+                if (!messagesContainer) return;
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.style.cssText = `display: flex; ${message.type === 'user' ? 'justify-content: flex-end;' : 'justify-content: flex-start;'}`;
+                
+                const time = message.timestamp.toLocaleTimeString('ro-RO', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                
+                const bubbleColor = message.type === 'user' ? '#007AFF' : '#F3F4F6';
+                const textColor = message.type === 'user' ? 'white' : '#111827';
+                const timeColor = message.type === 'user' ? 'rgba(255,255,255,0.7)' : '#6B7280';
+                
+                // Add schedule button for bot messages
+                const scheduleButton = message.type === 'bot' ? `
+                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <button 
+                            onclick="window.open('https://wa.me/40123456789?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
+                            style="
+                                background-color: #007AFF; 
+                                color: white; 
+                                border: none; 
+                                padding: 6px 12px; 
+                                border-radius: 12px; 
+                                font-size: 12px; 
+                                font-weight: 600; 
+                                cursor: pointer; 
+                                transition: background-color 0.2s;
+                                width: 100%;
+                            "
+                            onmouseover="this.style.backgroundColor='#0056CC'"
+                            onmouseout="this.style.backgroundColor='#007AFF'"
+                        >
+                            💬 Contactează pe WhatsApp
+                        </button>
+                    </div>
+                ` : '';
+                
+                messageDiv.innerHTML = `
+                    <div style="max-width: 80%; background-color: ${bubbleColor}; color: ${textColor}; border-radius: 16px; padding: 12px 16px;">
+                        <div style="font-size: 14px; line-height: 1.4;">${message.content}</div>
+                        <div style="font-size: 12px; color: ${timeColor}; margin-top: 4px;">${time}</div>
+                        ${scheduleButton}
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            hideSuggestions() {
+                const suggestions = document.getElementById('chat-suggestions');
+                if (suggestions) {
+                    suggestions.style.display = 'none';
+                }
+            }
+            
+            showTypingIndicator() {
+                if (this.isTyping) return;
+                
+                this.isTyping = true;
+                const messagesContainer = document.getElementById('chat-messages');
+                if (!messagesContainer) return;
+                
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.style.cssText = 'display: flex; justify-content: flex-start;';
+                typingDiv.innerHTML = `
+                    <div style="background-color: #F3F4F6; border-radius: 16px; padding: 12px 16px;">
+                        <div style="display: flex; gap: 4px;">
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out;"></div>
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.16s;"></div>
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.32s;"></div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add bounce animation
+                if (!document.getElementById('chat-bounce-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'chat-bounce-style';
+                    style.textContent = `
+                        @keyframes bounce {
+                            0%, 80%, 100% { transform: scale(0); }
+                            40% { transform: scale(1); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                messagesContainer.appendChild(typingDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            hideTypingIndicator() {
+                this.isTyping = false;
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+        }
+        // Initialize chat assistant when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new ChatAssistant();
+            });
+        } else {
+            new ChatAssistant();
+        }
+    </script>
+</body>
+</html>

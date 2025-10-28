@@ -1,0 +1,61 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#2D3748"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="320" width="600" height="80" fill="#1A202C"/>
+  
+  <!-- Dirty Car Body -->
+  <g transform="translate(150, 180)">
+    <!-- Main body -->
+    <rect x="0" y="40" width="300" height="80" rx="15" fill="#4A5568"/>
+    
+    <!-- Roof -->
+    <rect x="60" y="0" width="180" height="60" rx="20" fill="#2D3748"/>
+    
+    <!-- Windows -->
+    <rect x="70" y="10" width="50" height="40" rx="5" fill="#1A202C" opacity="0.8"/>
+    <rect x="130" y="10" width="60" height="40" rx="5" fill="#1A202C" opacity="0.8"/>
+    <rect x="200" y="10" width="50" height="40" rx="5" fill="#1A202C" opacity="0.8"/>
+    
+    <!-- Wheels -->
+    <circle cx="60" cy="120" r="25" fill="#2D3748"/>
+    <circle cx="60" cy="120" r="15" fill="#1A202C"/>
+    <circle cx="240" cy="120" r="25" fill="#2D3748"/>
+    <circle cx="240" cy="120" r="15" fill="#1A202C"/>
+    
+    <!-- Headlights (dirty/dim) -->
+    <circle cx="10" cy="70" r="12" fill="#4A5568"/>
+    <circle cx="290" cy="70" r="12" fill="#4A5568"/>
+    
+    <!-- Dirt spots and stains -->
+    <circle cx="50" cy="60" r="8" fill="#2D3748" opacity="0.7"/>
+    <circle cx="120" cy="45" r="6" fill="#1A202C" opacity="0.6"/>
+    <circle cx="200" cy="70" r="10" fill="#2D3748" opacity="0.8"/>
+    <circle cx="250" cy="55" r="7" fill="#1A202C" opacity="0.7"/>
+    <circle cx="80" cy="90" r="5" fill="#2D3748" opacity="0.6"/>
+    <circle cx="180" cy="85" r="9" fill="#1A202C" opacity="0.8"/>
+    <circle cx="220" cy="95" r="6" fill="#2D3748" opacity="0.7"/>
+    
+    <!-- Mud splashes -->
+    <ellipse cx="30" cy="110" rx="15" ry="8" fill="#1A202C" opacity="0.8"/>
+    <ellipse cx="270" cy="110" rx="12" ry="6" fill="#1A202C" opacity="0.8"/>
+    
+    <!-- Dust layer effect -->
+    <rect x="0" y="40" width="300" height="80" rx="15" fill="#2D3748" opacity="0.3"/>
+  </g>
+  
+  <!-- Dirt particles in air -->
+  <circle cx="100" cy="100" r="2" fill="#4A5568" opacity="0.5"/>
+  <circle cx="450" cy="120" r="1.5" fill="#4A5568" opacity="0.4"/>
+  <circle cx="350" cy="80" r="2.5" fill="#4A5568" opacity="0.6"/>
+  <circle cx="500" cy="150" r="1" fill="#4A5568" opacity="0.3"/>
+  
+  <!-- Text overlay -->
+  <text x="300" y="350" text-anchor="middle" fill="#A0ADB8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600">
+    MAȘINĂ MURDARĂ
+  </text>
+  <text x="300" y="375" text-anchor="middle" fill="#718096" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14">
+    Trage pentru a vedea diferența!
+  </text>
+</svg>

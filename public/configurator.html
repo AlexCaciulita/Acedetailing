@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurator Preț - Detailer's Vision</title>
+    <meta name="description" content="Calculează prețul exact pentru serviciile de auto detailing. Configurator transparent cu recomandări ale expertului.">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#1E40AF">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007AFF',
+                        secondary: '#34C759', 
+                        accent: '#FF9500',
+                        gray: {
+                            50: '#F9FAFB',
+                            100: '#F3F4F6',
+                            200: '#E5E7EB',
+                            300: '#D1D5DB',
+                            400: '#9CA3AF',
+                            500: '#6B7280',
+                            600: '#4B5563',
+                            700: '#374151',
+                            800: '#1F2937',
+                            900: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    },
+                    fontSize: {
+                        'xs': ['0.75rem', { lineHeight: '1rem' }],
+                        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+                        'base': ['1rem', { lineHeight: '1.5rem' }],
+                        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+                        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+                        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+                        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+                        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+                        '5xl': ['3rem', { lineHeight: '1.1' }],
+                        '6xl': ['3.75rem', { lineHeight: '1.1' }]
+                    },
+                    borderRadius: {
+                        'xl': '0.75rem',
+                        '2xl': '1rem',
+                        '3xl': '1.5rem'
+                    },
+                    boxShadow: {
+                        'apple': '0 4px 16px 0 rgba(0, 0, 0, 0.1)',
+                        'apple-lg': '0 8px 32px 0 rgba(0, 0, 0, 0.12)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+</head>
+<body class="font-sans antialiased bg-gray-50" x-data="configurator()">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <div class="flex items-center">
+                    <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-7 w-auto">
+                    <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden" x-data="{ open: false }">
+                    <button @click="open = !open" class="text-gray-700 hover:text-primary focus:outline-none focus:text-primary">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    
+                    <!-- Mobile menu -->
+                    <div x-show="open" x-transition class="absolute top-16 left-0 right-0 bg-white border-b border-gray-100 md:hidden">
+                        <div class="px-4 py-2 space-y-2">
+                            <a href="/index.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Acasă</a>
+                            <a href="/servicii.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Servicii</a>
+                            <a href="/configurator.html" class="block px-3 py-2 text-primary font-semibold">Configurator</a>
+                            <a href="/rezervare.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Rezervare</a>
+                            <a href="/contact.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="/index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Acasă</a>
+                    <a href="/servicii.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Servicii</a>
+                    <a href="/configurator.html" class="text-primary font-medium text-sm">Configurator</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-200 text-sm font-medium">Rezervare</a>
+                    <a href="/contact.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden" style="aspect-ratio: 2.35/1; min-height: 400px;">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="/assets/car_detailing_carefree_arizona.webp" 
+                alt="Professional car detailing service in Bucharest - configure your perfect package" 
+                class="w-full h-full object-cover"
+            >
+            <!-- Gradient overlay for better text readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 h-full flex items-center justify-center">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
+                    Configurator Preț
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl font-light text-white opacity-90 max-w-3xl mx-auto">
+                    Calculează prețul exact pentru serviciile tale personalizate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Service Selector -->
+    <!-- NOTE: Services are loaded from services-data.js -->
+    <!-- To update service info, edit services-data.js - changes will reflect on both pages -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Servicii Disponibile</h2>
+                <p class="text-gray-600">Selectează rapid serviciile pe care le dorești</p>
+            </div>
+
+            <div id="services-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                <!-- Services loaded dynamically from services-data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurator -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12">
+                <!-- Configuration Panel -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        
+                        <!-- Car Size -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">1. Dimensiune mașină</h3>
+                            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                                <!-- Small Car -->
+                                <button
+                                    @click="carSize = 'mica'; updatePrice()"
+                                    :class="carSize === 'mica' ? 'border-2 border-primary bg-blue-50' : 'border-2 border-gray-200 bg-white hover:border-gray-300'"
+                                    class="p-6 rounded-2xl text-left transition-all duration-200 relative"
+                                >
+                                    <div class="absolute top-4 right-4">
+                                        <div :class="carSize === 'mica' ? 'bg-primary' : 'bg-white border-2 border-gray-300'" class="w-5 h-5 rounded-full"></div>
+                                    </div>
+                                    <div class="flex justify-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" viewBox="0 0 16 16" class="text-gray-700">
+                                            <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17s2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276"/>
+                                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.8.8 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155s4.037-.084 5.592-.155A1.48 1.48 0 0 0 15 9.611v-.413q0-.148-.03-.294l-.335-1.68a.8.8 0 0 0-.43-.563 1.8 1.8 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-base font-semibold text-gray-900">Small Car</div>
+                                    <div class="text-xs text-gray-500 mt-1">Mini Cooper/Fiat 500/Toyota Yaris</div>
+                                </button>
+
+                                <!-- Medium Car -->
+                                <button
+                                    @click="carSize = 'compacta'; updatePrice()"
+                                    :class="carSize === 'compacta' ? 'border-2 border-primary bg-blue-50' : 'border-2 border-gray-200 bg-white hover:border-gray-300'"
+                                    class="p-6 rounded-2xl text-left transition-all duration-200 relative"
+                                >
+                                    <div class="absolute top-4 right-4">
+                                        <div :class="carSize === 'compacta' ? 'bg-primary' : 'bg-white border-2 border-gray-300'" class="w-5 h-5 rounded-full"></div>
+                                    </div>
+                                    <div class="flex justify-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="88" height="88" fill="currentColor" viewBox="0 0 16 16" class="text-gray-700">
+                                            <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17s2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276"/>
+                                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.8.8 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155s4.037-.084 5.592-.155A1.48 1.48 0 0 0 15 9.611v-.413q0-.148-.03-.294l-.335-1.68a.8.8 0 0 0-.43-.563 1.8 1.8 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-base font-semibold text-gray-900">Medium Car</div>
+                                    <div class="text-xs text-gray-500 mt-1">VW Golf/Audi A3/Porsche Boxster/BMW 1 Series</div>
+                                </button>
+
+                                <!-- Large Car -->
+                                <button
+                                    @click="carSize = 'sedan'; updatePrice()"
+                                    :class="carSize === 'sedan' ? 'border-2 border-primary bg-blue-50' : 'border-2 border-gray-200 bg-white hover:border-gray-300'"
+                                    class="p-6 rounded-2xl text-left transition-all duration-200 relative"
+                                >
+                                    <div class="absolute top-4 right-4">
+                                        <div :class="carSize === 'sedan' ? 'bg-primary' : 'bg-white border-2 border-gray-300'" class="w-5 h-5 rounded-full"></div>
+                                    </div>
+                                    <div class="flex justify-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" fill="currentColor" viewBox="0 0 16 16" class="text-gray-700">
+                                            <path d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0m10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17s2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276"/>
+                                            <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.8.8 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155s4.037-.084 5.592-.155A1.48 1.48 0 0 0 15 9.611v-.413q0-.148-.03-.294l-.335-1.68a.8.8 0 0 0-.43-.563 1.8 1.8 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-base font-semibold text-gray-900">Large Car</div>
+                                    <div class="text-xs text-gray-500 mt-1">Tesla Model S/BMW 5 Series/VW Passat</div>
+                                </button>
+
+                                <!-- Extra Large Car -->
+                                <button
+                                    @click="carSize = 'suv'; updatePrice()"
+                                    :class="carSize === 'suv' ? 'border-2 border-primary bg-blue-50' : 'border-2 border-gray-200 bg-white hover:border-gray-300'"
+                                    class="p-6 rounded-2xl text-left transition-all duration-200 relative"
+                                >
+                                    <div class="absolute top-4 right-4">
+                                        <div :class="carSize === 'suv' ? 'bg-primary' : 'bg-white border-2 border-gray-300'" class="w-5 h-5 rounded-full"></div>
+                                    </div>
+                                    <div class="flex justify-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="104" height="104" fill="currentColor" viewBox="0 0 16 16" class="text-gray-700">
+                                            <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="text-base font-semibold text-gray-900">Extra Large Car</div>
+                                    <div class="text-xs text-gray-500 mt-1">BMW X5/Volvo XC90/Porsche Cayenne</div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Condition -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">2. Starea mașinii</h3>
+                            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                                <!-- New Car/Near Perfect -->
+                                <button
+                                    @click="condition = 'perfect'; updatePrice()"
+                                    :class="condition === 'perfect' ? 'ring-2 ring-red-600' : 'ring-1 ring-gray-200 hover:ring-gray-300'"
+                                    class="text-left transition-all duration-200 rounded-lg overflow-hidden bg-white"
+                                >
+                                    <div class="relative h-48 bg-gradient-to-br from-red-400 via-red-500 to-red-600">
+                                        <div class="absolute top-4 left-4">
+                                            <div :class="condition === 'perfect' ? 'bg-white ring-2 ring-red-600' : 'bg-white'" class="w-6 h-6 rounded-full"></div>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="w-3/4 h-0.5 bg-black opacity-20 transform -rotate-12"></div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="font-semibold text-gray-900">New Car/Near Perfect</div>
+                                    </div>
+                                </button>
+
+                                <!-- Light swirls -->
+                                <button
+                                    @click="condition = 'usoara'; updatePrice()"
+                                    :class="condition === 'usoara' ? 'ring-2 ring-red-600' : 'ring-1 ring-gray-200 hover:ring-gray-300'"
+                                    class="text-left transition-all duration-200 rounded-lg overflow-hidden bg-white"
+                                >
+                                    <div class="relative h-48 bg-gradient-to-br from-red-400 via-red-500 to-red-600">
+                                        <div class="absolute top-4 left-4">
+                                            <div :class="condition === 'usoara' ? 'bg-white ring-2 ring-red-600' : 'bg-white'" class="w-6 h-6 rounded-full"></div>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-30">
+                                            <svg width="200" height="200" class="text-white">
+                                                <circle cx="100" cy="100" r="30" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                                                <circle cx="120" cy="90" r="25" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                                                <circle cx="80" cy="110" r="20" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+                                            </svg>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="w-3/4 h-0.5 bg-black opacity-20 transform -rotate-12"></div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="font-semibold text-gray-900">Light swirls</div>
+                                    </div>
+                                </button>
+
+                                <!-- Large swirls and some deep scratches -->
+                                <button
+                                    @click="condition = 'medie'; updatePrice()"
+                                    :class="condition === 'medie' ? 'ring-2 ring-red-600' : 'ring-1 ring-gray-200 hover:ring-gray-300'"
+                                    class="text-left transition-all duration-200 rounded-lg overflow-hidden bg-white"
+                                >
+                                    <div class="relative h-48 bg-gradient-to-br from-red-300 via-red-400 to-red-600">
+                                        <div class="absolute top-4 left-4">
+                                            <div :class="condition === 'medie' ? 'bg-white ring-2 ring-red-600' : 'bg-white'" class="w-6 h-6 rounded-full"></div>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center opacity-40">
+                                            <svg width="200" height="200" class="text-black">
+                                                <circle cx="100" cy="100" r="35" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                                                <circle cx="130" cy="85" r="30" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                                                <circle cx="70" cy="115" r="25" fill="none" stroke="currentColor" stroke-width="2" opacity="0.4"/>
+                                                <line x1="60" y1="80" x2="140" y2="120" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                                            </svg>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="w-3/4 h-0.5 bg-black opacity-20 transform -rotate-12"></div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="font-semibold text-gray-900">Large swirls and some deep scratches</div>
+                                    </div>
+                                </button>
+
+                                <!-- Deep scratches on all panels -->
+                                <button
+                                    @click="condition = 'grea'; updatePrice()"
+                                    :class="condition === 'grea' ? 'ring-2 ring-red-600' : 'ring-1 ring-gray-200 hover:ring-gray-300'"
+                                    class="text-left transition-all duration-200 rounded-lg overflow-hidden bg-white"
+                                >
+                                    <div class="relative h-48 bg-gradient-to-br from-red-300 via-red-400 to-red-500">
+                                        <div class="absolute top-4 left-4">
+                                            <div :class="condition === 'grea' ? 'bg-white ring-2 ring-red-600' : 'bg-white'" class="w-6 h-6 rounded-full"></div>
+                                        </div>
+                                        <div class="absolute inset-0 opacity-50">
+                                            <svg width="100%" height="100%" class="text-black">
+                                                <circle cx="30%" cy="30%" r="25" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.5"/>
+                                                <circle cx="60%" cy="40%" r="30" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.5"/>
+                                                <circle cx="40%" cy="65%" r="20" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.5"/>
+                                                <circle cx="70%" cy="70%" r="25" fill="none" stroke="currentColor" stroke-width="2.5" opacity="0.5"/>
+                                                <line x1="20%" y1="40%" x2="80%" y2="60%" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                                                <line x1="30%" y1="70%" x2="75%" y2="35%" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                                            </svg>
+                                        </div>
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <div class="w-3/4 h-0.5 bg-black opacity-20 transform -rotate-12"></div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="font-semibold text-gray-900">Deep scratches on all panels</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Services -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-4">3. Selectează serviciile</h3>
+                            <p class="text-red-600 text-sm mb-6">Protejați jantele, geamurile, ornamentele, pielea, țesăturile, bordul, caroseriile ușilor și tavanul decapotabil</p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <!-- Windscreen & all Exterior Glass -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.windscreen"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="/assets/auburn-wa-usa-august-5-260nw-2188152971.PNG" alt="Car windscreen cleaning" class="w-full h-full object-cover object-top">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Parbriz și toate geamurile exterioare</h4>
+                                            <p class="text-sm text-gray-600">Curățare profundă și lustruire a tuturor geamurilor vehiculului cu Gtechniq G6 Perfect Glass și Gtechniq G4 Nanotech Glass Polish.</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Rims -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.rims"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/5066559/pexels-photo-5066559.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car wheel rim" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Jante</h4>
+                                            <p class="text-sm text-gray-600">Curățare profundă a jantelor cu Gtechniq W6 Iron și General Fallout Remover. Apoi degresate cu Gtechniq Panel Wipe și acoperite cu Gtechniq C5 Wheel Armour.</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Leather or Fabric Seats -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.seats"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg" alt="Leather car seats" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Scaune din piele sau țesătură (inclusiv Alcantara)</h4>
+                                            <p class="text-sm text-gray-600">Protejați scaunele din piele cu Gtechniq L1 Leather Guard sau scaunele din țesătură/Alcantara cu Gtechniq I1 Smart Fabric.</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Dashboard, Door Cards, Carpets -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.interior"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/2694389/pexels-photo-2694389.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car dashboard interior" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Bord, caroserii ușilor, covoare</h4>
+                                            <p class="text-sm text-gray-600">Protejați diverse materiale ale bordului (piele, plastic, cauciuc, vinil) cu Gtechniq C6 Matte Dash și covoarelor cu Gtechniq I1 Smart Fabric.</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Convertible Roof -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.roof"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/221201/pexels-photo-221201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Convertible car roof" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Opțiune pentru tavane decapotabile</h4>
+                                            <p class="text-sm text-gray-600">Curățare profundă a tavanului decapotabil cu Gtechniq W2 Multi Purpose Cleaner și protejare cu Gtechniq I1 Smart Fabric.</p>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Total Surface Protection Bundle -->
+                                <label class="cursor-pointer group">
+                                    <input
+                                        type="checkbox"
+                                        x-model="services.bundle"
+                                        @change="updatePrice()"
+                                        class="hidden peer"
+                                    >
+                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
+                                        <div class="absolute top-2 right-2 z-20">
+                                            <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Best Seller</span>
+                                        </div>
+                                        <div class="absolute top-4 left-4 z-10">
+                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        </div>
+                                        <div class="h-64 bg-gray-200 overflow-hidden">
+                                            <img src="https://images.pexels.com/photos/29851072/pexels-photo-29851072.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury sports car complete detailing" class="w-full h-full object-cover">
+                                        </div>
+                                        <div class="p-4">
+                                            <h4 class="font-semibold text-gray-900 mb-2">Pachete de protecție totală a suprafeței</h4>
+                                            <p class="text-sm text-gray-600">Nu doar că pachetul complet este cu 20% mai eficient din punct de vedere al costurilor, ci va include și un strat ultra-durabil pentru țevile de eșapament, etrierii, plasticele din golful motoarelor, farurile și luminile din spate.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Summary -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-apple p-8 sticky top-24">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Rezumat</h3>
+                        
+                        <!-- Selected Options -->
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Dimensiune:</span>
+                                <span class="font-medium capitalize" x-text="carSize"></span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Stare:</span>
+                                <span class="font-medium capitalize" x-text="condition"></span>
+                            </div>
+                            <div class="border-t pt-4">
+                                <div class="text-sm text-gray-500 mb-2">Servicii selectate:</div>
+                                <div class="space-y-1 text-sm">
+                                    <div x-show="services.exterior" class="flex justify-between">
+                                        <span>Spălare Exterior</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('exterior') + ' RON'"></span>
+                                    </div>
+                                    <div x-show="services.interior" class="flex justify-between">
+                                        <span>Curățare Interior</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('interior') + ' RON'"></span>
+                                    </div>
+                                    <div x-show="services.motor" class="flex justify-between">
+                                        <span>Curățare Motor</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('motor') + ' RON'"></span>
+                                    </div>
+                                    <div x-show="services.ceramic" class="flex justify-between">
+                                        <span>Protecție Ceramică</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('ceramic') + ' RON'"></span>
+                                    </div>
+                                    <div x-show="services.headlights" class="flex justify-between">
+                                        <span>Polish Faruri</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('headlights') + ' RON'"></span>
+                                    </div>
+                                    <div x-show="services.odor" class="flex justify-between">
+                                        <span>Eliminare Mirosuri</span>
+                                        <span class="text-gray-500" x-text="getServicePrice('odor') + ' RON'"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="border-t pt-6 mb-8">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-2xl font-semibold text-gray-900">Total:</span>
+                                <span class="text-3xl font-semibold text-primary" x-text="totalPrice + ' RON'"></span>
+                            </div>
+                            <div class="text-sm text-gray-500" x-text="'Durată estimată: ' + totalTime + ' minute'"></div>
+                        </div>
+
+                        <!-- Expert Recommendation -->
+                        <div x-show="expertRecommendation" class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8">
+                            <div class="flex">
+                                <svg class="w-5 h-5 text-amber-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                                </svg>
+                                <div>
+                                    <div class="font-medium text-amber-800 text-sm">Recomandarea expertului</div>
+                                    <div class="text-amber-700 text-sm mt-1" x-text="expertRecommendation"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="space-y-4">
+                            <button 
+                                @click="sendEmailQuote()"
+                                class="w-full bg-gray-100 text-gray-700 px-6 py-3 rounded-md font-medium hover:bg-gray-200 transition-all duration-200"
+                                :disabled="totalPrice === 0"
+                            >
+                                Trimite-mi oferta pe email
+                            </button>
+                            
+                            <button 
+                                @click="proceedToBooking()"
+                                class="w-full bg-primary text-white px-6 py-4 rounded-md text-base font-medium hover:bg-blue-600 transition-all duration-200 disabled:bg-gray-300"
+                                :disabled="totalPrice === 0"
+                            >
+                                Continuă la rezervare
+                            </button>
+                        </div>
+
+                        <!-- Package Suggestions -->
+                        <div x-show="totalPrice > 0" class="mt-8 pt-8 border-t">
+                            <h4 class="font-medium text-gray-900 mb-4">Pachete recomandate:</h4>
+                            <div class="space-y-2">
+                                <button
+                                    @click="loadPackage('premium')"
+                                    class="w-full text-left p-3 bg-primary text-white rounded-2xl text-sm hover:bg-blue-600 transition-all duration-200"
+                                >
+                                    <div class="font-medium">Pachetul Premium</div>
+                                    <div class="text-blue-100 text-xs">Geamuri, jante și scaune</div>
+                                </button>
+                                <button
+                                    @click="loadPackage('luxury')"
+                                    class="w-full text-left p-3 bg-accent text-white rounded-2xl text-sm hover:bg-orange-600 transition-all duration-200"
+                                >
+                                    <div class="font-medium">Pachetul Complet</div>
+                                    <div class="text-orange-100 text-xs">Protecție totală 20% reducere</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 text-gray-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-7 w-auto">
+                    <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
+                    </div>
+                    <p class="text-gray-500 mb-4 font-normal">
+                        Detaliu care se vede. Luciu care rămâne.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-base font-semibold mb-4 text-gray-900">Navigație</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/servicii.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Servicii</a></li>
+                        <li><a href="/configurator.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Configurator</a></li>
+                        <li><a href="/rezervare.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/faq.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-base font-semibold mb-4 text-gray-900">Contact</h3>
+                    <ul class="space-y-2 text-gray-500 text-sm">
+                        <li><a href="tel:+40742122222" class="inline-flex items-center hover:text-primary transition-colors"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+40 742 122 222</a></li>
+                        <li>contact@detailers-vision.ro</li>
+                        <li>Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="/politici.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Politici</a>
+                    <a href="/contact.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Email Quote Modal -->
+    <div x-show="showEmailModal" x-cloak class="fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" @click="showEmailModal = false"></div>
+            
+            <div class="relative inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-xl rounded-xl">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Oferta calculată</h3>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <div class="text-sm text-gray-500 mb-2">Configurația ta:</div>
+                    <div class="text-sm font-mono" x-text="getQuoteText()"></div>
+                </div>
+                
+                <p class="text-sm text-gray-500 mb-4">
+                    Oferta a fost copiată în clipboard. Poți să o lipești într-un email către:
+                </p>
+                
+                <div class="flex space-x-3">
+                    <a 
+                        :href="'mailto:contact@detailers-vision.ro?subject=Cerere%20ofertă%20detailing&body=' + encodeURIComponent(getQuoteText())"
+                        class="flex-1 bg-primary text-white px-4 py-2 rounded-md text-center hover:bg-blue-600 transition-all duration-200"
+                    >
+                        Deschide emailul
+                    </a>
+                    <button 
+                        @click="showEmailModal = false"
+                        class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-all duration-200"
+                    >
+                        Închide
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function configurator() {
+            return {
+                carSize: 'sedan',
+                condition: 'medie',
+                services: {
+                    windscreen: false,
+                    rims: false,
+                    seats: false,
+                    interior: false,
+                    roof: false,
+                    bundle: false
+                },
+                totalPrice: 0,
+                totalTime: 0,
+                expertRecommendation: '',
+                showEmailModal: false,
+                
+                // Price multipliers based on car size
+                sizeMultipliers: {
+                    'mica': 0.8,
+                    'compacta': 0.9,
+                    'sedan': 1.0,
+                    'suv': 1.2,
+                    'premium': 1.4
+                },
+                
+                // Condition multipliers
+                conditionMultipliers: {
+                    'perfect': 0.9,
+                    'usoara': 1.0,
+                    'medie': 1.2,
+                    'grea': 1.5
+                },
+
+                // Base prices for services (RON)
+                servicePrices: {
+                    windscreen: 150,
+                    rims: 200,
+                    seats: 300,
+                    interior: 250,
+                    roof: 180,
+                    bundle: 800
+                },
+
+                // Base time for services (minutes)
+                serviceTimes: {
+                    windscreen: 60,
+                    rims: 90,
+                    seats: 120,
+                    interior: 90,
+                    roof: 60,
+                    bundle: 240
+                },
+                
+                init() {
+                    // Check for package parameter
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const packageParam = urlParams.get('package');
+                    
+                    if (packageParam) {
+                        this.loadPackage(packageParam);
+                    } else {
+                        this.updatePrice();
+                    }
+                },
+                
+                loadPackage(packageName) {
+                    switch (packageName) {
+                        case 'basic':
+                            this.services = {
+                                windscreen: true,
+                                rims: false,
+                                seats: false,
+                                interior: false,
+                                roof: false,
+                                bundle: false
+                            };
+                            break;
+
+                        case 'premium':
+                            this.services = {
+                                windscreen: true,
+                                rims: true,
+                                seats: true,
+                                interior: false,
+                                roof: false,
+                                bundle: false
+                            };
+                            break;
+
+                        case 'luxury':
+                            this.services = {
+                                windscreen: false,
+                                rims: false,
+                                seats: false,
+                                interior: false,
+                                roof: false,
+                                bundle: true
+                            };
+                            break;
+                    }
+
+                    this.updatePrice();
+                    this.updateRecommendation();
+                },
+                
+                getServicePrice(service) {
+                    const basePrice = this.servicePrices[service];
+                    const sizeMultiplier = this.sizeMultipliers[this.carSize];
+                    const conditionMultiplier = this.conditionMultipliers[this.condition];
+                    
+                    return Math.round(basePrice * sizeMultiplier * conditionMultiplier);
+                },
+                
+                updatePrice() {
+                    let price = 0;
+                    let time = 0;
+                    
+                    for (const [service, selected] of Object.entries(this.services)) {
+                        if (selected) {
+                            price += this.getServicePrice(service);
+                            time += this.serviceTimes[service];
+                        }
+                    }
+                    
+                    this.totalPrice = price;
+                    this.totalTime = time;
+                    
+                    this.updateRecommendation();
+                },
+                
+                updateRecommendation() {
+                    const selectedCount = Object.values(this.services).filter(Boolean).length;
+                    
+                    if (selectedCount === 0) {
+                        this.expertRecommendation = '';
+                        return;
+                    }
+                    
+                    // Recommendations based on selection
+                    if (this.services.exterior && this.services.interior && !this.services.ceramic) {
+                        this.expertRecommendation = 'Pentru o protecție pe termen lung, recomandăm adăugarea protecției ceramice.';
+                    } else if (this.services.ceramic && (!this.services.exterior || !this.services.interior)) {
+                        this.expertRecommendation = 'Protecția ceramică are rezultate mai bune cu o curățare completă interior + exterior.';
+                    } else if (this.condition === 'grea' && selectedCount < 3) {
+                        this.expertRecommendation = 'Pentru starea grea recomandăm minimum 3 servicii pentru rezultate optime.';
+                    } else if (this.totalPrice > 300 && this.totalPrice < 650) {
+                        this.expertRecommendation = 'Configurația ta se apropie de Pachetul Premium (320 RON) - economii garantate!';
+                    } else if (selectedCount >= 4) {
+                        this.expertRecommendation = 'Configurația ta calitativă! Timpul estimat poate fi redus cu programare în avans.';
+                    } else {
+                        this.expertRecommendation = 'Configurație echilibrată pentru un rezultat profesional.';
+                    }
+                },
+                
+                getQuoteText() {
+                    let text = `Ofertă Scuderia Vision\n\n`;
+                    text += `Mașină: ${this.carSize} (stare ${this.condition})\n`;
+                    text += `Servicii selectate:\n`;
+                    
+                    for (const [service, selected] of Object.entries(this.services)) {
+                        if (selected) {
+                            const serviceNames = {
+                                exterior: 'Spălare Exterior',
+                                interior: 'Curățare Interior', 
+                                motor: 'Curățare Motor',
+                                ceramic: 'Protecție Ceramică',
+                                headlights: 'Polish Faruri',
+                                odor: 'Eliminare Mirosuri'
+                            };
+                            text += `- ${serviceNames[service]}: ${this.getServicePrice(service)} RON\n`;
+                        }
+                    }
+                    
+                    text += `\nTotal: ${this.totalPrice} RON\n`;
+                    text += `Durată estimată: ${this.totalTime} minute\n\n`;
+                    text += `Pentru programare: +40 742 122 222 (tel:+40742122222)\n`;
+                    text += `www.detailers-vision.ro`;
+                    
+                    return text;
+                },
+                
+                sendEmailQuote() {
+                    if (this.totalPrice === 0) return;
+                    
+                    // Copy to clipboard
+                    navigator.clipboard.writeText(this.getQuoteText()).then(() => {
+                        this.showEmailModal = true;
+                    }).catch(() => {
+                        // Fallback if clipboard doesn't work
+                        this.showEmailModal = true;
+                    });
+                },
+                
+                proceedToBooking() {
+                    if (this.totalPrice === 0) return;
+                    
+                    // Save configuration to localStorage
+                    const config = {
+                        carSize: this.carSize,
+                        condition: this.condition,
+                        services: this.services,
+                        totalPrice: this.totalPrice,
+                        totalTime: this.totalTime,
+                        timestamp: Date.now()
+                    };
+                    
+                    localStorage.setItem('detailing-config', JSON.stringify(config));
+                    
+                    // Navigate to booking page
+                    window.location.href = '/rezervare.html';
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+    
+    <!-- Chat Assistant -->
+    <script>
+        // Chat Assistant for Detailer's Vision
+        class ChatAssistant {
+            constructor() {
+                this.isOpen = false;
+                this.messages = [];
+                this.isTyping = false;
+                this.apiKey = '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';
+                this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
+                this.model = 'gpt-oss-120b';
+                
+                this.commonQuestions = [
+                    "Cât costă o spălare completă?",
+                    "Cât durează serviciul de protecție ceramică?",
+                    "Oferiți garanție pentru servicii?",
+                    "Cum pot programa o întâlnire?",
+                    "Ce include pachetul premium?",
+                    "Lucrați și în weekend?",
+                    "Acceptați plăți cu cardul?",
+                    "Pot să rămân cu mașina în timpul serviciului?",
+                    "Ce produse folosiți pentru curățare?",
+                    "Aveți reduceri pentru clienții fideli?"
+                ];
+                
+                this.systemPrompt = `Ești asistentul virtual pentru Scuderia Vision, o companie premium de auto detailing din România. 
+
+INFORMAȚII DESPRE COMPANIE:
+- Servicii: spălare exterior, curățare interior, protecție ceramică, polish faruri, eliminare mirosuri, curățare motor
+- Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
+- Program: Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00, Duminică 10:00-15:00
+- Contact: +40 742 122 222, contact@detailers-vision.ro
+- Adresă: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
+- Plată avans: 30% prin PayU România, restul la finalizare
+- Garanție: 100% satisfacție, 12 luni pentru protecția ceramică
+- Anulare: cu 24h înainte pentru rambursarea avansului
+
+INSTRUCȚIUNI:
+- Răspunde DOAR în română
+- Fii prietenos, profesional și util
+- Oferă informații precise despre servicii și prețuri
+- Îndrumă clienții către configurator sau rezervare când e cazul
+- Pentru întrebări complexe, recomandă contactul direct
+- Folosește informațiile de mai sus pentru răspunsuri precise
+- Nu inventa prețuri sau servicii care nu există`;
+                
+                // Initialize when DOM is ready
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.init());
+                } else {
+                    this.init();
+                }
+            }
+            
+            init() {
+                console.log('Chat Assistant initializing...');
+                this.createChatInterface();
+                this.attachEventListeners();
+                this.addWelcomeMessage();
+                console.log('Chat Assistant initialized successfully');
+            }
+            
+            createChatInterface() {
+                console.log('Creating chat interface...');
+                
+                // Remove existing chat elements if they exist
+                const existingButton = document.getElementById('chat-toggle');
+                const existingContainer = document.getElementById('chat-container');
+                if (existingButton) existingButton.remove();
+                if (existingContainer) existingContainer.remove();
+                
+                // Chat toggle button
+                const chatButton = document.createElement('div');
+                chatButton.id = 'chat-toggle';
+                chatButton.style.cssText = `
+                    position: fixed;
+                    bottom: 24px;
+                    right: 24px;
+                    width: 56px;
+                    height: 56px;
+                    background-color: #007AFF;
+                    border-radius: 50%;
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 9999;
+                    transition: all 0.2s ease;
+                `;
+                chatButton.innerHTML = `
+                    <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                `;
+                
+                // Chat container
+                const chatContainer = document.createElement('div');
+                chatContainer.id = 'chat-container';
+                chatContainer.style.cssText = `
+                    position: fixed;
+                    bottom: 96px;
+                    right: 24px;
+                    width: 384px;
+                    height: 500px;
+                    max-width: calc(100vw - 48px);
+                    background-color: white;
+                    border-radius: 16px;
+                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
+                    z-index: 9998;
+                    transform: translateY(100%);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    display: flex;
+                    flex-direction: column;
+                    overflow: hidden;
+                `;
+                chatContainer.innerHTML = `
+                    <!-- Header -->
+                    <div style="background-color: #007AFF; color: white; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                        <div style="display: flex; align-items: center;">
+                            <div style="width: 32px; height: 32px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600; font-size: 14px;">Asistent Scuderia Vision</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">Online acum</div>
+                            </div>
+                        </div>
+                        <button id="chat-close" style="color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 4px;">
+                            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Messages -->
+                    <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+                        <!-- Messages will be added here -->
+                    </div>
+                    
+                    <!-- Common Questions -->
+                    <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
+                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebări frecvente:</div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                            ${this.commonQuestions.slice(0, 3).map(q => 
+                                `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <!-- Input -->
+                    <div style="border-top: 1px solid #E5E7EB; padding: 16px;">
+                        <div style="display: flex; gap: 8px;">
+                            <input 
+                                type="text" 
+                                id="chat-input" 
+                                placeholder="Scrie mesajul tău..." 
+                                style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
+                            >
+                            <button 
+                                id="chat-send" 
+                                style="width: 40px; height: 40px; background-color: #007AFF; color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;"
+                            >
+                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(chatButton);
+                document.body.appendChild(chatContainer);
+                
+                console.log('Chat interface created successfully');
+            }
+            
+            attachEventListeners() {
+                console.log('Attaching event listeners...');
+                
+                const chatToggle = document.getElementById('chat-toggle');
+                const chatClose = document.getElementById('chat-close');
+                const chatInput = document.getElementById('chat-input');
+                const chatSend = document.getElementById('chat-send');
+                const chatContainer = document.getElementById('chat-container');
+                
+                if (!chatToggle) {
+                    console.error('Chat toggle button not found!');
+                    return;
+                }
+                
+                chatToggle.addEventListener('click', () => this.toggleChat());
+                if (chatClose) chatClose.addEventListener('click', () => this.closeChat());
+                if (chatSend) chatSend.addEventListener('click', () => this.sendMessage());
+                
+                if (chatInput) {
+                    chatInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            this.sendMessage();
+                        }
+                    });
+                }
+                
+                // Suggestion buttons
+                if (chatContainer) {
+                    chatContainer.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('suggestion-btn')) {
+                            const question = e.target.dataset.question;
+                            this.sendMessage(question);
+                        }
+                    });
+                }
+                
+                // Close chat when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (this.isOpen && chatContainer && chatToggle && 
+                        !chatContainer.contains(e.target) && !chatToggle.contains(e.target)) {
+                        this.closeChat();
+                    }
+                });
+                
+                console.log('Event listeners attached successfully');
+            }
+            
+            toggleChat() {
+                console.log('Toggle chat called, isOpen:', this.isOpen);
+                if (this.isOpen) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+            
+            openChat() {
+                console.log('Opening chat...');
+                const container = document.getElementById('chat-container');
+                if (container) {
+                    container.style.transform = 'translateY(0)';
+                    container.style.opacity = '1';
+                }
+                this.isOpen = true;
+                
+                // Focus input
+                setTimeout(() => {
+                    const input = document.getElementById('chat-input');
+                    if (input) input.focus();
+                }, 300);
+                
+                console.log('Chat opened');
+            }
+            
+            closeChat() {
+                console.log('Closing chat...');
+                const container = document.getElementById('chat-container');
+                if (container) {
+                    container.style.transform = 'translateY(100%)';
+                    container.style.opacity = '0';
+                }
+                this.isOpen = false;
+                
+                console.log('Chat closed');
+            }
+            
+            addWelcomeMessage() {
+                const welcomeMessage = {
+                    type: 'bot',
+                    content: 'Bună ziua! Sunt asistentul virtual Scuderia Vision. Cum vă pot ajuta astăzi cu serviciile noastre de auto detailing?',
+                    timestamp: new Date()
+                };
+                this.messages.push(welcomeMessage);
+                this.renderMessage(welcomeMessage);
+            }
+            
+            async sendMessage(messageText = null) {
+                const input = document.getElementById('chat-input');
+                const message = messageText || (input ? input.value.trim() : '');
+                
+                if (!message) return;
+                
+                // Clear input
+                if (!messageText && input) {
+                    input.value = '';
+                }
+                
+                // Add user message
+                const userMessage = {
+                    type: 'user',
+                    content: message,
+                    timestamp: new Date()
+                };
+                this.messages.push(userMessage);
+                this.renderMessage(userMessage);
+                
+                // Hide suggestions after first user message
+                this.hideSuggestions();
+                
+                // Show typing indicator
+                this.showTypingIndicator();
+                
+                try {
+                    // Call OpenRouter API
+                    const response = await this.callOpenRouterAPI(message);
+                    
+                    // Add bot response
+                    const botMessage = {
+                        type: 'bot',
+                        content: response,
+                        timestamp: new Date()
+                    };
+                    this.messages.push(botMessage);
+                    this.hideTypingIndicator();
+                    this.renderMessage(botMessage);
+                    
+                } catch (error) {
+                    console.error('Chat API Error:', error);
+                    this.hideTypingIndicator();
+                    
+                    const errorMessage = {
+                        type: 'bot',
+                        content: 'Ne pare rău, am întâmpinat o problemă tehnică. Vă rugăm să ne contactați direct la <a href="tel:+40742122222" style="color: #007AFF; text-decoration: underline;">+40 742 122 222</a> pentru asistență.',
+                        timestamp: new Date()
+                    };
+                    this.messages.push(errorMessage);
+                    this.renderMessage(errorMessage);
+                }
+            }
+            
+            async callOpenRouterAPI(message) {
+                const response = await fetch(this.apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${this.apiKey}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': window.location.origin,
+                        'X-Title': 'Scuderia Vision Chat Assistant'
+                    },
+                    body: JSON.stringify({
+                        model: this.model,
+                        messages: [
+                            { role: 'system', content: this.systemPrompt },
+                            ...this.messages.slice(-5).map(msg => ({
+                                role: msg.type === 'user' ? 'user' : 'assistant',
+                                content: msg.content
+                            })),
+                            { role: 'user', content: message }
+                        ],
+                        max_tokens: 300,
+                        temperature: 0.7
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                return data.choices[0].message.content;
+            }
+            
+            renderMessage(message) {
+                const messagesContainer = document.getElementById('chat-messages');
+                if (!messagesContainer) return;
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.style.cssText = `display: flex; ${message.type === 'user' ? 'justify-content: flex-end;' : 'justify-content: flex-start;'}`;
+                
+                const time = message.timestamp.toLocaleTimeString('ro-RO', { 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+                
+                const bubbleColor = message.type === 'user' ? '#007AFF' : '#F3F4F6';
+                const textColor = message.type === 'user' ? 'white' : '#111827';
+                const timeColor = message.type === 'user' ? 'rgba(255,255,255,0.7)' : '#6B7280';
+                
+                // Add schedule button for bot messages
+                const scheduleButton = message.type === 'bot' ? `
+                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <button 
+                            onclick="window.open('https://wa.me/40123456789?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
+                            style="
+                                background-color: #007AFF; 
+                                color: white; 
+                                border: none; 
+                                padding: 6px 12px; 
+                                border-radius: 12px; 
+                                font-size: 12px; 
+                                font-weight: 600; 
+                                cursor: pointer; 
+                                transition: background-color 0.2s;
+                                width: 100%;
+                            "
+                            onmouseover="this.style.backgroundColor='#0056CC'"
+                            onmouseout="this.style.backgroundColor='#007AFF'"
+                        >
+                            💬 Contactează pe WhatsApp
+                        </button>
+                    </div>
+                ` : '';
+                
+                messageDiv.innerHTML = `
+                    <div style="max-width: 80%; background-color: ${bubbleColor}; color: ${textColor}; border-radius: 16px; padding: 12px 16px;">
+                        <div style="font-size: 14px; line-height: 1.4;">${message.content}</div>
+                        <div style="font-size: 12px; color: ${timeColor}; margin-top: 4px;">${time}</div>
+                        ${scheduleButton}
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            hideSuggestions() {
+                const suggestions = document.getElementById('chat-suggestions');
+                if (suggestions) {
+                    suggestions.style.display = 'none';
+                }
+            }
+            
+            showTypingIndicator() {
+                if (this.isTyping) return;
+                
+                this.isTyping = true;
+                const messagesContainer = document.getElementById('chat-messages');
+                if (!messagesContainer) return;
+                
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.style.cssText = 'display: flex; justify-content: flex-start;';
+                typingDiv.innerHTML = `
+                    <div style="background-color: #F3F4F6; border-radius: 16px; padding: 12px 16px;">
+                        <div style="display: flex; gap: 4px;">
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out;"></div>
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.16s;"></div>
+                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.32s;"></div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add bounce animation
+                if (!document.getElementById('chat-bounce-style')) {
+                    const style = document.createElement('style');
+                    style.id = 'chat-bounce-style';
+                    style.textContent = `
+                        @keyframes bounce {
+                            0%, 80%, 100% { transform: scale(0); }
+                            40% { transform: scale(1); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                messagesContainer.appendChild(typingDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            hideTypingIndicator() {
+                this.isTyping = false;
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+        }
+        // Initialize chat assistant when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                new ChatAssistant();
+            });
+        } else {
+            new ChatAssistant();
+        }
+    </script>
+
+    <!-- Load and render compact service cards -->
+    <script type="module">
+        import { servicesData } from './services-data.js';
+
+        // Render compact service cards
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            if (!grid) return;
+
+            grid.innerHTML = servicesData.map(service => {
+                const url = service.isPackage
+                    ? `/configurator.html?package=${service.configuratorParam}`
+                    : service.extras
+                        ? `/configurator.html?service=${service.configuratorParam}&extras=${service.extras}`
+                        : `/configurator.html?service=${service.configuratorParam}`;
+
+                return `
+                    <a href="${url}" class="group block bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-200">
+                        <div class="aspect-square bg-cover bg-center" style="background-image: url('${service.image}')">
+                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/70 flex items-end p-3">
+                                <div class="w-full">
+                                    <div class="text-xs text-white/80 uppercase tracking-wide mb-1">${service.category}</div>
+                                    <div class="text-sm font-semibold text-white mb-1">${service.title}</div>
+                                    <div class="text-xs text-white/90">${service.priceText}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        // Render on page load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderServices);
+        } else {
+            renderServices();
+        }
+    </script>
+</body>
+</html>

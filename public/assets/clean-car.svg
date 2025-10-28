@@ -1,0 +1,101 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6FFFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B2F5EA;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="carGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7FAFC;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="roofGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EDF2F7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="carShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+    <filter id="shine" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect width="600" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="320" width="600" height="80" fill="#F7FAFC"/>
+  
+  <!-- Clean Car Body -->
+  <g transform="translate(150, 180)" filter="url(#carShadow)">
+    <!-- Main body -->
+    <rect x="0" y="40" width="300" height="80" rx="15" fill="url(#carGradient)" stroke="#E2E8F0" stroke-width="1"/>
+    
+    <!-- Roof -->
+    <rect x="60" y="0" width="180" height="60" rx="20" fill="url(#roofGradient)" stroke="#E2E8F0" stroke-width="1"/>
+    
+    <!-- Windows (crystal clear) -->
+    <rect x="70" y="10" width="50" height="40" rx="5" fill="#BEE3F8" opacity="0.3" stroke="#90CDF4" stroke-width="1"/>
+    <rect x="130" y="10" width="60" height="40" rx="5" fill="#BEE3F8" opacity="0.3" stroke="#90CDF4" stroke-width="1"/>
+    <rect x="200" y="10" width="50" height="40" rx="5" fill="#BEE3F8" opacity="0.3" stroke="#90CDF4" stroke-width="1"/>
+    
+    <!-- Window reflections -->
+    <rect x="75" y="15" width="15" height="30" rx="2" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="135" y="15" width="20" height="30" rx="2" fill="#FFFFFF" opacity="0.6"/>
+    <rect x="205" y="15" width="15" height="30" rx="2" fill="#FFFFFF" opacity="0.6"/>
+    
+    <!-- Wheels (shiny) -->
+    <circle cx="60" cy="120" r="25" fill="#E2E8F0" stroke="#CBD5E0" stroke-width="2"/>
+    <circle cx="60" cy="120" r="15" fill="#4A5568"/>
+    <circle cx="60" cy="120" r="8" fill="#718096"/>
+    <circle cx="240" cy="120" r="25" fill="#E2E8F0" stroke="#CBD5E0" stroke-width="2"/>
+    <circle cx="240" cy="120" r="15" fill="#4A5568"/>
+    <circle cx="240" cy="120" r="8" fill="#718096"/>
+    
+    <!-- Wheel shine -->
+    <circle cx="55" cy="115" r="3" fill="#FFFFFF" opacity="0.8"/>
+    <circle cx="235" cy="115" r="3" fill="#FFFFFF" opacity="0.8"/>
+    
+    <!-- Headlights (bright and clean) -->
+    <circle cx="10" cy="70" r="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shine)"/>
+    <circle cx="290" cy="70" r="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1" filter="url(#shine)"/>
+    <circle cx="10" cy="70" r="6" fill="#F0FFF4" opacity="0.8"/>
+    <circle cx="290" cy="70" r="6" fill="#F0FFF4" opacity="0.8"/>
+    
+    <!-- Body shine/reflection -->
+    <ellipse cx="150" cy="50" rx="80" ry="15" fill="#FFFFFF" opacity="0.4"/>
+    <ellipse cx="150" cy="80" rx="120" ry="8" fill="#FFFFFF" opacity="0.2"/>
+    
+    <!-- Chrome details -->
+    <rect x="0" y="75" width="300" height="3" fill="#E2E8F0"/>
+    <rect x="20" y="40" width="260" height="2" rx="1" fill="#CBD5E0"/>
+  </g>
+  
+  <!-- Sparkle effects -->
+  <g fill="#34C759" opacity="0.6">
+    <circle cx="200" cy="150" r="2"/>
+    <circle cx="380" cy="180" r="1.5"/>
+    <circle cx="320" cy="120" r="1"/>
+    <circle cx="450" cy="200" r="2.5"/>
+    <circle cx="180" cy="100" r="1"/>
+  </g>
+  
+  <!-- Success checkmark -->
+  <g transform="translate(520, 60)">
+    <circle cx="0" cy="0" r="20" fill="#34C759"/>
+    <path d="M-8,-2 L-3,3 L8,-8" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Text overlay -->
+  <text x="300" y="350" text-anchor="middle" fill="#2D3748" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="600">
+    MAȘINĂ CURATĂ
+  </text>
+  <text x="300" y="375" text-anchor="middle" fill="#4A5568" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14">
+    Vezi diferența înainte să programezi!
+  </text>
+</svg>

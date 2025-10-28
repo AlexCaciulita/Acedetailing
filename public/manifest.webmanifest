@@ -1,0 +1,68 @@
+{
+  "name": "Scuderia Vision - Auto Detailing",
+  "short_name": "Scuderia Vision",
+  "description": "Servicii profesionale de auto detailing. Detaliu care se vede. Luciu care rămâne.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1E40AF",
+  "orientation": "portrait-primary",
+  "categories": ["automotive", "business", "lifestyle"],
+  "lang": "ro",
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/screenshot-desktop.png", 
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Configurator Preț",
+      "short_name": "Configurator", 
+      "description": "Calculează prețul pentru serviciile tale",
+      "url": "/configurator.html",
+      "icons": [
+        {
+          "src": "/assets/shortcut-config.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Rezervare",
+      "short_name": "Rezervare",
+      "description": "Programează serviciile direct",
+      "url": "/rezervare.html", 
+      "icons": [
+        {
+          "src": "/assets/shortcut-booking.png",
+          "sizes": "96x96", 
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

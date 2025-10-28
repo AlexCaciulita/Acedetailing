@@ -1,0 +1,23 @@
+{
+  "name": "scuderia-vision",
+  "version": "1.0.0",
+  "description": "Website static pentru Scuderia Vision - Auto Detailing",
+  "type": "module",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "vite": "^7.1.4"
+  },
+  "keywords": [
+    "auto-detailing",
+    "website",
+    "static"
+  ],
+  "author": "Scuderia Vision",
+  "license": "ISC"
+}
