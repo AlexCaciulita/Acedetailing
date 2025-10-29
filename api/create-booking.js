@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const bookingData = req.body;
+    const bookingData = req.body ?? {};
 
     const bookingInfo = {
       timestamp: bookingData.timestamp || new Date().toISOString(),
@@ -51,7 +51,7 @@ PROGRAMARE:
 - Ora: ${bookingInfo.time}
 
 MAȘINĂ:
-- Marca: ${bookingInfo.carBrand}
+- Marcă: ${bookingInfo.carBrand}
 - Model: ${bookingInfo.carModel}
 - An: ${bookingInfo.carYear}
 
@@ -59,7 +59,7 @@ PREȚ ESTIMAT: ${bookingInfo.estimatedAmount} RON
 
 ${bookingInfo.configuration ? `
 SERVICII SELECTATE:
-${bookingInfo.configuration.services?.exterior ? '✓ Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '✓ Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '✓ Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '✓ Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '✓ Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '✓ Eliminare Mirosuri\n' : ''}
+${bookingInfo.configuration.services?.exterior ? '- Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '- Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '- Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '- Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '- Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '- Eliminare Mirosuri\n' : ''}
 Dimensiune: ${bookingInfo.configuration.carSize || 'N/A'}
 Stare: ${bookingInfo.configuration.condition || 'N/A'}
 Durată estimată: ${bookingInfo.configuration.totalTime || 0} minute
@@ -81,17 +81,17 @@ DETALII REZERVARE:
 - Ora: ${bookingInfo.time}
 ${bookingInfo.configuration ? `- Preț estimat: ${bookingInfo.estimatedAmount} RON
 ` : ''}
-MASINA:
+MAȘINĂ:
 - ${bookingInfo.carBrand} ${bookingInfo.carModel} (${bookingInfo.carYear})
 
 ${bookingInfo.configuration ? `SERVICII SELECTATE:
-${bookingInfo.configuration.services?.exterior ? '✓ Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '✓ Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '✓ Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '✓ Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '✓ Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '✓ Eliminare Mirosuri\n' : ''}
+${bookingInfo.configuration.services?.exterior ? '- Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '- Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '- Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '- Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '- Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '- Eliminare Mirosuri\n' : ''}
 ` : ''}
 Plata se va face la fața locului (numerar sau card).
 
 Dacă ai întrebări sau dorești să modifici rezervarea, te rugăm să ne contactezi:
 - Telefon: +40 742 122 222
-- Email: contact@scuderiavision.ro
+- Email: office@scuderiavision.ro
 
 Cu stimă,
 Echipa Scuderia Vision
@@ -99,7 +99,7 @@ Detaliu care se vede. Luciu care rămâne.
 `;
 
     console.log('=== EMAILS TO SEND ===');
-    console.log('Business Email To: contact@scuderiavision.ro');
+    console.log('Business Email To: office@scuderiavision.ro');
     console.log('Customer Email To:', bookingInfo.email);
     console.log('Subject:', emailSubject);
     console.log('======================');
@@ -110,16 +110,16 @@ Detaliu care se vede. Luciu care rămâne.
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.EMAIL_API_KEY}`
+            Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
             from: 'rezervari@scuderiavision.ro',
-            to: 'contact@scuderiavision.ro',
+            to: 'office@scuderiavision.ro',
             subject: emailSubject,
             text: emailBody
           })
         });
-        console.log('Business email sent successfully to contact@scuderiavision.ro');
+        console.log('Business email sent successfully to office@scuderiavision.ro');
       } catch (emailError) {
         console.error('Failed to send business email:', emailError);
       }
@@ -129,7 +129,7 @@ Detaliu care se vede. Luciu care rămâne.
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${process.env.EMAIL_API_KEY}`
+            Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
             from: 'rezervari@scuderiavision.ro',
@@ -144,7 +144,7 @@ Detaliu care se vede. Luciu care rămâne.
       }
     } else {
       console.log('=== EMAIL CONTENT (Business) ===');
-      console.log('To: contact@scuderiavision.ro');
+      console.log('To: office@scuderiavision.ro');
       console.log('Subject:', emailSubject);
       console.log('Body:', emailBody);
       console.log('===============================');
@@ -161,7 +161,6 @@ Detaliu care se vede. Luciu care rămâne.
       message: 'Rezervare confirmată',
       bookingId: `BK-${Date.now()}`
     });
-
   } catch (error) {
     console.error('Error processing booking:', error);
     return res.status(500).json({
@@ -170,3 +169,4 @@ Detaliu care se vede. Luciu care rămâne.
     });
   }
 }
+

@@ -1,12 +1,17 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import bookingHandler from './api/create-booking.js';
+import { createExpressLikeResponse } from './api/response-utils.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 8000;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
-// MIME types pentru diferite extensii de fișiere
+// MIME types for known file extensions
 const mimeTypes = {
   '.html': 'text/html',
   '.css': 'text/css',
@@ -22,68 +27,145 @@ const mimeTypes = {
   '.xml': 'application/xml'
 };
 
-const server = http.createServer((req, res) => {
-  const parsedUrl = url.parse(req.url);
-  let pathname = parsedUrl.pathname;
-  
-  // Dacă pathname se termină cu '/', adaugă 'index.html'
-  if (pathname === '/') {
-    pathname = '/index.html';
+const renderHtmlResponse = (statusCode, title, heading, message, extraStyles = '') => `
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>${statusCode} - ${title}</title>
+    <meta charset="utf-8">
+    <style>
+      body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+      h1 { color: #1E40AF; }
+      ${extraStyles}
+    </style>
+  </head>
+  <body>
+    <h1>${heading}</h1>
+    <p>${message}</p>
+    <a href="/">Inapoi la pagina principala</a>
+  </body>
+  </html>
+`;
+
+const buildRequestPathname = (req) => {
+  try {
+    const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+    return requestUrl.pathname || '/';
+  } catch {
+    return req.url || '/';
   }
-  
-  // Construiește calea completă către fișier
-  const filePath = path.join(PUBLIC_DIR, pathname);
-  
-  // Verifică dacă fișierul există
-  fs.access(filePath, fs.constants.F_OK, (err) => {
-    if (err) {
-      // Fișierul nu există - returnează 404
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      res.end(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <title>404 - Pagina nu a fost găsită</title>
-          <meta charset="utf-8">
-          <style>
-            body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-            h1 { color: #1E40AF; }
-          </style>
-        </head>
-        <body>
-          <h1>404 - Pagina nu a fost găsită</h1>
-          <p>Fișierul <strong>${pathname}</strong> nu există.</p>
-          <a href="/">Înapoi la pagina principală</a>
-        </body>
-        </html>
-      `);
-      return;
-    }
-    
-    // Obține extensia fișierului pentru MIME type
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = mimeTypes[ext] || 'application/octet-stream';
-    
-    // Citește și servește fișierul
-    fs.readFile(filePath, (err, data) => {
-      if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/html' });
-        res.end(`
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>500 - Eroare server</title>
-            <meta charset="utf-8">
-          </head>
-          <body>
-            <h1>500 - Eroare internă de server</h1>
-            <p>Nu s-a putut citi fișierul.</p>
-          </body>
-          </html>
-        `);
+};
+
+const server = http.createServer((req, res) => {
+  let pathname = buildRequestPathname(req);
+
+  if (pathname === '/api/create-booking') {
+    let body = '';
+
+    req.on('data', (chunk) => {
+      body += chunk;
+    });
+
+    req.on('end', async () => {
+      try {
+        if (body) {
+          req.body = JSON.parse(body);
+        } else {
+          req.body = {};
+        }
+      } catch (parseError) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, message: 'Corpul cererii nu este JSON valid' }));
         return;
       }
-      
+
+      try {
+        const expressLikeRes = createExpressLikeResponse(res);
+        await bookingHandler(req, expressLikeRes);
+      } catch (handlerError) {
+        console.error('Booking handler error:', handlerError);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
+        }
+      }
+    });
+
+    req.on('error', (streamError) => {
+      console.error('Request stream error:', streamError);
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
+      }
+    });
+
+    return;
+  }
+
+  if (pathname.endsWith('/')) {
+    pathname = `${pathname}index.html`;
+  } else if (pathname === '/') {
+    pathname = '/index.html';
+  }
+
+  const filePath = path.join(PUBLIC_DIR, pathname);
+  const normalizedPath = path.normalize(filePath);
+
+  // Prevent path traversal outside the public directory
+  if (!normalizedPath.startsWith(PUBLIC_DIR)) {
+    res.writeHead(403, { 'Content-Type': 'text/html' });
+    res.end(
+      renderHtmlResponse(
+        403,
+        'Acces interzis',
+        '403 - Acces interzis',
+        'Resursa solicitata nu este disponibila.'
+      )
+    );
+    return;
+  }
+
+  fs.access(normalizedPath, fs.constants.F_OK, (accessError) => {
+    if (accessError) {
+      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.end(
+        renderHtmlResponse(
+          404,
+          'Pagina nu a fost gasita',
+          '404 - Pagina nu a fost gasita',
+          `Fisierul <strong>${pathname}</strong> nu exista.`
+        )
+      );
+      return;
+    }
+
+    const ext = path.extname(normalizedPath).toLowerCase();
+    let contentType = mimeTypes[ext] || 'application/octet-stream';
+
+    // Ensure UTF-8 charset for text-based responses so browsers render content correctly
+    if (
+      contentType.startsWith('text/') ||
+      contentType === 'application/javascript' ||
+      contentType === 'application/json' ||
+      contentType === 'image/svg+xml'
+    ) {
+      contentType = `${contentType}; charset=utf-8`;
+    }
+
+    fs.readFile(normalizedPath, (readError, data) => {
+      if (readError) {
+        res.writeHead(500, { 'Content-Type': 'text/html' });
+        res.end(
+          renderHtmlResponse(
+            500,
+            'Eroare server',
+            '500 - Eroare interna de server',
+            'Nu s-a putut citi fisierul.'
+          )
+        );
+        return;
+      }
+
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(data);
     });
@@ -91,22 +173,19 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`🚗 Scuderia Vision server pornit pe http://localhost:${PORT}`);
-  console.log(`📁 Servind fișiere din: ${PUBLIC_DIR}`);
-  console.log(`🌐 Accesează website-ul la: http://localhost:${PORT}`);
+  console.log(`Scuderia Vision server pornit pe http://localhost:${PORT}`);
+  console.log(`Servind fisiere din: ${PUBLIC_DIR}`);
+  console.log(`Acceseaza website-ul la: http://localhost:${PORT}`);
 });
 
-// Gestionează închiderea gracioasă a serverului
-process.on('SIGINT', () => {
-  console.log('\n🛑 Server oprit gracios');
+const shutdown = () => {
+  console.log('\nServer oprit gracios');
   server.close(() => {
     process.exit(0);
   });
-});
+};
 
-process.on('SIGTERM', () => {
-  console.log('\n🛑 Server oprit gracios');
-  server.close(() => {
-    process.exit(0);
-  });
-});
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
+
+export default server;

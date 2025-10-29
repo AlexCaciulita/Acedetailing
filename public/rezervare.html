@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervare - Scuderia Vision</title>
-    <meta name="description" content="Rezervă programarea pentru serviciile de auto detailing Scuderia Vision.">
+    <meta name="description" content="Rezerva programarea pentru serviciile de auto detailing Scuderia Vision.">
     
     <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest">
@@ -81,7 +81,7 @@
                 
                 <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="/index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Acasă</a>
+                    <a href="/index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Acasa</a>
                     <a href="/servicii.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Servicii</a>
                     <a href="/configurator.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Configurator</a>
                     <a href="/rezervare.html" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-all duration-200 text-sm font-medium">Rezervare</a>
@@ -108,11 +108,11 @@
                         <h3 x-text="statusMessage" :class="statusType === 'success' ? 'text-green-800' : 'text-red-800'" class="text-lg font-medium"></h3>
                         <div x-show="statusType === 'success'" class="mt-2 text-green-700">
                             <p>Vei primi un email de confirmare în câteva minute.</p>
-                            <p class="mt-1">Pentru orice întrebări, ne poți contacta la <a href="tel:+40742122222" class="text-green-800 hover:underline">+40 742 122 222</a>.</p>
+                            <p class="mt-1">Pentru orice întrebari, ne po?i contacta la <a href="tel:+40742122222" class="text-green-800 hover:underline">+40 742 122 222</a>.</p>
                         </div>
                         <div x-show="statusType === 'error'" class="mt-2 text-red-700">
-                            <p>Te rugăm să încerci din nou sau să ne contactezi direct.</p>
-                            <p class="mt-1">Telefon: <a href="tel:+40742122222" class="text-red-800 hover:underline">+40 742 122 222</a> | Email: contact@scuderiavision.ro</p>
+                            <p>Te rugam sa încerci din nou sau sa ne contactezi direct.</p>
+                            <p class="mt-1">Telefon: <a href="tel:+40742122222" class="text-red-800 hover:underline">+40 742 122 222</a> | Email: office@scuderiavision.ro</p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
             <div class="text-center mb-12">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 tracking-tight">Rezervare</h1>
                 <p class="text-lg sm:text-xl lg:text-2xl font-light text-gray-600 max-w-3xl mx-auto">
-                    Completează formularul pentru a face o rezervare.
+                    Completeaza formularul pentru a face o rezervare.
                 </p>
             </div>
 
@@ -190,7 +190,7 @@
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="date" class="block text-sm font-medium text-gray-900 mb-2">
-                                            Data dorită *
+                                            Data dorita *
                                         </label>
                                         <input 
                                             type="date" 
@@ -204,7 +204,7 @@
                                     
                                     <div>
                                         <label for="time" class="block text-sm font-medium text-gray-900 mb-2">
-                                            Ora preferată *
+                                            Ora preferata *
                                         </label>
                                         <select 
                                             id="time" 
@@ -230,7 +230,7 @@
 
                             <!-- Car Details -->
                             <div class="mb-8">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-6">Detalii mașină</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-6">Detalii ma?ina</h3>
                                 <div class="grid md:grid-cols-3 gap-6">
                                     <div>
                                         <label for="carBrand" class="block text-sm font-medium text-gray-900 mb-2">
@@ -278,28 +278,28 @@
                             <!-- Additional Notes -->
                             <div class="mb-8">
                                 <label for="notes" class="block text-sm font-medium text-gray-900 mb-2">
-                                    Notițe suplimentare
+                                    Noti?e suplimentare
                                 </label>
                                 <textarea 
                                     id="notes" 
                                     x-model="formData.notes"
                                     rows="4"
                                     class="w-full px-4 py-3 border border-gray-200 rounded-2xl focus:ring-primary focus:border-primary"
-                                    placeholder="Detalii suplimentare, instrucțiuni speciale, etc."
+                                    placeholder="Detalii suplimentare, instruc?iuni speciale, etc."
                                 ></textarea>
                             </div>
 
                             <!-- Price Estimation -->
                             <div class="border-t pt-8" x-show="config">
-                                <h3 class="text-xl font-semibold text-gray-900 mb-6">Estimare preț</h3>
+                                <h3 class="text-xl font-semibold text-gray-900 mb-6">Estimare pre?</h3>
                                 <div class="bg-blue-50 border border-blue-200 rounded-2xl p-4 mb-6">
                                     <div class="flex">
                                         <svg class="w-5 h-5 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                         </svg>
                                         <div class="text-blue-800 text-sm">
-                                            <strong>Preț estimat:</strong> <span x-text="(config?.totalPrice || 0) + ' RON'"></span><br>
-                                            <span class="text-blue-600">Acest preț este orientativ și poate varia în funcție de starea mașinii. Plata se va face la fața locului.</span>
+                                            <strong>Pre? estimat:</strong> <span x-text="(config?.totalPrice || 0) + ' RON'"></span><br>
+                                            <span class="text-blue-600">Acest pre? este orientativ ?i poate varia în func?ie de starea ma?inii. Plata se va face la fa?a locului.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -315,7 +315,7 @@
                                         class="w-5 h-5 text-primary border-gray-200 rounded focus:ring-primary mt-1"
                                     >
                                     <span class="ml-3 text-sm text-gray-500">
-                                        Sunt de acord cu <a href="/politici.html" class="text-primary hover:underline">termenii și condițiile</a> și <a href="/politici.html" class="text-primary hover:underline">politica de confidențialitate</a>. *
+                                        Sunt de acord cu <a href="/politici.html" class="text-primary hover:underline">termenii ?i condi?iile</a> ?i <a href="/politici.html" class="text-primary hover:underline">politica de confiden?ialitate</a>. *
                                     </span>
                                 </label>
 
@@ -357,28 +357,28 @@
                                     <div class="text-sm text-gray-500 mb-2">Servicii selectate:</div>
                                     <div class="space-y-1 text-sm">
                                         <div x-show="config?.services?.exterior" class="flex justify-between">
-                                            <span>Spălare Exterior</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span>Sp-âlare Exterior</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                         <div x-show="config?.services?.interior" class="flex justify-between">
-                                            <span>Curățare Interior</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span>Cur-â+¢are Interior</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                         <div x-show="config?.services?.motor" class="flex justify-between">
-                                            <span>Curățare Motor</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span>Cur-â+¢are Motor</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                         <div x-show="config?.services?.ceramic" class="flex justify-between">
-                                            <span>Protecție Ceramică</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span>Protec+¢ie Ceramic-â</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                         <div x-show="config?.services?.headlights" class="flex justify-between">
                                             <span>Polish Faruri</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                         <div x-show="config?.services?.odor" class="flex justify-between">
                                             <span>Eliminare Mirosuri</span>
-                                            <span class="text-gray-500">✓</span>
+                                            <span class="text-gray-500">G£ô</span>
                                         </div>
                                     </div>
                                 </div>
@@ -387,10 +387,10 @@
                             <!-- Pricing -->
                             <div class="border-t pt-6 mb-8">
                                 <div class="flex justify-between items-center mb-4">
-                                    <span class="text-lg font-medium text-gray-900">Preț estimat:</span>
+                                    <span class="text-lg font-medium text-gray-900">Pre+¢ estimat:</span>
                                     <span class="text-2xl font-semibold text-gray-900" x-text="(config?.totalPrice || 0) + ' RON'"></span>
                                 </div>
-                                <div class="text-sm text-gray-500" x-text="'Durată estimată: ' + (config?.totalTime || 0) + ' minute'"></div>
+                                <div class="text-sm text-gray-500" x-text="'Durat-â estimat-â: ' + (config?.totalTime || 0) + ' minute'"></div>
                             </div>
                         </div>
 
@@ -399,17 +399,17 @@
                             <svg class="w-16 h-16 text-gray-200 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
-                            <p class="text-gray-500 mb-4">Nicio configurație salvată</p>
+                            <p class="text-gray-500 mb-4">Nicio configura+¢ie salvat-â</p>
                             <a href="/configurator.html" class="text-primary hover:text-blue-700 font-semibold">
-                                Folosește configuratorul →
+                                Folose+Öte configuratorul GåÆ
                             </a>
                         </div>
 
                         <!-- Payment Info -->
                         <div class="border-t pt-6">
                             <div class="text-center text-sm text-gray-500">
-                                <p>Plata se va efectua la fața locului</p>
-                                <p class="mt-2">Acceptăm numerar și card</p>
+                                <p>Plata se va efectua la fa+¢a locului</p>
+                                <p class="mt-2">Accept-âm numerar +Öi card</p>
                             </div>
                         </div>
                     </div>
@@ -428,12 +428,12 @@
                     <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
                     </div>
                     <p class="text-gray-500 mb-4 font-normal">
-                        Detaliu care se vede. Luciu care rămâne.
+                        Detaliu care se vede. Luciu care r-âm+óne.
                     </p>
                 </div>
                 
                 <div>
-                    <h3 class="text-base font-semibold mb-4 text-gray-900">Navigație</h3>
+                    <h3 class="text-base font-semibold mb-4 text-gray-900">Naviga+¢ie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Servicii</a></li>
                         <li><a href="/configurator.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Configurator</a></li>
@@ -446,14 +446,14 @@
                     <h3 class="text-base font-semibold mb-4 text-gray-900">Contact</h3>
                     <ul class="space-y-2 text-gray-500 text-sm">
                         <li><a href="tel:+40742122222" class="inline-flex items-center hover:text-primary transition-colors"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+40 742 122 222</a></li>
-                        <li>contact@scuderiavision.ro</li>
+                        <li>office@scuderiavision.ro</li>
                         <li>Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
                     </ul>
                 </div>
             </div>
             
             <div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm">© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
+                <p class="text-gray-500 text-sm">-¬ 2025 Scuderia Vision. Toate drepturile rezervate.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="/politici.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Politici</a>
                     <a href="/contact.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Contact</a>
@@ -560,7 +560,7 @@
                             // Redirect to success page
                             window.location.href = '/rezervare.html?status=success';
                         } else {
-                            throw new Error(result.message || 'Eroare la procesarea rezervării');
+                            throw new Error(result.message || 'Eroare la procesarea rezerv-ârii');
                         }
 
                     } catch (error) {
@@ -589,38 +589,38 @@
                 this.model = 'gpt-oss-120b';
                 
                 this.commonQuestions = [
-                    "Cât costă o spălare completă?",
-                    "Cât durează serviciul de protecție ceramică?",
-                    "Oferiți garanție pentru servicii?",
-                    "Cum pot programa o întâlnire?",
+                    "C+ót cost-â o sp-âlare complet-â?",
+                    "C+ót dureaz-â serviciul de protec+¢ie ceramic-â?",
+                    "Oferi+¢i garan+¢ie pentru servicii?",
+                    "Cum pot programa o +«nt+ólnire?",
                     "Ce include pachetul premium?",
-                    "Lucrați și în weekend?",
-                    "Acceptați plăți cu cardul?",
-                    "Pot să rămân cu mașina în timpul serviciului?",
-                    "Ce produse folosiți pentru curățare?",
-                    "Aveți reduceri pentru clienții fideli?"
+                    "Lucra+¢i +Öi +«n weekend?",
+                    "Accepta+¢i pl-â+¢i cu cardul?",
+                    "Pot s-â r-âm+ón cu ma+Öina +«n timpul serviciului?",
+                    "Ce produse folosi+¢i pentru cur-â+¢are?",
+                    "Ave+¢i reduceri pentru clien+¢ii fideli?"
                 ];
                 
-                this.systemPrompt = `Ești asistentul virtual pentru Scuderia Vision, o companie premium de auto detailing din România.
+                this.systemPrompt = `E+Öti asistentul virtual pentru Scuderia Vision, o companie premium de auto detailing din Rom+ónia.
 
-INFORMAȚII DESPRE COMPANIE:
-- Servicii: spălare exterior, curățare interior, protecție ceramică, polish faruri, eliminare mirosuri, curățare motor
+INFORMA+ÜII DESPRE COMPANIE:
+- Servicii: sp-âlare exterior, cur-â+¢are interior, protec+¢ie ceramic-â, polish faruri, eliminare mirosuri, cur-â+¢are motor
 - Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
-- Program: Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00, Duminică 10:00-15:00
+- Program: Luni-Vineri 8:00-18:00, S+ómb-ât-â 8:00-16:00, Duminic-â 10:00-15:00
 - Contact: +40 742 122 222, contact@scuderia-vision.ro
-- Adresă: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
-- Plată: la fața locului (numerar sau card)
-- Garanție: 100% satisfacție, 12 luni pentru protecția ceramică
-- Anulare: cu 24h înainte
+- Adres-â: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
+- Plat-â: la fa+¢a locului (numerar sau card)
+- Garan+¢ie: 100% satisfac+¢ie, 12 luni pentru protec+¢ia ceramic-â
+- Anulare: cu 24h +«nainte
 
-INSTRUCȚIUNI:
-- Răspunde DOAR în română
-- Fii prietenos, profesional și util
-- Oferă informații precise despre servicii și prețuri
-- Îndrumă clienții către configurator sau rezervare când e cazul
-- Pentru întrebări complexe, recomandă contactul direct
-- Folosește informațiile de mai sus pentru răspunsuri precise
-- Nu inventa prețuri sau servicii care nu există`;
+INSTRUC+ÜIUNI:
+- R-âspunde DOAR +«n rom+ón-â
+- Fii prietenos, profesional +Öi util
+- Ofer-â informa+¢ii precise despre servicii +Öi pre+¢uri
+- +Ändrum-â clien+¢ii c-âtre configurator sau rezervare c+ónd e cazul
+- Pentru +«ntreb-âri complexe, recomand-â contactul direct
+- Folose+Öte informa+¢iile de mai sus pentru r-âspunsuri precise
+- Nu inventa pre+¢uri sau servicii care nu exist-â`;
                 
                 // Initialize when DOM is ready
                 if (document.readyState === 'loading') {
@@ -721,7 +721,7 @@ INSTRUCȚIUNI:
                     
                     <!-- Common Questions -->
                     <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
-                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebări frecvente:</div>
+                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebari frecvente:</div>
                         <div style="display: flex; flex-wrap: wrap; gap: 4px;">
                             ${this.commonQuestions.slice(0, 3).map(q => 
                                 `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
@@ -735,7 +735,7 @@ INSTRUCȚIUNI:
                             <input 
                                 type="text" 
                                 id="chat-input" 
-                                placeholder="Scrie mesajul tău..." 
+                                placeholder="Scrie mesajul tau..." 
                                 style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
                             >
                             <button 
@@ -845,7 +845,7 @@ INSTRUCȚIUNI:
             addWelcomeMessage() {
                 const welcomeMessage = {
                     type: 'bot',
-                    content: 'Bună ziua! Sunt asistentul virtual Scuderia Vision. Cum vă pot ajuta astăzi cu serviciile noastre de auto detailing?',
+                    content: 'Buna ziua! Sunt asistentul virtual Scuderia Vision. Cum va pot ajuta astazi cu serviciile noastre de auto detailing?',
                     timestamp: new Date()
                 };
                 this.messages.push(welcomeMessage);
@@ -898,7 +898,7 @@ INSTRUCȚIUNI:
                     
                     const errorMessage = {
                         type: 'bot',
-                        content: 'Ne pare rău, am întâmpinat o problemă tehnică. Vă rugăm să ne contactați direct la <a href="tel:+40742122222" style="color: #007AFF; text-decoration: underline;">+40 742 122 222</a> pentru asistență.',
+                        content: 'Ne pare rau, am întâmpinat o problema tehnica. Va rugam sa ne contacta?i direct la <a href="tel:+40742122222" style="color: #007AFF; text-decoration: underline;">+40 742 122 222</a> pentru asisten?a.',
                         timestamp: new Date()
                     };
                     this.messages.push(errorMessage);
@@ -958,7 +958,7 @@ INSTRUCȚIUNI:
                 const scheduleButton = message.type === 'bot' ? `
                     <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
                         <button 
-                            onclick="window.open('https://wa.me/40123456789?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
+                            onclick="window.open('https://wa.me/40123456789?text=Buna%20ziua!%20A?%20dori%20sa%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
                             style="
                                 background-color: #007AFF; 
                                 color: white; 
@@ -974,7 +974,7 @@ INSTRUCȚIUNI:
                             onmouseover="this.style.backgroundColor='#0056CC'"
                             onmouseout="this.style.backgroundColor='#007AFF'"
                         >
-                            💬 Contactează pe WhatsApp
+                            Contacteaza pe WhatsApp
                         </button>
                     </div>
                 ` : '';
@@ -1054,3 +1054,4 @@ INSTRUCȚIUNI:
     </script>
 </body>
 </html>
+

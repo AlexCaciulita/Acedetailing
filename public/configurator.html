@@ -72,7 +72,7 @@
 <body class="font-sans antialiased bg-gray-50" x-data="configurator()">
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14">
                 <div class="flex items-center">
                     <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-7 w-auto">
@@ -127,7 +127,7 @@
         
         <!-- Content -->
         <div class="relative z-10 h-full flex items-center justify-center">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
                     Configurator Preț
                 </h1>
@@ -137,29 +137,12 @@
             </div>
         </div>
     </section>
-
-    <!-- Quick Service Selector -->
-    <!-- NOTE: Services are loaded from services-data.js -->
-    <!-- To update service info, edit services-data.js - changes will reflect on both pages -->
-    <section class="py-12 bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-2">Servicii Disponibile</h2>
-                <p class="text-gray-600">Selectează rapid serviciile pe care le dorești</p>
-            </div>
-
-            <div id="services-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                <!-- Services loaded dynamically from services-data.js -->
-            </div>
-        </div>
-    </section>
-
     <!-- Configurator -->
     <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-12">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12 justify-center">
                 <!-- Configuration Panel -->
-                <div class="lg:col-span-2">
+                <div class="lg:col-span-2 mx-auto w-full">
                     <div class="bg-white rounded-2xl shadow-lg p-8">
                         
                         <!-- Car Size -->
@@ -353,153 +336,31 @@
                         <!-- Services -->
                         <div class="mb-8">
                             <h3 class="text-xl font-semibold text-gray-900 mb-4">3. Selectează serviciile</h3>
-                            <p class="text-red-600 text-sm mb-6">Protejați jantele, geamurile, ornamentele, pielea, țesăturile, bordul, caroseriile ușilor și tavanul decapotabil</p>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <!-- Windscreen & all Exterior Glass -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.windscreen"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
+                            <p class="text-red-600 text-sm mb-6">Pregătește-ți configurarea alegând serviciile dorite. Poți adăuga sau elimina opțiuni oricând.</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                <template x-for="service in availableServices" :key="service.id">
+                                    <button
+                                        type="button"
+                                        class="relative overflow-hidden rounded-2xl border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary"
+                                        :class="isSelected(service.id) ? 'border-primary ring-2 ring-primary' : 'border-gray-200 hover:border-gray-300'"
+                                        @click="toggleService(service.id)"
+                                        :aria-pressed="isSelected(service.id)"
                                     >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
+                                        <div class="aspect-[4/5] bg-gray-200">
+                                            <img :src="service.image" :alt="service.title" class="w-full h-full object-cover">
                                         </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="/assets/auburn-wa-usa-august-5-260nw-2188152971.PNG" alt="Car windscreen cleaning" class="w-full h-full object-cover object-top">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+                                        <div class="absolute inset-x-0 bottom-0 p-4">
+                                            <p class="text-sm font-semibold text-white" x-text="service.title"></p>
+                                            <p class="text-xs text-white/70" x-text="service.category"></p>
                                         </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Parbriz și toate geamurile exterioare</h4>
-                                            <p class="text-sm text-gray-600">Curățare profundă și lustruire a tuturor geamurilor vehiculului cu Gtechniq G6 Perfect Glass și Gtechniq G4 Nanotech Glass Polish.</p>
+                                        <div class="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full border border-white/70 bg-black/50">
+                                            <span class="h-3 w-3 rounded-full" :class="isSelected(service.id) ? 'bg-primary' : 'bg-white/70'"></span>
                                         </div>
-                                    </div>
-                                </label>
-
-                                <!-- Rims -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.rims"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
-                                    >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
-                                        </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="https://images.pexels.com/photos/5066559/pexels-photo-5066559.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car wheel rim" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Jante</h4>
-                                            <p class="text-sm text-gray-600">Curățare profundă a jantelor cu Gtechniq W6 Iron și General Fallout Remover. Apoi degresate cu Gtechniq Panel Wipe și acoperite cu Gtechniq C5 Wheel Armour.</p>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Leather or Fabric Seats -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.seats"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
-                                    >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
-                                        </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg" alt="Leather car seats" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Scaune din piele sau țesătură (inclusiv Alcantara)</h4>
-                                            <p class="text-sm text-gray-600">Protejați scaunele din piele cu Gtechniq L1 Leather Guard sau scaunele din țesătură/Alcantara cu Gtechniq I1 Smart Fabric.</p>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Dashboard, Door Cards, Carpets -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.interior"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
-                                    >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
-                                        </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="https://images.pexels.com/photos/2694389/pexels-photo-2694389.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Car dashboard interior" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Bord, caroserii ușilor, covoare</h4>
-                                            <p class="text-sm text-gray-600">Protejați diverse materiale ale bordului (piele, plastic, cauciuc, vinil) cu Gtechniq C6 Matte Dash și covoarelor cu Gtechniq I1 Smart Fabric.</p>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Convertible Roof -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.roof"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
-                                    >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
-                                        </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="https://images.pexels.com/photos/221201/pexels-photo-221201.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Convertible car roof" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Opțiune pentru tavane decapotabile</h4>
-                                            <p class="text-sm text-gray-600">Curățare profundă a tavanului decapotabil cu Gtechniq W2 Multi Purpose Cleaner și protejare cu Gtechniq I1 Smart Fabric.</p>
-                                        </div>
-                                    </div>
-                                </label>
-
-                                <!-- Total Surface Protection Bundle -->
-                                <label class="cursor-pointer group">
-                                    <input
-                                        type="checkbox"
-                                        x-model="services.bundle"
-                                        @change="updatePrice()"
-                                        class="hidden peer"
-                                    >
-                                    <div class="relative rounded-lg overflow-hidden bg-white ring-1 ring-gray-200 peer-checked:ring-2 peer-checked:ring-red-600 transition-all duration-200 hover:ring-gray-300">
-                                        <div class="absolute top-2 right-2 z-20">
-                                            <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">Best Seller</span>
-                                        </div>
-                                        <div class="absolute top-4 left-4 z-10">
-                                            <div class="w-6 h-6 rounded-full bg-white peer-checked:bg-white peer-checked:ring-2 peer-checked:ring-red-600 hidden peer-checked:block"></div>
-                                        </div>
-                                        <div class="h-64 bg-gray-200 overflow-hidden">
-                                            <img src="https://images.pexels.com/photos/29851072/pexels-photo-29851072.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury sports car complete detailing" class="w-full h-full object-cover">
-                                        </div>
-                                        <div class="p-4">
-                                            <h4 class="font-semibold text-gray-900 mb-2">Pachete de protecție totală a suprafeței</h4>
-                                            <p class="text-sm text-gray-600">Nu doar că pachetul complet este cu 20% mai eficient din punct de vedere al costurilor, ci va include și un strat ultra-durabil pentru țevile de eșapament, etrierii, plasticele din golful motoarelor, farurile și luminile din spate.</p>
-                                        </div>
-                                    </div>
-                                </label>
+                                    </button>
+                                </template>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Price Summary -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-2xl shadow-apple p-8 sticky top-24">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-6">Rezumat</h3>
-                        
                         <!-- Selected Options -->
                         <div class="space-y-4 mb-8">
                             <div class="flex justify-between text-sm">
@@ -512,40 +373,24 @@
                             </div>
                             <div class="border-t pt-4">
                                 <div class="text-sm text-gray-500 mb-2">Servicii selectate:</div>
-                                <div class="space-y-1 text-sm">
-                                    <div x-show="services.exterior" class="flex justify-between">
-                                        <span>Spălare Exterior</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('exterior') + ' RON'"></span>
-                                    </div>
-                                    <div x-show="services.interior" class="flex justify-between">
-                                        <span>Curățare Interior</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('interior') + ' RON'"></span>
-                                    </div>
-                                    <div x-show="services.motor" class="flex justify-between">
-                                        <span>Curățare Motor</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('motor') + ' RON'"></span>
-                                    </div>
-                                    <div x-show="services.ceramic" class="flex justify-between">
-                                        <span>Protecție Ceramică</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('ceramic') + ' RON'"></span>
-                                    </div>
-                                    <div x-show="services.headlights" class="flex justify-between">
-                                        <span>Polish Faruri</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('headlights') + ' RON'"></span>
-                                    </div>
-                                    <div x-show="services.odor" class="flex justify-between">
-                                        <span>Eliminare Mirosuri</span>
-                                        <span class="text-gray-500" x-text="getServicePrice('odor') + ' RON'"></span>
-                                    </div>
+                                <div class="space-y-2 text-sm" x-show="selectedServiceList().length">
+                                    <template x-for="service in selectedServiceList()" :key="service.id">
+                                        <div class="flex justify-between">
+                                            <span x-text="service.title"></span>
+                                            <span class="text-gray-500" x-text="service.priceLabel"></span>
+                                        </div>
+                                    </template>
+                                </div>
+                                <div class="text-sm text-gray-400 italic" x-show="selectedServiceList().length === 0">
+                                    Selectează cel puțin un serviciu pentru a vedea estimarea.
                                 </div>
                             </div>
                         </div>
-
                         <!-- Total -->
                         <div class="border-t pt-6 mb-8">
                             <div class="flex justify-between items-center mb-2">
                                 <span class="text-2xl font-semibold text-gray-900">Total:</span>
-                                <span class="text-3xl font-semibold text-primary" x-text="totalPrice + ' RON'"></span>
+                                <span class="text-3xl font-semibold text-primary" x-text="formatPrice(totalPrice)"></span>
                             </div>
                             <div class="text-sm text-gray-500" x-text="'Durată estimată: ' + totalTime + ' minute'"></div>
                         </div>
@@ -610,7 +455,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-100 text-gray-600 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="col-span-2">
                     <div class="flex items-center mb-4">
@@ -686,220 +531,288 @@
         </div>
     </div>
 
-    <script>
+                <script>
+        function parseDurationToMinutes(duration) {
+            if (!duration) {
+                return 60;
+            }
+
+            const lower = duration.toLowerCase();
+            const numbers = lower.match(/\d+/g);
+
+            if (!numbers) {
+                return 60;
+            }
+
+            const values = numbers
+                .map(Number)
+                .filter((value) => !Number.isNaN(value));
+
+            if (!values.length) {
+                return 60;
+            }
+
+            const maxValue = Math.max(...values);
+
+            if (lower.includes('ore')) {
+                return maxValue * 60;
+            }
+
+            return maxValue;
+        }
+
         function configurator() {
+            const buildServices = (dataset) =>
+                (dataset || []).map((service) => ({
+                    id: service.id,
+                    title: service.title,
+                    category: service.category,
+                    image: service.image,
+                    basePrice: typeof service.price === "number" ? service.price : 0,
+                    baseTime: parseDurationToMinutes(service.duration),
+                    isPackage: Boolean(service.isPackage)
+                }));
+
+            let servicesSource = buildServices(window.configuratorServicesData || []);
+
+            const createInitialState = () =>
+                servicesSource.reduce((acc, service) => {
+                    acc[service.id] = false;
+                    return acc;
+                }, {});
+
+            const priceFormatter = new Intl.NumberFormat("ro-RO");
+
             return {
                 carSize: 'sedan',
                 condition: 'medie',
-                services: {
-                    windscreen: false,
-                    rims: false,
-                    seats: false,
-                    interior: false,
-                    roof: false,
-                    bundle: false
-                },
+                services: createInitialState(),
+                availableServices: servicesSource,
                 totalPrice: 0,
                 totalTime: 0,
                 expertRecommendation: '',
                 showEmailModal: false,
-                
-                // Price multipliers based on car size
+
                 sizeMultipliers: {
-                    'mica': 0.8,
-                    'compacta': 0.9,
-                    'sedan': 1.0,
-                    'suv': 1.2,
-                    'premium': 1.4
+                    mica: 0.8,
+                    compacta: 0.9,
+                    sedan: 1.0,
+                    suv: 1.2,
+                    premium: 1.4
                 },
-                
-                // Condition multipliers
+
                 conditionMultipliers: {
-                    'perfect': 0.9,
-                    'usoara': 1.0,
-                    'medie': 1.2,
-                    'grea': 1.5
+                    perfect: 0.9,
+                    usoara: 1.0,
+                    medie: 1.2,
+                    grea: 1.5
                 },
 
-                // Base prices for services (RON)
-                servicePrices: {
-                    windscreen: 150,
-                    rims: 200,
-                    seats: 300,
-                    interior: 250,
-                    roof: 180,
-                    bundle: 800
-                },
-
-                // Base time for services (minutes)
-                serviceTimes: {
-                    windscreen: 60,
-                    rims: 90,
-                    seats: 120,
-                    interior: 90,
-                    roof: 60,
-                    bundle: 240
-                },
-                
                 init() {
-                    // Check for package parameter
                     const urlParams = new URLSearchParams(window.location.search);
-                    const packageParam = urlParams.get('package');
-                    
-                    if (packageParam) {
-                        this.loadPackage(packageParam);
+                    const packageParam = urlParams.get("package");
+
+                    const applyInitialSelection = () => {
+                        if (packageParam) {
+                            this.applyPackage(packageParam);
+                        } else {
+                            this.updatePrice();
+                        }
+                    };
+
+                    if (servicesSource.length) {
+                        applyInitialSelection();
+                    } else if (window.configuratorServicesData && window.configuratorServicesData.length) {
+                        this.handleServicesDataset(window.configuratorServicesData);
+                        applyInitialSelection();
                     } else {
                         this.updatePrice();
                     }
+
+                    window.addEventListener('configurator-services-ready', (event) => {
+                        const dataset = event.detail || window.configuratorServicesData || [];
+                        this.handleServicesDataset(dataset);
+                        applyInitialSelection();
+                    });
                 },
-                
-                loadPackage(packageName) {
-                    switch (packageName) {
-                        case 'basic':
-                            this.services = {
-                                windscreen: true,
-                                rims: false,
-                                seats: false,
-                                interior: false,
-                                roof: false,
-                                bundle: false
-                            };
-                            break;
 
-                        case 'premium':
-                            this.services = {
-                                windscreen: true,
-                                rims: true,
-                                seats: true,
-                                interior: false,
-                                roof: false,
-                                bundle: false
-                            };
-                            break;
+                handleServicesDataset(data) {
+                    servicesSource = buildServices(data);
+                    this.availableServices = servicesSource;
+                    this.resetServices();
+                    this.updatePrice();
+                },
 
-                        case 'luxury':
-                            this.services = {
-                                windscreen: false,
-                                rims: false,
-                                seats: false,
-                                interior: false,
-                                roof: false,
-                                bundle: true
-                            };
-                            break;
-                    }
+                resetServices() {
+                    this.services = createInitialState();
+                },
+
+                applyPackage(packageName) {
+                    const presets = {
+                        basic: ['spalare-completa'],
+                        premium: ['spalare-completa', 'curatare-profunda', 'protectie-ceramica'],
+                        luxury: ['detailing-complet']
+                    };
+
+                    const selection = presets[packageName] || [];
+                    this.resetServices();
+
+                    selection.forEach((serviceId) => {
+                        if (Object.prototype.hasOwnProperty.call(this.services, serviceId)) {
+                            this.services[serviceId] = true;
+                        }
+                    });
 
                     this.updatePrice();
-                    this.updateRecommendation();
                 },
-                
-                getServicePrice(service) {
-                    const basePrice = this.servicePrices[service];
-                    const sizeMultiplier = this.sizeMultipliers[this.carSize];
-                    const conditionMultiplier = this.conditionMultipliers[this.condition];
-                    
+
+                toggleService(serviceId) {
+                    if (!Object.prototype.hasOwnProperty.call(this.services, serviceId)) {
+                        return;
+                    }
+
+                    this.services[serviceId] = !this.services[serviceId];
+                    this.updatePrice();
+                },
+
+                isSelected(serviceId) {
+                    return !!this.services[serviceId];
+                },
+
+                findService(serviceId) {
+                    return this.availableServices.find((service) => service.id === serviceId);
+                },
+
+                getServicePrice(serviceId) {
+                    const service = this.findService(serviceId);
+
+                    if (!service) {
+                        return 0;
+                    }
+
+                    const basePrice = service.basePrice || 0;
+                    const sizeMultiplier = this.sizeMultipliers[this.carSize] ?? 1;
+                    const conditionMultiplier = this.conditionMultipliers[this.condition] ?? 1;
+
                     return Math.round(basePrice * sizeMultiplier * conditionMultiplier);
                 },
-                
+
+                getServiceTime(serviceId) {
+                    const service = this.findService(serviceId);
+                    return service ? service.baseTime : 0;
+                },
+
+                selectedServiceList() {
+                    return this.availableServices
+                        .filter((service) => this.services[service.id])
+                        .map((service) => {
+                            const price = this.getServicePrice(service.id);
+
+                            return {
+                                id: service.id,
+                                title: service.title,
+                                category: service.category,
+                                price,
+                                priceLabel: priceFormatter.format(price) + ' RON'
+                            };
+                        });
+                },
+
                 updatePrice() {
-                    let price = 0;
-                    let time = 0;
-                    
-                    for (const [service, selected] of Object.entries(this.services)) {
-                        if (selected) {
-                            price += this.getServicePrice(service);
-                            time += this.serviceTimes[service];
+                    let totalPrice = 0;
+                    let totalTime = 0;
+
+                    this.availableServices.forEach((service) => {
+                        if (this.services[service.id]) {
+                            totalPrice += this.getServicePrice(service.id);
+                            totalTime += this.getServiceTime(service.id);
                         }
-                    }
-                    
-                    this.totalPrice = price;
-                    this.totalTime = time;
-                    
+                    });
+
+                    this.totalPrice = totalPrice;
+                    this.totalTime = totalTime;
                     this.updateRecommendation();
                 },
-                
+
                 updateRecommendation() {
-                    const selectedCount = Object.values(this.services).filter(Boolean).length;
-                    
-                    if (selectedCount === 0) {
+                    const selected = this.selectedServiceList();
+
+                    if (!selected.length) {
                         this.expertRecommendation = '';
                         return;
                     }
-                    
-                    // Recommendations based on selection
-                    if (this.services.exterior && this.services.interior && !this.services.ceramic) {
-                        this.expertRecommendation = 'Pentru o protecție pe termen lung, recomandăm adăugarea protecției ceramice.';
-                    } else if (this.services.ceramic && (!this.services.exterior || !this.services.interior)) {
-                        this.expertRecommendation = 'Protecția ceramică are rezultate mai bune cu o curățare completă interior + exterior.';
-                    } else if (this.condition === 'grea' && selectedCount < 3) {
-                        this.expertRecommendation = 'Pentru starea grea recomandăm minimum 3 servicii pentru rezultate optime.';
-                    } else if (this.totalPrice > 300 && this.totalPrice < 650) {
-                        this.expertRecommendation = 'Configurația ta se apropie de Pachetul Premium (320 RON) - economii garantate!';
-                    } else if (selectedCount >= 4) {
-                        this.expertRecommendation = 'Configurația ta calitativă! Timpul estimat poate fi redus cu programare în avans.';
+
+                    const categories = new Set(selected.map((service) => (service.category || "").toLowerCase()));
+
+                    if (categories.has('exterior') && categories.has('interior') && !categories.has('premium')) {
+                        this.expertRecommendation = 'Pentru o protecție completă, recomandăm adăugarea unui serviciu premium, precum protecția ceramică.';
+                    } else if (categories.has('premium') && (!categories.has('exterior') || !categories.has('interior'))) {
+                        this.expertRecommendation = 'Serviciile premium oferă cele mai bune rezultate atunci când sunt combinate cu curățare completă interior + exterior.';
+                    } else if (this.totalPrice > 0 && this.totalPrice < 350) {
+                        this.expertRecommendation = 'Ia în considerare un pachet complet pentru un raport calitate-preț mai bun.';
                     } else {
-                        this.expertRecommendation = 'Configurație echilibrată pentru un rezultat profesional.';
+                        this.expertRecommendation = '';
                     }
                 },
-                
+
+                formatPrice(value) {
+                    return priceFormatter.format(value) + ' RON';
+                },
+
                 getQuoteText() {
-                    let text = `Ofertă Scuderia Vision\n\n`;
-                    text += `Mașină: ${this.carSize} (stare ${this.condition})\n`;
-                    text += `Servicii selectate:\n`;
-                    
-                    for (const [service, selected] of Object.entries(this.services)) {
-                        if (selected) {
-                            const serviceNames = {
-                                exterior: 'Spălare Exterior',
-                                interior: 'Curățare Interior', 
-                                motor: 'Curățare Motor',
-                                ceramic: 'Protecție Ceramică',
-                                headlights: 'Polish Faruri',
-                                odor: 'Eliminare Mirosuri'
-                            };
-                            text += `- ${serviceNames[service]}: ${this.getServicePrice(service)} RON\n`;
-                        }
+                    const selected = this.selectedServiceList();
+
+                    if (!selected.length) {
+                        return 'Nu ai selectat încă servicii.';
                     }
-                    
-                    text += `\nTotal: ${this.totalPrice} RON\n`;
-                    text += `Durată estimată: ${this.totalTime} minute\n\n`;
-                    text += `Pentru programare: +40 742 122 222 (tel:+40742122222)\n`;
-                    text += `www.detailers-vision.ro`;
-                    
+
+                    let text = 'CONFIGURAȚIE DETALIERE SCUDERIA VISION\n\n';
+                    text += 'Dimensiune: ' + this.carSize + '\n';
+                    text += 'Stare vehicul: ' + this.condition + '\n\n';
+                    text += 'Servicii selectate:\n';
+
+                    selected.forEach((service) => {
+                        text += '- ' + service.title + ': ' + service.priceLabel + '\n';
+                    });
+
+                    text += '\nTotal: ' + this.formatPrice(this.totalPrice) + '\n';
+                    text += 'Durată estimată: ' + this.totalTime + ' minute\n\n';
+                    text += 'Pentru programare: +40 742 122 222 (tel:+40742122222)\n';
+                    text += 'www.detailers-vision.ro';
+
                     return text;
                 },
-                
+
                 sendEmailQuote() {
-                    if (this.totalPrice === 0) return;
-                    
-                    // Copy to clipboard
+                    if (this.totalPrice === 0) {
+                        return;
+                    }
+
                     navigator.clipboard.writeText(this.getQuoteText()).then(() => {
                         this.showEmailModal = true;
                     }).catch(() => {
-                        // Fallback if clipboard doesn't work
                         this.showEmailModal = true;
                     });
                 },
-                
+
                 proceedToBooking() {
-                    if (this.totalPrice === 0) return;
-                    
-                    // Save configuration to localStorage
+                    if (this.totalPrice === 0) {
+                        return;
+                    }
+
                     const config = {
                         carSize: this.carSize,
                         condition: this.condition,
-                        services: this.services,
+                        services: this.selectedServiceList(),
                         totalPrice: this.totalPrice,
                         totalTime: this.totalTime,
                         timestamp: Date.now()
                     };
-                    
+
                     localStorage.setItem('detailing-config', JSON.stringify(config));
-                    
-                    // Navigate to booking page
                     window.location.href = '/rezervare.html';
                 }
-            }
+            };
         }
     </script>
 
@@ -1385,43 +1298,6 @@ INSTRUCȚIUNI:
     </script>
 
     <!-- Load and render compact service cards -->
-    <script type="module">
-        import { servicesData } from './services-data.js';
-
-        // Render compact service cards
-        function renderServices() {
-            const grid = document.getElementById('services-grid');
-            if (!grid) return;
-
-            grid.innerHTML = servicesData.map(service => {
-                const url = service.isPackage
-                    ? `/configurator.html?package=${service.configuratorParam}`
-                    : service.extras
-                        ? `/configurator.html?service=${service.configuratorParam}&extras=${service.extras}`
-                        : `/configurator.html?service=${service.configuratorParam}`;
-
-                return `
-                    <a href="${url}" class="group block bg-white border-2 border-gray-200 rounded-xl overflow-hidden hover:border-primary hover:shadow-lg transition-all duration-200">
-                        <div class="aspect-square bg-cover bg-center" style="background-image: url('${service.image}')">
-                            <div class="w-full h-full bg-gradient-to-b from-transparent to-black/70 flex items-end p-3">
-                                <div class="w-full">
-                                    <div class="text-xs text-white/80 uppercase tracking-wide mb-1">${service.category}</div>
-                                    <div class="text-sm font-semibold text-white mb-1">${service.title}</div>
-                                    <div class="text-xs text-white/90">${service.priceText}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                `;
-            }).join('');
-        }
-
-        // Render on page load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', renderServices);
-        } else {
-            renderServices();
-        }
-    </script>
+    <script type="module" src="./configurator-services.js"></script>
 </body>
 </html>

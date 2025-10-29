@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Detailer's Vision</title>
     <title>Contact - Scuderia Vision</title>
-    <meta name="description" content="Contactează Scuderia Vision pentru servicii profesionale de auto detailing. Telefon, email, adresă și program.">
-    
+    <meta name="description" content="Contacteaz&#259; Scuderia Vision pentru servicii profesionale de auto detailing. Telefon, email, adres&#259; exact&#259; &#537;i program complet.">
+
     <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#1E40AF">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,7 +21,7 @@
                 extend: {
                     colors: {
                         primary: '#007AFF',
-                        secondary: '#34C759', 
+                        secondary: '#34C759',
                         accent: '#FF9500',
                         gray: {
                             50: '#F9FAFB',
@@ -40,59 +39,42 @@
                     fontFamily: {
                         sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif']
                     },
-                    fontSize: {
-                        'xs': ['0.75rem', { lineHeight: '1rem' }],
-                        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-                        'base': ['1rem', { lineHeight: '1.5rem' }],
-                        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-                        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
-                        '2xl': ['1.5rem', { lineHeight: '2rem' }],
-                        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-                        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
-                        '5xl': ['3rem', { lineHeight: '1.1' }],
-                        '6xl': ['3.75rem', { lineHeight: '1.1' }]
-                    },
                     borderRadius: {
-                        'xl': '0.75rem',
+                        xl: '0.75rem',
                         '2xl': '1rem',
                         '3xl': '1.5rem'
                     },
                     boxShadow: {
-                        'apple': '0 4px 16px 0 rgba(0, 0, 0, 0.1)',
+                        apple: '0 4px 16px 0 rgba(0, 0, 0, 0.1)',
                         'apple-lg': '0 8px 32px 0 rgba(0, 0, 0, 0.12)'
                     }
                 }
             }
-        }
+        };
     </script>
-    
+
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-white text-gray-900">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-gray-100 z-50">
+    <nav class="fixed inset-x-0 top-0 bg-white/80 backdrop-blur border-b border-gray-100 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-14">
                 <div class="flex items-center">
                     <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-7 w-auto">
-                    <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
+                    <span class="ml-3 text-lg font-semibold">Scuderia Vision</span>
                 </div>
-                
-                <!-- Mobile menu button -->
                 <div class="md:hidden" x-data="{ open: false }">
-                    <button @click="open = !open" class="text-gray-700 hover:text-primary focus:outline-none focus:text-primary">
+                    <button @click="open = !open" class="text-gray-700 hover:text-primary focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
-                    
-                    <!-- Mobile menu -->
-                    <div x-show="open" x-transition class="absolute top-16 left-0 right-0 bg-white border-b border-gray-200 md:hidden">
+                    <div x-show="open" x-transition class="absolute top-16 left-0 right-0 bg-white border-b border-gray-100 md:hidden">
                         <div class="px-4 py-2 space-y-2">
-                            <a href="/index.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Acasă</a>
+                            <a href="/index.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Acas&#259;</a>
                             <a href="/servicii.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Servicii</a>
                             <a href="/configurator.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Configurator</a>
                             <a href="/rezervare.html" class="block px-3 py-2 text-gray-700 hover:text-primary">Rezervare</a>
@@ -100,14 +82,12 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Desktop menu -->
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="/index.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Acasă</a>
-                    <a href="/servicii.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Servicii</a>
-                    <a href="/configurator.html" class="text-gray-600 hover:text-gray-900 transition-colors text-sm font-medium">Configurator</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-all duration-200 text-sm font-medium">Rezervare</a>
-                    <a href="/contact.html" class="text-primary font-medium text-sm">Contact</a>
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="/index.html" class="text-gray-600 hover:text-gray-900">Acas&#259;</a>
+                    <a href="/servicii.html" class="text-gray-600 hover:text-gray-900">Servicii</a>
+                    <a href="/configurator.html" class="text-gray-600 hover:text-gray-900">Configurator</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors">Rezervare</a>
+                    <a href="/contact.html" class="text-primary">Contact</a>
                 </div>
             </div>
         </div>
@@ -115,24 +95,14 @@
 
     <!-- Hero -->
     <section class="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="/assets/rs=h_1000,cg_true.webp" 
-                alt="Professional auto detailing service - contact us for premium car care" 
-                class="w-full h-full object-cover"
-            >
-            <!-- Gradient overlay for better text readability -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/rs=h_1000,cg_true.webp" alt="Atelier Scuderia Vision" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/60"></div>
         </div>
-        
-        <!-- Content -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
-                Contactează-ne
-            </h1>
-            <p class="text-lg sm:text-xl lg:text-2xl font-light text-white opacity-90 max-w-3xl mx-auto">
-                Suntem aici pentru tine. Contactează-ne pentru orice întrebare sau programare.
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 text-white">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">Contacteaz&#259;-ne</h1>
+            <p class="text-lg sm:text-xl lg:text-2xl font-light">
+                Suntem aici pentru tine. Scrie-ne sau viziteaz&#259;-ne pentru a discuta despre urm&#259;torul t&#259;u proiect de detailing.
             </p>
         </div>
     </section>
@@ -141,73 +111,87 @@
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-3 gap-12">
-                
-                <!-- Contact Details -->
                 <div class="lg:col-span-3 max-w-4xl mx-auto">
                     <div>
-                        <h2 class="text-4xl font-bold text-gray-900 mb-8 tracking-tight">Informații de contact</h2>
-                        
+                        <h2 class="text-4xl font-bold text-gray-900 mb-8 tracking-tight">Informa&#539;ii de contact</h2>
                         <div class="grid md:grid-cols-3 gap-8 mb-12">
-                            <!-- Phone -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Telefon</h3>
-                                <p class="text-gray-500 mb-4 font-normal"><a href="tel:+40742122222" class="inline-flex items-center hover:text-primary transition-colors"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+40 742 122 222</a></p>
+                                <h3 class="text-xl font-semibold mb-3">Telefon</h3>
+                                <p class="text-gray-500 mb-4">
+                                    <a href="tel:+40742122222" class="inline-flex items-center hover:text-primary transition-colors">
+                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                                        +40 742 122 222
+                                    </a>
+                                </p>
                                 <span class="text-primary font-semibold text-sm">Luni - Vineri: 8:00 - 18:00</span>
                             </div>
-
-                            <!-- Email -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-6">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                     </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Email</h3>
-                                <p class="text-gray-500 mb-4 font-normal">contact@detailers-vision.ro</p>
-                                <span class="text-secondary font-semibold text-sm">Răspundem în max 2 ore</span>
+                                <h3 class="text-xl font-semibold mb-3">Email</h3>
+                                <p class="text-gray-500 mb-4">contact@detailers-vision.ro</p>
+                                <span class="text-secondary font-semibold text-sm">R&#259;spundem &#238;n cel mult 2 ore</span>
                             </div>
-
-                            <!-- Address -->
                             <div class="text-center">
                                 <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
                                     <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                                     </svg>
-                                    </svg>
                                 </div>
-                                <h3 class="text-xl font-semibold text-gray-900 mb-3">Adresă</h3>
-                                <p class="text-gray-500 mb-4 font-normal">Strada Exemplu 123<br>București, România</p>
-                                <span class="text-accent font-semibold text-sm">Parcare gratuită disponibilă</span>
+                                <h3 class="text-xl font-semibold mb-3">Adres&#259;</h3>
+                                <p class="text-gray-500 mb-4">Str. Crizantemei nr. 43, hala C4/2<br>Buftea, Ilfov</p>
+                                <span class="text-accent font-semibold text-sm">Parcare gratuit&#259; disponibil&#259;</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Working Hours -->
+                    <div class="bg-white rounded-2xl shadow-apple overflow-hidden mb-12">
+                        <div class="w-full h-80">
+                            <iframe title="Harta Scuderia Vision" src="https://www.google.com/maps?q=Strada%20Crizantemei%2043%2C%20Buftea%2C%20Romania&output=embed" class="w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="px-6 py-6 border-t border-gray-100">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Cum ajungi la noi</h3>
+                            <p class="text-gray-500 mb-4">
+                                Ne g&#259;se&#537;ti la doar c&#226;teva minute de Bucure&#537;ti, pe Strada Crizantemei 43, hala C4/2, Buftea. Alege aplica&#539;ia preferat&#259; &#537;i porne&#537;te naviga&#539;ia c&#259;tre atelierul nostru.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Strada+Crizantemei+43%2C+Buftea%2C+Romania" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-3 rounded-lg bg-primary text-white font-medium hover:bg-blue-600 transition-colors">
+                                    Deschide &#238;n Google Maps
+                                </a>
+                                <a href="https://maps.apple.com/?daddr=Strada+Crizantemei+43%2C+Buftea%2C+Romania" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-3 rounded-lg border border-gray-200 text-gray-700 font-medium hover:border-gray-400 transition-colors">
+                                    Deschide &#238;n Apple Maps
+                                </a>
+                                <a href="https://www.waze.com/ul?ll=44.5714%2C25.9465&navigate=yes" target="_blank" rel="noopener" class="flex-1 text-center px-4 py-3 rounded-lg border border-gray-200 text-gray-700 font-medium hover:border-gray-400 transition-colors">
+                                    Deschide &#238;n Waze
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="bg-gray-50 rounded-2xl p-8 hover:bg-gray-100 transition-all duration-300 max-w-2xl mx-auto">
                         <h3 class="text-xl font-semibold text-gray-900 mb-6">Program lucru</h3>
                         <div class="space-y-3">
                             <div class="flex justify-between">
-                                <span class="text-gray-500 font-normal">Luni - Vineri</span>
-                                <span class="font-semibold text-gray-900">8:00 - 18:00</span>
+                                <span class="text-gray-500">Luni - Vineri</span>
+                                <span class="font-semibold">8:00 - 18:00</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-500 font-normal">Sâmbătă</span>
-                                <span class="font-semibold text-gray-900">8:00 - 16:00</span>
+                                <span class="text-gray-500">S&#226;mb&#259;t&#259;</span>
+                                <span class="font-semibold">8:00 - 16:00</span>
                             </div>
                             <div class="flex justify-between">
-                                <span class="text-gray-500 font-normal">Duminică</span>
-                                <span class="font-semibold text-gray-900">10:00 - 15:00</span>
+                                <span class="text-gray-500">Duminic&#259;</span>
+                                <span class="font-semibold">10:00 - 15:00</span>
                             </div>
                         </div>
-                        <div class="mt-6 pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500 font-normal">
-                                <strong>Notă:</strong> Pentru servicii de lungă durată (3+ ore) recomandăm programarea cu minimum 48 ore înainte.
-                            </p>
+                        <div class="mt-6 pt-4 border-t border-gray-200 text-sm text-gray-500">
+                            <strong>Not&#259;:</strong> Pentru serviciile care dureaz&#259; peste 3 ore recomand&#259;m programarea cu minimum 48 de ore &#238;nainte.
                         </div>
                     </div>
                 </div>
@@ -218,18 +202,16 @@
     <!-- CTA Section -->
     <section class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-6 tracking-tight">
-                Gata să îți programezi mașina?
-            </h2>
-            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto font-normal">
-                Folosește configuratorul pentru a calcula prețul exact și programează-te online.
+            <h2 class="text-4xl font-bold text-gray-900 mb-6 tracking-tight">Gata s&#259; &#238;&#539;i programezi ma&#537;ina?</h2>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Folose&#537;te configuratorul pentru a calcula pre&#539;ul exact &#537;i rezerv&#259; online sau contacteaz&#259;-ne direct la telefon.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/configurator.html" class="bg-primary text-white px-8 py-4 rounded-md text-base font-medium hover:bg-blue-600 transition-all duration-200 inline-block">
                     Deschide configuratorul
                 </a>
                 <a href="tel:+40123456789" class="border-2 border-primary text-primary px-8 py-4 rounded-md text-base font-medium hover:bg-primary hover:text-white transition-all duration-200 inline-block">
-                    Sună acum
+                    Sun&#259; acum
                 </a>
             </div>
         </div>
@@ -242,15 +224,14 @@
                 <div class="col-span-2">
                     <div class="flex items-center mb-4">
                         <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-7 w-auto">
-                    <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
+                        <span class="ml-3 text-lg font-semibold text-gray-900">Scuderia Vision</span>
                     </div>
-                    <p class="text-gray-500 mb-4 font-normal">
-                        Detaliu care se vede. Luciu care rămâne.
+                    <p class="text-gray-500 mb-4">
+                        Detaliu care se vede. Luciu care r&#259;m&#226;ne.
                     </p>
                 </div>
-                
                 <div>
-                    <h3 class="text-base font-semibold mb-4 text-gray-900">Navigație</h3>
+                    <h3 class="text-base font-semibold mb-4 text-gray-900">Naviga&#539;ie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Servicii</a></li>
                         <li><a href="/configurator.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Configurator</a></li>
@@ -258,19 +239,17 @@
                         <li><a href="/faq.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">FAQ</a></li>
                     </ul>
                 </div>
-                
                 <div>
                     <h3 class="text-base font-semibold mb-4 text-gray-900">Contact</h3>
                     <ul class="space-y-2 text-gray-500 text-sm">
                         <li><a href="tel:+40742122222" class="inline-flex items-center hover:text-primary transition-colors"><svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>+40 742 122 222</a></li>
-                        <li>contact@scuderiavision.ro</li>
+                        <li>office@scuderiavision.ro</li>
                         <li>Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 text-sm">© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
+<div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm">&copy; 2025 Scuderia Vision. Toate drepturile rezervate.</p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="/politici.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Politici</a>
                     <a href="/contact.html" class="text-gray-500 hover:text-gray-900 transition-colors text-sm">Contact</a>
@@ -278,483 +257,6 @@
             </div>
         </div>
     </footer>
-
-
-    <!-- Chat Assistant -->
-    <script>
-        // Chat Assistant for Detailer's Vision
-        class ChatAssistant {
-            constructor() {
-                this.isOpen = false;
-                this.messages = [];
-                this.isTyping = false;
-                this.apiKey = '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';
-                this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-                this.model = 'gpt-oss-120b';
-                
-                this.commonQuestions = [
-                    "Cât costă o spălare completă?",
-                    "Cât durează serviciul de protecție ceramică?",
-                    "Oferiți garanție pentru servicii?",
-                    "Cum pot programa o întâlnire?",
-                    "Ce include pachetul premium?",
-                    "Lucrați și în weekend?",
-                    "Acceptați plăți cu cardul?",
-                    "Pot să rămân cu mașina în timpul serviciului?",
-                    "Ce produse folosiți pentru curățare?",
-                    "Aveți reduceri pentru clienții fideli?"
-                ];
-                
-                this.systemPrompt = `Ești asistentul virtual pentru Detailer's Vision, o companie premium de auto detailing din România.
-
-INFORMAȚII DESPRE COMPANIE:
-- Servicii: spălare exterior, curățare interior, protecție ceramică, polish faruri, eliminare mirosuri, curățare motor
-- Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
-- Program: Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00, Duminică 10:00-15:00
-- Contact: +40 742 122 222, contact@scuderiavision.ro
-- Adresă: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
-- Plată avans: 30% prin PayU România, restul la finalizare
-- Garanție: 100% satisfacție, 12 luni pentru protecția ceramică
-- Anulare: cu 24h înainte pentru rambursarea avansului
-
-INSTRUCȚIUNI:
-- Răspunde DOAR în română
-- Fii prietenos, profesional și util
-- Oferă informații precise despre servicii și prețuri
-- Îndrumă clienții către configurator sau rezervare când e cazul
-- Pentru întrebări complexe, recomandă contactul direct
-- Folosește informațiile de mai sus pentru răspunsuri precise
-- Nu inventa prețuri sau servicii care nu există`;
-                
-                // Initialize when DOM is ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => this.init());
-                } else {
-                    this.init();
-                }
-            }
-            
-            init() {
-                console.log('Chat Assistant initializing...');
-                this.createChatInterface();
-                this.attachEventListeners();
-                this.addWelcomeMessage();
-                console.log('Chat Assistant initialized successfully');
-            }
-            
-            createChatInterface() {
-                console.log('Creating chat interface...');
-                
-                // Remove existing chat elements if they exist
-                const existingButton = document.getElementById('chat-toggle');
-                const existingContainer = document.getElementById('chat-container');
-                if (existingButton) existingButton.remove();
-                if (existingContainer) existingContainer.remove();
-                
-                // Chat toggle button
-                const chatButton = document.createElement('div');
-                chatButton.id = 'chat-toggle';
-                chatButton.style.cssText = `
-                    position: fixed;
-                    bottom: 24px;
-                    right: 24px;
-                    width: 56px;
-                    height: 56px;
-                    background-color: #007AFF;
-                    border-radius: 50%;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 9999;
-                    transition: all 0.2s ease;
-                `;
-                chatButton.innerHTML = `
-                    <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
-                `;
-                
-                // Chat container
-                const chatContainer = document.createElement('div');
-                chatContainer.id = 'chat-container';
-                chatContainer.style.cssText = `
-                    position: fixed;
-                    bottom: 96px;
-                    right: 24px;
-                    width: 384px;
-                    height: 500px;
-                    max-width: calc(100vw - 48px);
-                    background-color: white;
-                    border-radius: 16px;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    z-index: 9998;
-                    transform: translateY(100%);
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
-                    overflow: hidden;
-                `;
-                chatContainer.innerHTML = `
-                    <!-- Header -->
-                    <div style="background-color: #007AFF; color: white; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 32px; height: 32px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; font-size: 14px;">Asistent Scuderia Vision</div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">Online acum</div>
-                            </div>
-                        </div>
-                        <button id="chat-close" style="color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 4px;">
-                            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <!-- Messages -->
-                    <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <!-- Messages will be added here -->
-                    </div>
-                    
-                    <!-- Common Questions -->
-                    <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
-                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebări frecvente:</div>
-                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                            ${this.commonQuestions.slice(0, 3).map(q => 
-                                `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
-                            ).join('')}
-                        </div>
-                    </div>
-                    
-                    <!-- Input -->
-                    <div style="border-top: 1px solid #E5E7EB; padding: 16px;">
-                        <div style="display: flex; gap: 8px;">
-                            <input 
-                                type="text" 
-                                id="chat-input" 
-                                placeholder="Scrie mesajul tău..." 
-                                style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
-                            >
-                            <button 
-                                id="chat-send" 
-                                style="width: 40px; height: 40px; background-color: #007AFF; color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;"
-                            >
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.appendChild(chatButton);
-                document.body.appendChild(chatContainer);
-                
-                console.log('Chat interface created successfully');
-            }
-            
-            attachEventListeners() {
-                console.log('Attaching event listeners...');
-                
-                const chatToggle = document.getElementById('chat-toggle');
-                const chatClose = document.getElementById('chat-close');
-                const chatInput = document.getElementById('chat-input');
-                const chatSend = document.getElementById('chat-send');
-                const chatContainer = document.getElementById('chat-container');
-                
-                if (!chatToggle) {
-                    console.error('Chat toggle button not found!');
-                    return;
-                }
-                
-                chatToggle.addEventListener('click', () => this.toggleChat());
-                if (chatClose) chatClose.addEventListener('click', () => this.closeChat());
-                if (chatSend) chatSend.addEventListener('click', () => this.sendMessage());
-                
-                if (chatInput) {
-                    chatInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.sendMessage();
-                        }
-                    });
-                }
-                
-                // Suggestion buttons
-                if (chatContainer) {
-                    chatContainer.addEventListener('click', (e) => {
-                        if (e.target.classList.contains('suggestion-btn')) {
-                            const question = e.target.dataset.question;
-                            this.sendMessage(question);
-                        }
-                    });
-                }
-                
-                // Close chat when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (this.isOpen && chatContainer && chatToggle && 
-                        !chatContainer.contains(e.target) && !chatToggle.contains(e.target)) {
-                        this.closeChat();
-                    }
-                });
-                
-                console.log('Event listeners attached successfully');
-            }
-            
-            toggleChat() {
-                console.log('Toggle chat called, isOpen:', this.isOpen);
-                if (this.isOpen) {
-                    this.closeChat();
-                } else {
-                    this.openChat();
-                }
-            }
-            
-            openChat() {
-                console.log('Opening chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(0)';
-                    container.style.opacity = '1';
-                }
-                this.isOpen = true;
-                
-                // Focus input
-                setTimeout(() => {
-                    const input = document.getElementById('chat-input');
-                    if (input) input.focus();
-                }, 300);
-                
-                console.log('Chat opened');
-            }
-            
-            closeChat() {
-                console.log('Closing chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(100%)';
-                    container.style.opacity = '0';
-                }
-                this.isOpen = false;
-                
-                console.log('Chat closed');
-            }
-            
-            addWelcomeMessage() {
-                const welcomeMessage = {
-                    type: 'bot',
-                    content: 'Bună ziua! Sunt asistentul virtual Scuderia Vision. Cum vă pot ajuta astăzi cu serviciile noastre de auto detailing?',
-                    timestamp: new Date()
-                };
-                this.messages.push(welcomeMessage);
-                this.renderMessage(welcomeMessage);
-            }
-            
-            async sendMessage(messageText = null) {
-                const input = document.getElementById('chat-input');
-                const message = messageText || (input ? input.value.trim() : '');
-                
-                if (!message) return;
-                
-                // Clear input
-                if (!messageText && input) {
-                    input.value = '';
-                }
-                
-                // Add user message
-                const userMessage = {
-                    type: 'user',
-                    content: message,
-                    timestamp: new Date()
-                };
-                this.messages.push(userMessage);
-                this.renderMessage(userMessage);
-                
-                // Hide suggestions after first user message
-                this.hideSuggestions();
-                
-                // Show typing indicator
-                this.showTypingIndicator();
-                
-                try {
-                    // Call OpenRouter API
-                    const response = await this.callOpenRouterAPI(message);
-                    
-                    // Add bot response
-                    const botMessage = {
-                        type: 'bot',
-                        content: response,
-                        timestamp: new Date()
-                    };
-                    this.messages.push(botMessage);
-                    this.hideTypingIndicator();
-                    this.renderMessage(botMessage);
-                    
-                } catch (error) {
-                    console.error('Chat API Error:', error);
-                    this.hideTypingIndicator();
-                    
-                    const errorMessage = {
-                        type: 'bot',
-                        content: 'Ne pare rău, am întâmpinat o problemă tehnică. Vă rugăm să ne contactați direct la <a href="tel:+40742122222" style="color: #007AFF; text-decoration: underline;">+40 742 122 222</a> pentru asistență.',
-                        timestamp: new Date()
-                    };
-                    this.messages.push(errorMessage);
-                    this.renderMessage(errorMessage);
-                }
-            }
-            
-            async callOpenRouterAPI(message) {
-                const response = await fetch(this.apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${this.apiKey}`,
-                        'Content-Type': 'application/json',
-                        'HTTP-Referer': window.location.origin,
-                        'X-Title': 'Scuderia Vision Chat Assistant'
-                    },
-                    body: JSON.stringify({
-                        model: this.model,
-                        messages: [
-                            { role: 'system', content: this.systemPrompt },
-                            ...this.messages.slice(-5).map(msg => ({
-                                role: msg.type === 'user' ? 'user' : 'assistant',
-                                content: msg.content
-                            })),
-                            { role: 'user', content: message }
-                        ],
-                        max_tokens: 300,
-                        temperature: 0.7
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                return data.choices[0].message.content;
-            }
-            
-            renderMessage(message) {
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.style.cssText = `display: flex; ${message.type === 'user' ? 'justify-content: flex-end;' : 'justify-content: flex-start;'}`;
-                
-                const time = message.timestamp.toLocaleTimeString('ro-RO', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
-                
-                const bubbleColor = message.type === 'user' ? '#007AFF' : '#F3F4F6';
-                const textColor = message.type === 'user' ? 'white' : '#111827';
-                const timeColor = message.type === 'user' ? 'rgba(255,255,255,0.7)' : '#6B7280';
-                
-                // Add schedule button for bot messages
-                const scheduleButton = message.type === 'bot' ? `
-                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
-                        <button 
-                            onclick="window.open('https://wa.me/40123456789?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
-                            style="
-                                background-color: #007AFF; 
-                                color: white; 
-                                border: none; 
-                                padding: 6px 12px; 
-                                border-radius: 12px; 
-                                font-size: 12px; 
-                                font-weight: 600; 
-                                cursor: pointer; 
-                                transition: background-color 0.2s;
-                                width: 100%;
-                            "
-                            onmouseover="this.style.backgroundColor='#0056CC'"
-                            onmouseout="this.style.backgroundColor='#007AFF'"
-                        >
-                            💬 Contactează pe WhatsApp
-                        </button>
-                    </div>
-                ` : '';
-                
-                messageDiv.innerHTML = `
-                    <div style="max-width: 80%; background-color: ${bubbleColor}; color: ${textColor}; border-radius: 16px; padding: 12px 16px;">
-                        <div style="font-size: 14px; line-height: 1.4;">${message.content}</div>
-                        <div style="font-size: 12px; color: ${timeColor}; margin-top: 4px;">${time}</div>
-                        ${scheduleButton}
-                    </div>
-                `;
-                
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideSuggestions() {
-                const suggestions = document.getElementById('chat-suggestions');
-                if (suggestions) {
-                    suggestions.style.display = 'none';
-                }
-            }
-            
-            showTypingIndicator() {
-                if (this.isTyping) return;
-                
-                this.isTyping = true;
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const typingDiv = document.createElement('div');
-                typingDiv.id = 'typing-indicator';
-                typingDiv.style.cssText = 'display: flex; justify-content: flex-start;';
-                typingDiv.innerHTML = `
-                    <div style="background-color: #F3F4F6; border-radius: 16px; padding: 12px 16px;">
-                        <div style="display: flex; gap: 4px;">
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.16s;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.32s;"></div>
-                        </div>
-                    </div>
-                `;
-                
-                // Add bounce animation
-                if (!document.getElementById('chat-bounce-style')) {
-                    const style = document.createElement('style');
-                    style.id = 'chat-bounce-style';
-                    style.textContent = `
-                        @keyframes bounce {
-                            0%, 80%, 100% { transform: scale(0); }
-                            40% { transform: scale(1); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-                
-                messagesContainer.appendChild(typingDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideTypingIndicator() {
-                this.isTyping = false;
-                const typingIndicator = document.getElementById('typing-indicator');
-                if (typingIndicator) {
-                    typingIndicator.remove();
-                }
-            }
-        }
-        // Initialize chat assistant when DOM is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new ChatAssistant();
-            });
-        } else {
-            new ChatAssistant();
-        }
-    </script>
 </body>
 </html>
+
