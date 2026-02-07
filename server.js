@@ -3,6 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
+import enrollmentHandler from './api/create-enrollment.js';
+import chatProxyHandler from './api/chat-proxy.js';
 import { createExpressLikeResponse } from './api/response-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -24,7 +26,10 @@ const mimeTypes = {
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
   '.webmanifest': 'application/manifest+json',
-  '.xml': 'application/xml'
+  '.xml': 'application/xml',
+  '.webp': 'image/webp',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2'
 };
 
 const renderHtmlResponse = (statusCode, title, heading, message, extraStyles = '') => `
@@ -35,7 +40,7 @@ const renderHtmlResponse = (statusCode, title, heading, message, extraStyles = '
     <meta charset="utf-8">
     <style>
       body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-      h1 { color: #1E40AF; }
+      h1 { color: #B8962F; }
       ${extraStyles}
     </style>
   </head>
@@ -59,7 +64,15 @@ const buildRequestPathname = (req) => {
 const server = http.createServer((req, res) => {
   let pathname = buildRequestPathname(req);
 
-  if (pathname === '/api/create-booking') {
+  // API routing
+  const apiRoutes = {
+    '/api/create-booking': bookingHandler,
+    '/api/create-enrollment': enrollmentHandler,
+    '/api/chat-proxy': chatProxyHandler
+  };
+
+  const apiHandler = apiRoutes[pathname];
+  if (apiHandler) {
     let body = '';
 
     req.on('data', (chunk) => {
@@ -81,9 +94,9 @@ const server = http.createServer((req, res) => {
 
       try {
         const expressLikeRes = createExpressLikeResponse(res);
-        await bookingHandler(req, expressLikeRes);
+        await apiHandler(req, expressLikeRes);
       } catch (handlerError) {
-        console.error('Booking handler error:', handlerError);
+        console.error(`API handler error (${pathname}):`, handlerError);
         if (!res.headersSent) {
           res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
           res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
@@ -173,7 +186,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Scuderia Vision server pornit pe http://localhost:${PORT}`);
+  console.log(`Ace Detailing server pornit pe http://localhost:${PORT}`);
   console.log(`Servind fisiere din: ${PUBLIC_DIR}`);
   console.log(`Acceseaza website-ul la: http://localhost:${PORT}`);
 });

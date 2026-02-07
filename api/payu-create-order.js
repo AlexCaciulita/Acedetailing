@@ -5,10 +5,9 @@ const PAYU_MERCHANT_ID = process.env.PAYU_MERCHANT_ID || 'DEMO_MERCHANT';
 const PAYU_POS_ID = process.env.PAYU_POS_ID || 'DEMO_POS';  
 const PAYU_SECRET_KEY = process.env.PAYU_SECRET_KEY || 'demo_secret_key';
 const PAYU_API_URL = process.env.PAYU_API_URL || 'https://secure.snd.payu.com/api/v2_1/orders';
-const PAYU_RETURN_URL = process.env.PAYU_RETURN_URL || 'https://detailers-vision.ro/rezervare.html?status=return';
-const PAYU_RETURN_URL = process.env.PAYU_RETURN_URL || 'https://scuderia-vision.ro/rezervare.html?status=return';
-const PAYU_NOTIFY_URL = process.env.PAYU_NOTIFY_URL || 'https://scuderia-vision.ro/api/payu-notify';
-const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'programari@scuderia-vision.ro';
+const PAYU_RETURN_URL = process.env.PAYU_RETURN_URL || 'https://acedetailing.ro/rezervare.html?status=return';
+const PAYU_NOTIFY_URL = process.env.PAYU_NOTIFY_URL || 'https://acedetailing.ro/api/payu-notify';
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'contact@acedetailing.ro';
 
 // CORS headers
 const corsHeaders = {

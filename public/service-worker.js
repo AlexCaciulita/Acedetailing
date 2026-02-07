@@ -1,14 +1,18 @@
-const CACHE_NAME = 'detailers-vision-v1.0';
+const CACHE_NAME = 'ace-detailing-v3.0';
 const OFFLINE_URL = '/index.html';
 
 // Files to cache for offline functionality
 const CORE_CACHE_FILES = [
   '/index.html',
-  '/servicii.html', 
+  '/servicii.html',
   '/configurator.html',
   '/rezervare.html',
-  '/faq.html',
+  '/scoala.html',
+  '/despre.html',
+  '/galerie.html',
+  '/blog.html',
   '/contact.html',
+  '/faq.html',
   '/politici.html',
   '/manifest.webmanifest',
   // External CDN resources
@@ -149,7 +153,7 @@ self.addEventListener('fetch', (event) => {
                                    url.includes('.svg') ||
                                    url.includes('.html');
 
-                if (shouldCache) {
+                if (shouldCache || url.includes('.webp') || url.includes('.woff2')) {
                   cache.put(event.request, responseToCache);
                 }
               });
@@ -233,7 +237,7 @@ async function syncBookings() {
     for (const booking of offlineBookings) {
       try {
         // Try to submit each booking
-        const response = await fetch('/api/payu/create-order', {
+        const response = await fetch('/api/create-booking', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -58,11 +58,10 @@ MAȘINĂ:
 PREȚ ESTIMAT: ${bookingInfo.estimatedAmount} RON
 
 ${bookingInfo.configuration ? `
-SERVICII SELECTATE:
-${bookingInfo.configuration.services?.exterior ? '- Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '- Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '- Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '- Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '- Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '- Eliminare Mirosuri\n' : ''}
-Dimensiune: ${bookingInfo.configuration.carSize || 'N/A'}
-Stare: ${bookingInfo.configuration.condition || 'N/A'}
-Durată estimată: ${bookingInfo.configuration.totalTime || 0} minute
+PACHET SELECTAT: ${bookingInfo.configuration.packageName || 'N/A'}
+Dimensiune vehicul: ${bookingInfo.configuration.carSize || 'N/A'}
+Stare vehicul: ${bookingInfo.configuration.condition || 'N/A'}
+${bookingInfo.configuration.addons?.length ? `Add-on-uri: ${bookingInfo.configuration.addons.join(', ')}` : ''}
 ` : ''}
 
 ${bookingInfo.notes ? `NOTIȚE:\n${bookingInfo.notes}` : ''}
@@ -70,11 +69,11 @@ ${bookingInfo.notes ? `NOTIȚE:\n${bookingInfo.notes}` : ''}
 Plata se va face la fața locului.
 `;
 
-    const customerEmailSubject = 'Confirmare rezervare - Scuderia Vision';
+    const customerEmailSubject = 'Confirmare rezervare - Ace Detailing';
     const customerEmailBody = `
 Bună ziua ${bookingInfo.name},
 
-Îți mulțumim pentru rezervarea făcută la Scuderia Vision!
+Îți mulțumim pentru rezervarea făcută la Ace Detailing!
 
 DETALII REZERVARE:
 - Data: ${bookingInfo.date}
@@ -84,22 +83,21 @@ ${bookingInfo.configuration ? `- Preț estimat: ${bookingInfo.estimatedAmount} R
 MAȘINĂ:
 - ${bookingInfo.carBrand} ${bookingInfo.carModel} (${bookingInfo.carYear})
 
-${bookingInfo.configuration ? `SERVICII SELECTATE:
-${bookingInfo.configuration.services?.exterior ? '- Spălare Exterior\n' : ''}${bookingInfo.configuration.services?.interior ? '- Curățare Interior\n' : ''}${bookingInfo.configuration.services?.motor ? '- Curățare Motor\n' : ''}${bookingInfo.configuration.services?.ceramic ? '- Protecție Ceramică\n' : ''}${bookingInfo.configuration.services?.headlights ? '- Polish Faruri\n' : ''}${bookingInfo.configuration.services?.odor ? '- Eliminare Mirosuri\n' : ''}
-` : ''}
+${bookingInfo.configuration ? `PACHET: ${bookingInfo.configuration.packageName || 'N/A'}
+${bookingInfo.configuration.addons?.length ? `Add-on-uri: ${bookingInfo.configuration.addons.join(', ')}\n` : ''}` : ''}
 Plata se va face la fața locului (numerar sau card).
 
 Dacă ai întrebări sau dorești să modifici rezervarea, te rugăm să ne contactezi:
 - Telefon: +40 742 122 222
-- Email: office@scuderiavision.ro
+- Email: office@acedetailing.ro
 
 Cu stimă,
-Echipa Scuderia Vision
-Detaliu care se vede. Luciu care rămâne.
+Echipa Ace Detailing
+Excelenta in fiecare detaliu.
 `;
 
     console.log('=== EMAILS TO SEND ===');
-    console.log('Business Email To: office@scuderiavision.ro');
+    console.log('Business Email To: office@acedetailing.ro');
     console.log('Customer Email To:', bookingInfo.email);
     console.log('Subject:', emailSubject);
     console.log('======================');
@@ -113,13 +111,13 @@ Detaliu care se vede. Luciu care rămâne.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'rezervari@scuderiavision.ro',
-            to: 'office@scuderiavision.ro',
+            from: 'rezervari@acedetailing.ro',
+            to: 'office@acedetailing.ro',
             subject: emailSubject,
             text: emailBody
           })
         });
-        console.log('Business email sent successfully to office@scuderiavision.ro');
+        console.log('Business email sent successfully to office@acedetailing.ro');
       } catch (emailError) {
         console.error('Failed to send business email:', emailError);
       }
@@ -132,7 +130,7 @@ Detaliu care se vede. Luciu care rămâne.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'rezervari@scuderiavision.ro',
+            from: 'rezervari@acedetailing.ro',
             to: bookingInfo.email,
             subject: customerEmailSubject,
             text: customerEmailBody
@@ -144,7 +142,7 @@ Detaliu care se vede. Luciu care rămâne.
       }
     } else {
       console.log('=== EMAIL CONTENT (Business) ===');
-      console.log('To: office@scuderiavision.ro');
+      console.log('To: office@acedetailing.ro');
       console.log('Subject:', emailSubject);
       console.log('Body:', emailBody);
       console.log('===============================');

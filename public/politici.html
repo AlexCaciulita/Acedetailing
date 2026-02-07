@@ -1,749 +1,345 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politici È™i Termeni - Detailer's Vision</title>
-    <title>Politici È™i Termeni - Scuderia Vision</title>
-    <meta name="description" content="Termeni È™i condiÈ›ii, politica de confidenÈ›ialitate È™i politici de utilizare pentru serviciile Scuderia Vision.">
-    
-    <!-- PWA -->
+    <title>Politici si Termeni | Ace Detailing</title>
+    <meta name="description" content="Termeni si conditii, politica de confidentialitate si politici de utilizare pentru serviciile Ace Detailing.">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#1E40AF">
-    
-    <!-- Favicon -->
+    <meta name="theme-color" content="#B8962F">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    
-    <!-- Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1E40AF',
-                        secondary: '#059669', 
-                        accent: '#EA580C'
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#B8962F',
+                    'primary-light': '#C9A84C',
+                    'primary-dark': '#8B7226',
+                    secondary: '#1A1A1A',
+                    light: {
+                        50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
+                        400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
+                        800: '#374151', 900: '#1F2937', 950: '#111827'
                     }
+                },
+                fontFamily: {
+                    heading: ['Montserrat', 'system-ui', 'sans-serif'],
+                    body: ['Inter', 'system-ui', 'sans-serif']
+                },
+                boxShadow: {
+                    'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
+                    'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                    'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                    'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                 }
             }
         }
+    }
     </script>
-    
-    <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="font-sans antialiased">
+<body class="bg-light-50 text-light-950 font-body">
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
-                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
+                <a href="/index.html" class="flex items-center">
+                    <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                </a>
+                <div class="md:hidden">
+                    <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-                
-                <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">AcasÄƒ</a>
-                    <a href="/servicii.html" class="text-gray-700 hover:text-primary transition-colors">Servicii</a>
-                    <a href="/configurator.html" class="text-gray-700 hover:text-primary transition-colors">Configurator</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Rezervare</a>
-                    <a href="/contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
+                    <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
+                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
+                    <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
+                    <a href="/despre.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Despre</a>
+                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
+                    <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all duration-200 text-sm font-heading font-semibold">Rezervare</a>
                 </div>
+            </div>
+        </div>
+        <div x-show="open" x-transition class="md:hidden bg-white/95 backdrop-blur-xl border-b border-light-300">
+            <div class="px-4 py-4 space-y-2">
+                <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
+                <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
+                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
+                <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
+                <a href="/despre.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Despre</a>
+                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
+                <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
+                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-primary to-blue-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-bold text-white mb-6">Politici È™i Termeni</h1>
-            <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-                TransparenÈ›a È™i confidenÈ›ialitatea sunt prioritÄƒÈ›ile noastre.
-            </p>
+    <!-- Hero Header -->
+    <section class="pt-24 pb-12 md:pt-32 md:pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-950 mb-4">Politici si Termeni</h1>
+                <div class="w-20 h-1 bg-primary rounded-full mb-6"></div>
+                <p class="text-light-700 text-lg font-body">Transparenta este importanta pentru noi. Mai jos gasiti toate informatiile privind termenii de utilizare, politica de confidentialitate si conditiile serviciilor noastre.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Content -->
-    <section class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="prose prose-lg max-w-none">
-                
-                <!-- Terms and Conditions -->
-                <div id="termeni" class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Termeni È™i CondiÈ›ii</h2>
-                    <p class="text-gray-600 mb-6"><strong>Ultima actualizare:</strong> 1 ianuarie 2025</p>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Despre Servicii</h3>
-                    <p class="text-gray-700 mb-4">
-                        Scuderia Vision oferÄƒ servicii profesionale de auto detailing, incluzÃ¢nd spÄƒlare exterior, 
-                        curÄƒÈ›are interior, protecÈ›ie ceramicÄƒ, polish faruri È™i eliminare mirosuri. Toate serviciile 
-                        sunt efectuate de personal calificat folosind echipamente È™i produse premium.
-                    </p>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. RezervÄƒri È™i PlÄƒÈ›i</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>RezervÄƒrile se confirmÄƒ cu plata unui avans de 30% din valoarea totalÄƒ</li>
-                        <li>Avansul se plÄƒteÈ™te sigur prin PayU RomÃ¢nia</li>
-                        <li>Restul de 70% se achitÄƒ la finalizarea serviciului</li>
-                        <li>AcceptÄƒm plÄƒÈ›i Ã®n numerar sau cu cardul</li>
-                        <li>FacturÄƒ fiscalÄƒ disponibilÄƒ la cerere</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. AnulÄƒri È™i ReprogramÄƒri</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>Anularea cu minimum 24 ore Ã®nainte = rambursarea completÄƒ a avansului</li>
-                        <li>Anularea cu mai puÈ›in de 24 ore = pierderea avansului</li>
-                        <li>Prima reprogramare Ã®n 48 ore de la rezervare este gratuitÄƒ</li>
-                        <li>ReprogramÄƒrile ulterioare sau de urgenÈ›Äƒ pot atrage o taxÄƒ de 50 RON</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">4. GaranÈ›ii</h3>
-                    <p class="text-gray-700 mb-4">
-                        Oferim "Standard GaranÈ›ia Reflex" - garanÈ›ie de satisfacÈ›ie 100%. DacÄƒ nu eÈ™ti mulÈ›umit 
-                        de rezultat, refacem serviciul gratuit sau Ã®È›i returnÄƒm banii Ã®n primele 7 zile. 
-                        Pentru protecÈ›ia ceramicÄƒ oferim garanÈ›ie tehnicÄƒ de 12 luni.
-                    </p>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">5. ResponsabilitÄƒÈ›i</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>Clientul rÄƒspunde pentru obiectele valoroase lÄƒsate Ã®n maÈ™inÄƒ</li>
-                        <li>Scuderia Vision nu rÄƒspunde pentru defecÈ›iuni preexistente</li>
-                        <li>InspectÄƒm maÈ™ina Ã®nainte de serviciu È™i raportÄƒm eventualele probleme</li>
-                        <li>Asigurare rÄƒspundere civilÄƒ Ã®n vigoare</li>
-                    </ul>
-                </div>
+    <!-- Table of Contents + Content -->
+    <section class="pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-10">
 
-                <!-- Privacy Policy -->
-                <div id="confidentialitate" class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Politica de ConfidenÈ›ialitate</h2>
-                    <p class="text-gray-600 mb-6"><strong>Ultima actualizare:</strong> 1 ianuarie 2025</p>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Ce Date ColectÄƒm</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li><strong>Date de identificare:</strong> nume, telefon, email, adresÄƒ</li>
-                        <li><strong>Date despre maÈ™inÄƒ:</strong> marca, model, anul, numÄƒrul de Ã®nmatriculare</li>
-                        <li><strong>Date de platÄƒ:</strong> procesate sigur prin PayU (nu stocÄƒm date cardurilor)</li>
-                        <li><strong>PreferinÈ›e servicii:</strong> istoricul rezervÄƒrilor È™i serviciilor</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Cum Folosim Datele</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>Prestarea serviciilor contractate</li>
-                        <li>Comunicarea despre rezervÄƒri È™i confirmÄƒri</li>
-                        <li>ÃŽmbunÄƒtÄƒÈ›irea calitÄƒÈ›ii serviciilor</li>
-                        <li>Marketing direct doar cu acordul explicit</li>
-                        <li>Respectarea obligaÈ›iilor legale (facturare, contabilitate)</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Partajarea Datelor</h3>
-                    <p class="text-gray-700 mb-4">
-                        Nu vindem, Ã®nchiriem sau partajÄƒm datele personale cu terÈ›e pÄƒrÈ›i, cu excepÈ›ia:
-                    </p>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>PayU RomÃ¢nia (procesare plÄƒÈ›i)</li>
-                        <li>Furnizori servicii IT (gÄƒzduire, backup)</li>
-                        <li>AutoritÄƒÈ›i competente (la cerere legalÄƒ)</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">4. Drepturile Tale</h3>
-                    <p class="text-gray-700 mb-2">Conform GDPR ai dreptul la:</p>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>Accesul la datele personale</li>
-                        <li>Rectificarea datelor incorecte</li>
-                        <li>È˜tergerea datelor ("dreptul de a fi uitat")</li>
-                        <li>Portabilitatea datelor</li>
-                        <li>OpoziÈ›ia la prelucrare</li>
-                        <li>PlÃ¢ngere la ANSPDCP</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">5. Securitatea Datelor</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li>Criptare SSL pentru transmisia datelor</li>
-                        <li>Backup-uri regulate È™i sigure</li>
-                        <li>Acces limitat la datele personale</li>
-                        <li>Monitorizare continuÄƒ pentru vulnerabilitÄƒÈ›i</li>
-                        <li>Politici interne stricte de confidenÈ›ialitate</li>
-                    </ul>
-                </div>
-
-                <!-- Cookie Policy -->
-                <div id="cookies" class="mb-16">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Politica Cookie-urilor</h2>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">1. Ce sunt Cookie-urile</h3>
-                    <p class="text-gray-700 mb-4">
-                        Cookie-urile sunt mici fiÈ™iere text stocate Ã®n browserul tÄƒu cÃ¢nd vizitezi website-ul nostru. 
-                        Ne ajutÄƒ sÄƒ Ã®È›i oferim o experienÈ›Äƒ personalizatÄƒ È™i sÄƒ analizÄƒm traficul pe site.
-                    </p>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">2. Tipuri de Cookie-uri</h3>
-                    <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
-                        <li><strong>EsenÈ›iale:</strong> necesare pentru funcÈ›ionarea site-ului</li>
-                        <li><strong>FuncÈ›ionale:</strong> memoreazÄƒ preferinÈ›ele configuratorului</li>
-                        <li><strong>AnalizÄƒ:</strong> Google Analytics pentru Ã®mbunÄƒtÄƒÈ›iri</li>
-                        <li><strong>Marketing:</strong> doar cu acordul explicit</li>
-                    </ul>
-                    
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">3. Gestionarea Cookie-urilor</h3>
-                    <p class="text-gray-700 mb-4">
-                        PoÈ›i controla cookie-urile prin setÄƒrile browserului sau prin banner-ul de cookie-uri 
-                        de pe site. Dezactivarea anumitor cookie-uri poate afecta funcÈ›ionarea site-ului.
-                    </p>
-                </div>
-
-                <!-- Contact for Policies -->
-                <div class="bg-gray-50 rounded-2xl p-8">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">ÃŽntrebÄƒri despre Politici?</h3>
-                    <p class="text-gray-700 mb-6">
-                        Pentru orice Ã®ntrebare despre aceste politici sau pentru exercitarea drepturilor GDPR, 
-                        ne poÈ›i contacta:
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <p class="font-semibold text-gray-900">Email:</p>
-                            <p class="text-primary">gdpr@detailers-vision.ro</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-900">Telefon:</p>
-                            <p class="text-gray-700">+40 742 122 222</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-900">AdresÄƒ:</p>
-                            <p class="text-gray-700">Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</p>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-gray-900">DPO:</p>
-                            <p class="text-gray-700">dpo@scuderia-vision.ro</p>
-                        </div>
+                <!-- Sidebar / Table of Contents -->
+                <aside class="lg:col-span-3 mb-10 lg:mb-0">
+                    <div class="lg:sticky lg:top-24 bg-light-100 rounded-xl border border-light-300 p-6 shadow-soft">
+                        <h2 class="text-sm font-heading font-semibold text-primary uppercase tracking-wider mb-4">Cuprins</h2>
+                        <nav class="space-y-3">
+                            <a href="#termeni" class="block text-light-700 hover:text-primary transition-colors text-sm font-body">Termeni si Conditii</a>
+                            <a href="#confidentialitate" class="block text-light-700 hover:text-primary transition-colors text-sm font-body">Politica de Confidentialitate</a>
+                            <a href="#scoala" class="block text-light-700 hover:text-primary transition-colors text-sm font-body">Termeni Scoala de Detailing</a>
+                            <a href="#abonamente" class="block text-light-700 hover:text-primary transition-colors text-sm font-body">Politica Abonamente</a>
+                        </nav>
                     </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="lg:col-span-9 space-y-10">
+
+                    <!-- Termeni si Conditii -->
+                    <article id="termeni" class="bg-light-100 rounded-xl border border-light-300 shadow-soft overflow-hidden">
+                        <div class="border-l-4 border-primary p-8 md:p-10">
+                            <h2 class="text-2xl md:text-3xl font-heading font-bold text-light-950 mb-8">Termeni si Conditii</h2>
+
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Acceptarea Termenilor</h3>
+                                    <p class="text-light-700 leading-relaxed">Prin utilizarea serviciilor Ace Detailing, inclusiv a site-ului web, a sistemului de rezervari si a oricarui alt serviciu oferit, acceptati in totalitate prezentii termeni si conditii. Daca nu sunteti de acord cu oricare dintre acesti termeni, va rugam sa nu utilizati serviciile noastre.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Descrierea Serviciilor</h3>
+                                    <p class="text-light-700 leading-relaxed">Ace Detailing ofera servicii profesionale de detailing auto, incluzand dar fara a se limita la: spalare exterioara si interioara, polish si corectie vopsea, aplicare protectie ceramica, tratamente pentru piele si textile, detailing motor si alte servicii conexe. Detaliile fiecarui serviciu sunt descrise pe paginile dedicate ale site-ului nostru.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Preturi si Plata</h3>
+                                    <p class="text-light-700 leading-relaxed">Preturile afisate pe site sunt estimative si pot varia in functie de starea vehiculului, dimensiunea acestuia si complexitatea lucrarilor necesare. Pretul final va fi comunicat dupa inspectia vehiculului. Plata se efectueaza la finalizarea serviciului, prin numerar, card bancar sau transfer bancar.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Programari si Anulari</h3>
+                                    <p class="text-light-700 leading-relaxed">Programarile pot fi facute online, telefonic sau prin intermediul formularului de rezervare. Anularea gratuita este posibila cu minimum 24 de ore inainte de data programarii. In cazul anularilor efectuate cu mai putin de 24 de ore inainte, se retine 20% din valoarea serviciului programat ca taxa de anulare. Neprezentarea fara anulare prealabila poate duce la refuzarea programarilor viitoare.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Responsabilitatea Clientului</h3>
+                                    <p class="text-light-700 leading-relaxed">Clientul este responsabil pentru declararea corecta a starii vehiculului, inclusiv a eventualelor defecte preexistente ale vopselei, tapiteriei sau altor componente. Vehiculul trebuie ridicat in termen de 24 de ore de la finalizarea serviciului. Ace Detailing nu isi asuma responsabilitatea pentru obiectele personale lasate in vehicul.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Garantie</h3>
+                                    <p class="text-light-700 leading-relaxed">Serviciile de protectie ceramica beneficiaza de o garantie de 12 pana la 24 de luni, in functie de pachetul ales. Garantia este conditionata de respectarea recomandarilor de mentenanta furnizate la predarea vehiculului, inclusiv utilizarea produselor recomandate si efectuarea inspectiilor periodice. Nerespectarea conditiilor de mentenanta poate duce la anularea garantiei.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Politica de Confidentialitate -->
+                    <article id="confidentialitate" class="bg-light-100 rounded-xl border border-light-300 shadow-soft overflow-hidden">
+                        <div class="border-l-4 border-primary p-8 md:p-10">
+                            <h2 class="text-2xl md:text-3xl font-heading font-bold text-light-950 mb-8">Politica de Confidentialitate</h2>
+
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Date Colectate</h3>
+                                    <p class="text-light-700 leading-relaxed">In cadrul activitatii noastre, colectam urmatoarele categorii de date personale: nume si prenume, numar de telefon, adresa de email, precum si date referitoare la vehiculul dumneavoastra (marca, model, numar de inmatriculare). Aceste date sunt colectate doar cu consimtamantul dumneavoastra explicit.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Scopul Colectarii</h3>
+                                    <p class="text-light-700 leading-relaxed">Datele personale sunt utilizate exclusiv in urmatoarele scopuri: procesarea si gestionarea programarilor, comunicarea cu clientii privind serviciile solicitate, trimiterea de notificari relevante privind starea vehiculului si imbunatatirea continua a calitatii serviciilor noastre.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Stocarea si Securitatea Datelor</h3>
+                                    <p class="text-light-700 leading-relaxed">Datele dumneavoastra personale sunt stocate pe servere securizate, protejate prin masuri tehnice si organizatorice adecvate. Nu partajam, nu vindem si nu transferam datele dumneavoastra catre terti, cu exceptia situatiilor impuse de lege sau a furnizorilor de servicii esentiale care actioneaza in numele nostru si sunt obligati contractual sa respecte confidentialitatea datelor.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Drepturile Utilizatorului (GDPR)</h3>
+                                    <p class="text-light-700 leading-relaxed">In conformitate cu Regulamentul General privind Protectia Datelor (GDPR), aveti urmatoarele drepturi:</p>
+                                    <ul class="mt-3 space-y-2 text-light-700">
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-primary mt-1.5 flex-shrink-0">&#8226;</span>
+                                            <span>Dreptul de acces la datele personale pe care le detinem despre dumneavoastra</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-primary mt-1.5 flex-shrink-0">&#8226;</span>
+                                            <span>Dreptul de rectificare a datelor incorecte sau incomplete</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-primary mt-1.5 flex-shrink-0">&#8226;</span>
+                                            <span>Dreptul la stergerea datelor personale (dreptul de a fi uitat)</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-primary mt-1.5 flex-shrink-0">&#8226;</span>
+                                            <span>Dreptul la restrictionarea prelucrarii datelor</span>
+                                        </li>
+                                        <li class="flex items-start gap-2">
+                                            <span class="text-primary mt-1.5 flex-shrink-0">&#8226;</span>
+                                            <span>Dreptul la portabilitatea datelor</span>
+                                        </li>
+                                    </ul>
+                                    <p class="text-light-700 mt-3">Pentru exercitarea oricaruia dintre aceste drepturi, va rugam sa ne contactati la <a href="mailto:contact@acedetailing.ro" class="text-primary hover:text-primary-light transition-colors">contact@acedetailing.ro</a>.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Cookies</h3>
+                                    <p class="text-light-700 leading-relaxed">Site-ul nostru utilizeaza cookies pentru asigurarea functionalitatii optime si pentru analiza traficului (analytics). Cookies sunt fisiere text mici stocate in browserul dumneavoastra care ne ajuta sa intelegem cum utilizati site-ul nostru. Puteti dezactiva cookies din setarile browserului, insa acest lucru poate afecta functionarea corecta a anumitor functionalitati ale site-ului.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Termeni Scoala de Detailing -->
+                    <article id="scoala" class="bg-light-100 rounded-xl border border-light-300 shadow-soft overflow-hidden">
+                        <div class="border-l-4 border-primary p-8 md:p-10">
+                            <h2 class="text-2xl md:text-3xl font-heading font-bold text-light-950 mb-8">Termeni Scoala de Detailing</h2>
+
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Inscriere si Plata</h3>
+                                    <p class="text-light-700 leading-relaxed">Inscrierea la cursurile Scolii de Detailing Ace se realizeaza prin completarea formularului de inscriere si achitarea unui avans de 50% din valoarea cursului. Restul sumei trebuie achitat integral inainte de data de incepere a cursului. Locul in cadrul cursului este garantat doar dupa confirmarea platii avansului.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Anulare Inscriere</h3>
+                                    <p class="text-light-700 leading-relaxed">Anularea inscrierii cu cel putin 7 zile inainte de data inceperii cursului da dreptul la rambursarea completa a sumei achitate, minus o taxa administrativa de 10%. In cazul anularilor efectuate cu mai putin de 7 zile inainte de inceperea cursului, suma achitata nu se ramburseaza. Transferul inscrierii la o sesiune ulterioara este posibil o singura data, cu cel putin 5 zile inainte de cursul initial.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Materiale si Echipamente</h3>
+                                    <p class="text-light-700 leading-relaxed">Toate materialele, produsele si echipamentele necesare desfasurarii cursului sunt incluse in pretul cursului si sunt puse la dispozitia cursantilor pe intreaga durata a programului de formare. Cursantii nu au voie sa scoata materialele sau echipamentele din locatia de desfasurare a cursului.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Certificat de Absolvire</h3>
+                                    <p class="text-light-700 leading-relaxed">Certificatul de absolvire Ace Detailing se acorda la finalizarea cu succes a cursului si trecerea evaluarii practice. Evaluarea practica presupune demonstrarea competentelor dobandite in cadrul cursului. In cazul nepromovarii evaluarii, cursantul poate sustine o a doua evaluare gratuita in termen de 30 de zile.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Proprietate Intelectuala</h3>
+                                    <p class="text-light-700 leading-relaxed">Toate materialele de curs, inclusiv prezentarile, documentatia scrisa, inregistrarile video si orice alte resurse educationale, raman proprietatea exclusiva a Ace Detailing. Este interzisa reproducerea, distribuirea sau partajarea acestor materiale fara acordul scris al Ace Detailing. Incalcarea acestei prevederi poate duce la actiuni legale.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Politica Abonamente -->
+                    <article id="abonamente" class="bg-light-100 rounded-xl border border-light-300 shadow-soft overflow-hidden">
+                        <div class="border-l-4 border-primary p-8 md:p-10">
+                            <h2 class="text-2xl md:text-3xl font-heading font-bold text-light-950 mb-8">Politica Abonamente</h2>
+
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Abonament Lunar</h3>
+                                    <p class="text-light-700 leading-relaxed">Abonamentul lunar poate fi anulat cu minimum 15 zile inainte de data urmatoarei facturari. Anularea se efectueaza prin notificare scrisa (email sau formular de contact). Dupa procesarea anularii, serviciile incluse in abonament raman active pana la sfarsitul perioadei de facturare curente.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Abonament VIP Anual</h3>
+                                    <p class="text-light-700 leading-relaxed">Abonamentul VIP Anual presupune un angajament pe 12 luni. Anularea anticipata este posibila dupa primele 6 luni de la activare, cu aplicarea unei penalizari de 20% din valoarea ramasa a abonamentului. In primele 6 luni, abonamentul nu poate fi anulat.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Servicii Neutilizate</h3>
+                                    <p class="text-light-700 leading-relaxed">Serviciile incluse in abonament care nu sunt utilizate in cadrul perioadei de facturare curente nu se reporteaza in perioadele urmatoare. Va recomandam sa planificati programarile in avans pentru a beneficia la maximum de toate serviciile incluse in abonamentul dumneavoastra.</p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Ajustarea Preturilor</h3>
+                                    <p class="text-light-700 leading-relaxed">Ace Detailing isi rezerva dreptul de a ajusta preturile abonamentelor anual. Orice modificare de pret va fi comunicata cu cel putin 30 de zile inainte de aplicarea noului tarif. In cazul unei majorari de pret, abonatul are dreptul de a anula abonamentul fara penalitati pana la data intrarii in vigoare a noului tarif.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Last Updated -->
+                    <div class="text-center pt-6">
+                        <p class="text-light-600 text-sm font-body">Ultima actualizare: Februarie 2026</p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="bg-light-950 border-t border-light-300 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="col-span-2">
-                    <div class="flex items-center mb-4">
-                        <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
-                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Detaliu care se vede. Luciu care rÄƒmÃ¢ne.
-                    </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="/" class="flex items-center mb-4">
+                        <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                    </a>
+                    <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
                 </div>
-                
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">NavigaÈ›ie</h3>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
-                        <li><a href="/servicii.html" class="text-gray-400 hover:text-white transition-colors">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-gray-400 hover:text-white transition-colors">Configurator</a></li>
-                        <li><a href="/rezervare.html" class="text-gray-400 hover:text-white transition-colors">Rezervare</a></li>
-                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
+                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
+                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
+                        <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
+                        <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>ðŸ“ž +40 742 122 222</li>
-                        <li>ðŸ“§ office@scuderiavision.ro</li>
-                        <li>ðŸ“ Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Scoala</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/scoala.html" class="text-light-400 hover:text-primary transition-colors text-sm">Cursuri Detailing</a></li>
+                        <li><a href="/scoala.html#fundamentals" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Fundamentals</a></li>
+                        <li><a href="/scoala.html#advanced" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Advanced</a></li>
+                        <li><a href="/scoala.html#online" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Online</a></li>
+                        <li><a href="/despre.html" class="text-light-400 hover:text-primary transition-colors text-sm">Despre Noi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
+                        <li><a href="mailto:contact@acedetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@acedetailing.ro</a></li>
+                        <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
+                        <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">Â© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="/politici.html" class="text-white font-semibold">Politici</a>
-                    <a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-light-500 text-sm">&copy; 2026 Ace Detailing. Toate drepturile rezervate.</p>
+                <div class="flex space-x-6">
+                    <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
+                    <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <!-- Chat Assistant -->
-    <script>
-        // Chat Assistant for Detailer's Vision
-        class ChatAssistant {
-            constructor() {
-                this.isOpen = false;
-                this.messages = [];
-                this.isTyping = false;
-                this.apiKey = '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';
-                this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-                this.model = 'gpt-oss-120b';
-                
-                this.commonQuestions = [
-                    "CÃ¢t costÄƒ o spÄƒlare completÄƒ?",
-                    "CÃ¢t dureazÄƒ serviciul de protecÈ›ie ceramicÄƒ?",
-                    "OferiÈ›i garanÈ›ie pentru servicii?",
-                    "Cum pot programa o Ã®ntÃ¢lnire?",
-                    "Ce include pachetul premium?",
-                    "LucraÈ›i È™i Ã®n weekend?",
-                    "AcceptaÈ›i plÄƒÈ›i cu cardul?",
-                    "Pot sÄƒ rÄƒmÃ¢n cu maÈ™ina Ã®n timpul serviciului?",
-                    "Ce produse folosiÈ›i pentru curÄƒÈ›are?",
-                    "AveÈ›i reduceri pentru clienÈ›ii fideli?"
-                ];
-                
-                this.systemPrompt = `EÈ™ti asistentul virtual pentru Detailer's Vision, o companie premium de auto detailing din RomÃ¢nia.
 
-INFORMAÈšII DESPRE COMPANIE:
-- Servicii: spÄƒlare exterior, curÄƒÈ›are interior, protecÈ›ie ceramicÄƒ, polish faruri, eliminare mirosuri, curÄƒÈ›are motor
-- Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
-- Program: Luni-Vineri 8:00-18:00, SÃ¢mbÄƒtÄƒ 8:00-16:00, DuminicÄƒ 10:00-15:00
-- Contact: +40 742 122 222, office@scuderiavision.ro
-- AdresÄƒ: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
-- PlatÄƒ avans: 30% prin PayU RomÃ¢nia, restul la finalizare
-- GaranÈ›ie: 100% satisfacÈ›ie, 12 luni pentru protecÈ›ia ceramicÄƒ
-- Anulare: cu 24h Ã®nainte pentru rambursarea avansului
-
-INSTRUCÈšIUNI:
-- RÄƒspunde DOAR Ã®n romÃ¢nÄƒ
-- Fii prietenos, profesional È™i util
-- OferÄƒ informaÈ›ii precise despre servicii È™i preÈ›uri
-- ÃŽndrumÄƒ clienÈ›ii cÄƒtre configurator sau rezervare cÃ¢nd e cazul
-- Pentru Ã®ntrebÄƒri complexe, recomandÄƒ contactul direct
-- FoloseÈ™te informaÈ›iile de mai sus pentru rÄƒspunsuri precise
-- Nu inventa preÈ›uri sau servicii care nu existÄƒ`;
-                
-                // Initialize when DOM is ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => this.init());
-                } else {
-                    this.init();
-                }
-            }
-            
-            init() {
-                console.log('Chat Assistant initializing...');
-                this.createChatInterface();
-                this.attachEventListeners();
-                this.addWelcomeMessage();
-                console.log('Chat Assistant initialized successfully');
-            }
-            
-            createChatInterface() {
-                console.log('Creating chat interface...');
-                
-                // Remove existing chat elements if they exist
-                const existingButton = document.getElementById('chat-toggle');
-                const existingContainer = document.getElementById('chat-container');
-                if (existingButton) existingButton.remove();
-                if (existingContainer) existingContainer.remove();
-                
-                // Chat toggle button
-                const chatButton = document.createElement('div');
-                chatButton.id = 'chat-toggle';
-                chatButton.style.cssText = `
-                    position: fixed;
-                    bottom: 24px;
-                    right: 24px;
-                    width: 56px;
-                    height: 56px;
-                    background-color: #007AFF;
-                    border-radius: 50%;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 9999;
-                    transition: all 0.2s ease;
-                `;
-                chatButton.innerHTML = `
-                    <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
-                `;
-                
-                // Chat container
-                const chatContainer = document.createElement('div');
-                chatContainer.id = 'chat-container';
-                chatContainer.style.cssText = `
-                    position: fixed;
-                    bottom: 96px;
-                    right: 24px;
-                    width: 384px;
-                    height: 500px;
-                    max-width: calc(100vw - 48px);
-                    background-color: white;
-                    border-radius: 16px;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    z-index: 9998;
-                    transform: translateY(100%);
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
-                    overflow: hidden;
-                `;
-                chatContainer.innerHTML = `
-                    <!-- Header -->
-                    <div style="background-color: #007AFF; color: white; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 32px; height: 32px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; font-size: 14px;">Asistent Scuderia Vision</div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">Online acum</div>
-                            </div>
-                        </div>
-                        <button id="chat-close" style="color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 4px;">
-                            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <!-- Messages -->
-                    <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <!-- Messages will be added here -->
-                    </div>
-                    
-                    <!-- Common Questions -->
-                    <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
-                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">ÃŽntrebÄƒri frecvente:</div>
-                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                            ${this.commonQuestions.slice(0, 3).map(q => 
-                                `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
-                            ).join('')}
-                        </div>
-                    </div>
-                    
-                    <!-- Input -->
-                    <div style="border-top: 1px solid #E5E7EB; padding: 16px;">
-                        <div style="display: flex; gap: 8px;">
-                            <input 
-                                type="text" 
-                                id="chat-input" 
-                                placeholder="Scrie mesajul tÄƒu..." 
-                                style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
-                            >
-                            <button 
-                                id="chat-send" 
-                                style="width: 40px; height: 40px; background-color: #007AFF; color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;"
-                            >
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.appendChild(chatButton);
-                document.body.appendChild(chatContainer);
-                
-                console.log('Chat interface created successfully');
-            }
-            
-            attachEventListeners() {
-                console.log('Attaching event listeners...');
-                
-                const chatToggle = document.getElementById('chat-toggle');
-                const chatClose = document.getElementById('chat-close');
-                const chatInput = document.getElementById('chat-input');
-                const chatSend = document.getElementById('chat-send');
-                const chatContainer = document.getElementById('chat-container');
-                
-                if (!chatToggle) {
-                    console.error('Chat toggle button not found!');
-                    return;
-                }
-                
-                chatToggle.addEventListener('click', () => this.toggleChat());
-                if (chatClose) chatClose.addEventListener('click', () => this.closeChat());
-                if (chatSend) chatSend.addEventListener('click', () => this.sendMessage());
-                
-                if (chatInput) {
-                    chatInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.sendMessage();
-                        }
-                    });
-                }
-                
-                // Suggestion buttons
-                if (chatContainer) {
-                    chatContainer.addEventListener('click', (e) => {
-                        if (e.target.classList.contains('suggestion-btn')) {
-                            const question = e.target.dataset.question;
-                            this.sendMessage(question);
-                        }
-                    });
-                }
-                
-                // Close chat when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (this.isOpen && chatContainer && chatToggle && 
-                        !chatContainer.contains(e.target) && !chatToggle.contains(e.target)) {
-                        this.closeChat();
-                    }
-                });
-                
-                console.log('Event listeners attached successfully');
-            }
-            
-            toggleChat() {
-                console.log('Toggle chat called, isOpen:', this.isOpen);
-                if (this.isOpen) {
-                    this.closeChat();
-                } else {
-                    this.openChat();
-                }
-            }
-            
-            openChat() {
-                console.log('Opening chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(0)';
-                    container.style.opacity = '1';
-                }
-                this.isOpen = true;
-                
-                // Focus input
-                setTimeout(() => {
-                    const input = document.getElementById('chat-input');
-                    if (input) input.focus();
-                }, 300);
-                
-                console.log('Chat opened');
-            }
-            
-            closeChat() {
-                console.log('Closing chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(100%)';
-                    container.style.opacity = '0';
-                }
-                this.isOpen = false;
-                
-                console.log('Chat closed');
-            }
-            
-            addWelcomeMessage() {
-                const welcomeMessage = {
-                    type: 'bot',
-                    content: 'BunÄƒ ziua! Sunt asistentul virtual Scuderia Vision. Cum vÄƒ pot ajuta astÄƒzi cu serviciile noastre de auto detailing?',
-                    timestamp: new Date()
-                };
-                this.messages.push(welcomeMessage);
-                this.renderMessage(welcomeMessage);
-            }
-            
-            async sendMessage(messageText = null) {
-                const input = document.getElementById('chat-input');
-                const message = messageText || (input ? input.value.trim() : '');
-                
-                if (!message) return;
-                
-                // Clear input
-                if (!messageText && input) {
-                    input.value = '';
-                }
-                
-                // Add user message
-                const userMessage = {
-                    type: 'user',
-                    content: message,
-                    timestamp: new Date()
-                };
-                this.messages.push(userMessage);
-                this.renderMessage(userMessage);
-                
-                // Hide suggestions after first user message
-                this.hideSuggestions();
-                
-                // Show typing indicator
-                this.showTypingIndicator();
-                
-                try {
-                    // Call OpenRouter API
-                    const response = await this.callOpenRouterAPI(message);
-                    
-                    // Add bot response
-                    const botMessage = {
-                        type: 'bot',
-                        content: response,
-                        timestamp: new Date()
-                    };
-                    this.messages.push(botMessage);
-                    this.hideTypingIndicator();
-                    this.renderMessage(botMessage);
-                    
-                } catch (error) {
-                    console.error('Chat API Error:', error);
-                    this.hideTypingIndicator();
-                    
-                    const errorMessage = {
-                        type: 'bot',
-                        content: 'Ne pare rÄƒu, am Ã®ntÃ¢mpinat o problemÄƒ tehnicÄƒ. VÄƒ rugÄƒm sÄƒ ne contactaÈ›i direct la +40 742 122 222 pentru asistenÈ›Äƒ.',
-                        timestamp: new Date()
-                    };
-                    this.messages.push(errorMessage);
-                    this.renderMessage(errorMessage);
-                }
-            }
-            
-            async callOpenRouterAPI(message) {
-                const response = await fetch(this.apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${this.apiKey}`,
-                        'Content-Type': 'application/json',
-                        'HTTP-Referer': window.location.origin,
-                        'X-Title': 'Scuderia Vision Chat Assistant'
-                    },
-                    body: JSON.stringify({
-                        model: this.model,
-                        messages: [
-                            { role: 'system', content: this.systemPrompt },
-                            ...this.messages.slice(-5).map(msg => ({
-                                role: msg.type === 'user' ? 'user' : 'assistant',
-                                content: msg.content
-                            })),
-                            { role: 'user', content: message }
-                        ],
-                        max_tokens: 300,
-                        temperature: 0.7
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                return data.choices[0].message.content;
-            }
-            
-            renderMessage(message) {
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.style.cssText = `display: flex; ${message.type === 'user' ? 'justify-content: flex-end;' : 'justify-content: flex-start;'}`;
-                
-                const time = message.timestamp.toLocaleTimeString('ro-RO', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
-                
-                const bubbleColor = message.type === 'user' ? '#007AFF' : '#F3F4F6';
-                const textColor = message.type === 'user' ? 'white' : '#111827';
-                const timeColor = message.type === 'user' ? 'rgba(255,255,255,0.7)' : '#6B7280';
-                
-                // Add schedule button for bot messages
-                const scheduleButton = message.type === 'bot' ? `
-                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
-                        <button 
-                            onclick="window.open('https://wa.me/40123456789?text=BunÄƒ%20ziua!%20AÈ™%20dori%20sÄƒ%20programez%20o%20Ã®ntÃ¢lnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
-                            style="
-                                background-color: #007AFF; 
-                                color: white; 
-                                border: none; 
-                                padding: 6px 12px; 
-                                border-radius: 12px; 
-                                font-size: 12px; 
-                                font-weight: 600; 
-                                cursor: pointer; 
-                                transition: background-color 0.2s;
-                                width: 100%;
-                            "
-                            onmouseover="this.style.backgroundColor='#0056CC'"
-                            onmouseout="this.style.backgroundColor='#007AFF'"
-                        >
-                            ðŸ’¬ ContacteazÄƒ pe WhatsApp
-                        </button>
-                    </div>
-                ` : '';
-                
-                messageDiv.innerHTML = `
-                    <div style="max-width: 80%; background-color: ${bubbleColor}; color: ${textColor}; border-radius: 16px; padding: 12px 16px;">
-                        <div style="font-size: 14px; line-height: 1.4;">${message.content}</div>
-                        <div style="font-size: 12px; color: ${timeColor}; margin-top: 4px;">${time}</div>
-                        ${scheduleButton}
-                    </div>
-                `;
-                
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideSuggestions() {
-                const suggestions = document.getElementById('chat-suggestions');
-                if (suggestions) {
-                    suggestions.style.display = 'none';
-                }
-            }
-            
-            showTypingIndicator() {
-                if (this.isTyping) return;
-                
-                this.isTyping = true;
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const typingDiv = document.createElement('div');
-                typingDiv.id = 'typing-indicator';
-                typingDiv.style.cssText = 'display: flex; justify-content: flex-start;';
-                typingDiv.innerHTML = `
-                    <div style="background-color: #F3F4F6; border-radius: 16px; padding: 12px 16px;">
-                        <div style="display: flex; gap: 4px;">
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.16s;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.32s;"></div>
-                        </div>
-                    </div>
-                `;
-                
-                // Add bounce animation
-                if (!document.getElementById('chat-bounce-style')) {
-                    const style = document.createElement('style');
-                    style.id = 'chat-bounce-style';
-                    style.textContent = `
-                        @keyframes bounce {
-                            0%, 80%, 100% { transform: scale(0); }
-                            40% { transform: scale(1); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-                
-                messagesContainer.appendChild(typingDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideTypingIndicator() {
-                this.isTyping = false;
-                const typingIndicator = document.getElementById('typing-indicator');
-                if (typingIndicator) {
-                    typingIndicator.remove();
-                }
-            }
-        }
-        // Initialize chat assistant when DOM is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new ChatAssistant();
-            });
-        } else {
-            new ChatAssistant();
-        }
-    </script>
 </body>
 </html>
-

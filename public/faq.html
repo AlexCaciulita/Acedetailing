@@ -3,854 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Întrebări Frecvente - Detailer's Vision</title>
-    <title>Întrebări Frecvente - Scuderia Vision</title>
-    <meta name="description" content="Răspunsuri la întrebările frecvente despre serviciile de auto detailing oferite de Scuderia Vision.">
-    
-    <!-- PWA -->
+    <title>Intrebari Frecvente | Ace Detailing</title>
+    <meta name="description" content="Raspunsuri la intrebarile frecvente despre serviciile de auto detailing si scoala de detailing Ace Detailing Bucuresti.">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#1E40AF">
-    
-    <!-- Favicon -->
+    <meta name="theme-color" content="#B8962F">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    
-    <!-- Tailwind CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#1E40AF',
-                        secondary: '#059669', 
-                        accent: '#EA580C'
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#B8962F',
+                    'primary-light': '#C9A84C',
+                    'primary-dark': '#8B7226',
+                    secondary: '#1A1A1A',
+                    light: {
+                        50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
+                        400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
+                        800: '#374151', 900: '#1F2937', 950: '#111827'
                     }
+                },
+                fontFamily: {
+                    heading: ['Montserrat', 'system-ui', 'sans-serif'],
+                    body: ['Inter', 'system-ui', 'sans-serif']
+                },
+                boxShadow: {
+                    'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
+                    'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                    'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                    'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                 }
             }
         }
+    }
     </script>
-    
-    <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
 </head>
-<body class="font-sans antialiased">
+<body class="bg-light-50 text-light-950 font-body">
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
-                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
+                <a href="/index.html" class="flex items-center">
+                    <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                </a>
+                <div class="md:hidden">
+                    <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
-                
-                <!-- Desktop menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="/index.html" class="text-gray-700 hover:text-primary transition-colors">Acasă</a>
-                    <a href="/servicii.html" class="text-gray-700 hover:text-primary transition-colors">Servicii</a>
-                    <a href="/configurator.html" class="text-gray-700 hover:text-primary transition-colors">Configurator</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">Rezervare</a>
-                    <a href="/contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
+                    <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
+                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
+                    <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
+                    <a href="/despre.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Despre</a>
+                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
+                    <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all duration-200 text-sm font-heading font-semibold">Rezervare</a>
                 </div>
+            </div>
+        </div>
+        <div x-show="open" x-transition class="md:hidden bg-white/95 backdrop-blur-xl border-b border-light-300">
+            <div class="px-4 py-4 space-y-2">
+                <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
+                <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
+                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
+                <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
+                <a href="/despre.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Despre</a>
+                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
+                <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
+                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="pt-24 pb-12 bg-gradient-to-br from-primary to-blue-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl font-bold text-white mb-6">Întrebări Frecvente</h1>
-            <p class="text-xl text-blue-100 max-w-3xl mx-auto">
-                Răspunsuri la cele mai comune întrebări despre serviciile noastre.
-            </p>
-        </div>
-    </section>
-
-    <!-- FAQ Content -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="space-y-8" x-data="{ openItem: null }">
-                
-                <!-- FAQ Item 1 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 1 ? null : 1"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Cât durează un serviciu de auto detailing?</h3>
-                        <svg 
-                            :class="openItem === 1 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 1" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Durata depinde de serviciile selectate și dimensiunea mașinii. O spălare exterior de bază durează 45-60 minute, 
-                            în timp ce pachetul complet luxury poate dura până la 4 ore. În configuratorul nostru vei vedea durata exactă 
-                            pentru selecția ta.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 2 ? null : 2"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Ce include protecția ceramică?</h3>
-                        <svg 
-                            :class="openItem === 2 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 2" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Protecția ceramică include pregătirea suprafeței prin polish, aplicarea coating-ului ceramic profesional și 
-                            oferă protecție împotriva UV-ului, zgarieturilor minore și chimicalelor pentru 12-24 luni. Este ideal pentru 
-                            mașinile noi sau recent polizate.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 3 ? null : 3"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Cum funcționează plata cu avans?</h3>
-                        <svg 
-                            :class="openItem === 3 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 3" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Plătești 30% din valoarea totală ca avans prin PayU România pentru a confirma rezervarea. 
-                            Restul de 70% se achită la finalizarea serviciului. Avansul este rambursabil doar în cazul 
-                            anulării cu minimum 24 ore înainte.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 4 ? null : 4"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Oferiți garanție pentru servicii?</h3>
-                        <svg 
-                            :class="openItem === 4 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 4" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Da! Oferim "Standard Garanția Reflex" - garanție de satisfacție 100% pentru toate serviciile. 
-                            Pentru protecția ceramică oferim garanție de 12 luni. Dacă nu ești mulțumit, refacem gratuit 
-                            sau îți returnăm banii în primele 7 zile.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 5 ? null : 5"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Pot să rămân cu mașina în timpul serviciului?</h3>
-                        <svg 
-                            :class="openItem === 5 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 5" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Pentru serviciile sub 90 de minute poți rămâne în zona de așteptare cu Wi-Fi gratuit și cafea. 
-                            Pentru serviciile mai lungi (protecție ceramică, pachete complete) recomandăm să lași mașina și 
-                            să revii la ora stabilită.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 6 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 6 ? null : 6"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Ce materiale folosiți?</h3>
-                        <svg 
-                            :class="openItem === 6 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 6" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Folosim exclusiv materiale premium: șampoane pH neutru, ceruri carnauba, coating-uri ceramice 
-                            de tip SiO2, produse anti-bacteriene și echipamente profesionale. Toate produsele sunt sigure 
-                            pentru orice tip de vopsea și materiale auto.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 7 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 7 ? null : 7"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Cum pot anula sau reprograma?</h3>
-                        <svg 
-                            :class="openItem === 7 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 7" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Poți anula sau reprograma cu minimum 24 ore înainte prin telefon (+40 742 122 222) sau email. 
-                            Anularea cu mai puțin de 24 ore înseamnă pierderea avansului. Reprogramarea este gratuită în 
-                            primele 48 ore după rezervare.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 8 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 8 ? null : 8"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Lucrați și în weekend?</h3>
-                        <svg 
-                            :class="openItem === 8 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 8" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Da! Suntem deschisi Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00 și Duminică 10:00-15:00. 
-                            Weekend-urile sunt foarte solicitate, așa că recomandăm rezervarea cu cel puțin 3 zile înainte.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 9 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 9 ? null : 9"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Aveți locuri de parcare?</h3>
-                        <svg 
-                            :class="openItem === 9 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 9" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Avem parcare privată pentru 6 mașini chiar în fața centrului. Pentru serviciile de lungă durată, 
-                            dacă zona este ocupată, avem parteneriat cu parcarea de la 50m distanță - îți oferim voucher gratuit.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 10 -->
-                <div class="bg-white rounded-lg shadow-sm">
-                    <button 
-                        @click="openItem = openItem === 10 ? null : 10"
-                        class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-                    >
-                        <h3 class="text-lg font-semibold text-gray-900">Oferiți servicii la domiciliu?</h3>
-                        <svg 
-                            :class="openItem === 10 ? 'rotate-180' : ''"
-                            class="w-5 h-5 text-gray-500 transition-transform"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        >
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                    <div x-show="openItem === 10" x-transition class="px-6 pb-4">
-                        <p class="text-gray-600">
-                            Momentan oferim servicii doar în centrul nostru pentru a garanta calitatea și pentru că avem echipamente 
-                            specializate. Planificăm să introducem servicii mobile în 2025 pentru anumite zone din București.
-                        </p>
-                    </div>
-                </div>
-
+    <!-- Hero Header -->
+    <section class="pt-24 pb-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="pt-12 pb-8">
+                <h1 class="text-4xl md:text-5xl font-heading font-bold text-light-950 mb-4">Intrebari Frecvente</h1>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-light-700 text-lg max-w-2xl mx-auto font-body">Gaseste raspunsuri la cele mai frecvente intrebari despre serviciile noastre de detailing auto, protectie ceramica, cursuri si programari.</p>
             </div>
         </div>
     </section>
 
+    <!-- FAQ Content -->
+    <section class="pb-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- Servicii Detailing -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-heading font-bold text-light-950 mb-6 flex items-center gap-3">
+                    <span class="w-10 h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </span>
+                    Servicii Detailing
+                </h2>
+                <div class="space-y-3" x-data="{ active: null }">
+
+                    <!-- Q1 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce include un pachet PREMIUM Complet?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed mb-3">Pachetul PREMIUM Complet include urmatoarele servicii:</p>
+                                <ul class="text-light-700 text-sm leading-relaxed space-y-1.5">
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Spalare exterioara completa si decontaminare</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Curatare interior profunda (aspirare, curatare tapiterie, piele)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Corectie vopsea intr-un singur pas (one-step polish)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Protectie ceramica 1 strat (12 luni)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Tratament jante si anvelope</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Curatare si tratament geamuri</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Parfumare interior premium</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Cat dureaza un detailing complet?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Un detailing complet dureaza intre 1 si 3 zile, in functie de pachetul ales si starea vehiculului. Pachetul Essential poate fi finalizat intr-o singura zi, PREMIUM necesita de obicei 1-2 zile, iar Signature poate dura pana la 3 zile datorita procesului complex de corectie si aplicare ceramica in mai multe straturi.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce diferenta e intre Essential si Signature?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed mb-3"><strong class="text-light-950">Essential</strong> include curatare completa interioara si exterioara plus protectie de baza. Este ideal pentru intretinere regulata.</p>
+                                <p class="text-light-700 text-sm leading-relaxed"><strong class="text-light-950">Signature</strong> este pachetul nostru de top si include corectie completa a vopselei (multi-step), aplicare ceramica profesionala in 2 straturi si garantie de 24 de luni pentru protectie. Este recomandat pentru masini noi sau pentru cei care doresc cel mai inalt nivel de protectie si finisaj.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Trebuie sa las masina peste noapte?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Depinde de pachetul ales. Pachetul <strong class="text-light-950">Essential</strong> poate fi realizat in aceeasi zi. Pentru pachetele <strong class="text-light-950">PREMIUM</strong> si <strong class="text-light-950">Signature</strong>, da, va fi necesar sa lasati masina peste noapte, deoarece procesele de corectie si aplicare ceramica necesita timp de uscare si intarire in conditii controlate.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 5 ? null : 5" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce produse folositi?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 5 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Folosim exclusiv produse profesionale premium de la branduri recunoscute international: <strong class="text-light-950">Koch Chemie</strong>, <strong class="text-light-950">Gyeon</strong>, <strong class="text-light-950">CarPro</strong> si altele. Toate produsele sunt selectate pentru performanta lor superioara si siguranta fata de suprafetele vehiculului dumneavoastra.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 6 ? null : 6" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Cat costa un detailing auto?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 6 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 6" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Preturile noastre pornesc de la <strong class="text-light-950">800 lei</strong> pentru pachetul Essential si ajung pana la <strong class="text-light-950">6000 lei</strong> pentru pachetul Signature. Pretul final depinde de dimensiunea vehiculului, starea actuala si serviciile alese. Folositi <a href="/configurator.html" class="text-primary hover:text-primary-light underline transition-colors">configuratorul nostru de pret</a> pentru o estimare personalizata.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Protectie Ceramica -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-heading font-bold text-light-950 mb-6 flex items-center gap-3">
+                    <span class="w-10 h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </span>
+                    Protectie Ceramica
+                </h2>
+                <div class="space-y-3" x-data="{ active: null }">
+
+                    <!-- Q1 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce este protectia ceramica?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Protectia ceramica este un strat protector nano-ceramic aplicat peste vopseaua vehiculului. Aceasta creeaza o bariera extrem de dura si hidrofoba care protejeaza vopseaua impotriva razelor UV, contaminantilor chimici, zgarieturilor minore si oxidarii. Rezultatul este un luciu intens si o suprafata care se curata mult mai usor.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Cat dureaza protectia ceramica?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Durata protectiei ceramice depinde de pachetul ales. Pachetul <strong class="text-light-950">PREMIUM</strong> include protectie ceramica pe 1 strat cu durabilitate de <strong class="text-light-950">12 luni</strong>. Pachetul <strong class="text-light-950">Signature</strong> include ceramica pe 2 straturi cu durabilitate de pana la <strong class="text-light-950">24 de luni</strong>. Durata efectiva depinde si de intretinerea corecta a vehiculului.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Cum intretin protectia ceramica?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed mb-3">Pentru a mentine protectia ceramica in conditii optime, va recomandam:</p>
+                                <ul class="text-light-700 text-sm leading-relaxed space-y-1.5">
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Spalare regulata cu sampon pH neutru</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Evitati spalatoriile automate cu perii</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Uscare cu laveta din microfibra de calitate</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Aplicare periodica a unui spray ceramic de intretinere (boost)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Programari & Plata -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-heading font-bold text-light-950 mb-6 flex items-center gap-3">
+                    <span class="w-10 h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </span>
+                    Programari &amp; Plata
+                </h2>
+                <div class="space-y-3" x-data="{ active: null }">
+
+                    <!-- Q1 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Cum fac o programare?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Puteti face o programare in mai multe moduri: online prin <a href="/rezervare.html" class="text-primary hover:text-primary-light underline transition-colors">formularul de rezervare</a> de pe site, telefonic la numarul <a href="tel:+40742122222" class="text-primary hover:text-primary-light underline transition-colors">+40 742 122 222</a>, sau prin mesaj pe WhatsApp. Va recomandam sa programati cu cel putin 3-5 zile in avans, deoarece avem un numar limitat de locuri pe saptamana.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce metode de plata acceptati?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Acceptam urmatoarele metode de plata: <strong class="text-light-950">cash</strong>, <strong class="text-light-950">card bancar</strong> (Visa, Mastercard) si <strong class="text-light-950">transfer bancar</strong>. Plata se efectueaza la finalizarea serviciilor. Pentru pachetele Signature, se poate solicita un avans de 30% la programare.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Care este politica de anulare?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Anularea programarii cu minim <strong class="text-light-950">24 de ore inainte</strong> este gratuita. Anularile facute cu mai putin de 24 de ore inainte de programare vor implica retinerea a <strong class="text-light-950">20%</strong> din valoarea serviciului. Reprogramarea este gratuita si se poate face oricand, in limita disponibilitatii.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Scoala de Detailing -->
+            <div class="mb-12">
+                <h2 class="text-2xl font-heading font-bold text-light-950 mb-6 flex items-center gap-3">
+                    <span class="w-10 h-10 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </span>
+                    Scoala de Detailing
+                </h2>
+                <div class="space-y-3" x-data="{ active: null }">
+
+                    <!-- Q1 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 1 ? null : 1" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce cursuri oferiti?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed mb-3">Oferim trei tipuri de cursuri:</p>
+                                <ul class="text-light-700 text-sm leading-relaxed space-y-2">
+                                    <li class="flex items-start gap-2"><span class="text-primary font-semibold">1.</span> <span><strong class="text-light-950">Fundamentals</strong> - 5 zile de curs practic intensiv, ideal pentru incepatori. Pret: 4.500 lei.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-primary font-semibold">2.</span> <span><strong class="text-light-950">Advanced</strong> - 3 zile de tehnici avansate de corectie si ceramica. Pret: 3.500 lei.</span></li>
+                                    <li class="flex items-start gap-2"><span class="text-primary font-semibold">3.</span> <span><strong class="text-light-950">Online</strong> - curs self-paced cu module video, quiz-uri si suport. Pret: 1.500 lei.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 2 ? null : 2" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Am nevoie de experienta anterioara?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 2" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Nu, nu aveti nevoie de experienta anterioara. Cursul <strong class="text-light-950">Fundamentals</strong> este conceput special pentru incepatori si acopera totul de la baza: de la tehnicile corecte de spalare pana la aplicarea de produse de protectie. Cursul <strong class="text-light-950">Advanced</strong> este recomandat celor care au deja cunostinte de baza sau au absolvit cursul Fundamentals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 3 ? null : 3" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Primesc certificat la absolvire?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed">Da, la absolvirea oricarui curs veti primi un <strong class="text-light-950">certificat Ace Detailing</strong> care atesta competentele dobandite. Certificatul nostru este recunoscut in industrie si poate fi un avantaj important daca doriti sa va construiti o cariera in domeniul detailing-ului auto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="border border-light-300 rounded-lg overflow-hidden hover:border-light-400 transition-colors">
+                        <button @click="active = active === 4 ? null : 4" class="w-full flex items-center justify-between px-6 py-4 text-left">
+                            <span class="font-heading font-semibold text-light-950 text-sm sm:text-base pr-4">Ce includ cursurile?</span>
+                            <svg class="w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300" :class="active === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </button>
+                        <div x-show="active === 4" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="px-6 pb-5">
+                            <div class="border-t border-light-300 pt-4">
+                                <p class="text-light-700 text-sm leading-relaxed mb-3">Cursurile noastre de detailing includ:</p>
+                                <ul class="text-light-700 text-sm leading-relaxed space-y-1.5">
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Materiale didactice complete (manual, fise tehnice)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Toate produsele si uneltele necesare in sala de curs</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Practica pe vehicule reale (cursuri fizice)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Certificat de absolvire Ace Detailing</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Acces pe viata la grupul de alumni pentru suport si networking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- CTA Section -->
-    <section class="py-20 bg-primary">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">
-                Nu găsești răspunsul căutat?
-            </h2>
-            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                Contactează-ne direct și îți răspundem în câteva minute.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/contact.html" class="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-                    Contactează-ne
-                </a>
-                <a href="/rezervare.html" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-colors">
-                    Programează acum
-                </a>
+    <section class="pb-24">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white border border-light-400 rounded-2xl p-8 sm:p-12 text-center shadow-soft">
+                <h2 class="text-2xl sm:text-3xl font-heading font-bold text-light-950 mb-4">Ai alte intrebari?</h2>
+                <p class="text-light-700 text-base mb-8 max-w-lg mx-auto">Nu ai gasit raspunsul pe care il cautai? Contacteaza-ne direct si iti vom raspunde cat mai repede posibil.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="/contact.html" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-light transition-all duration-200 font-heading font-semibold text-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Contacteaza-ne
+                    </a>
+                    <a href="https://wa.me/40742122222" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-light-200 text-light-950 border border-light-400 px-6 py-3 rounded-lg hover:bg-light-300 hover:border-light-400 transition-all duration-200 font-heading font-semibold text-sm">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
+    <footer class="bg-light-950 border-t border-light-300 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="col-span-2">
-                    <div class="flex items-center mb-4">
-                        <img src="/assets/logo.svg" alt="Scuderia Vision" class="h-8 w-auto">
-                    <span class="ml-3 text-xl font-bold text-gray-900">Scuderia Vision</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">
-                        Detaliu care se vede. Luciu care rămâne.
-                    </p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="/" class="flex items-center mb-4">
+                        <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                    </a>
+                    <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
                 </div>
-                
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Navigație</h3>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
-                        <li><a href="/servicii.html" class="text-gray-400 hover:text-white transition-colors">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-gray-400 hover:text-white transition-colors">Configurator</a></li>
-                        <li><a href="/rezervare.html" class="text-gray-400 hover:text-white transition-colors">Rezervare</a></li>
-                        <li><a href="/faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
+                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
+                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
+                        <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
+                        <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
                     </ul>
                 </div>
-                
                 <div>
-                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>📞 +40 742 122 222</li>
-                        <li>📧 contact@detailers-vision.ro</li>
-                        <li>📍 Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov</li>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Scoala</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/scoala.html" class="text-light-400 hover:text-primary transition-colors text-sm">Cursuri Detailing</a></li>
+                        <li><a href="/scoala.html#fundamentals" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Fundamentals</a></li>
+                        <li><a href="/scoala.html#advanced" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Advanced</a></li>
+                        <li><a href="/scoala.html#online" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Online</a></li>
+                        <li><a href="/despre.html" class="text-light-400 hover:text-primary transition-colors text-sm">Despre Noi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
+                        <li><a href="mailto:contact@acedetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@acedetailing.ro</a></li>
+                        <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
+                        <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400">© 2025 Scuderia Vision. Toate drepturile rezervate.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="/politici.html" class="text-gray-400 hover:text-white transition-colors">Politici</a>
-                    <a href="/contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+            <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-light-500 text-sm">&copy; 2026 Ace Detailing. Toate drepturile rezervate.</p>
+                <div class="flex space-x-6">
+                    <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
+                    <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
                 </div>
             </div>
         </div>
     </footer>
-    
-    <!-- Chat Assistant -->
-    <script>
-        // Chat Assistant for Detailer's Vision
-        class ChatAssistant {
-            constructor() {
-                this.isOpen = false;
-                this.messages = [];
-                this.isTyping = false;
-                this.apiKey = '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';
-                this.apiUrl = 'https://openrouter.ai/api/v1/chat/completions';
-                this.model = 'gpt-oss-120b';
-                
-                this.commonQuestions = [
-                    "Cât costă o spălare completă?",
-                    "Cât durează serviciul de protecție ceramică?",
-                    "Oferiți garanție pentru servicii?",
-                    "Cum pot programa o întâlnire?",
-                    "Ce include pachetul premium?",
-                    "Lucrați și în weekend?",
-                    "Acceptați plăți cu cardul?",
-                    "Pot să rămân cu mașina în timpul serviciului?",
-                    "Ce produse folosiți pentru curățare?",
-                    "Aveți reduceri pentru clienții fideli?"
-                ];
-                
-                this.systemPrompt = `Ești asistentul virtual pentru Detailer's Vision, o companie premium de auto detailing din România.
 
-INFORMAȚII DESPRE COMPANIE:
-- Servicii: spălare exterior, curățare interior, protecție ceramică, polish faruri, eliminare mirosuri, curățare motor
-- Pachete: Classic (150 RON), Elite (320 RON), Celebrity (650 RON)
-- Program: Luni-Vineri 8:00-18:00, Sâmbătă 8:00-16:00, Duminică 10:00-15:00
-- Contact: +40 742 122 222, contact@detailers-vision.ro
-- Adresă: Str. Crizantemei nr. 43, hala C4/2, Buftea, Ilfov
-- Plată avans: 30% prin PayU România, restul la finalizare
-- Garanție: 100% satisfacție, 12 luni pentru protecția ceramică
-- Anulare: cu 24h înainte pentru rambursarea avansului
-
-INSTRUCȚIUNI:
-- Răspunde DOAR în română
-- Fii prietenos, profesional și util
-- Oferă informații precise despre servicii și prețuri
-- Îndrumă clienții către configurator sau rezervare când e cazul
-- Pentru întrebări complexe, recomandă contactul direct
-- Folosește informațiile de mai sus pentru răspunsuri precise
-- Nu inventa prețuri sau servicii care nu există`;
-                
-                // Initialize when DOM is ready
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => this.init());
-                } else {
-                    this.init();
-                }
-            }
-            
-            init() {
-                console.log('Chat Assistant initializing...');
-                this.createChatInterface();
-                this.attachEventListeners();
-                this.addWelcomeMessage();
-                console.log('Chat Assistant initialized successfully');
-            }
-            
-            createChatInterface() {
-                console.log('Creating chat interface...');
-                
-                // Remove existing chat elements if they exist
-                const existingButton = document.getElementById('chat-toggle');
-                const existingContainer = document.getElementById('chat-container');
-                if (existingButton) existingButton.remove();
-                if (existingContainer) existingContainer.remove();
-                
-                // Chat toggle button
-                const chatButton = document.createElement('div');
-                chatButton.id = 'chat-toggle';
-                chatButton.style.cssText = `
-                    position: fixed;
-                    bottom: 24px;
-                    right: 24px;
-                    width: 56px;
-                    height: 56px;
-                    background-color: #007AFF;
-                    border-radius: 50%;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    z-index: 9999;
-                    transition: all 0.2s ease;
-                `;
-                chatButton.innerHTML = `
-                    <svg style="width: 24px; height: 24px; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                    </svg>
-                `;
-                
-                // Chat container
-                const chatContainer = document.createElement('div');
-                chatContainer.id = 'chat-container';
-                chatContainer.style.cssText = `
-                    position: fixed;
-                    bottom: 96px;
-                    right: 24px;
-                    width: 384px;
-                    height: 500px;
-                    max-width: calc(100vw - 48px);
-                    background-color: white;
-                    border-radius: 16px;
-                    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.12);
-                    z-index: 9998;
-                    transform: translateY(100%);
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
-                    overflow: hidden;
-                `;
-                chatContainer.innerHTML = `
-                    <!-- Header -->
-                    <div style="background-color: #007AFF; color: white; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
-                        <div style="display: flex; align-items: center;">
-                            <div style="width: 32px; height: 32px; background-color: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <div style="font-weight: 600; font-size: 14px;">Asistent Scuderia Vision</div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.8);">Online acum</div>
-                            </div>
-                        </div>
-                        <button id="chat-close" style="color: rgba(255,255,255,0.8); background: none; border: none; cursor: pointer; padding: 4px;">
-                            <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <!-- Messages -->
-                    <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <!-- Messages will be added here -->
-                    </div>
-                    
-                    <!-- Common Questions -->
-                    <div id="chat-suggestions" style="padding: 0 16px 8px 16px; display: block;">
-                        <div style="font-size: 12px; color: #6B7280; margin-bottom: 8px;">Întrebări frecvente:</div>
-                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
-                            ${this.commonQuestions.slice(0, 3).map(q => 
-                                `<button class="suggestion-btn" style="font-size: 12px; background-color: #F3F4F6; padding: 4px 8px; border-radius: 9999px; border: none; cursor: pointer; transition: background-color 0.2s;" data-question="${q}">${q}</button>`
-                            ).join('')}
-                        </div>
-                    </div>
-                    
-                    <!-- Input -->
-                    <div style="border-top: 1px solid #E5E7EB; padding: 16px;">
-                        <div style="display: flex; gap: 8px;">
-                            <input 
-                                type="text" 
-                                id="chat-input" 
-                                placeholder="Scrie mesajul tău..." 
-                                style="flex: 1; padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 9999px; outline: none; font-size: 14px;"
-                            >
-                            <button 
-                                id="chat-send" 
-                                style="width: 40px; height: 40px; background-color: #007AFF; color: white; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color 0.2s;"
-                            >
-                                <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                `;
-                
-                document.body.appendChild(chatButton);
-                document.body.appendChild(chatContainer);
-                
-                console.log('Chat interface created successfully');
-            }
-            
-            attachEventListeners() {
-                console.log('Attaching event listeners...');
-                
-                const chatToggle = document.getElementById('chat-toggle');
-                const chatClose = document.getElementById('chat-close');
-                const chatInput = document.getElementById('chat-input');
-                const chatSend = document.getElementById('chat-send');
-                const chatContainer = document.getElementById('chat-container');
-                
-                if (!chatToggle) {
-                    console.error('Chat toggle button not found!');
-                    return;
-                }
-                
-                chatToggle.addEventListener('click', () => this.toggleChat());
-                if (chatClose) chatClose.addEventListener('click', () => this.closeChat());
-                if (chatSend) chatSend.addEventListener('click', () => this.sendMessage());
-                
-                if (chatInput) {
-                    chatInput.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter') {
-                            this.sendMessage();
-                        }
-                    });
-                }
-                
-                // Suggestion buttons
-                if (chatContainer) {
-                    chatContainer.addEventListener('click', (e) => {
-                        if (e.target.classList.contains('suggestion-btn')) {
-                            const question = e.target.dataset.question;
-                            this.sendMessage(question);
-                        }
-                    });
-                }
-                
-                // Close chat when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (this.isOpen && chatContainer && chatToggle && 
-                        !chatContainer.contains(e.target) && !chatToggle.contains(e.target)) {
-                        this.closeChat();
-                    }
-                });
-                
-                console.log('Event listeners attached successfully');
-            }
-            
-            toggleChat() {
-                console.log('Toggle chat called, isOpen:', this.isOpen);
-                if (this.isOpen) {
-                    this.closeChat();
-                } else {
-                    this.openChat();
-                }
-            }
-            
-            openChat() {
-                console.log('Opening chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(0)';
-                    container.style.opacity = '1';
-                }
-                this.isOpen = true;
-                
-                // Focus input
-                setTimeout(() => {
-                    const input = document.getElementById('chat-input');
-                    if (input) input.focus();
-                }, 300);
-                
-                console.log('Chat opened');
-            }
-            
-            closeChat() {
-                console.log('Closing chat...');
-                const container = document.getElementById('chat-container');
-                if (container) {
-                    container.style.transform = 'translateY(100%)';
-                    container.style.opacity = '0';
-                }
-                this.isOpen = false;
-                
-                console.log('Chat closed');
-            }
-            
-            addWelcomeMessage() {
-                const welcomeMessage = {
-                    type: 'bot',
-                    content: 'Bună ziua! Sunt asistentul virtual Scuderia Vision. Cum vă pot ajuta astăzi cu serviciile noastre de auto detailing?',
-                    timestamp: new Date()
-                };
-                this.messages.push(welcomeMessage);
-                this.renderMessage(welcomeMessage);
-            }
-            
-            async sendMessage(messageText = null) {
-                const input = document.getElementById('chat-input');
-                const message = messageText || (input ? input.value.trim() : '');
-                
-                if (!message) return;
-                
-                // Clear input
-                if (!messageText && input) {
-                    input.value = '';
-                }
-                
-                // Add user message
-                const userMessage = {
-                    type: 'user',
-                    content: message,
-                    timestamp: new Date()
-                };
-                this.messages.push(userMessage);
-                this.renderMessage(userMessage);
-                
-                // Hide suggestions after first user message
-                this.hideSuggestions();
-                
-                // Show typing indicator
-                this.showTypingIndicator();
-                
-                try {
-                    // Call OpenRouter API
-                    const response = await this.callOpenRouterAPI(message);
-                    
-                    // Add bot response
-                    const botMessage = {
-                        type: 'bot',
-                        content: response,
-                        timestamp: new Date()
-                    };
-                    this.messages.push(botMessage);
-                    this.hideTypingIndicator();
-                    this.renderMessage(botMessage);
-                    
-                } catch (error) {
-                    console.error('Chat API Error:', error);
-                    this.hideTypingIndicator();
-                    
-                    const errorMessage = {
-                        type: 'bot',
-                        content: 'Ne pare rău, am întâmpinat o problemă tehnică. Vă rugăm să ne contactați direct la +40 742 122 222 pentru asistență.',
-                        timestamp: new Date()
-                    };
-                    this.messages.push(errorMessage);
-                    this.renderMessage(errorMessage);
-                }
-            }
-            
-            async callOpenRouterAPI(message) {
-                const response = await fetch(this.apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${this.apiKey}`,
-                        'Content-Type': 'application/json',
-                        'HTTP-Referer': window.location.origin,
-                        'X-Title': 'Scuderia Vision Chat Assistant'
-                    },
-                    body: JSON.stringify({
-                        model: this.model,
-                        messages: [
-                            { role: 'system', content: this.systemPrompt },
-                            ...this.messages.slice(-5).map(msg => ({
-                                role: msg.type === 'user' ? 'user' : 'assistant',
-                                content: msg.content
-                            })),
-                            { role: 'user', content: message }
-                        ],
-                        max_tokens: 300,
-                        temperature: 0.7
-                    })
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`API Error: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                return data.choices[0].message.content;
-            }
-            
-            renderMessage(message) {
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.style.cssText = `display: flex; ${message.type === 'user' ? 'justify-content: flex-end;' : 'justify-content: flex-start;'}`;
-                
-                const time = message.timestamp.toLocaleTimeString('ro-RO', { 
-                    hour: '2-digit', 
-                    minute: '2-digit' 
-                });
-                
-                const bubbleColor = message.type === 'user' ? '#007AFF' : '#F3F4F6';
-                const textColor = message.type === 'user' ? 'white' : '#111827';
-                const timeColor = message.type === 'user' ? 'rgba(255,255,255,0.7)' : '#6B7280';
-                
-                // Add schedule button for bot messages
-                const scheduleButton = message.type === 'bot' ? `
-                    <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.1);">
-                        <button 
-                            onclick="window.open('https://wa.me/40123456789?text=Bună%20ziua!%20Aș%20dori%20să%20programez%20o%20întâlnire%20pentru%20servicii%20de%20auto%20detailing.', '_blank')" 
-                            style="
-                                background-color: #007AFF; 
-                                color: white; 
-                                border: none; 
-                                padding: 6px 12px; 
-                                border-radius: 12px; 
-                                font-size: 12px; 
-                                font-weight: 600; 
-                                cursor: pointer; 
-                                transition: background-color 0.2s;
-                                width: 100%;
-                            "
-                            onmouseover="this.style.backgroundColor='#0056CC'"
-                            onmouseout="this.style.backgroundColor='#007AFF'"
-                        >
-                            💬 Contactează pe WhatsApp
-                        </button>
-                    </div>
-                ` : '';
-                
-                messageDiv.innerHTML = `
-                    <div style="max-width: 80%; background-color: ${bubbleColor}; color: ${textColor}; border-radius: 16px; padding: 12px 16px;">
-                        <div style="font-size: 14px; line-height: 1.4;">${message.content}</div>
-                        <div style="font-size: 12px; color: ${timeColor}; margin-top: 4px;">${time}</div>
-                        ${scheduleButton}
-                    </div>
-                `;
-                
-                messagesContainer.appendChild(messageDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideSuggestions() {
-                const suggestions = document.getElementById('chat-suggestions');
-                if (suggestions) {
-                    suggestions.style.display = 'none';
-                }
-            }
-            
-            showTypingIndicator() {
-                if (this.isTyping) return;
-                
-                this.isTyping = true;
-                const messagesContainer = document.getElementById('chat-messages');
-                if (!messagesContainer) return;
-                
-                const typingDiv = document.createElement('div');
-                typingDiv.id = 'typing-indicator';
-                typingDiv.style.cssText = 'display: flex; justify-content: flex-start;';
-                typingDiv.innerHTML = `
-                    <div style="background-color: #F3F4F6; border-radius: 16px; padding: 12px 16px;">
-                        <div style="display: flex; gap: 4px;">
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.16s;"></div>
-                            <div style="width: 8px; height: 8px; background-color: #6B7280; border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; animation-delay: 0.32s;"></div>
-                        </div>
-                    </div>
-                `;
-                
-                // Add bounce animation
-                if (!document.getElementById('chat-bounce-style')) {
-                    const style = document.createElement('style');
-                    style.id = 'chat-bounce-style';
-                    style.textContent = `
-                        @keyframes bounce {
-                            0%, 80%, 100% { transform: scale(0); }
-                            40% { transform: scale(1); }
-                        }
-                    `;
-                    document.head.appendChild(style);
-                }
-                
-                messagesContainer.appendChild(typingDiv);
-                messagesContainer.scrollTop = messagesContainer.scrollHeight;
-            }
-            
-            hideTypingIndicator() {
-                this.isTyping = false;
-                const typingIndicator = document.getElementById('typing-indicator');
-                if (typingIndicator) {
-                    typingIndicator.remove();
-                }
-            }
-        }
-        // Initialize chat assistant when DOM is loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new ChatAssistant();
-            });
-        } else {
-            new ChatAssistant();
-        }
-    </script>
 </body>
 </html>

@@ -2,8 +2,7 @@ const crypto = require('crypto');
 
 // Environment variables
 const PAYU_SECRET_KEY = process.env.PAYU_SECRET_KEY || 'demo_secret_key';
-const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'programari@detailers-vision.ro';
-const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'programari@scuderia-vision.ro';
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'contact@acedetailing.ro';
 
 // Email service configuration (using a simple mailto fallback)
 const EMAIL_SERVICE_URL = process.env.EMAIL_SERVICE_URL || '';
@@ -94,7 +93,7 @@ async function sendConfirmationEmails(
   notificationData
 ) {
   try {
-    const customerEmailSubject = 'Confirmare rezervare - Detailer\'s Vision';
+    const customerEmailSubject = 'Confirmare rezervare - Ace Detailing';
     const customerEmailBody = `
 Bună ziua ${buyerName},
 
@@ -117,11 +116,11 @@ Email: ${BUSINESS_EMAIL}
 Mulțumim pentru încrederea acordată!
 
 Cu stimă,
-Echipa Scuderia Vision
+Echipa Ace Detailing
 
 ---
-Detaliu care se vede. Luciu care rămâne.
-https://scuderia-vision.ro
+Excelenta in fiecare detaliu.
+https://acedetailing.ro
 `;
 
     const businessEmailSubject = `Rezervare nouă confirmată - ${orderRef}`;
@@ -148,7 +147,7 @@ Detalii complete PayU:
 ${JSON.stringify(notificationData, null, 2)}
 
 ---
-Sistem Scuderia Vision
+Sistem Ace Detailing
 `;
 
     // Try to send emails via configured email service

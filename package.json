@@ -1,7 +1,7 @@
 {
-  "name": "scuderia-vision",
+  "name": "ace-detailing",
   "version": "1.0.0",
-  "description": "Website static pentru Scuderia Vision - Auto Detailing",
+  "description": "Website premium pentru Ace Detailing - Auto Detailing & Scoala de Detailing",
   "type": "module",
   "main": "public/index.html",
   "scripts": {
@@ -16,9 +16,10 @@
   },
   "keywords": [
     "auto-detailing",
-    "website",
-    "static"
+    "premium",
+    "detailing-school",
+    "bucharest"
   ],
-  "author": "Scuderia Vision",
+  "author": "Ace Detailing",
   "license": "ISC"
 }
