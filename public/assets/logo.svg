@@ -1,22 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 50" fill="none">
   <defs>
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#E2C97E"/>
-      <stop offset="50%" style="stop-color:#C9A84C"/>
+      <stop offset="40%" style="stop-color:#C9A84C"/>
+      <stop offset="70%" style="stop-color:#B8962F"/>
       <stop offset="100%" style="stop-color:#A68A3E"/>
-    </linearGradient>
-    <linearGradient id="goldGradLight" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#C9A84C"/>
-      <stop offset="100%" style="stop-color:#E2C97E"/>
     </linearGradient>
   </defs>
 
   <!-- NOVA text -->
-  <text x="10" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="42" fill="url(#goldGrad)" letter-spacing="4">NOVA</text>
-
-  <!-- DETAILING text -->
-  <text x="168" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="300" font-size="42" fill="#FFFFFF" letter-spacing="2">DETAILING</text>
-
-  <!-- Gold underline accent -->
-  <rect x="10" y="60" width="302" height="2" rx="1" fill="url(#goldGradLight)" opacity="0.6"/>
+  <text x="0" y="37" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="40" fill="url(#goldGrad)" letter-spacing="5">NOVA</text>
 </svg>
