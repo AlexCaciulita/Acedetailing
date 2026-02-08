@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicii Premium de Detailing Auto | Ace Detailing Bucuresti</title>
+    <title>Servicii Premium de Detailing Auto | Nova Detailing Bucuresti</title>
     <meta name="description" content="Pachete premium de auto detailing: Essential, Premium si Signature. Preturi de la 800 lei. Abonamente lunare si anuale. Bucuresti.">
+    <link rel="canonical" href="https://novadetailing.ro/servicii.html">
     <meta name="keywords" content="servicii detailing auto, pachete detailing, protectie ceramica, polish auto, abonament detailing Bucuresti">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Servicii Premium de Detailing | Ace Detailing">
+    <meta property="og:title" content="Servicii Premium de Detailing | Nova Detailing">
     <meta property="og:description" content="Pachete de detailing auto de la 800 lei. Essential, Premium, Signature + abonamente lunare.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ro_RO">
+    <meta property="og:url" content="https://novadetailing.ro/servicii.html">
+    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:site_name" content="Nova Detailing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Servicii Premium de Detailing | Nova Detailing">
+    <meta name="twitter:description" content="Pachete de detailing auto de la 800 lei. Essential, Premium, Signature + abonamente lunare.">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
 
     <!-- PWA & Favicon -->
     <link rel="manifest" href="/manifest.webmanifest">
@@ -57,15 +65,68 @@
 
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "Nova Detailing",
+      "url": "https://novadetailing.ro/servicii.html",
+      "description": "Servicii premium de auto detailing in Bucuresti",
+      "areaServed": { "@type": "City", "name": "Bucuresti" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pachete de Detailing Auto",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Essential Interior", "description": "Curatare completa interior cu atentie la fiecare detaliu." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "1200", "priceCurrency": "RON" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Essential Exterior", "description": "Spalare 2-bucket, decontaminare chimica, ceara sau sealant protectie." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "1200", "priceCurrency": "RON" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Premium Complet", "description": "Interior + Exterior + Polish 2 pasi + Protectie ceramica 1 strat." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2500", "maxPrice": "3500", "priceCurrency": "RON" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Signature Full", "description": "Tot din Premium + Polish 3 pasi + Ceramica 2 straturi + Motor + Mentenanta." },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "4500", "maxPrice": "6000", "priceCurrency": "RON" }
+          }
+        ]
+      }
+    }
+    </script>
+    <style>
+    /* Scroll-triggered reveal */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+    .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
+    /* Button press */
+    .btn-press { position: relative; overflow: hidden; }
+    .btn-press:active { transform: scale(0.97); }
+    /* Card lift hover */
+    .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    /* Nav scroll */
+    .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
+    html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-light-50 text-light-950 font-body antialiased">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
+    <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="/index.html" class="flex items-center">
-                    <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                    <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="320" height="80">
                 </a>
                 <div class="md:hidden">
                     <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none transition-colors">
@@ -104,7 +165,7 @@
     <!-- Page Hero -->
     <section class="pt-28 pb-16 bg-light-50 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
             <span class="text-primary text-sm font-heading font-semibold uppercase tracking-widest">Servicii Premium</span>
             <h1 class="text-4xl sm:text-5xl font-heading font-bold text-light-950 mt-3 mb-4 tracking-tight">Pachete de Detailing Auto</h1>
             <p class="text-light-700 max-w-2xl mx-auto text-lg">
@@ -120,10 +181,10 @@
             <div class="grid lg:grid-cols-2 gap-8" x-data="{ expandedPackage: null }">
 
                 <!-- Essential Interior -->
-                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300">
+                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-1">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg" alt="Detailing interior" class="w-full h-full object-cover">
+                            <img src="/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg" alt="Detailing interior" class="w-full h-full object-cover" loading="lazy" width="600" height="400">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -157,7 +218,7 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=essential-interior" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200">
+                            <a href="/configurator.html?pachet=essential-interior" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
                                 Configureaza pretul
                             </a>
                         </div>
@@ -165,10 +226,10 @@
                 </div>
 
                 <!-- Essential Exterior -->
-                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300">
+                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-2">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/car_detailing_carefree_arizona.webp" alt="Detailing exterior" class="w-full h-full object-cover">
+                            <img src="/assets/car_detailing_carefree_arizona.webp" alt="Detailing exterior" class="w-full h-full object-cover" loading="lazy" width="1024" height="585">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -201,7 +262,7 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=essential-exterior" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200">
+                            <a href="/configurator.html?pachet=essential-exterior" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
                                 Configureaza pretul
                             </a>
                         </div>
@@ -209,11 +270,11 @@
                 </div>
 
                 <!-- Premium Complet -->
-                <div class="bg-white rounded-2xl border border-primary/30 shadow-soft overflow-hidden hover:border-primary/60 transition-all duration-300 relative">
+                <div class="bg-white rounded-2xl border border-primary/30 shadow-soft overflow-hidden hover:border-primary/60 transition-all duration-300 relative card-hover reveal stagger-1">
                     <div class="absolute top-4 right-4 z-10 bg-primary text-light-950 text-xs font-heading font-bold px-3 py-1 rounded-full">Cel mai popular</div>
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/auburn-wa-usa-august-5-260nw-2188152971.webp" alt="Detailing premium complet" class="w-full h-full object-cover">
+                            <img src="/assets/auburn-wa-usa-august-5-260nw-2188152971.webp" alt="Detailing premium complet" class="w-full h-full object-cover" loading="lazy" width="409" height="280">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -247,7 +308,7 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=premium-complet" class="inline-block bg-primary text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200 shadow-gold">
+                            <a href="/configurator.html?pachet=premium-complet" class="inline-block bg-primary text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200 shadow-gold btn-press">
                                 Configureaza pretul
                             </a>
                         </div>
@@ -255,10 +316,10 @@
                 </div>
 
                 <!-- Signature Full -->
-                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300">
+                <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-2">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/image.png" alt="Detailing signature" class="w-full h-full object-cover">
+                            <img src="/assets/image.png" alt="Detailing signature" class="w-full h-full object-cover" loading="lazy" width="613" height="286">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -292,7 +353,7 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=signature-full" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200">
+                            <a href="/configurator.html?pachet=signature-full" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
                                 Configureaza pretul
                             </a>
                         </div>
@@ -306,7 +367,7 @@
     <!-- Comparison Table -->
     <section class="py-16 bg-light-100">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-3xl font-heading font-bold text-light-950 mb-4 tracking-tight">Compara pachetele</h2>
                 <p class="text-light-700">Vezi rapid ce include fiecare pachet.</p>
             </div>
@@ -341,7 +402,7 @@
     <!-- Maintenance Plans -->
     <section class="py-16 bg-light-50">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12 reveal">
                 <span class="text-primary text-sm font-heading font-semibold uppercase tracking-widest">Abonamente</span>
                 <h2 class="text-3xl font-heading font-bold text-light-950 mt-3 mb-4 tracking-tight">Mentenanta regulata</h2>
                 <p class="text-light-700 max-w-2xl mx-auto">Mentine-ti masina impecabila cu abonamente lunare sau anuale. Niciun competitor din Bucuresti nu ofera asta.</p>
@@ -349,7 +410,7 @@
 
             <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 <!-- Monthly -->
-                <div class="bg-white rounded-xl border border-light-300 shadow-soft p-8 hover:border-primary/30 transition-all duration-300">
+                <div class="bg-white rounded-xl border border-light-300 shadow-soft p-8 hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-1">
                     <h3 class="text-lg font-heading font-bold text-light-950 mb-2">Abonament Lunar</h3>
                     <div class="flex items-baseline gap-1 mb-4">
                         <span class="text-3xl font-heading font-bold text-primary">300</span>
@@ -362,11 +423,11 @@
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Protectie rapida exterior</li>
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Check-up stare vopsea</li>
                     </ul>
-                    <a href="/rezervare.html?tip=abonament-lunar" class="block text-center border border-primary text-primary px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary hover:text-light-950 transition-all duration-200">Aboneaza-te</a>
+                    <a href="/rezervare.html?tip=abonament-lunar" class="block text-center border border-primary text-primary px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">Aboneaza-te</a>
                 </div>
 
                 <!-- VIP Annual -->
-                <div class="bg-white rounded-xl border border-primary/40 p-8 relative hover:border-primary/60 transition-all duration-300">
+                <div class="bg-white rounded-xl border border-primary/40 p-8 relative hover:border-primary/60 transition-all duration-300 card-hover reveal stagger-2">
                     <div class="absolute -top-3 left-6 bg-primary text-light-950 text-xs font-heading font-bold px-3 py-1 rounded-full">Cea mai buna valoare</div>
                     <h3 class="text-lg font-heading font-bold text-light-950 mb-2">VIP Anual</h3>
                     <div class="flex items-baseline gap-1 mb-4">
@@ -381,7 +442,7 @@
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Discount 15% servicii extra</li>
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Inspectii trimestriale gratuite</li>
                     </ul>
-                    <a href="/rezervare.html?tip=vip-anual" class="block text-center bg-primary text-light-950 px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200">Alege VIP</a>
+                    <a href="/rezervare.html?tip=vip-anual" class="block text-center bg-primary text-light-950 px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200 btn-press">Alege VIP</a>
                 </div>
             </div>
         </div>
@@ -499,7 +560,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="sm:col-span-2 lg:col-span-1">
-                    <a href="/" class="flex items-center mb-4"><img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto"></a>
+                    <a href="/" class="flex items-center mb-4"><img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="320" height="80"></a>
                     <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
                     <div class="flex gap-3">
                         <a href="#" class="w-9 h-9 rounded-lg bg-light-900 flex items-center justify-center text-light-400 hover:bg-primary/10 hover:text-primary transition-all" aria-label="Instagram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
@@ -533,14 +594,14 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
                     <ul class="space-y-3 text-sm">
                         <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
-                        <li><a href="mailto:contact@acedetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@acedetailing.ro</a></li>
+                        <li><a href="mailto:contact@novadetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@novadetailing.ro</a></li>
                         <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
                         <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-light-500 text-sm">&copy; 2026 Ace Detailing. Toate drepturile rezervate.</p>
+                <p class="text-light-500 text-sm">&copy; 2026 Nova Detailing. Toate drepturile rezervate.</p>
                 <div class="flex space-x-6">
                     <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
                     <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
@@ -548,6 +609,28 @@
             </div>
         </div>
     </footer>
+
+<!-- Scroll Animations & Nav Effect -->
+<script>
+(function() {
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    if (revealEls.length && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
+    var nav = document.getElementById('main-nav');
+    if (nav) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+        }, { passive: true });
+    }
+})();
+</script>
 
 </body>
 </html>

@@ -63,7 +63,7 @@ function createApiMiddleware(path, handler) {
 
 function apiPlugin() {
   return {
-    name: 'ace-detailing-api',
+    name: 'nova-detailing-api',
     configureServer(server) {
       server.middlewares.use(createApiMiddleware('/api/create-booking', bookingHandler));
       server.middlewares.use(createApiMiddleware('/api/create-enrollment', enrollmentHandler));

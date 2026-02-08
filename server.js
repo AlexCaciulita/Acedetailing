@@ -5,13 +5,16 @@ import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
 import enrollmentHandler from './api/create-enrollment.js';
 import chatProxyHandler from './api/chat-proxy.js';
+import payuCreateOrderHandler from './api/payu-create-order.js';
+import payuNotifyHandler from './api/payu-notify.js';
 import { createExpressLikeResponse } from './api/response-utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 8000;
-const PUBLIC_DIR = path.join(__dirname, 'public');
+const distDir = path.join(__dirname, 'dist');
+const PUBLIC_DIR = fs.existsSync(distDir) ? distDir : path.join(__dirname, 'public');
 
 // MIME types for known file extensions
 const mimeTypes = {
@@ -68,7 +71,9 @@ const server = http.createServer((req, res) => {
   const apiRoutes = {
     '/api/create-booking': bookingHandler,
     '/api/create-enrollment': enrollmentHandler,
-    '/api/chat-proxy': chatProxyHandler
+    '/api/chat-proxy': chatProxyHandler,
+    '/api/payu-create-order': payuCreateOrderHandler,
+    '/api/payu-notify': payuNotifyHandler
   };
 
   const apiHandler = apiRoutes[pathname];
@@ -186,7 +191,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`Ace Detailing server pornit pe http://localhost:${PORT}`);
+  console.log(`Nova Detailing server pornit pe http://localhost:${PORT}`);
   console.log(`Servind fisiere din: ${PUBLIC_DIR}`);
   console.log(`Acceseaza website-ul la: http://localhost:${PORT}`);
 });

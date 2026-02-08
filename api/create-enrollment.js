@@ -41,11 +41,11 @@ EXPERIENTA: ${enrollmentInfo.experience}
 ${enrollmentInfo.notes ? `NOTE:\n${enrollmentInfo.notes}` : ''}
 `;
 
-    const studentEmailSubject = 'Confirmare inscriere - Ace Detailing Scoala';
+    const studentEmailSubject = 'Confirmare inscriere - Nova Detailing Scoala';
     const studentEmailBody = `
 Buna ziua ${enrollmentInfo.name},
 
-Iti multumim pentru inscrierea la Scoala de Detailing Ace Detailing!
+Iti multumim pentru inscrierea la Scoala de Detailing Nova Detailing!
 
 DETALII INSCRIERE:
 - Curs: ${enrollmentInfo.course}
@@ -56,15 +56,15 @@ Avans necesar: 50% din valoarea cursului la inscriere.
 
 Daca ai intrebari, ne poti contacta:
 - Telefon: +40 742 122 222
-- Email: contact@acedetailing.ro
+- Email: contact@novadetailing.ro
 
 Cu stima,
-Echipa Ace Detailing
+Echipa Nova Detailing
 Excelenta in fiecare detaliu.
 `;
 
     console.log('=== EMAILS TO SEND ===');
-    console.log('Business Email To: contact@acedetailing.ro');
+    console.log('Business Email To: contact@novadetailing.ro');
     console.log('Student Email To:', enrollmentInfo.email);
     console.log('Subject:', emailSubject);
     console.log('======================');
@@ -78,8 +78,8 @@ Excelenta in fiecare detaliu.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'scoala@acedetailing.ro',
-            to: process.env.BUSINESS_EMAIL || 'contact@acedetailing.ro',
+            from: 'scoala@novadetailing.ro',
+            to: process.env.BUSINESS_EMAIL || 'contact@novadetailing.ro',
             subject: emailSubject,
             text: emailBody
           })
@@ -97,7 +97,7 @@ Excelenta in fiecare detaliu.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'scoala@acedetailing.ro',
+            from: 'scoala@novadetailing.ro',
             to: enrollmentInfo.email,
             subject: studentEmailSubject,
             text: studentEmailBody
@@ -109,7 +109,7 @@ Excelenta in fiecare detaliu.
       }
     } else {
       console.log('=== EMAIL CONTENT (Business) ===');
-      console.log('To: contact@acedetailing.ro');
+      console.log('To: contact@novadetailing.ro');
       console.log('Subject:', emailSubject);
       console.log('Body:', emailBody);
       console.log('===============================');

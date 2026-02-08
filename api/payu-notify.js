@@ -1,8 +1,8 @@
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 // Environment variables
 const PAYU_SECRET_KEY = process.env.PAYU_SECRET_KEY || 'demo_secret_key';
-const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'contact@acedetailing.ro';
+const BUSINESS_EMAIL = process.env.BUSINESS_EMAIL || 'contact@novadetailing.ro';
 
 // Email service configuration (using a simple mailto fallback)
 const EMAIL_SERVICE_URL = process.env.EMAIL_SERVICE_URL || '';
@@ -15,7 +15,7 @@ const corsHeaders = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
 };
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return res.status(200).json({ message: 'OK' });
@@ -83,7 +83,7 @@ module.exports = async (req, res) => {
     // Return error response to PayU (they will retry if we return error)
     res.status(500).send(`ERROR: ${error.message}`);
   }
-};
+}
 
 async function sendConfirmationEmails(
   orderRef, 
@@ -93,7 +93,7 @@ async function sendConfirmationEmails(
   notificationData
 ) {
   try {
-    const customerEmailSubject = 'Confirmare rezervare - Ace Detailing';
+    const customerEmailSubject = 'Confirmare rezervare - Nova Detailing';
     const customerEmailBody = `
 Bună ziua ${buyerName},
 
@@ -116,11 +116,11 @@ Email: ${BUSINESS_EMAIL}
 Mulțumim pentru încrederea acordată!
 
 Cu stimă,
-Echipa Ace Detailing
+Echipa Nova Detailing
 
 ---
 Excelenta in fiecare detaliu.
-https://acedetailing.ro
+https://novadetailing.ro
 `;
 
     const businessEmailSubject = `Rezervare nouă confirmată - ${orderRef}`;
@@ -147,7 +147,7 @@ Detalii complete PayU:
 ${JSON.stringify(notificationData, null, 2)}
 
 ---
-Sistem Ace Detailing
+Sistem Nova Detailing
 `;
 
     // Try to send emails via configured email service

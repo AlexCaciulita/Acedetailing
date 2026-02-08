@@ -11,18 +11,12 @@
     </linearGradient>
   </defs>
 
-  <!-- Ace spade icon -->
-  <g transform="translate(10, 8)">
-    <path d="M30 8 C30 8 12 28 12 40 C12 48 18 54 26 54 C28 54 30 53 30 53 L30 62 L24 62 L24 64 L36 64 L36 62 L30 62 L30 53 C30 53 32 54 34 54 C42 54 48 48 48 40 C48 28 30 8 30 8Z"
-          fill="url(#goldGrad)" />
-  </g>
-
-  <!-- ACE text -->
-  <text x="72" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="42" fill="url(#goldGrad)" letter-spacing="4">ACE</text>
+  <!-- NOVA text -->
+  <text x="10" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="42" fill="url(#goldGrad)" letter-spacing="4">NOVA</text>
 
   <!-- DETAILING text -->
-  <text x="185" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="300" font-size="42" fill="#FFFFFF" letter-spacing="2">DETAILING</text>
+  <text x="168" y="52" font-family="Montserrat, Arial, sans-serif" font-weight="300" font-size="42" fill="#FFFFFF" letter-spacing="2">DETAILING</text>
 
   <!-- Gold underline accent -->
-  <rect x="72" y="60" width="240" height="2" rx="1" fill="url(#goldGradLight)" opacity="0.6"/>
+  <rect x="10" y="60" width="302" height="2" rx="1" fill="url(#goldGradLight)" opacity="0.6"/>
 </svg>

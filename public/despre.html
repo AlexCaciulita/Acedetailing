@@ -1,53 +1,557 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Despre Noi | Ace Detailing</title>
-  <meta name="description" content="Povestea Ace Detailing - 17+ ani de experiență, peste 1000 de mașini detailuite, autor publicat și trainer de detailing.">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#B8962F',
-            'primary-light': '#C9A84C',
-            'primary-dark': '#8B7226',
-            secondary: '#1A1A1A',
-            light: {
-              50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
-              400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
-              800: '#374151', 900: '#1F2937', 950: '#111827'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despre Noi | Nova Detailing - Povestea din Spatele Excelentei</title>
+    <meta name="description" content="Descopera povestea Nova Detailing. 17+ ani de experienta in auto detailing, peste 1000 de masini detailuite, autor publicat si scoala profesionala de detailing in Bucuresti.">
+    <link rel="canonical" href="https://novadetailing.ro/despre.html">
+    <meta name="keywords" content="despre nova detailing, povestea noastra, experienta detailing, scoala detailing bucuresti, cursuri detailing">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Despre Noi | Nova Detailing">
+    <meta property="og:description" content="17+ ani de pasiune pentru detailing auto. Descopera povestea noastra, de la prima spalare la peste 1000 de masini detailuite.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://novadetailing.ro/despre.html">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:site_name" content="Nova Detailing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Despre Noi | Nova Detailing">
+    <meta name="twitter:description" content="17+ ani de pasiune pentru detailing auto. Descopera povestea noastra.">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="theme-color" content="#B8962F">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#B8962F',
+                        'primary-light': '#C9A84C',
+                        'primary-dark': '#8B7226',
+                        secondary: '#1A1A1A',
+                        light: {
+                            50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
+                            400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
+                            800: '#374151', 900: '#1F2937', 950: '#111827'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'system-ui', 'sans-serif'],
+                        body: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
+                        'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                        'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
+                        'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
+                    }
+                }
             }
-          },
-          fontFamily: {
-            heading: ['Montserrat', 'system-ui', 'sans-serif'],
-            body: ['Inter', 'system-ui', 'sans-serif']
-          },
-          boxShadow: {
-            'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
-            'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
-            'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
-            'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
-          }
         }
-      }
-    }
-  </script>
+    </script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .gold-shimmer {
+            background: linear-gradient(90deg, #B8962F 0%, #C9A84C 50%, #B8962F 100%);
+            background-size: 200% auto;
+            animation: shimmer 3s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-line {
+            background: linear-gradient(90deg, transparent, #B8962F, transparent);
+        }
+        .timeline-line {
+            background: linear-gradient(to bottom, #B8962F, #C9A84C, #B8962F);
+        }
+        /* Scroll-triggered reveal */
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal-left.revealed { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal-right.revealed { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
+        .btn-press { position: relative; overflow: hidden; }
+        .btn-press:active { transform: scale(0.97); }
+        .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-light-50 text-light-950 font-body">
-  <div class="min-h-screen flex items-center justify-center">
-    <div class="text-center">
-      <h1 class="text-4xl font-heading font-bold text-primary mb-4">Despre Noi</h1>
-      <p class="text-light-700 text-lg">Pagina va fi construită în Faza 5</p>
-      <a href="/" class="inline-block mt-6 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-light transition">Acasă</a>
-    </div>
-  </div>
+<body class="bg-light-50 text-light-950 font-body antialiased">
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="/index.html" class="flex items-center">
+                    <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="320" height="80">
+                </a>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
+                    <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
+                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
+                    <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
+                    <a href="/despre.html" class="text-primary font-medium text-sm font-heading">Despre</a>
+                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
+                    <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
+                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all text-sm font-heading font-semibold">Rezervare</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="open" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" class="md:hidden bg-white/95 backdrop-blur-xl border-b border-light-300">
+            <div class="px-4 py-4 space-y-2">
+                <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
+                <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
+                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
+                <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
+                <a href="/despre.html" class="block px-3 py-2 text-primary font-semibold font-heading text-sm">Despre</a>
+                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
+                <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
+                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-16 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="/assets/rs=h_1000,cg_true.webp" alt="Nova Detailing studio" class="w-full h-full object-cover" width="1784" height="1000">
+            <div class="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/95"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40 text-center">
+            <!-- Gold accent line -->
+            <div class="w-16 h-0.5 gold-line mx-auto mb-8 opacity-0 animate-fade-in"></div>
+
+            <h1 class="font-heading font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up">
+                <span class="block text-4xl sm:text-5xl lg:text-7xl text-light-950">POVESTEA</span>
+                <span class="block text-3xl sm:text-4xl lg:text-5xl gold-shimmer mt-2">NOASTRA</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-light-700 font-light max-w-2xl mx-auto mb-4 opacity-0 animate-fade-in-up delay-100">
+                De la pasiune la profesie. De la prima spalare la peste 1000 de masini detailuite.
+            </p>
+            <p class="text-sm sm:text-base text-light-600 max-w-xl mx-auto opacity-0 animate-fade-in-up delay-200">
+                Descopera drumul nostru si valorile care ne ghideaza in fiecare proiect.
+            </p>
+        </div>
+    </section>
+
+    <!-- Founder Story / Quote Section -->
+    <section class="py-20 sm:py-28 bg-light-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Big Quote -->
+            <div class="max-w-4xl mx-auto text-center mb-20 sm:mb-28 reveal">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-8">
+                    <svg class="w-8 h-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z"/>
+                    </svg>
+                </div>
+                <blockquote class="text-2xl sm:text-3xl lg:text-4xl font-heading font-semibold text-light-900 leading-snug mb-8">
+                    Am inceput sa spal masini la 13 ani. Astazi, dupa 17+ ani si peste 1000 de masini, fiecare proiect este o <span class="text-primary">opera de arta</span>.
+                </blockquote>
+                <div class="w-12 h-0.5 gold-line mx-auto mb-4"></div>
+                <p class="text-light-600 font-heading font-medium text-sm uppercase tracking-wider">Fondator, Nova Detailing</p>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Drumul Nostru</h2>
+                    <p class="text-light-600 max-w-lg mx-auto">De la primele spalari la un brand premium. Fiecare etapa ne-a facut mai buni.</p>
+                </div>
+
+                <!-- Vertical Timeline -->
+                <div class="relative">
+                    <!-- Timeline vertical line -->
+                    <div class="absolute left-6 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 timeline-line"></div>
+
+                    <!-- Milestone 1: 2009 -->
+                    <div class="relative flex items-start mb-12 sm:mb-16 reveal-left">
+                        <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-light-100 z-10 shadow-gold"></div>
+                        <div class="ml-14 sm:ml-0 sm:w-1/2 sm:pr-12 sm:text-right">
+                            <span class="inline-block text-xs font-heading font-bold text-primary uppercase tracking-widest mb-2">2009</span>
+                            <h3 class="text-lg font-heading font-semibold text-light-950 mb-1">Primele spalari la 13 ani</h3>
+                            <p class="text-sm text-light-600">Pasiunea se naste. Primele masini spalate in curtea casei, cu atentia si dedicarea care aveau sa devina marca inregistrata.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2: 2014 -->
+                    <div class="relative flex items-start mb-12 sm:mb-16 reveal-right">
+                        <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-light-100 z-10 shadow-gold"></div>
+                        <div class="ml-14 sm:ml-auto sm:w-1/2 sm:pl-12">
+                            <span class="inline-block text-xs font-heading font-bold text-primary uppercase tracking-widest mb-2">2014</span>
+                            <h3 class="text-lg font-heading font-semibold text-light-950 mb-1">Primul atelier profesional</h3>
+                            <p class="text-sm text-light-600">Trecerea de la hobby la meserie. Investitie in echipamente profesionale si primii clienti fideli care ne-au validat standardele.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3: 2018 -->
+                    <div class="relative flex items-start mb-12 sm:mb-16 reveal-left">
+                        <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-light-100 z-10 shadow-gold"></div>
+                        <div class="ml-14 sm:ml-0 sm:w-1/2 sm:pr-12 sm:text-right">
+                            <span class="inline-block text-xs font-heading font-bold text-primary uppercase tracking-widest mb-2">2018</span>
+                            <h3 class="text-lg font-heading font-semibold text-light-950 mb-1">500 de masini detailuite</h3>
+                            <p class="text-sm text-light-600">O borna importanta. Certificari internationale obtinute, tehnici avansate de corectie si protectie ceramica stapanite la cel mai inalt nivel.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4: 2022 -->
+                    <div class="relative flex items-start mb-12 sm:mb-16 reveal-right">
+                        <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-light-100 z-10 shadow-gold"></div>
+                        <div class="ml-14 sm:ml-auto sm:w-1/2 sm:pl-12">
+                            <span class="inline-block text-xs font-heading font-bold text-primary uppercase tracking-widest mb-2">2022</span>
+                            <h3 class="text-lg font-heading font-semibold text-light-950 mb-1">Lansarea scolii de detailing</h3>
+                            <p class="text-sm text-light-600">Pasiunea pentru educatie prinde forma. Incepem sa predam cursuri profesionale, impartasind experienta acumulata cu noua generatie de detaileri.</p>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 5: 2025 -->
+                    <div class="relative flex items-start reveal-left">
+                        <div class="absolute left-6 sm:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-primary z-10 shadow-gold-lg ring-4 ring-primary/20"></div>
+                        <div class="ml-14 sm:ml-0 sm:w-1/2 sm:pr-12 sm:text-right">
+                            <span class="inline-block text-xs font-heading font-bold text-primary uppercase tracking-widest mb-2">2025</span>
+                            <h3 class="text-lg font-heading font-semibold text-light-950 mb-1">Publicarea cartii & rebranding</h3>
+                            <p class="text-sm text-light-600">Un an de transformare: publicarea cartii despre detailing, depasirea pragului de 1000 de masini detailuite si nasterea brandului Nova Detailing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 sm:py-28 bg-light-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="w-12 h-0.5 gold-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Valorile Noastre</h2>
+                <p class="text-light-600 max-w-lg mx-auto">Principiile care ne definesc si ne ghideaza in fiecare proiect, de la cel mai simplu la cel mai complex.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Value 1: Excelenta -->
+                <div class="bg-white rounded-xl p-8 shadow-soft hover:shadow-soft-lg transition-shadow duration-300 border border-light-200 text-center group card-hover reveal stagger-1">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Excelenta</h3>
+                    <p class="text-sm text-light-600 leading-relaxed">Nu ne multumim cu "destul de bun". Fiecare masina primeste toata atentia noastra.</p>
+                </div>
+
+                <!-- Value 2: Educatie -->
+                <div class="bg-white rounded-xl p-8 shadow-soft hover:shadow-soft-lg transition-shadow duration-300 border border-light-200 text-center group card-hover reveal stagger-2">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Educatie</h3>
+                    <p class="text-sm text-light-600 leading-relaxed">Impartasim cunostintele acumulate in 17+ ani prin scoala noastra de detailing.</p>
+                </div>
+
+                <!-- Value 3: Pasiune -->
+                <div class="bg-white rounded-xl p-8 shadow-soft hover:shadow-soft-lg transition-shadow duration-300 border border-light-200 text-center group card-hover reveal stagger-3">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Pasiune</h3>
+                    <p class="text-sm text-light-600 leading-relaxed">Detailing-ul nu e doar o meserie — e o arta pe care o practicam cu dedicare.</p>
+                </div>
+
+                <!-- Value 4: Integritate -->
+                <div class="bg-white rounded-xl p-8 shadow-soft hover:shadow-soft-lg transition-shadow duration-300 border border-light-200 text-center group card-hover reveal stagger-4">
+                    <div class="w-14 h-14 mx-auto mb-6 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Integritate</h3>
+                    <p class="text-sm text-light-600 leading-relaxed">Transparenta in preturi, onestitate in evaluare, consecventa in rezultate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers / Stats Section -->
+    <section class="py-16 bg-light-100 border-y border-light-300/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 reveal">
+                <!-- Stat 1: Ani Experienta -->
+                <div class="text-center" x-data="{ count: 0 }" x-init="
+                    let interval = setInterval(() => {
+                        if(count < 17) { count++; } else { clearInterval(interval); }
+                    }, 80)
+                ">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-1" x-text="count + '+'">17+</div>
+                    <div class="text-sm text-light-600 font-heading font-medium">Ani Experienta</div>
+                </div>
+
+                <!-- Stat 2: Masini Detailuite -->
+                <div class="text-center" x-data="{ count: 0 }" x-init="
+                    let target = 1000;
+                    let step = 20;
+                    let interval = setInterval(() => {
+                        if(count < target) { count = Math.min(count + step, target); } else { clearInterval(interval); }
+                    }, 30)
+                ">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+                        </svg>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-1" x-text="count + '+'">1000+</div>
+                    <div class="text-sm text-light-600 font-heading font-medium">Masini Detailuite</div>
+                </div>
+
+                <!-- Stat 3: Rating Google -->
+                <div class="text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-1">4.8</div>
+                    <div class="text-sm text-light-600 font-heading font-medium">Rating Google</div>
+                </div>
+
+                <!-- Stat 4: Absolventi -->
+                <div class="text-center" x-data="{ count: 0 }" x-init="
+                    let interval = setInterval(() => {
+                        if(count < 100) { count += 2; } else { clearInterval(interval); }
+                    }, 30)
+                ">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                        </svg>
+                    </div>
+                    <div class="text-3xl sm:text-4xl font-heading font-bold text-primary mb-1" x-text="count + '+'">100+</div>
+                    <div class="text-sm text-light-600 font-heading font-medium">Absolventi Scoala</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment & Products Section -->
+    <section class="py-20 sm:py-28 bg-light-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="w-12 h-0.5 gold-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Echipamente & Produse Premium</h2>
+                <p class="text-light-600 max-w-2xl mx-auto">Folosim exclusiv produse si echipamente profesionale de top. Fiecare unealta este aleasa cu grija pentru rezultate impecabile.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Card 1: Equipment -->
+                <div class="bg-white rounded-xl p-8 shadow-soft border border-light-200 hover:shadow-soft-lg transition-shadow duration-300 card-hover reveal stagger-1">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Echipamente Profesionale</h3>
+                    <p class="text-sm text-light-600 leading-relaxed mb-4">Lucram exclusiv cu masini de polish Rupes — standardul de aur in industria de detailing la nivel mondial.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Rupes</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">BigFoot</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">LED Inspection</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Products -->
+                <div class="bg-white rounded-xl p-8 shadow-soft border border-light-200 hover:shadow-soft-lg transition-shadow duration-300 card-hover reveal stagger-2">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Produse de Top</h3>
+                    <p class="text-sm text-light-600 leading-relaxed mb-4">Selectam doar produse chimice de cea mai inalta calitate, testate si dovedite in mii de aplicari profesionale.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Koch Chemie</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Gyeon</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">CarPro</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Workspace -->
+                <div class="bg-white rounded-xl p-8 shadow-soft border border-light-200 hover:shadow-soft-lg transition-shadow duration-300 sm:col-span-2 lg:col-span-1 card-hover reveal stagger-3">
+                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-heading font-semibold text-light-950 mb-3">Spatiu Profesional</h3>
+                    <p class="text-sm text-light-600 leading-relaxed mb-4">Atelier dedicat cu iluminare profesionala, climatizare controlata si zona de inspectie — conditii ideale pentru rezultate perfecte.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Iluminare LED</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Climatizat</span>
+                        <span class="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary font-medium">Zona Inspectie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 sm:py-28 bg-light-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center reveal">
+                <div class="w-12 h-0.5 gold-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Vrei sa vezi ce putem face pentru masina ta?</h2>
+                <p class="text-light-600 mb-10 max-w-xl mx-auto">Configureaza pachetul ideal sau contacteaza-ne direct. Suntem aici sa transformam masina ta.</p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="/configurator.html" class="btn-press bg-primary text-white px-8 py-3.5 rounded-md text-base font-heading font-semibold hover:bg-primary-light transition-all duration-200 min-w-[220px] shadow-gold">
+                        Configurator Pret
+                    </a>
+                    <a href="/contact.html" class="btn-press border border-primary/50 text-primary px-8 py-3.5 rounded-md text-base font-heading font-medium hover:bg-primary/10 transition-all duration-200 min-w-[220px]">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light-950 border-t border-light-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <a href="/" class="flex items-center mb-4">
+                        <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="320" height="80">
+                    </a>
+                    <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-light-900 flex items-center justify-center text-light-400 hover:bg-primary/10 hover:text-primary transition-all" aria-label="Instagram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-light-900 flex items-center justify-center text-light-400 hover:bg-primary/10 hover:text-primary transition-all" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-light-900 flex items-center justify-center text-light-400 hover:bg-primary/10 hover:text-primary transition-all" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-light-900 flex items-center justify-center text-light-400 hover:bg-primary/10 hover:text-primary transition-all" aria-label="TikTok"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
+                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
+                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
+                        <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
+                        <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Scoala</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/scoala.html" class="text-light-400 hover:text-primary transition-colors text-sm">Cursuri Detailing</a></li>
+                        <li><a href="/scoala.html#fundamentals" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Fundamentals</a></li>
+                        <li><a href="/scoala.html#advanced" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Advanced</a></li>
+                        <li><a href="/scoala.html#online" class="text-light-400 hover:text-primary transition-colors text-sm">Curs Online</a></li>
+                        <li><a href="/despre.html" class="text-light-400 hover:text-primary transition-colors text-sm">Despre Noi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
+                        <li><a href="mailto:contact@novadetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@novadetailing.ro</a></li>
+                        <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
+                        <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-light-500 text-sm">&copy; 2026 Nova Detailing. Toate drepturile rezervate.</p>
+                <div class="flex space-x-6">
+                    <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
+                    <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script>
+(function() {
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    if (revealEls.length && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
+    var nav = document.getElementById('main-nav');
+    if (nav) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+        }, { passive: true });
+    }
+})();
+</script>
 </body>
 </html>

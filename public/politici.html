@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Politici si Termeni | Ace Detailing</title>
-    <meta name="description" content="Termeni si conditii, politica de confidentialitate si politici de utilizare pentru serviciile Ace Detailing.">
+    <title>Politici si Termeni | Nova Detailing</title>
+    <meta name="description" content="Termeni si conditii, politica de confidentialitate si politici de utilizare pentru serviciile Nova Detailing.">
+    <link rel="canonical" href="https://novadetailing.ro/politici.html">
+    <meta property="og:title" content="Politici si Termeni | Nova Detailing">
+    <meta property="og:description" content="Termeni si conditii, politica de confidentialitate si politici de utilizare Nova Detailing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://novadetailing.ro/politici.html">
+    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="Nova Detailing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Politici si Termeni | Nova Detailing">
+    <meta name="twitter:description" content="Termeni si conditii si politica de confidentialitate Nova Detailing.">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#B8962F">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -43,17 +55,29 @@
     </script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
+        /* Scroll-triggered reveal */
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+        .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+        .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
+        .btn-press { position: relative; overflow: hidden; }
+        .btn-press:active { transform: scale(0.97); }
+        .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
         html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-light-50 text-light-950 font-body">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
+    <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="/index.html" class="flex items-center">
-                    <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                    <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="320" height="80">
                 </a>
                 <div class="md:hidden">
                     <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
@@ -92,7 +116,7 @@
     <!-- Hero Header -->
     <section class="pt-24 pb-12 md:pt-32 md:pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl">
+            <div class="max-w-3xl reveal">
                 <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-light-950 mb-4">Politici si Termeni</h1>
                 <div class="w-20 h-1 bg-primary rounded-full mb-6"></div>
                 <p class="text-light-700 text-lg font-body">Transparenta este importanta pentru noi. Mai jos gasiti toate informatiile privind termenii de utilizare, politica de confidentialitate si conditiile serviciilor noastre.</p>
@@ -119,7 +143,7 @@
                 </aside>
 
                 <!-- Main Content -->
-                <div class="lg:col-span-9 space-y-10">
+                <div class="lg:col-span-9 space-y-10 reveal">
 
                     <!-- Termeni si Conditii -->
                     <article id="termeni" class="bg-light-100 rounded-xl border border-light-300 shadow-soft overflow-hidden">
@@ -129,12 +153,12 @@
                             <div class="space-y-8">
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Acceptarea Termenilor</h3>
-                                    <p class="text-light-700 leading-relaxed">Prin utilizarea serviciilor Ace Detailing, inclusiv a site-ului web, a sistemului de rezervari si a oricarui alt serviciu oferit, acceptati in totalitate prezentii termeni si conditii. Daca nu sunteti de acord cu oricare dintre acesti termeni, va rugam sa nu utilizati serviciile noastre.</p>
+                                    <p class="text-light-700 leading-relaxed">Prin utilizarea serviciilor Nova Detailing, inclusiv a site-ului web, a sistemului de rezervari si a oricarui alt serviciu oferit, acceptati in totalitate prezentii termeni si conditii. Daca nu sunteti de acord cu oricare dintre acesti termeni, va rugam sa nu utilizati serviciile noastre.</p>
                                 </div>
 
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Descrierea Serviciilor</h3>
-                                    <p class="text-light-700 leading-relaxed">Ace Detailing ofera servicii profesionale de detailing auto, incluzand dar fara a se limita la: spalare exterioara si interioara, polish si corectie vopsea, aplicare protectie ceramica, tratamente pentru piele si textile, detailing motor si alte servicii conexe. Detaliile fiecarui serviciu sunt descrise pe paginile dedicate ale site-ului nostru.</p>
+                                    <p class="text-light-700 leading-relaxed">Nova Detailing ofera servicii profesionale de detailing auto, incluzand dar fara a se limita la: spalare exterioara si interioara, polish si corectie vopsea, aplicare protectie ceramica, tratamente pentru piele si textile, detailing motor si alte servicii conexe. Detaliile fiecarui serviciu sunt descrise pe paginile dedicate ale site-ului nostru.</p>
                                 </div>
 
                                 <div>
@@ -149,7 +173,7 @@
 
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Responsabilitatea Clientului</h3>
-                                    <p class="text-light-700 leading-relaxed">Clientul este responsabil pentru declararea corecta a starii vehiculului, inclusiv a eventualelor defecte preexistente ale vopselei, tapiteriei sau altor componente. Vehiculul trebuie ridicat in termen de 24 de ore de la finalizarea serviciului. Ace Detailing nu isi asuma responsabilitatea pentru obiectele personale lasate in vehicul.</p>
+                                    <p class="text-light-700 leading-relaxed">Clientul este responsabil pentru declararea corecta a starii vehiculului, inclusiv a eventualelor defecte preexistente ale vopselei, tapiteriei sau altor componente. Vehiculul trebuie ridicat in termen de 24 de ore de la finalizarea serviciului. Nova Detailing nu isi asuma responsabilitatea pentru obiectele personale lasate in vehicul.</p>
                                 </div>
 
                                 <div>
@@ -206,7 +230,7 @@
                                             <span>Dreptul la portabilitatea datelor</span>
                                         </li>
                                     </ul>
-                                    <p class="text-light-700 mt-3">Pentru exercitarea oricaruia dintre aceste drepturi, va rugam sa ne contactati la <a href="mailto:contact@acedetailing.ro" class="text-primary hover:text-primary-light transition-colors">contact@acedetailing.ro</a>.</p>
+                                    <p class="text-light-700 mt-3">Pentru exercitarea oricaruia dintre aceste drepturi, va rugam sa ne contactati la <a href="mailto:contact@novadetailing.ro" class="text-primary hover:text-primary-light transition-colors">contact@novadetailing.ro</a>.</p>
                                 </div>
 
                                 <div>
@@ -225,7 +249,7 @@
                             <div class="space-y-8">
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Inscriere si Plata</h3>
-                                    <p class="text-light-700 leading-relaxed">Inscrierea la cursurile Scolii de Detailing Ace se realizeaza prin completarea formularului de inscriere si achitarea unui avans de 50% din valoarea cursului. Restul sumei trebuie achitat integral inainte de data de incepere a cursului. Locul in cadrul cursului este garantat doar dupa confirmarea platii avansului.</p>
+                                    <p class="text-light-700 leading-relaxed">Inscrierea la cursurile Scolii de Detailing Nova se realizeaza prin completarea formularului de inscriere si achitarea unui avans de 50% din valoarea cursului. Restul sumei trebuie achitat integral inainte de data de incepere a cursului. Locul in cadrul cursului este garantat doar dupa confirmarea platii avansului.</p>
                                 </div>
 
                                 <div>
@@ -240,12 +264,12 @@
 
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Certificat de Absolvire</h3>
-                                    <p class="text-light-700 leading-relaxed">Certificatul de absolvire Ace Detailing se acorda la finalizarea cu succes a cursului si trecerea evaluarii practice. Evaluarea practica presupune demonstrarea competentelor dobandite in cadrul cursului. In cazul nepromovarii evaluarii, cursantul poate sustine o a doua evaluare gratuita in termen de 30 de zile.</p>
+                                    <p class="text-light-700 leading-relaxed">Certificatul de absolvire Nova Detailing se acorda la finalizarea cu succes a cursului si trecerea evaluarii practice. Evaluarea practica presupune demonstrarea competentelor dobandite in cadrul cursului. In cazul nepromovarii evaluarii, cursantul poate sustine o a doua evaluare gratuita in termen de 30 de zile.</p>
                                 </div>
 
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Proprietate Intelectuala</h3>
-                                    <p class="text-light-700 leading-relaxed">Toate materialele de curs, inclusiv prezentarile, documentatia scrisa, inregistrarile video si orice alte resurse educationale, raman proprietatea exclusiva a Ace Detailing. Este interzisa reproducerea, distribuirea sau partajarea acestor materiale fara acordul scris al Ace Detailing. Incalcarea acestei prevederi poate duce la actiuni legale.</p>
+                                    <p class="text-light-700 leading-relaxed">Toate materialele de curs, inclusiv prezentarile, documentatia scrisa, inregistrarile video si orice alte resurse educationale, raman proprietatea exclusiva a Nova Detailing. Este interzisa reproducerea, distribuirea sau partajarea acestor materiale fara acordul scris al Nova Detailing. Incalcarea acestei prevederi poate duce la actiuni legale.</p>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +298,7 @@
 
                                 <div>
                                     <h3 class="text-lg font-heading font-semibold text-primary-light mb-3">Ajustarea Preturilor</h3>
-                                    <p class="text-light-700 leading-relaxed">Ace Detailing isi rezerva dreptul de a ajusta preturile abonamentelor anual. Orice modificare de pret va fi comunicata cu cel putin 30 de zile inainte de aplicarea noului tarif. In cazul unei majorari de pret, abonatul are dreptul de a anula abonamentul fara penalitati pana la data intrarii in vigoare a noului tarif.</p>
+                                    <p class="text-light-700 leading-relaxed">Nova Detailing isi rezerva dreptul de a ajusta preturile abonamentelor anual. Orice modificare de pret va fi comunicata cu cel putin 30 de zile inainte de aplicarea noului tarif. In cazul unei majorari de pret, abonatul are dreptul de a anula abonamentul fara penalitati pana la data intrarii in vigoare a noului tarif.</p>
                                 </div>
                             </div>
                         </div>
@@ -296,7 +320,7 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="sm:col-span-2 lg:col-span-1">
                     <a href="/" class="flex items-center mb-4">
-                        <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                        <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="320" height="80">
                     </a>
                     <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
                 </div>
@@ -325,14 +349,14 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
                     <ul class="space-y-3 text-sm">
                         <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
-                        <li><a href="mailto:contact@acedetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@acedetailing.ro</a></li>
+                        <li><a href="mailto:contact@novadetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@novadetailing.ro</a></li>
                         <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
                         <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-light-500 text-sm">&copy; 2026 Ace Detailing. Toate drepturile rezervate.</p>
+                <p class="text-light-500 text-sm">&copy; 2026 Nova Detailing. Toate drepturile rezervate.</p>
                 <div class="flex space-x-6">
                     <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
                     <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
@@ -340,6 +364,27 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    (function() {
+        var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+        if (revealEls.length && 'IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+            revealEls.forEach(function(el) { observer.observe(el); });
+        } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
+        var nav = document.getElementById('main-nav');
+        if (nav) {
+            var ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+            }, { passive: true });
+        }
+    })();
+    </script>
 
 </body>
 </html>

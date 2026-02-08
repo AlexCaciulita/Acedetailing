@@ -1,4 +1,4 @@
-// Ace Detailing - Shared services data for Servicii, Configurator, and Rezervare pages
+// Nova Detailing - Shared services data for Servicii, Configurator, and Rezervare pages
 
 export const packages = [
     {

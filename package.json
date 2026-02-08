@@ -1,7 +1,7 @@
 {
-  "name": "ace-detailing",
+  "name": "nova-detailing",
   "version": "1.0.0",
-  "description": "Website premium pentru Ace Detailing - Auto Detailing & Scoala de Detailing",
+  "description": "Website premium pentru Nova Detailing - Auto Detailing & Scoala de Detailing",
   "type": "module",
   "main": "public/index.html",
   "scripts": {
@@ -20,6 +20,6 @@
     "detailing-school",
     "bucharest"
   ],
-  "author": "Ace Detailing",
+  "author": "Nova Detailing",
   "license": "ISC"
 }

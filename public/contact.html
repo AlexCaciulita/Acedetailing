@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Ace Detailing</title>
-    <meta name="description" content="Contacteaza Ace Detailing pentru servicii premium de auto detailing in Bucuresti. Telefon, email, adresa si program.">
+    <title>Contact | Nova Detailing</title>
+    <meta name="description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti. Telefon, email, adresa si program.">
+    <link rel="canonical" href="https://novadetailing.ro/contact.html">
+    <meta property="og:title" content="Contact | Nova Detailing">
+    <meta property="og:description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://novadetailing.ro/contact.html">
+    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="Nova Detailing">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Nova Detailing">
+    <meta name="twitter:description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti.">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#B8962F">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -42,15 +54,49 @@
     }
     </script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Nova Detailing",
+      "description": "Servicii premium de auto detailing in Bucuresti.",
+      "url": "https://novadetailing.ro",
+      "telephone": "+40742122222",
+      "email": "contact@novadetailing.ro",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bucuresti",
+        "addressCountry": "RO"
+      },
+      "image": "https://novadetailing.ro/assets/rs=h_1000,cg_true.webp",
+      "priceRange": "800 - 6000 RON",
+      "areaServed": { "@type": "City", "name": "Bucuresti" }
+    }
+    </script>
+    <style>
+    /* Scroll-triggered reveal */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .reveal-scale.revealed { opacity: 1; transform: scale(1); }
+    .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
+    .btn-press { position: relative; overflow: hidden; }
+    .btn-press:active { transform: scale(0.97); }
+    .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+    .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
+    html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-light-50 text-light-950 font-body">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
+    <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="/index.html" class="flex items-center">
-                    <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                    <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="320" height="80">
                 </a>
                 <div class="md:hidden">
                     <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
@@ -100,7 +146,7 @@
     <!-- Contact Info Cards -->
     <section class="pb-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
                 <!-- Phone -->
                 <a href="tel:+40742122222" class="group bg-white border border-light-300 rounded-xl p-6 text-center hover:border-primary/30 hover:shadow-gold transition-all duration-300">
                     <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -113,14 +159,14 @@
                 </a>
 
                 <!-- Email -->
-                <a href="mailto:contact@acedetailing.ro" class="group bg-white border border-light-300 rounded-xl p-6 text-center hover:border-primary/30 hover:shadow-gold transition-all duration-300">
+                <a href="mailto:contact@novadetailing.ro" class="group bg-white border border-light-300 rounded-xl p-6 text-center hover:border-primary/30 hover:shadow-gold transition-all duration-300">
                     <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
                         <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                     </div>
                     <h3 class="text-sm font-heading font-semibold text-light-950 uppercase tracking-wider mb-2">Email</h3>
-                    <p class="text-primary font-medium">contact@acedetailing.ro</p>
+                    <p class="text-primary font-medium">contact@novadetailing.ro</p>
                 </a>
 
                 <!-- Location -->
@@ -154,87 +200,206 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12">
 
-                <!-- Contact Form -->
-                <div x-data="{
-                    formData: { name: '', email: '', phone: '', subject: '', message: '' },
-                    submitted: false,
-                    loading: false,
-                    submitForm() {
-                        this.loading = true;
+                <!-- Forms Column (Contact + Enrollment tabs) -->
+                <div class="reveal" x-data="{
+                    activeTab: new URLSearchParams(window.location.search).get('curs') ? 'enrollment' : 'contact',
+                    // Contact form state
+                    contactData: { name: '', email: '', phone: '', subject: '', message: '' },
+                    contactSubmitted: false,
+                    contactLoading: false,
+                    submitContact() {
+                        this.contactLoading = true;
                         setTimeout(() => {
-                            this.loading = false;
-                            this.submitted = true;
+                            this.contactLoading = false;
+                            this.contactSubmitted = true;
                         }, 1500);
+                    },
+                    // Enrollment form state
+                    enrollData: {
+                        name: '',
+                        phone: '',
+                        email: '',
+                        course: new URLSearchParams(window.location.search).get('curs') || '',
+                        experience: '',
+                        notes: ''
+                    },
+                    enrollSubmitted: false,
+                    enrollLoading: false,
+                    enrollError: '',
+                    enrollmentId: '',
+                    async submitEnrollment() {
+                        this.enrollLoading = true;
+                        this.enrollError = '';
+                        try {
+                            const res = await fetch('/api/create-enrollment', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(this.enrollData)
+                            });
+                            const data = await res.json();
+                            if (data.success) {
+                                this.enrollmentId = data.enrollmentId;
+                                this.enrollSubmitted = true;
+                            } else {
+                                this.enrollError = data.message || 'A aparut o eroare. Incercati din nou.';
+                            }
+                        } catch (e) {
+                            this.enrollError = 'Eroare de conexiune. Incercati din nou sau contactati-ne telefonic.';
+                        } finally {
+                            this.enrollLoading = false;
+                        }
+                    },
+                    courseLabels: {
+                        fundamentals: 'Fundamentals (5 zile) — 4.500 lei',
+                        advanced: 'Advanced (3 zile) — 3.500 lei',
+                        online: 'Online (self-paced) — 1.500 lei'
                     }
                 }">
-                    <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Trimite-ne un mesaj</h2>
-                    <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
-                    <p class="text-light-700 text-sm mb-8">Completeaza formularul de mai jos si te vom contacta in cel mai scurt timp posibil.</p>
-
-                    <!-- Success State -->
-                    <div x-show="submitted" x-transition class="bg-white border border-primary/30 rounded-xl p-8 text-center">
-                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-heading font-semibold text-light-950 mb-2">Mesaj trimis cu succes!</h3>
-                        <p class="text-light-700 text-sm mb-6">Iti multumim pentru mesaj. Te vom contacta in cel mai scurt timp.</p>
-                        <button @click="submitted = false; formData = { name: '', email: '', phone: '', subject: '', message: '' }" class="text-primary hover:text-primary-light transition-colors text-sm font-heading font-medium">Trimite un alt mesaj</button>
+                    <!-- Tab Switcher -->
+                    <div class="flex border-b border-light-300 mb-8">
+                        <button @click="activeTab = 'contact'" :class="activeTab === 'contact' ? 'border-primary text-primary' : 'border-transparent text-light-600 hover:text-light-800'" class="pb-3 px-4 text-sm font-heading font-semibold border-b-2 transition-colors">
+                            Mesaj
+                        </button>
+                        <button @click="activeTab = 'enrollment'" :class="activeTab === 'enrollment' ? 'border-primary text-primary' : 'border-transparent text-light-600 hover:text-light-800'" class="pb-3 px-4 text-sm font-heading font-semibold border-b-2 transition-colors">
+                            Inscriere Curs
+                        </button>
                     </div>
 
-                    <!-- Form -->
-                    <form x-show="!submitted" @submit.prevent="submitForm()" class="space-y-5">
-                        <!-- Name -->
-                        <div>
-                            <label for="name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
-                            <input type="text" id="name" x-model="formData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                    <!-- ===== CONTACT TAB ===== -->
+                    <div x-show="activeTab === 'contact'" x-transition>
+                        <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Trimite-ne un mesaj</h2>
+                        <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
+                        <p class="text-light-700 text-sm mb-8">Completeaza formularul de mai jos si te vom contacta in cel mai scurt timp posibil.</p>
+
+                        <!-- Success State -->
+                        <div x-show="contactSubmitted" x-transition class="bg-white border border-primary/30 rounded-xl p-8 text-center">
+                            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-heading font-semibold text-light-950 mb-2">Mesaj trimis cu succes!</h3>
+                            <p class="text-light-700 text-sm mb-6">Iti multumim pentru mesaj. Te vom contacta in cel mai scurt timp.</p>
+                            <button @click="contactSubmitted = false; contactData = { name: '', email: '', phone: '', subject: '', message: '' }" class="text-primary hover:text-primary-light transition-colors text-sm font-heading font-medium">Trimite un alt mesaj</button>
                         </div>
 
-                        <!-- Email + Phone -->
-                        <div class="grid sm:grid-cols-2 gap-5">
+                        <!-- Form -->
+                        <form x-show="!contactSubmitted" @submit.prevent="submitContact()" class="space-y-5">
                             <div>
-                                <label for="email" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Email <span class="text-primary">*</span></label>
-                                <input type="email" id="email" x-model="formData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                <label for="contact-name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
+                                <input type="text" id="contact-name" x-model="contactData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Email <span class="text-primary">*</span></label>
+                                    <input type="email" id="contact-email" x-model="contactData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                </div>
+                                <div>
+                                    <label for="contact-phone" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Telefon</label>
+                                    <input type="tel" id="contact-phone" x-model="contactData.phone" placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                </div>
                             </div>
                             <div>
-                                <label for="phone" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Telefon</label>
-                                <input type="tel" id="phone" x-model="formData.phone" placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                <label for="contact-subject" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Subiect <span class="text-primary">*</span></label>
+                                <select id="contact-subject" x-model="contactData.subject" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                    <option value="" disabled selected class="text-light-600">Selecteaza subiectul</option>
+                                    <option value="programare">Programare Detailing</option>
+                                    <option value="pret">Cerere de Pret</option>
+                                    <option value="scoala">Scoala de Detailing</option>
+                                    <option value="colaborare">Colaborare / Parteneriat</option>
+                                    <option value="altele">Altele</option>
+                                </select>
                             </div>
+                            <div>
+                                <label for="contact-message" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Mesaj <span class="text-primary">*</span></label>
+                                <textarea id="contact-message" x-model="contactData.message" required rows="5" placeholder="Descrie pe scurt cum te putem ajuta..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" :disabled="contactLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                                <svg x-show="contactLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span x-text="contactLoading ? 'Se trimite...' : 'Trimite mesajul'"></span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- ===== ENROLLMENT TAB ===== -->
+                    <div x-show="activeTab === 'enrollment'" x-transition>
+                        <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Inscriere Curs Detailing</h2>
+                        <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
+                        <p class="text-light-700 text-sm mb-8">Completeaza formularul pentru a te inscrie la cursul dorit. Te vom contacta pentru confirmarea locului si detalii de plata.</p>
+
+                        <!-- Success State -->
+                        <div x-show="enrollSubmitted" x-transition class="bg-white border border-primary/30 rounded-xl p-8 text-center">
+                            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-heading font-semibold text-light-950 mb-2">Inscriere trimisa cu succes!</h3>
+                            <p class="text-light-700 text-sm mb-2">ID inscriere: <span class="font-mono text-primary" x-text="enrollmentId"></span></p>
+                            <p class="text-light-700 text-sm mb-6">Te vom contacta in cel mai scurt timp pentru confirmare si detalii.</p>
+                            <button @click="enrollSubmitted = false; enrollData = { name: '', phone: '', email: '', course: '', experience: '', notes: '' }; enrollmentId = ''" class="text-primary hover:text-primary-light transition-colors text-sm font-heading font-medium">Inscriere noua</button>
                         </div>
 
-                        <!-- Subject -->
-                        <div>
-                            <label for="subject" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Subiect <span class="text-primary">*</span></label>
-                            <select id="subject" x-model="formData.subject" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
-                                <option value="" disabled selected class="text-light-600">Selecteaza subiectul</option>
-                                <option value="programare">Programare Detailing</option>
-                                <option value="pret">Cerere de Pret</option>
-                                <option value="scoala">Scoala de Detailing</option>
-                                <option value="colaborare">Colaborare / Parteneriat</option>
-                                <option value="altele">Altele</option>
-                            </select>
+                        <!-- Error Message -->
+                        <div x-show="enrollError" x-transition class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4 mb-6 text-sm">
+                            <span x-text="enrollError"></span>
                         </div>
 
-                        <!-- Message -->
-                        <div>
-                            <label for="message" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Mesaj <span class="text-primary">*</span></label>
-                            <textarea id="message" x-model="formData.message" required rows="5" placeholder="Descrie pe scurt cum te putem ajuta..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors resize-none"></textarea>
-                        </div>
-
-                        <!-- Submit -->
-                        <button type="submit" :disabled="loading" class="w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
-                            <svg x-show="loading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            <span x-text="loading ? 'Se trimite...' : 'Trimite mesajul'"></span>
-                        </button>
-                    </form>
+                        <!-- Form -->
+                        <form x-show="!enrollSubmitted" @submit.prevent="submitEnrollment()" class="space-y-5">
+                            <div>
+                                <label for="enroll-name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
+                                <input type="text" id="enroll-name" x-model="enrollData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="enroll-email" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Email <span class="text-primary">*</span></label>
+                                    <input type="email" id="enroll-email" x-model="enrollData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                </div>
+                                <div>
+                                    <label for="enroll-phone" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Telefon <span class="text-primary">*</span></label>
+                                    <input type="tel" id="enroll-phone" x-model="enrollData.phone" required placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="enroll-course" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Curs dorit <span class="text-primary">*</span></label>
+                                <select id="enroll-course" x-model="enrollData.course" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                    <option value="" disabled class="text-light-600">Selecteaza cursul</option>
+                                    <option value="fundamentals">Fundamentals (5 zile) — 4.500 lei</option>
+                                    <option value="advanced">Advanced (3 zile) — 3.500 lei</option>
+                                    <option value="online">Online (self-paced) — 1.500 lei</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="enroll-experience" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nivel experienta <span class="text-primary">*</span></label>
+                                <select id="enroll-experience" x-model="enrollData.experience" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                    <option value="" disabled selected class="text-light-600">Selecteaza nivelul</option>
+                                    <option value="incepator">Incepator — fara experienta anterioara</option>
+                                    <option value="intermediar">Intermediar — cunostinte de baza</option>
+                                    <option value="avansat">Avansat — experienta in detailing</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="enroll-notes" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Informatii suplimentare</label>
+                                <textarea id="enroll-notes" x-model="enrollData.notes" rows="4" placeholder="Spune-ne mai mult despre obiectivele tale sau intrebari pe care le ai..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors resize-none"></textarea>
+                            </div>
+                            <button type="submit" :disabled="enrollLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                                <svg x-show="enrollLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span x-text="enrollLoading ? 'Se trimite inscrierea...' : 'Trimite inscrierea'"></span>
+                            </button>
+                            <p class="text-light-600 text-xs text-center">Prin trimiterea formularului, accepti <a href="/politici.html" class="text-primary hover:underline">termenii si conditiile</a>.</p>
+                        </form>
+                    </div>
                 </div>
 
                 <!-- Map + Business Details -->
-                <div class="space-y-8">
+                <div class="space-y-8 reveal">
                     <div>
                         <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Unde ne gasesti</h2>
                         <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
@@ -294,7 +459,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-sm font-medium text-light-950">Email</p>
-                                    <a href="mailto:contact@acedetailing.ro" class="text-sm text-primary hover:text-primary-light transition-colors">contact@acedetailing.ro</a>
+                                    <a href="mailto:contact@novadetailing.ro" class="text-sm text-primary hover:text-primary-light transition-colors">contact@novadetailing.ro</a>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +482,7 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="sm:col-span-2 lg:col-span-1">
                     <a href="/" class="flex items-center mb-4">
-                        <img src="/assets/logo.svg" alt="Ace Detailing" class="h-8 w-auto">
+                        <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="320" height="80">
                     </a>
                     <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
                 </div>
@@ -346,14 +511,14 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Contact</h3>
                     <ul class="space-y-3 text-sm">
                         <li><a href="tel:+40742122222" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+40 742 122 222</a></li>
-                        <li><a href="mailto:contact@acedetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@acedetailing.ro</a></li>
+                        <li><a href="mailto:contact@novadetailing.ro" class="flex items-center gap-2 text-light-400 hover:text-primary transition-colors"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>contact@novadetailing.ro</a></li>
                         <li class="flex items-start gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Bucuresti, Romania</li>
                         <li class="flex items-center gap-2 text-light-400"><svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>L-V: 8-18 | S: 8-16</li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-light-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-light-500 text-sm">&copy; 2026 Ace Detailing. Toate drepturile rezervate.</p>
+                <p class="text-light-500 text-sm">&copy; 2026 Nova Detailing. Toate drepturile rezervate.</p>
                 <div class="flex space-x-6">
                     <a href="/politici.html" class="text-light-500 hover:text-primary transition-colors text-sm">Termeni & Conditii</a>
                     <a href="/politici.html#confidentialitate" class="text-light-500 hover:text-primary transition-colors text-sm">Confidentialitate</a>
@@ -362,5 +527,25 @@
         </div>
     </footer>
 
+<script>
+(function() {
+    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    if (revealEls.length && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function(el) { observer.observe(el); });
+    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
+    var nav = document.getElementById('main-nav');
+    if (nav) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
+        }, { passive: true });
+    }
+})();
+</script>
 </body>
 </html>

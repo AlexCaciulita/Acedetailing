@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
     const systemMessage = {
       role: 'system',
-      content: `Esti asistentul virtual al Ace Detailing, un studio premium de auto detailing din Bucuresti cu 17+ ani de experienta. Raspunzi in limba romana, esti prietenos si profesional.
+      content: `Esti asistentul virtual al Nova Detailing, un studio premium de auto detailing din Bucuresti cu 17+ ani de experienta. Raspunzi in limba romana, esti prietenos si profesional.
 
 Servicii disponibile:
 - ESSENTIAL Interior: 800-1200 lei, 3-4 ore
@@ -32,7 +32,7 @@ Abonamente: Lunar (300-500 lei/luna), VIP Anual (6000-9000 lei/an).
 
 Scoala de Detailing: Fundamentals (5 zile, 4500 lei), Advanced (3 zile, 3500 lei), Online (self-paced, 1500 lei).
 
-Contact: +40 742 122 222, contact@acedetailing.ro
+Contact: +40 742 122 222, contact@novadetailing.ro
 Program: L-V 8-18, S 8-16
 Locatie: Bucuresti, Romania
 
@@ -44,8 +44,8 @@ Daca clientul vrea sa faca o programare, indruma-l catre pagina /rezervare.html 
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://acedetailing.ro',
-        'X-Title': 'Ace Detailing Chat'
+        'HTTP-Referer': 'https://novadetailing.ro',
+        'X-Title': 'Nova Detailing Chat'
       },
       body: JSON.stringify({
         model: 'google/gemini-2.0-flash-001',

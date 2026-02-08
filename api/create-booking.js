@@ -69,11 +69,11 @@ ${bookingInfo.notes ? `NOTIȚE:\n${bookingInfo.notes}` : ''}
 Plata se va face la fața locului.
 `;
 
-    const customerEmailSubject = 'Confirmare rezervare - Ace Detailing';
+    const customerEmailSubject = 'Confirmare rezervare - Nova Detailing';
     const customerEmailBody = `
 Bună ziua ${bookingInfo.name},
 
-Îți mulțumim pentru rezervarea făcută la Ace Detailing!
+Îți mulțumim pentru rezervarea făcută la Nova Detailing!
 
 DETALII REZERVARE:
 - Data: ${bookingInfo.date}
@@ -89,15 +89,15 @@ Plata se va face la fața locului (numerar sau card).
 
 Dacă ai întrebări sau dorești să modifici rezervarea, te rugăm să ne contactezi:
 - Telefon: +40 742 122 222
-- Email: office@acedetailing.ro
+- Email: office@novadetailing.ro
 
 Cu stimă,
-Echipa Ace Detailing
+Echipa Nova Detailing
 Excelenta in fiecare detaliu.
 `;
 
     console.log('=== EMAILS TO SEND ===');
-    console.log('Business Email To: office@acedetailing.ro');
+    console.log('Business Email To: office@novadetailing.ro');
     console.log('Customer Email To:', bookingInfo.email);
     console.log('Subject:', emailSubject);
     console.log('======================');
@@ -111,13 +111,13 @@ Excelenta in fiecare detaliu.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'rezervari@acedetailing.ro',
-            to: 'office@acedetailing.ro',
+            from: 'rezervari@novadetailing.ro',
+            to: 'office@novadetailing.ro',
             subject: emailSubject,
             text: emailBody
           })
         });
-        console.log('Business email sent successfully to office@acedetailing.ro');
+        console.log('Business email sent successfully to office@novadetailing.ro');
       } catch (emailError) {
         console.error('Failed to send business email:', emailError);
       }
@@ -130,7 +130,7 @@ Excelenta in fiecare detaliu.
             Authorization: `Bearer ${process.env.EMAIL_API_KEY}`
           },
           body: JSON.stringify({
-            from: 'rezervari@acedetailing.ro',
+            from: 'rezervari@novadetailing.ro',
             to: bookingInfo.email,
             subject: customerEmailSubject,
             text: customerEmailBody
@@ -142,7 +142,7 @@ Excelenta in fiecare detaliu.
       }
     } else {
       console.log('=== EMAIL CONTENT (Business) ===');
-      console.log('To: office@acedetailing.ro');
+      console.log('To: office@novadetailing.ro');
       console.log('Subject:', emailSubject);
       console.log('Body:', emailBody);
       console.log('===============================');

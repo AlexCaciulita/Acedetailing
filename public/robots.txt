@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://acedetailing.ro/sitemap.xml
+Sitemap: https://novadetailing.ro/sitemap.xml
 
 # Block API endpoints
 Disallow: /api/
