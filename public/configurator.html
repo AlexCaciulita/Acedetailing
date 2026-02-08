@@ -94,7 +94,7 @@
                     <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="360" height="50">
                 </a>
                 <div class="md:hidden">
-                    <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+                    <button @click="open = !open" class="p-2 text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -147,10 +147,10 @@
     <!-- Configurator -->
     <section class="py-16 bg-light-50" x-data="configurator()" x-cloak>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
                 <!-- Configuration Panel -->
-                <div class="lg:col-span-2 space-y-8">
+                <div class="md:col-span-1 lg:col-span-2 space-y-8">
 
                     <!-- Step 1: Car Size -->
                     <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
@@ -327,7 +327,7 @@
     <!-- Footer -->
     <footer class="bg-light-950 border-t border-light-300 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="sm:col-span-2 lg:col-span-1">
                     <a href="/" class="flex items-center mb-4">
                         <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="360" height="50">

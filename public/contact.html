@@ -99,7 +99,7 @@
                     <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" width="360" height="50">
                 </a>
                 <div class="md:hidden">
-                    <button @click="open = !open" class="text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
+                    <button @click="open = !open" class="p-2 text-light-700 hover:text-primary focus:outline-none focus:text-primary transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -287,21 +287,21 @@
                         <form x-show="!contactSubmitted" @submit.prevent="submitContact()" class="space-y-5">
                             <div>
                                 <label for="contact-name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
-                                <input type="text" id="contact-name" x-model="contactData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                <input type="text" id="contact-name" x-model="contactData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                             </div>
                             <div class="grid sm:grid-cols-2 gap-5">
                                 <div>
                                     <label for="contact-email" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Email <span class="text-primary">*</span></label>
-                                    <input type="email" id="contact-email" x-model="contactData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                    <input type="email" id="contact-email" x-model="contactData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                                 </div>
                                 <div>
                                     <label for="contact-phone" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Telefon</label>
-                                    <input type="tel" id="contact-phone" x-model="contactData.phone" placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                    <input type="tel" id="contact-phone" x-model="contactData.phone" placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                                 </div>
                             </div>
                             <div>
                                 <label for="contact-subject" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Subiect <span class="text-primary">*</span></label>
-                                <select id="contact-subject" x-model="contactData.subject" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                <select id="contact-subject" x-model="contactData.subject" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
                                     <option value="" disabled selected class="text-light-600">Selecteaza subiectul</option>
                                     <option value="programare">Programare Detailing</option>
                                     <option value="pret">Cerere de Pret</option>
@@ -312,7 +312,7 @@
                             </div>
                             <div>
                                 <label for="contact-message" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Mesaj <span class="text-primary">*</span></label>
-                                <textarea id="contact-message" x-model="contactData.message" required rows="5" placeholder="Descrie pe scurt cum te putem ajuta..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors resize-none"></textarea>
+                                <textarea id="contact-message" x-model="contactData.message" required rows="5" placeholder="Descrie pe scurt cum te putem ajuta..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors resize-none"></textarea>
                             </div>
                             <button type="submit" :disabled="contactLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                 <svg x-show="contactLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
@@ -352,21 +352,21 @@
                         <form x-show="!enrollSubmitted" @submit.prevent="submitEnrollment()" class="space-y-5">
                             <div>
                                 <label for="enroll-name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
-                                <input type="text" id="enroll-name" x-model="enrollData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                <input type="text" id="enroll-name" x-model="enrollData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                             </div>
                             <div class="grid sm:grid-cols-2 gap-5">
                                 <div>
                                     <label for="enroll-email" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Email <span class="text-primary">*</span></label>
-                                    <input type="email" id="enroll-email" x-model="enrollData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                    <input type="email" id="enroll-email" x-model="enrollData.email" required placeholder="ion@email.com" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                                 </div>
                                 <div>
                                     <label for="enroll-phone" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Telefon <span class="text-primary">*</span></label>
-                                    <input type="tel" id="enroll-phone" x-model="enrollData.phone" required placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors">
+                                    <input type="tel" id="enroll-phone" x-model="enrollData.phone" required placeholder="+40 7XX XXX XXX" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
                                 </div>
                             </div>
                             <div>
                                 <label for="enroll-course" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Curs dorit <span class="text-primary">*</span></label>
-                                <select id="enroll-course" x-model="enrollData.course" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                <select id="enroll-course" x-model="enrollData.course" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
                                     <option value="" disabled class="text-light-600">Selecteaza cursul</option>
                                     <option value="fundamentals">Fundamentals (5 zile) — 4.500 lei</option>
                                     <option value="advanced">Advanced (3 zile) — 3.500 lei</option>
@@ -375,7 +375,7 @@
                             </div>
                             <div>
                                 <label for="enroll-experience" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nivel experienta <span class="text-primary">*</span></label>
-                                <select id="enroll-experience" x-model="enrollData.experience" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
+                                <select id="enroll-experience" x-model="enrollData.experience" required class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23808080%22 stroke-width=%222%22%3E%3Cpath d=%22M6 9l6 6 6-6%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 20px;">
                                     <option value="" disabled selected class="text-light-600">Selecteaza nivelul</option>
                                     <option value="incepator">Incepator — fara experienta anterioara</option>
                                     <option value="intermediar">Intermediar — cunostinte de baza</option>
@@ -384,7 +384,7 @@
                             </div>
                             <div>
                                 <label for="enroll-notes" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Informatii suplimentare</label>
-                                <textarea id="enroll-notes" x-model="enrollData.notes" rows="4" placeholder="Spune-ne mai mult despre obiectivele tale sau intrebari pe care le ai..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-colors resize-none"></textarea>
+                                <textarea id="enroll-notes" x-model="enrollData.notes" rows="4" placeholder="Spune-ne mai mult despre obiectivele tale sau intrebari pe care le ai..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors resize-none"></textarea>
                             </div>
                             <button type="submit" :disabled="enrollLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                 <svg x-show="enrollLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
@@ -479,7 +479,7 @@
     <!-- Footer -->
     <footer class="bg-light-950 border-t border-light-300 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 <div class="sm:col-span-2 lg:col-span-1">
                     <a href="/" class="flex items-center mb-4">
                         <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="360" height="50">
