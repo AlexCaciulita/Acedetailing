@@ -2,50 +2,52 @@
 
 export const packages = [
     {
-        id: 'essential-interior',
-        name: 'ESSENTIAL Interior',
-        tier: 'essential',
-        priceRange: { min: 800, max: 1200 },
-        duration: '3-4 ore',
+        id: 'detailing-interior',
+        name: 'Detailing Interior Profesional',
+        tier: 'profesional',
+        classPrices: { mica: 1800, medie: 1900, mare: 2400, suv: 2600 },
+        priceRange: { min: 1800, max: 2600 },
+        duration: '2 zile',
         image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
-        shortDescription: 'Curatare completa a interiorului cu atentie la fiecare detaliu.',
+        shortDescription: 'Detailing complet al interiorului cu tratamente avansate pentru piele si protectie UV.',
         included: [
-            'Aspirare completa (scaune, covorase, portbagaj)',
-            'Curatare si degresare plastic/vinil',
-            'Curatare geamuri interior',
-            'Curatare bord si consola centrala',
-            'Dezinfectare cu ozon',
-            'Parfumare profesionala',
-            'Curatare praguri usi'
+            'Aspirare profesionala completa',
+            'Curatare profunda tapiterie textila/piele',
+            'Curatare si igienizare mochete',
+            'Curatare plafon, bord, consola centrala, fete de usi',
+            'Curatare centuri, sine scaune, balamale usi, chedere',
+            'Detailing complet portbagaj',
+            'Curatare display-uri si suprafete sensibile',
+            'Tratamente avansate pentru piele (curatare, hidratare, protectie)',
+            'Protectie UV plasticele interioare (finisaj natural OEM)',
+            'Revitalizare chedere si elemente elastice'
         ],
-        notIncluded: [
-            'Curatare tapiterie cu extractie',
-            'Tratament piele',
-            'Curatare plafon'
-        ]
+        notIncluded: [],
+        excludedAddons: ['tratament-piele', 'curatare-tapiterie']
     },
     {
-        id: 'essential-exterior',
-        name: 'ESSENTIAL Exterior',
-        tier: 'essential',
-        priceRange: { min: 800, max: 1200 },
-        duration: '3-4 ore',
+        id: 'corectie-lac',
+        name: 'Corectie Lac Profesionala',
+        tier: 'profesional',
+        classPrices: { mica: 2200, medie: 2800, mare: 3200, suv: 3500 },
+        priceRange: { min: 2200, max: 3500 },
+        duration: '2-3 zile',
         image: '/assets/car_detailing_carefree_arizona.webp',
-        shortDescription: 'Spalare profesionala si protectie de baza pentru exterior.',
+        shortDescription: 'Corectie controlata a lacului cu inspectie si finisare profesionala.',
         included: [
-            'Pre-spalare si spalare metoda 2-bucket',
-            'Decontaminare chimica (iron remover, tar remover)',
-            'Curatare jante si anvelope',
-            'Uscare profesionala cu aer',
-            'Aplicare ceara sau sealant',
-            'Dressing anvelope',
-            'Curatare geamuri exterior'
+            'Spalare profesionala (metoda celor doua galeti)',
+            'Prespalare cu spuma activa + spalare manuala',
+            'Curatare jante si carenaje',
+            'Decontaminare chimica si mecanica',
+            'Inspectia vopselei pentru defecte',
+            'Curatare zone sensibile (muchii, embleme, ornamente)',
+            'Corectie controlata lac (zgarieturi, holograme, defecte vizibile)',
+            'Finisare pentru uniformizare, claritate si profunzime culoare',
+            'Inspectie finala'
         ],
-        notIncluded: [
-            'Polish corectiv',
-            'Protectie ceramica',
-            'Decontaminare cu clay bar'
-        ]
+        notIncluded: [],
+        excludedAddons: ['corectie-vopsea'],
+        note: 'Corectia lacului se executa doar impreuna cu o protectie ulterioara (hidrofoba, ceramica sau PPF).'
     },
     {
         id: 'premium-complet',
@@ -57,8 +59,8 @@ export const packages = [
         shortDescription: 'Interior + Exterior complet cu polish si protectie ceramica.',
         popular: true,
         included: [
-            'Tot din ESSENTIAL Interior',
-            'Tot din ESSENTIAL Exterior',
+            'Tot din Detailing Interior Profesional',
+            'Tot din Corectie Lac Profesionala',
             'Decontaminare clay bar',
             'Polish corectiv 2 pasi (cut + finish)',
             'Protectie ceramica 1 strat (12 luni garantie)',
@@ -70,7 +72,8 @@ export const packages = [
             'Polish 3 pasi',
             'Ceramica 2 straturi',
             'Tratament piele premium'
-        ]
+        ],
+        excludedAddons: ['tratament-piele', 'curatare-tapiterie', 'corectie-vopsea', 'curatare-motor']
     },
     {
         id: 'signature-full',
@@ -90,7 +93,8 @@ export const packages = [
             'Instructiuni personalizate de mentenanta',
             'Inspectie de control dupa 30 zile (gratis)'
         ],
-        notIncluded: []
+        notIncluded: [],
+        excludedAddons: ['tratament-piele', 'curatare-tapiterie', 'corectie-vopsea', 'curatare-motor']
     }
 ];
 
@@ -137,10 +141,10 @@ export const addons = [
 ];
 
 export const sizeMultipliers = {
-    mica: { label: 'Mica (Smart, Mini, Up)', multiplier: 0.85 },
-    compacta: { label: 'Compacta (Golf, Focus, Corolla)', multiplier: 0.95 },
-    sedan: { label: 'Sedan / Coupe (Seria 3, C-Class, A4)', multiplier: 1.0 },
-    suv: { label: 'SUV / Van (X5, GLC, Q7, Touareg)', multiplier: 1.2 }
+    mica: { label: 'Clasa Mica (Mini Cooper, Fiat 500, Smart)', multiplier: 0.85 },
+    medie: { label: 'Clasa Medie (VW Passat, BMW Seria 3, C-Class, BMW X1)', multiplier: 0.95 },
+    mare: { label: 'Clasa Mare (S-Class, BMW Seria 7, Jaguar XJ, BMW X3)', multiplier: 1.0 },
+    suv: { label: 'SUV (BMW X5, Mercedes GLE)', multiplier: 1.2 }
 };
 
 export const conditionMultipliers = {
@@ -162,6 +166,17 @@ export function getAddonById(id) {
 export function calculatePrice(packageId, sizeKey, conditionKey) {
     const pkg = getPackageById(packageId);
     if (!pkg) return null;
+
+    // Fixed-price packages (per car class)
+    if (pkg.classPrices) {
+        const condMult = conditionMultipliers[conditionKey]?.multiplier || 1.0;
+        const price = pkg.classPrices[sizeKey];
+        if (price) return { min: Math.round(price * condMult), max: Math.round(price * condMult) };
+        const prices = Object.values(pkg.classPrices);
+        return { min: Math.round(Math.min(...prices) * condMult), max: Math.round(Math.max(...prices) * condMult) };
+    }
+
+    // Multiplier-based packages (Premium, Signature)
     const sizeMult = sizeMultipliers[sizeKey]?.multiplier || 1.0;
     const condMult = conditionMultipliers[conditionKey]?.multiplier || 1.0;
     return {

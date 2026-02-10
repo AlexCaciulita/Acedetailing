@@ -539,7 +539,7 @@
                     <a href="/" class="flex items-center mb-4">
                         <img src="/assets/logo.svg" alt="Nova Detailing" class="h-8 w-auto" loading="lazy" width="360" height="50">
                     </a>
-                    <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 17+ ani de experienta.</p>
+                    <p class="text-light-400 text-sm mb-4">Premium Auto Detailing & Scoala de Detailing in Bucuresti. 10+ ani de experienta.</p>
                 </div>
                 <div>
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
@@ -705,7 +705,7 @@
 
                 loadFromLocalStorage() {
                     try {
-                        const saved = JSON.parse(localStorage.getItem('aceConfig') || '{}');
+                        const saved = JSON.parse(localStorage.getItem('novaConfig') || '{}');
                         if (saved.packageId) this.selectedPackage = saved.packageId;
                         if (saved.size) this.size = saved.size;
                         if (saved.condition) this.condition = saved.condition;
@@ -789,7 +789,7 @@
                         }
 
                         this.submitted = true;
-                        localStorage.removeItem('aceConfig');
+                        localStorage.removeItem('novaConfig');
                     } catch (err) {
                         this.errorMessage = err.message || 'Nu s-a putut trimite rezervarea. Verifica conexiunea la internet si incearca din nou.';
                     } finally {
