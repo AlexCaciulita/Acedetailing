@@ -1,0 +1,108 @@
+{
+  "_comment": "Cartea de Finisaj — seed records. One object per issued record, keyed by its public code. Backed by a flat file for now; the shape is what a records table would store.",
+  "_schemaVersion": 1,
+  "records": {
+    "NV-7K2M-4Q8P": {
+      "code": "NV-7K2M-4Q8P",
+      "status": "activ",
+      "vin": "WBAJA71090BW42",
+      "vinMasked": "WBAJA71090BW42••••",
+      "vehicle": {
+        "make": "BMW",
+        "model": "Seria 5 530d xDrive",
+        "generation": "G30",
+        "year": 2019,
+        "colorName": "Carbon Black Metallic",
+        "colorCode": "416",
+        "substrate": "oțel (panouri) / aluminiu (capotă)"
+      },
+      "issuedBy": {
+        "atelier": "Nova Detailing București",
+        "certId": "NV-ATL-001",
+        "technician": "Vicențiu Căciuliță",
+        "instrument": "PosiTector 6000 FNS + 200 B (separare straturi)",
+        "calibrated": "2026-04-02"
+      },
+      "openedOn": "2024-09-12",
+      "lastUpdated": "2026-05-14",
+      "odometerLog": [
+        { "date": "2024-09-12", "km": 121450 },
+        { "date": "2026-05-14", "km": 148320 }
+      ],
+      "oemReference": { "min": 100, "max": 140, "unit": "µm" },
+      "panels": [
+        { "id": "capota",        "name": "Capotă",                "total": 118, "state": "original" },
+        { "id": "plafon",        "name": "Plafon",                "total": 112, "state": "original" },
+        { "id": "haion",         "name": "Capac portbagaj",       "total": 121, "state": "original" },
+        { "id": "aripa-fs",      "name": "Aripă față stânga",     "total": 124, "state": "original" },
+        { "id": "usa-fs",        "name": "Portieră față stânga",  "total": 116, "state": "original" },
+        { "id": "usa-ss",        "name": "Portieră spate stânga", "total": 119, "state": "original" },
+        { "id": "aripa-ss",      "name": "Aripă spate stânga",    "total": 127, "state": "original" },
+        { "id": "aripa-fd",      "name": "Aripă față dreapta",    "total": 412, "state": "reparat",   "note": "Valoare specifică unui strat de chit sub vopsea. Reparație structurală, nu doar revopsire." },
+        { "id": "usa-fd",        "name": "Portieră față dreapta", "total": 268, "state": "revopsit",  "note": "Strat suplimentar uniform — revopsire completă a panoului." },
+        { "id": "usa-sd",        "name": "Portieră spate dreapta","total": 245, "state": "revopsit",  "note": "Revopsire, tranziție vizibilă spre aripa spate." },
+        { "id": "aripa-sd",      "name": "Aripă spate dreapta",   "total": 131, "state": "original" }
+      ],
+      "findings": [
+        "Partea dreaptă, față-mijloc, a fost reparată înainte de prima noastră măsurătoare (septembrie 2024). Aripa față dreapta conține chit; cele două portiere din dreapta sunt revopsite.",
+        "Aripa spate dreapta este originală — reparația nu s-a extins până în spate.",
+        "Restul de 8 panouri se încadrează în intervalul de fabricație BMW G30 (100–140 µm).",
+        "Vopseaua de reparație este mai moale decât cea de fabricație; corecția pe aceste trei panouri s-a executat cu abrazivitate redusă."
+      ],
+      "clearcoat": {
+        "unit": "µm",
+        "measuredAt": "panouri originale, medie a 24 de puncte",
+        "originalAvg": 46.0,
+        "remainingAvg": 40.5,
+        "safetyFloor": 25.0,
+        "removedTotal": 5.5,
+        "history": [
+          { "date": "2024-09-12", "event": "Corecție în 2 pași (Nova)",  "removed": 3.1, "remaining": 42.9 },
+          { "date": "2026-05-14", "event": "Corecție de refresh (Nova)", "removed": 2.4, "remaining": 40.5 }
+        ],
+        "estimatedCorrectionsLeft": 4,
+        "method": "Diferență măsurată înainte/după fiecare intervenție, pe aceleași puncte marcate. Nu este o estimare — este scăderea reală înregistrată."
+      },
+      "work": [
+        {
+          "date": "2026-05-14",
+          "title": "Corecție de refresh + reaplicare protecție",
+          "steps": [
+            "Spălare în doi timpi, decontaminare chimică și mecanică",
+            "Măsurare pe 24 de puncte marcate, identice cu cele din 2024",
+            "Corecție într-un pas pe panourile originale; abrazivitate redusă pe cele trei panouri revopsite",
+            "Verificare sub lampă cu spectru controlat",
+            "Aplicare Gtechniq Crystal Serum Ultra + EXO v5"
+          ]
+        },
+        {
+          "date": "2024-09-12",
+          "title": "Deschidere fișă + corecție în doi pași",
+          "steps": [
+            "Inventar complet al grosimii lacului, 11 panouri",
+            "Corecție în doi pași",
+            "Aplicare Gtechniq Crystal Serum Ultra"
+          ]
+        }
+      ],
+      "protection": {
+        "product": "Gtechniq Crystal Serum Ultra + EXO v5",
+        "layers": 2,
+        "appliedOn": "2026-05-14",
+        "warrantyUntil": "2031-05-14",
+        "condition": "Garanția rămâne activă cât timp verificările la 6 luni sunt efectuate și înregistrate mai jos."
+      },
+      "checks": [
+        { "date": "2024-09-12", "type": "Emitere",      "gloss": 94, "contactAngle": 108, "result": "referință" },
+        { "date": "2025-03-20", "type": "Verificare",   "gloss": 92, "contactAngle": 104, "result": "conform" },
+        { "date": "2025-09-18", "type": "Verificare",   "gloss": 90, "contactAngle": 98,  "result": "conform", "note": "Decontaminare recomandată la următoarea vizită." },
+        { "date": "2026-05-14", "type": "Reaplicare",   "gloss": 95, "contactAngle": 110, "result": "referință nouă" }
+      ],
+      "nextCheckDue": "2026-11-14",
+      "transfer": {
+        "transferable": true,
+        "note": "Fișa aparține vehiculului, nu proprietarului. La vânzare, se transferă noului proprietar păstrând întreg istoricul."
+      }
+    }
+  }
+}

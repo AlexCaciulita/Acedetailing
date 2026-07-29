@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cartea de Finisaj — Nova Detailing</title>
+    <meta name="description" content="Fișa de finisaj a unui vehicul: grosimea lacului panou cu panou, bugetul de lac rămas, lucrările executate și istoricul verificărilor.">
+    <meta name="theme-color" content="#F7F7F5">
+    <meta name="color-scheme" content="light">
+    <!-- A record is a private document tied to a vehicle: never index it. -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/nova-record.css?v=1">
+</head>
+<body class="rec-body">
+    <a class="rec-skip" href="#continut">Sari la conținut</a>
+
+    <header class="rec-masthead">
+        <div class="rec-shell rec-masthead__inner">
+            <a class="rec-brand" href="/" aria-label="Nova Detailing — Acasă">
+                <img src="/assets/logo.svg" alt="Nova Detailing" width="160" height="50">
+            </a>
+            <p class="rec-masthead__title">Cartea de Finisaj</p>
+        </div>
+    </header>
+
+    <main id="continut" class="rec-shell">
+        <!-- Replaced by the renderer once the code resolves. -->
+        <div class="rec-state" data-state>
+            <p class="rec-state__msg">Se încarcă fișa…</p>
+        </div>
+
+        <article class="rec-doc" data-doc hidden></article>
+    </main>
+
+    <footer class="rec-footer">
+        <div class="rec-shell">
+            <p>
+                <strong>Nova Detailing</strong> · București ·
+                <a href="tel:+40742122222">+40 742 122 222</a> ·
+                <a href="mailto:contact@novadetailing.ro">contact@novadetailing.ro</a>
+            </p>
+            <p class="rec-footer__note">
+                Fișa de finisaj documentează starea vopselei la datele măsurate. Nu înlocuiește
+                o inspecție tehnică (ITP) și nu atestă starea mecanică a vehiculului.
+            </p>
+        </div>
+    </footer>
+
+    <script type="module" src="/nova-record.js?v=1"></script>
+</body>
+</html>

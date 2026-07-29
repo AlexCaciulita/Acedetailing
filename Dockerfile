@@ -12,6 +12,9 @@ RUN npm ci --omit=dev
 COPY server.js ./
 COPY api/ ./api/
 
+# Record store read by api/get-record.js
+COPY data/ ./data/
+
 # Copy built static assets
 COPY dist/ ./dist/
 

@@ -144,7 +144,8 @@ export default defineConfig({
         blog: 'public/blog.html',
         contact: 'public/contact.html',
         faq: 'public/faq.html',
-        politici: 'public/politici.html'
+        politici: 'public/politici.html',
+        vin: 'public/vin.html'
       }
     }
   },

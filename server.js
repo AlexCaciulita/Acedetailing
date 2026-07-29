@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
 import enrollmentHandler from './api/create-enrollment.js';
 import contactHandler from './api/create-contact.js';
+import recordHandler from './api/get-record.js';
 import chatProxyHandler from './api/chat-proxy.js';
 import payuCreateOrderHandler from './api/payu-create-order.js';
 import payuNotifyHandler from './api/payu-notify.js';
@@ -89,6 +90,22 @@ const server = http.createServer((req, res) => {
     '/api/payu-notify': payuNotifyHandler
   };
 
+  // Parameterised route: /api/record/<cod>. Kept separate from the exact-match
+  // map above because it carries a path parameter.
+  const recordMatch = pathname.match(/^\/api\/record\/([^/]+)\/?$/);
+  if (recordMatch) {
+    req.params = { code: decodeURIComponent(recordMatch[1]) };
+    const expressLikeRes = createExpressLikeResponse(res);
+    Promise.resolve(recordHandler(req, expressLikeRes)).catch((handlerError) => {
+      console.error('API handler error (/api/record):', handlerError);
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
+      }
+    });
+    return;
+  }
+
   const apiHandler = apiRoutes[pathname];
   if (apiHandler) {
     let body = '';
@@ -145,6 +162,12 @@ const server = http.createServer((req, res) => {
     });
     res.end();
     return;
+  }
+
+  // /vin/<cod> is a virtual path: one viewer document that resolves the code
+  // client-side. Rewritten before static resolution so no /vin directory exists.
+  if (/^\/vin(\/|$)/.test(pathname)) {
+    pathname = '/vin.html';
   }
 
   if (pathname.endsWith('/')) {
