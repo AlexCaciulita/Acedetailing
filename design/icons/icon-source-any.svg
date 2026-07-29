@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1A1A"/>
+      <stop offset="100%" style="stop-color:#0D0D0D"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E7D2A4"/>
+      <stop offset="50%" style="stop-color:#B5A17A"/>
+      <stop offset="100%" style="stop-color:#826C3E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Full bleed, no corner radius: the rasteriser flattens alpha onto white, so
+       rounded corners shipped as opaque white notches. Launchers round icons
+       themselves; a square plate is safe everywhere. -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+
+  <g transform="translate(108.8,95) scale(4.6)">
+    <path d="M32 10 C32 10 14 30 14 42 C14 50 20 56 28 56 C30.5 56 32 54.5 32 54.5 L32 58 L26 58 L26 60 L38 60 L38 58 L32 58 L32 54.5 C32 54.5 33.5 56 36 56 C44 56 50 50 50 42 C50 30 32 10 32 10Z"
+          fill="url(#gold)"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nova-server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 8000
+    },
+    {
+      "name": "nova-vite",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "3000", "--strictPort"],
+      "port": 3000
+    }
+  ]
+}

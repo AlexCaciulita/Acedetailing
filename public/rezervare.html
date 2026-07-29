@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Nova Detailing</title>
-    <meta name="description" content="Rezerva o programare pentru servicii premium de auto detailing la Nova Detailing Bucuresti.">
+    <title>Rezerva o Programare — Nova Detailing Bucuresti</title>
+    <meta name="description" content="Configureaza si rezerva o programare pentru servicii premium de auto detailing la Nova Detailing Bucuresti. Calculator de pret transparent.">
     <link rel="canonical" href="https://novadetailing.ro/rezervare.html">
-    <meta property="og:title" content="Rezervare | Nova Detailing">
-    <meta property="og:description" content="Rezerva o programare pentru servicii premium de auto detailing la Nova Detailing Bucuresti.">
+    <meta property="og:title" content="Rezervare Programare | Nova Detailing">
+    <meta property="og:description" content="Configureaza si rezerva o programare pentru detailing-ul masinii tale. Pachete de la 1.800 lei.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://novadetailing.ro/rezervare.html">
-    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <meta property="og:locale" content="ro_RO">
     <meta property="og:site_name" content="Nova Detailing">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rezervare | Nova Detailing">
-    <meta name="twitter:description" content="Rezerva o programare pentru servicii premium de auto detailing la Nova Detailing Bucuresti.">
-    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta name="twitter:title" content="Rezervare Programare | Nova Detailing">
+    <meta name="twitter:description" content="Configureaza si rezerva o programare pentru detailing-ul masinii tale.">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#B8962F">
+    <meta name="theme-color" content="#F7F7F5">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,14 +30,14 @@
         theme: {
             extend: {
                 colors: {
-                    primary: '#B8962F',
-                    'primary-light': '#C9A84C',
-                    'primary-dark': '#8B7226',
+                    primary: '#826C3E',
+                    'primary-light': '#B5A17A',
+                    'primary-dark': '#6B5834',
                     secondary: '#1A1A1A',
                     light: {
-                        50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
-                        400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
-                        800: '#374151', 900: '#1F2937', 950: '#111827'
+                        50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
+                        400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
+                        800: '#343432', 900: '#262625', 950: '#1A1A1A'
                     }
                 },
                 fontFamily: {
@@ -44,8 +45,8 @@
                     body: ['Inter', 'system-ui', 'sans-serif']
                 },
                 boxShadow: {
-                    'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
-                    'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                    'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
+                    'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
                     'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
                     'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                 }
@@ -56,22 +57,109 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
-        /* Scroll-triggered reveal */
         .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
         .reveal-scale.revealed { opacity: 1; transform: scale(1); }
         .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
         .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
-        .btn-press { position: relative; overflow: hidden; }
+        /* ─── Liquid Glass Buttons ─── */
+        @keyframes glassShine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .btn-glass {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(181,161,122,0.85) 0%, rgba(196,185,160,0.75) 50%, rgba(181,161,122,0.85) 100%);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 24px rgba(181,161,122,0.25), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass:hover {
+            background: linear-gradient(135deg, rgba(196,185,160,0.92) 0%, rgba(214,200,172,0.82) 50%, rgba(196,185,160,0.92) 100%);
+            box-shadow: 0 8px 32px rgba(181,161,122,0.35), 0 0 60px rgba(181,161,122,0.12), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .btn-glass:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass:active {
+            transform: scale(0.97) translateY(0);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.2), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-glass-outline {
+            position: relative;
+            overflow: hidden;
+            background: rgba(181,161,122,0.06);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(181,161,122,0.35);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.08), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass-outline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass-outline::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(181,161,122,0.12), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass-outline:hover {
+            background: rgba(181,161,122,0.12);
+            border-color: rgba(181,161,122,0.55);
+            box-shadow: 0 4px 20px rgba(181,161,122,0.15), 0 0 40px rgba(181,161,122,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        .btn-glass-outline:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass-outline:active {
+            transform: scale(0.97) translateY(0);
+            background: rgba(181,161,122,0.18);
+        }
+        .btn-press { position: relative; overflow: hidden; transition: all 0.2s cubic-bezier(0.22,1,0.36,1); }
         .btn-press:active { transform: scale(0.97); }
         .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
         .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
         html { scroll-behavior: smooth; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
+    <link rel="stylesheet" href="/nova-premium.css?v=7">
 </head>
-<body class="bg-light-50 text-light-950 font-body">
+<body class="nova-premium nova-inner-page bg-light-50 text-light-950 font-body">
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -91,12 +179,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
                     <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
-                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
                     <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
                     <a href="/despre.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Despre</a>
-                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
                     <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all duration-200 text-sm font-heading font-semibold">Rezervare</a>
+                    <a href="/rezervare.html" class="btn-glass text-white px-5 py-2 rounded-full text-sm font-heading font-semibold">Rezerva Acum</a>
                 </div>
             </div>
         </div>
@@ -104,428 +190,566 @@
             <div class="px-4 py-4 space-y-2">
                 <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
                 <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
-                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
                 <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
                 <a href="/despre.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Despre</a>
-                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
                 <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
-                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
+                <a href="/rezervare.html" class="block px-3 py-2 btn-glass text-white rounded-full font-semibold font-heading text-sm text-center mt-2">Rezerva Acum</a>
             </div>
         </div>
     </nav>
 
+    <!-- Breadcrumb -->
+    <div class="bg-light-50 border-b border-light-200 pt-20 pb-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm text-light-500">
+                <a href="/index.html" class="hover:text-primary transition-colors">Acasa</a>
+                <span class="mx-2">&gt;</span>
+                <span class="text-primary font-medium">Rezervare</span>
+            </nav>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <main x-data="bookingForm()" x-cloak class="pt-24 pb-20">
+    <main x-data="unifiedBooking()" x-cloak class="pt-24 pb-20">
 
         <!-- Hero Header -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
             <div class="text-center reveal">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold mb-4">
-                    Rezervare <span class="text-primary">Programare</span>
+                    Configureaza si <span class="text-primary">Rezerva</span>
                 </h1>
-                <p class="text-light-700 text-lg max-w-2xl mx-auto">Alege pachetul dorit, completeaza datele si rezerva-ti locul. Te contactam in cel mai scurt timp pentru confirmare.</p>
+                <p class="text-light-700 text-lg max-w-2xl mx-auto">Alege vehiculul, pachetul dorit si programeaza-te. Pretul se calculeaza automat.</p>
                 <div class="w-20 h-1 bg-primary mx-auto mt-6 rounded-full"></div>
             </div>
         </section>
 
+        <!-- Step Progress Bar -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 reveal">
+            <div class="flex items-center justify-center gap-1 sm:gap-2">
+                <template x-for="step in 5" :key="step">
+                    <div class="flex items-center">
+                        <button @click="step < currentStep ? goToStep(step) : null"
+                            :class="step === currentStep ? 'bg-primary text-white' : step < currentStep ? 'bg-primary/20 text-primary cursor-pointer hover:bg-primary/30' : 'bg-light-300 text-light-500'"
+                            class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full font-heading font-bold text-xs sm:text-sm transition-all duration-200">
+                            <span x-show="step >= currentStep" x-text="step"></span>
+                            <svg x-show="step < currentStep" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        </button>
+                        <div x-show="step < 5" :class="step < currentStep ? 'bg-primary/30' : 'bg-light-300'" class="w-8 sm:w-16 h-0.5 mx-1 transition-colors duration-200"></div>
+                    </div>
+                </template>
+            </div>
+            <div class="flex justify-center mt-2">
+                <span class="text-xs text-light-600 font-heading" x-text="['Vehicul', 'Pachet', 'Extra', 'Date & Contact', 'Confirmare'][currentStep - 1]"></span>
+            </div>
+        </section>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
 
-                <!-- Left Column: Form -->
-                <div class="md:col-span-1 lg:col-span-2 space-y-8">
+                <!-- Left Column: Steps -->
+                <div class="lg:col-span-2">
 
-                    <!-- Step 1: Package Selection -->
-                    <section>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-heading font-bold text-sm">1</span>
-                            <h2 class="text-xl font-heading font-semibold">Alege Pachetul</h2>
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-4">
-                            <template x-for="pkg in packages" :key="pkg.id">
-                                <button
-                                    @click="selectedPackage = pkg.id"
-                                    :class="selectedPackage === pkg.id
-                                        ? 'border-primary bg-primary/10 shadow-gold'
-                                        : 'border-light-400 bg-white hover:border-light-400'"
-                                    class="relative p-5 rounded-xl border-2 text-left transition-all duration-200 cursor-pointer group"
-                                >
-                                    <span
-                                        x-show="pkg.popular"
-                                        class="absolute -top-3 right-4 bg-primary text-white text-xs font-heading font-bold px-3 py-1 rounded-full"
-                                    >POPULAR</span>
+                    <!-- ========== STEP 1: Vehicle Selection ========== -->
+                    <div x-show="currentStep === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-heading font-bold text-sm">1</span>
+                                <div>
+                                    <h2 class="text-xl sm:text-2xl font-heading font-semibold text-light-950">Selecteaza Vehiculul</h2>
+                                    <p class="text-sm text-light-600">Introdu modelul masinii tale</p>
+                                </div>
+                            </div>
 
-                                    <h3 class="font-heading font-bold text-sm mb-1" :class="selectedPackage === pkg.id ? 'text-primary' : 'text-light-950'" x-text="pkg.name"></h3>
-                                    <p class="text-light-600 text-xs mb-3" x-text="pkg.shortDescription"></p>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-primary font-heading font-semibold text-sm" x-text="pkg.priceRange.min + ' - ' + pkg.priceRange.max + ' lei'"></span>
-                                        <span class="text-light-600 text-xs flex items-center gap-1">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                            <span x-text="pkg.duration"></span>
-                                        </span>
-                                    </div>
-                                    <div
-                                        x-show="selectedPackage === pkg.id"
-                                        class="absolute top-3 left-3"
-                                    >
-                                        <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                    </div>
-                                </button>
-                            </template>
-                        </div>
-                    </section>
-
-                    <!-- Step 2: Vehicle Details -->
-                    <section>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-heading font-bold text-sm">2</span>
-                            <h2 class="text-xl font-heading font-semibold">Detalii Vehicul</h2>
-                        </div>
-                        <div class="bg-white border border-light-400 rounded-xl p-6 space-y-5">
+                            <!-- Car Model -->
                             <div>
                                 <label class="block text-sm font-heading font-medium text-light-700 mb-2">Model Masina</label>
-                                <input
-                                    type="text"
-                                    x-model="carModel"
-                                    placeholder="ex: BMW Seria 3 2022"
-                                    class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
-                                >
-                            </div>
-                            <div class="grid sm:grid-cols-2 gap-5">
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Dimensiune</label>
-                                    <select
-                                        x-model="size"
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm appearance-none cursor-pointer"
-                                    >
-                                        <option value="" disabled>Selecteaza dimensiunea</option>
-                                        <template x-for="(info, key) in sizeMultipliers" :key="key">
-                                            <option :value="key" x-text="info.label" :selected="size === key"></option>
+                                <input type="text" x-model="carModel" @input="onCarModelInput()" placeholder="ex: BMW X5 2023" class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                                <p x-show="autoDetectedSize" x-transition class="text-green-600 text-xs mt-1.5 flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                    <span>Detectat: <strong x-text="sizeMultipliers[carSize] ? sizeMultipliers[carSize].label.split('(')[0].trim() : ''"></strong></span>
+                                </p>
+
+                                <!-- Manual class picker: without it, an unrecognised
+                                     model leaves the price as a range with no way for
+                                     the customer to resolve it themselves. -->
+                                <div x-show="!carSize" x-transition class="mt-4">
+                                    <p class="text-sm text-light-600 mb-2" x-text="carModel.trim().length >= 2 ? 'Nu am recunoscut modelul. Alege clasa pentru un pret exact:' : 'Sau alege direct clasa vehiculului:'"></p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                        <template x-for="key in ['mica','medie','mare','suv']" :key="key">
+                                            <button type="button" @click="setCarSize(key)" class="px-3 py-2 rounded-lg border-2 border-light-400 hover:border-primary text-left text-xs font-heading text-light-800 transition-colors" x-text="(sizeMultipliers[key] || {}).label || key"></button>
                                         </template>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Stare</label>
-                                    <select
-                                        x-model="condition"
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm appearance-none cursor-pointer"
-                                    >
-                                        <option value="" disabled>Selecteaza starea</option>
-                                        <template x-for="(info, key) in conditionMultipliers" :key="key">
-                                            <option :value="key" x-text="info.label" :selected="condition === key"></option>
-                                        </template>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Step 3: Add-ons -->
-                    <section>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-heading font-bold text-sm">3</span>
-                            <h2 class="text-xl font-heading font-semibold">Servicii Aditionale</h2>
-                        </div>
-                        <div class="grid sm:grid-cols-2 gap-3">
-                            <template x-for="addon in addons" :key="addon.id">
-                                <button
-                                    @click="toggleAddon(addon.id)"
-                                    :class="selectedAddons.includes(addon.id)
-                                        ? 'border-primary bg-primary/10'
-                                        : 'border-light-400 bg-white hover:border-light-400'"
-                                    class="flex items-start gap-3 p-4 rounded-xl border transition-all duration-200 text-left cursor-pointer"
-                                >
-                                    <div class="mt-0.5 flex-shrink-0">
-                                        <div
-                                            :class="selectedAddons.includes(addon.id)
-                                                ? 'bg-primary border-primary'
-                                                : 'bg-light-100 border-light-400'"
-                                            class="w-5 h-5 rounded border-2 flex items-center justify-center transition-colors"
-                                        >
-                                            <svg x-show="selectedAddons.includes(addon.id)" class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                                        </div>
                                     </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="flex items-center justify-between gap-2">
-                                            <span class="font-heading font-medium text-sm text-light-950" x-text="addon.name"></span>
-                                            <span class="text-primary font-heading font-semibold text-sm flex-shrink-0" x-text="addon.price === 0 ? 'GRATIS' : addon.price + ' lei'"></span>
-                                        </div>
-                                        <p class="text-light-600 text-xs mt-1" x-text="addon.description"></p>
-                                    </div>
-                                </button>
-                            </template>
-                        </div>
-                    </section>
-
-                    <!-- Step 4: Customer Info -->
-                    <section>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-heading font-bold text-sm">4</span>
-                            <h2 class="text-xl font-heading font-semibold">Datele Tale</h2>
-                        </div>
-                        <div class="bg-white border border-light-400 rounded-xl p-6 space-y-5">
-                            <div>
-                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Nume Complet <span class="text-primary">*</span></label>
-                                <input
-                                    type="text"
-                                    x-model="name"
-                                    placeholder="Ion Popescu"
-                                    required
-                                    class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
-                                >
-                            </div>
-                            <div class="grid sm:grid-cols-2 gap-5">
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Telefon <span class="text-primary">*</span></label>
-                                    <input
-                                        type="tel"
-                                        x-model="phone"
-                                        placeholder="+40 7XX XXX XXX"
-                                        required
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
-                                    >
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Email <span class="text-primary">*</span></label>
-                                    <input
-                                        type="email"
-                                        x-model="email"
-                                        placeholder="email@exemplu.ro"
-                                        required
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm"
-                                    >
-                                </div>
+                                <p x-show="carSize && !autoDetectedSize" x-transition class="text-light-700 text-xs mt-1.5">
+                                    Clasa selectata: <strong x-text="getSizeLabel().split('(')[0].trim()"></strong>
+                                    <button type="button" @click="clearCarSize()" class="text-primary underline ml-1">schimba</button>
+                                </p>
                             </div>
                         </div>
-                    </section>
 
-                    <!-- Step 5: Date & Time -->
-                    <section>
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-heading font-bold text-sm">5</span>
-                            <h2 class="text-xl font-heading font-semibold">Data si Ora</h2>
+                        <!-- Navigation -->
+                        <div class="flex justify-end mt-6">
+                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
+                                Continua
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
                         </div>
-                        <div class="bg-white border border-light-400 rounded-xl p-6">
-                            <div class="grid sm:grid-cols-2 gap-5">
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Data Dorita <span class="text-primary">*</span></label>
-                                    <input
-                                        type="date"
-                                        x-model="date"
-                                        :min="minDate"
-                                        required
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm [color-scheme:light]"
-                                    >
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Interval Orar <span class="text-primary">*</span></label>
-                                    <select
-                                        x-model="timeSlot"
-                                        required
-                                        class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm appearance-none cursor-pointer"
-                                    >
-                                        <option value="" disabled>Selecteaza intervalul</option>
-                                        <option value="08:00-10:00">08:00 - 10:00</option>
-                                        <option value="10:00-12:00">10:00 - 12:00</option>
-                                        <option value="12:00-14:00">12:00 - 14:00</option>
-                                        <option value="14:00-16:00">14:00 - 16:00</option>
-                                        <option value="16:00-18:00">16:00 - 18:00</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <p class="text-light-500 text-xs mt-4">* Program: L-V 08:00 - 18:00 | S 08:00 - 16:00. Te vom contacta pentru confirmare.</p>
-                        </div>
-                    </section>
-
-                    <!-- Notes -->
-                    <section>
-                        <div class="bg-white border border-light-400 rounded-xl p-6">
-                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Observatii (optional)</label>
-                            <textarea
-                                x-model="notes"
-                                rows="3"
-                                placeholder="Detalii suplimentare despre masina sau cerinte speciale..."
-                                class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-sm resize-none"
-                            ></textarea>
-                        </div>
-                    </section>
-
-                    <!-- Submit (mobile only) -->
-                    <div class="lg:hidden">
-                        <button
-                            @click="submitBooking()"
-                            :disabled="!isFormValid || submitting"
-                            :class="isFormValid && !submitting
-                                ? 'bg-primary hover:bg-primary-light text-white shadow-gold cursor-pointer'
-                                : 'bg-light-300 text-light-600 cursor-not-allowed'"
-                            class="w-full py-4 rounded-xl font-heading font-bold text-base transition-all duration-200 btn-press"
-                        >
-                            <span x-show="!submitting">Trimite Rezervarea</span>
-                            <span x-show="submitting" class="flex items-center justify-center gap-2">
-                                <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
-                                Se trimite...
-                            </span>
-                        </button>
                     </div>
-                </div>
 
-                <!-- Right Column: Summary Sidebar -->
-                <div class="lg:col-span-1">
-                    <div class="sticky top-24">
-                        <div class="bg-white border border-light-400 rounded-xl overflow-hidden">
-                            <div class="bg-light-200 px-6 py-4">
-                                <h3 class="font-heading font-bold text-base text-light-950">Sumar Rezervare</h3>
+                    <!-- ========== STEP 2: Package Selection ========== -->
+                    <div x-show="currentStep === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-heading font-bold text-sm">2</span>
+                                <div>
+                                    <h2 class="text-xl sm:text-2xl font-heading font-semibold text-light-950">Alege Pachetul</h2>
+                                    <p class="text-sm text-light-600">Preturile se ajusteaza automat in functie de vehicul</p>
+                                </div>
                             </div>
 
-                            <div class="p-6 space-y-5">
-                                <!-- Selected Package -->
-                                <div>
-                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Pachet selectat</p>
-                                    <template x-if="selectedPackage">
-                                        <div>
-                                            <p class="text-light-950 font-heading font-semibold text-sm" x-text="getSelectedPackage()?.name"></p>
-                                            <p class="text-light-600 text-xs mt-1" x-text="getSelectedPackage()?.duration"></p>
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <template x-for="pkg in packages" :key="pkg.id">
+                                    <div :class="selectedPackage === pkg.id ? 'border-primary bg-primary/5 ring-2 ring-primary' : 'border-light-400 hover:border-light-500'" class="relative rounded-xl border-2 transition-all duration-200 card-hover">
+                                        <!-- Popular badge -->
+                                        <div x-show="pkg.popular" class="absolute -top-3 right-4 bg-primary text-white text-xs font-heading font-bold px-3 py-1 rounded-full z-10">Popular</div>
+                                        <!-- Selection checkmark -->
+                                        <div x-show="selectedPackage === pkg.id" class="absolute top-4 left-4">
+                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                                         </div>
-                                    </template>
-                                    <template x-if="!selectedPackage">
-                                        <p class="text-light-500 text-sm italic">Niciun pachet selectat</p>
-                                    </template>
+
+                                        <!-- Clickable area -->
+                                        <div class="p-5 cursor-pointer" @click="selectPackage(pkg.id)">
+                                            <span class="text-primary text-xs font-heading font-semibold uppercase tracking-wider" x-text="pkg.tier"></span>
+                                            <h3 class="text-lg font-heading font-bold text-light-950 mt-1" x-text="pkg.name"></h3>
+                                            <p class="text-light-600 text-sm mt-1" x-text="pkg.shortDescription"></p>
+                                            <div class="flex items-baseline gap-1 mt-3">
+                                                <span x-show="!carSize" class="text-light-600 text-xs">de la</span>
+                                                <span class="text-xl font-heading font-bold text-primary" x-text="formatNumber(getPkgPrice(pkg.id).min)"></span>
+                                                <template x-if="getPkgPrice(pkg.id).min !== getPkgPrice(pkg.id).max">
+                                                    <span class="text-light-600 text-sm" x-text="'- ' + formatNumber(getPkgPrice(pkg.id).max) + ' lei'"></span>
+                                                </template>
+                                                <template x-if="getPkgPrice(pkg.id).min === getPkgPrice(pkg.id).max">
+                                                    <span class="text-light-600 text-sm">lei</span>
+                                                </template>
+                                            </div>
+                                            <div class="text-xs text-light-500 mt-1" x-text="pkg.duration"></div>
+                                            <p x-show="!carSize" class="text-xs text-light-500 mt-1">Pret final dupa stabilirea clasei vehiculului</p>
+                                        </div>
+
+                                        <!-- Expandable details -->
+                                        <div class="px-5 pb-4">
+                                            <button @click.stop="expandedPkg = expandedPkg === pkg.id ? '' : pkg.id" class="flex items-center gap-1 text-xs text-primary font-heading font-semibold hover:text-primary-light transition-colors">
+                                                <span x-text="expandedPkg === pkg.id ? 'Ascunde detalii' : 'Vezi ce include'"></span>
+                                                <svg :class="expandedPkg === pkg.id ? 'rotate-180' : ''" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                            </button>
+                                            <div x-show="expandedPkg === pkg.id" x-transition class="mt-3 pt-3 border-t border-light-300">
+                                                <p class="text-xs text-primary font-heading font-semibold uppercase tracking-wider mb-2">Include:</p>
+                                                <ul class="space-y-1.5">
+                                                    <template x-for="item in pkg.included" :key="item">
+                                                        <li class="flex items-start gap-2 text-xs text-light-700">
+                                                            <svg class="w-3.5 h-3.5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                                            <span x-text="item"></span>
+                                                        </li>
+                                                    </template>
+                                                </ul>
+                                                <template x-if="pkg.notIncluded && pkg.notIncluded.length > 0">
+                                                    <div class="mt-3">
+                                                        <p class="text-xs text-light-500 font-heading font-semibold uppercase tracking-wider mb-2">Nu include:</p>
+                                                        <ul class="space-y-1.5">
+                                                            <template x-for="item in pkg.notIncluded" :key="item">
+                                                                <li class="flex items-start gap-2 text-xs text-light-500">
+                                                                    <svg class="w-3.5 h-3.5 text-light-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                                                                    <span x-text="item"></span>
+                                                                </li>
+                                                            </template>
+                                                        </ul>
+                                                    </div>
+                                                </template>
+                                                <p x-show="pkg.note" class="text-xs text-light-500 italic mt-3" x-text="pkg.note"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="flex justify-between mt-6">
+                            <button @click="prevStep()" class="flex items-center gap-2 px-6 py-3 rounded-full text-light-700 btn-glass-outline font-heading font-medium text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                Inapoi
+                            </button>
+                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
+                                Continua
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ========== STEP 3: Add-ons ========== -->
+                    <div x-show="currentStep === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-heading font-bold text-sm">3</span>
+                                <div>
+                                    <h2 class="text-xl sm:text-2xl font-heading font-semibold text-light-950">Servicii Extra</h2>
+                                    <p class="text-sm text-light-600">Optional — personalizeaza experienta</p>
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <template x-for="addon in addons" :key="addon.id">
+                                    <button @click="toggleAddon(addon.id)" :disabled="isAddonExcluded(addon.id)" :class="isAddonExcluded(addon.id) ? 'border-green-500 bg-green-50 cursor-not-allowed' : selectedAddons.includes(addon.id) ? 'border-primary bg-primary/5' : 'border-light-400 hover:border-light-500'" class="flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all duration-200">
+                                        <div class="flex-shrink-0 mt-0.5">
+                                            <div :class="isAddonExcluded(addon.id) ? 'bg-green-500 border-green-500' : selectedAddons.includes(addon.id) ? 'bg-primary border-primary' : 'border-light-400'" class="w-5 h-5 rounded border-2 flex items-center justify-center">
+                                                <svg x-show="selectedAddons.includes(addon.id) || isAddonExcluded(addon.id)" class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-sm font-heading font-semibold" :class="isAddonExcluded(addon.id) ? 'text-green-700' : 'text-light-950'" x-text="addon.name"></span>
+                                                <span class="text-sm font-semibold ml-2 flex-shrink-0" :class="isAddonExcluded(addon.id) ? 'text-green-600' : 'text-primary'" x-text="isAddonExcluded(addon.id) ? 'Inclus' : addon.price > 0 ? '+' + addon.price + ' lei' : 'Gratis'"></span>
+                                            </div>
+                                            <p class="text-xs text-light-600 mt-0.5" x-text="addon.description"></p>
+                                        </div>
+                                    </button>
+                                </template>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="flex justify-between mt-6">
+                            <button @click="prevStep()" class="flex items-center gap-2 px-6 py-3 rounded-full text-light-700 btn-glass-outline font-heading font-medium text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                Inapoi
+                            </button>
+                            <button @click="nextStep()" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm btn-glass text-white">
+                                Continua
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ========== STEP 4: Date & Contact Info ========== -->
+                    <div x-show="currentStep === 4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-heading font-bold text-sm">4</span>
+                                <div>
+                                    <h2 class="text-xl sm:text-2xl font-heading font-semibold text-light-950">Datele Tale</h2>
+                                    <p class="text-sm text-light-600">Cum te contactam si cand vrei sa vii</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-5">
+                                <!-- Contact Info -->
+                                <div>
+                                    <h3 class="text-sm font-heading font-semibold text-light-950 mb-3">Informatii Contact</h3>
+                                    <div class="space-y-4">
+                                        <div class="relative">
+                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Nume Complet <span class="text-primary">*</span></label>
+                                            <div class="relative">
+                                                <input type="text" x-model="name" @blur="touched.name = true" placeholder="Ion Popescu" required
+                                                    :class="touched.name && !name.trim() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.name && name.trim() ? 'border-green-400' : 'border-light-400')"
+                                                    class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
+                                                <svg x-show="touched.name && name.trim()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                            </div>
+                                            <p x-show="touched.name && !name.trim()" class="text-red-500 text-xs mt-1">Numele este obligatoriu.</p>
+                                        </div>
+                                        <div class="grid sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Telefon <span class="text-primary">*</span></label>
+                                                <div class="relative">
+                                                    <input type="tel" x-model="phone" @blur="touched.phone = true" @input="formatPhone()" placeholder="+40 7XX XXX XXX" required
+                                                        :class="touched.phone && !isValidPhone() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.phone && isValidPhone() ? 'border-green-400' : 'border-light-400')"
+                                                        class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
+                                                    <svg x-show="touched.phone && isValidPhone()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                                </div>
+                                                <p x-show="touched.phone && !isValidPhone()" class="text-red-500 text-xs mt-1">Introdu un numar de telefon valid.</p>
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Email <span class="text-primary">*</span></label>
+                                                <div class="relative">
+                                                    <input type="email" x-model="email" @blur="touched.email = true" placeholder="email@exemplu.ro" required
+                                                        :class="touched.email && !isValidEmail() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.email && isValidEmail() ? 'border-green-400' : 'border-light-400')"
+                                                        class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
+                                                    <svg x-show="touched.email && isValidEmail()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                                                </div>
+                                                <p x-show="touched.email && !isValidEmail()" class="text-red-500 text-xs mt-1">Introdu o adresa de email valida.</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
+                                <!-- Date & Time -->
+                                <div>
+                                    <h3 class="text-sm font-heading font-semibold text-light-950 mb-3">Programare</h3>
+                                    <div class="grid sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Data Dorita <span class="text-primary">*</span></label>
+                                            <input type="date" x-model="date" :min="minDate" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors [color-scheme:light]">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Interval Orar <span class="text-primary">*</span></label>
+                                            <select x-model="timeSlot" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none cursor-pointer">
+                                                <option value="" disabled>Selecteaza intervalul</option>
+                                                <option value="08:00-10:00">08:00 - 10:00</option>
+                                                <option value="10:00-12:00">10:00 - 12:00</option>
+                                                <option value="12:00-14:00">12:00 - 14:00</option>
+                                                <option value="14:00-16:00">14:00 - 16:00</option>
+                                                <option value="16:00-18:00">16:00 - 18:00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p class="text-light-500 text-xs mt-2">* Program: L-V 08:00 - 18:00 | S 08:00 - 16:00. Te vom contacta pentru confirmare.</p>
+                                </div>
+
+                                <!-- Notes -->
+                                <div>
+                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Observatii <span class="text-light-500">(optional)</span></label>
+                                    <textarea x-model="notes" rows="3" placeholder="Detalii suplimentare despre masina sau cerinte speciale..." class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="flex justify-between mt-6">
+                            <button @click="prevStep()" class="flex items-center gap-2 px-6 py-3 rounded-full text-light-700 btn-glass-outline font-heading font-medium text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                Inapoi
+                            </button>
+                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
+                                Verifica si Confirma
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ========== STEP 5: Review & Confirm ========== -->
+                    <div x-show="currentStep === 5" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-4" x-transition:enter-end="opacity-100 translate-x-0">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft p-6 sm:p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-heading font-bold text-sm">5</span>
+                                <div>
+                                    <h2 class="text-xl sm:text-2xl font-heading font-semibold text-light-950">Verifica si Confirma</h2>
+                                    <p class="text-sm text-light-600">Ultima verificare inainte de trimitere</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
                                 <!-- Vehicle -->
-                                <div x-show="carModel || size || condition">
-                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Vehicul</p>
-                                    <p x-show="carModel" class="text-light-950 text-sm" x-text="carModel"></p>
-                                    <p x-show="size" class="text-light-700 text-xs mt-1" x-text="sizeMultipliers[size]?.label"></p>
-                                    <p x-show="condition" class="text-light-700 text-xs mt-1" x-text="conditionMultipliers[condition]?.label"></p>
+                                <div class="bg-light-100 rounded-lg p-4">
+                                    <h3 class="text-xs font-heading font-semibold text-primary uppercase tracking-wider mb-2">Vehicul</h3>
+                                    <p x-show="carModel" class="text-sm font-semibold text-light-950" x-text="carModel"></p>
+                                    <p class="text-sm text-light-700" x-text="getSizeLabel().split('(')[0].trim() + ' • ' + getConditionLabel().split('(')[0].trim()"></p>
+                                </div>
+
+                                <!-- Package -->
+                                <div class="bg-light-100 rounded-lg p-4">
+                                    <h3 class="text-xs font-heading font-semibold text-primary uppercase tracking-wider mb-2">Pachet Selectat</h3>
+                                    <p class="text-lg font-heading font-bold text-light-950" x-text="getSelectedPackage()?.name"></p>
+                                    <p class="text-sm text-light-600" x-text="getSelectedPackage()?.duration"></p>
                                 </div>
 
                                 <!-- Add-ons -->
-                                <div x-show="selectedAddons.length > 0">
-                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Servicii aditionale</p>
+                                <div x-show="activeAddons().length > 0" class="bg-light-100 rounded-lg p-4">
+                                    <h3 class="text-xs font-heading font-semibold text-primary uppercase tracking-wider mb-2">Servicii Extra</h3>
                                     <ul class="space-y-1">
-                                        <template x-for="addonId in selectedAddons" :key="addonId">
+                                        <template x-for="addonId in activeAddons()" :key="addonId">
                                             <li class="flex justify-between text-sm">
-                                                <span class="text-light-700" x-text="getAddonByIdLocal(addonId)?.name"></span>
+                                                <span class="text-light-950" x-text="getAddonByIdLocal(addonId)?.name"></span>
                                                 <span class="text-primary font-heading font-medium" x-text="getAddonByIdLocal(addonId)?.price === 0 ? 'GRATIS' : '+' + getAddonByIdLocal(addonId)?.price + ' lei'"></span>
                                             </li>
                                         </template>
                                     </ul>
                                 </div>
 
-                                <!-- Date & Time -->
-                                <div x-show="date || timeSlot">
-                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Programare</p>
-                                    <p x-show="date" class="text-light-950 text-sm" x-text="formatDate(date)"></p>
-                                    <p x-show="timeSlot" class="text-light-700 text-xs mt-1" x-text="timeSlot"></p>
+                                <!-- Contact & Date -->
+                                <div class="bg-light-100 rounded-lg p-4">
+                                    <h3 class="text-xs font-heading font-semibold text-primary uppercase tracking-wider mb-2">Contact & Programare</h3>
+                                    <div class="space-y-1 text-sm">
+                                        <p class="text-light-950"><strong>Nume:</strong> <span x-text="name"></span></p>
+                                        <p class="text-light-950"><strong>Telefon:</strong> <span x-text="phone"></span></p>
+                                        <p class="text-light-950"><strong>Email:</strong> <span x-text="email"></span></p>
+                                        <p class="text-light-950"><strong>Data:</strong> <span x-text="formatDate(date)"></span></p>
+                                        <p class="text-light-950"><strong>Interval:</strong> <span x-text="timeSlot"></span></p>
+                                        <p x-show="notes.trim()" class="text-light-700 mt-2"><strong>Observatii:</strong> <span x-text="notes"></span></p>
+                                    </div>
                                 </div>
 
-                                <!-- Divider -->
-                                <div class="border-t border-light-400"></div>
-
-                                <!-- Price Breakdown -->
-                                <div>
+                                <!-- Price Summary -->
+                                <div class="bg-primary/10 border border-primary rounded-lg p-5">
                                     <div class="flex justify-between items-center mb-2">
-                                        <span class="text-light-600 text-sm">Pachet de baza</span>
-                                        <span class="text-light-950 text-sm font-heading" x-text="selectedPackage ? calculatedPrice.min + ' - ' + calculatedPrice.max + ' lei' : '- lei'"></span>
+                                        <span class="text-sm text-light-700">Pachet de baza</span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="formatNumber(packagePrice.min) + (packagePrice.min !== packagePrice.max ? ' - ' + formatNumber(packagePrice.max) : '') + ' lei'"></span>
                                     </div>
                                     <div x-show="addonsTotal > 0" class="flex justify-between items-center mb-2">
-                                        <span class="text-light-600 text-sm">Servicii extra</span>
-                                        <span class="text-light-950 text-sm font-heading" x-text="'+' + addonsTotal + ' lei'"></span>
+                                        <span class="text-sm text-light-700">Servicii extra</span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + ' lei'"></span>
                                     </div>
-                                    <div class="border-t border-light-400 my-3"></div>
+                                    <div class="border-t border-primary/30 my-3"></div>
                                     <div class="flex justify-between items-center">
-                                        <span class="text-light-950 font-heading font-bold">Total estimat</span>
-                                        <span class="text-primary font-heading font-bold text-lg" x-text="selectedPackage ? totalMin + ' - ' + totalMax + ' lei' : '- lei'"></span>
+                                        <span class="text-lg font-heading font-bold text-light-950">Total Estimat</span>
+                                        <span class="text-2xl font-heading font-bold text-primary" x-text="formatNumber(totalMin) + (totalMin !== totalMax ? ' - ' + formatNumber(totalMax) : '') + ' lei'"></span>
                                     </div>
-                                    <p class="text-light-500 text-xs mt-2">* Pretul final va fi confirmat dupa inspectia vehiculului.</p>
+                                    <p class="text-xs text-light-600 mt-2">* Pretul final va fi confirmat dupa inspectia vehiculului. Preturile nu includ TVA.</p>
                                 </div>
 
-                                <!-- Submit Button (desktop) -->
-                                <div class="hidden lg:block">
-                                    <button
-                                        @click="submitBooking()"
-                                        :disabled="!isFormValid || submitting"
-                                        :class="isFormValid && !submitting
-                                            ? 'bg-primary hover:bg-primary-light text-white shadow-gold cursor-pointer'
-                                            : 'bg-light-300 text-light-600 cursor-not-allowed'"
-                                        class="w-full py-4 rounded-xl font-heading font-bold text-base transition-all duration-200 btn-press"
-                                    >
+                                <!-- CTAs -->
+                                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                                    <button @click="submitBooking()" :disabled="submitting" :class="submitting ? 'bg-light-400 cursor-not-allowed' : 'btn-glass'" class="flex-1 py-4 rounded-full text-white font-heading font-bold text-base">
                                         <span x-show="!submitting">Trimite Rezervarea</span>
                                         <span x-show="submitting" class="flex items-center justify-center gap-2">
                                             <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/></svg>
                                             Se trimite...
                                         </span>
                                     </button>
+                                    <a :href="'https://wa.me/40742122222?text=' + encodeURIComponent(getWhatsAppText())" target="_blank" class="flex-1 flex items-center justify-center gap-2 btn-glass-outline text-light-700 py-4 rounded-full font-heading font-bold">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                        Trimite pe WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back button -->
+                        <div class="flex justify-start mt-6">
+                            <button @click="prevStep()" class="flex items-center gap-2 px-6 py-3 rounded-full text-light-700 btn-glass-outline font-heading font-medium text-sm">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                Inapoi
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ========== SIDEBAR (Desktop) ========== -->
+                <div class="hidden lg:block lg:col-span-1" x-show="currentStep >= 2" x-transition>
+                    <div class="sticky top-24">
+                        <div class="bg-white rounded-xl border border-light-300 shadow-soft overflow-hidden">
+                            <div class="bg-light-200 px-6 py-4">
+                                <h3 class="font-heading font-bold text-base text-light-950">Sumar Rezervare</h3>
+                            </div>
+                            <div class="p-6 space-y-5">
+                                <!-- Vehicle -->
+                                <div>
+                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Vehicul</p>
+                                    <p x-show="carModel" class="text-light-950 text-sm" x-text="carModel"></p>
+                                    <p class="text-light-700 text-xs mt-1" x-text="getSizeLabel().split('(')[0].trim()"></p>
+                                    <p class="text-light-700 text-xs mt-0.5" x-text="getConditionLabel().split('(')[0].trim()"></p>
                                 </div>
 
-                                <!-- Contact quick info -->
+                                <!-- Package -->
+                                <div x-show="selectedPackage">
+                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Pachet</p>
+                                    <p class="text-sm font-heading font-semibold text-light-950" x-text="getSelectedPackage()?.name"></p>
+                                    <p class="text-xs text-light-600 mt-1" x-text="getSelectedPackage()?.duration"></p>
+                                </div>
+
+                                <!-- Add-ons -->
+                                <div x-show="activeAddons().length > 0">
+                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Servicii extra</p>
+                                    <ul class="space-y-1">
+                                        <template x-for="addonId in activeAddons()" :key="addonId">
+                                            <li class="flex justify-between text-xs">
+                                                <span class="text-light-700" x-text="getAddonByIdLocal(addonId)?.name"></span>
+                                                <span class="text-primary font-heading font-medium" x-text="'+' + (getAddonByIdLocal(addonId)?.price || 0) + ' lei'"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+
+                                <!-- Date/Time -->
+                                <div x-show="date && timeSlot">
+                                    <p class="text-light-600 text-xs font-heading uppercase tracking-wider mb-2">Programare</p>
+                                    <p class="text-sm text-light-950" x-text="formatDate(date)"></p>
+                                    <p class="text-xs text-light-600 mt-1" x-text="timeSlot"></p>
+                                </div>
+
+                                <div class="border-t border-light-400"></div>
+
+                                <!-- Price -->
+                                <div>
+                                    <div x-show="selectedPackage" class="flex justify-between items-center mb-2">
+                                        <span class="text-sm text-light-600">Pachet</span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="formatNumber(packagePrice.min) + (packagePrice.min !== packagePrice.max ? ' - ' + formatNumber(packagePrice.max) : '') + ' lei'"></span>
+                                    </div>
+                                    <div x-show="addonsTotal > 0" class="flex justify-between items-center mb-2">
+                                        <span class="text-sm text-light-600">Extra</span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + ' lei'"></span>
+                                    </div>
+                                    <div class="border-t border-light-400 my-3"></div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-heading font-bold text-light-950">Total</span>
+                                        <span class="text-lg font-heading font-bold text-primary" x-text="selectedPackage ? formatNumber(totalMin) + (totalMin !== totalMax ? ' - ' + formatNumber(totalMax) : '') + ' lei' : '— lei'"></span>
+                                    </div>
+                                    <p class="text-xs text-light-500 mt-2">* Pret estimat, fara TVA</p>
+                                </div>
+
+                                <!-- Quick contact -->
                                 <div class="flex items-center gap-2 text-light-500 text-xs">
                                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                    <span>Intrebari? Suna la <a href="tel:+40742122222" class="text-primary hover:text-primary-light">+40 742 122 222</a></span>
+                                    <span>Intrebari? <a href="tel:+40742122222" class="text-primary hover:text-primary-light">+40 742 122 222</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+
+        <!-- Mobile Bottom Bar -->
+        <div x-show="currentStep >= 2 && currentStep < 5" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-light-300 shadow-soft-lg z-40 p-4">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex-1">
+                    <p class="text-xs text-light-600">Total estimat</p>
+                    <p class="text-lg font-heading font-bold text-primary" x-text="selectedPackage ? formatNumber(totalMin) + (totalMin !== totalMax ? ' - ' + formatNumber(totalMax) : '') + ' lei' : '— lei'"></p>
+                </div>
+                <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="px-6 py-3 rounded-full font-heading font-semibold text-sm" x-text="currentStep === 4 ? 'Verifica' : 'Continua'">
+                </button>
             </div>
         </div>
 
         <!-- Success Modal -->
-        <div
-            x-show="submitted"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-            class="fixed inset-0 bg-light-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            @click.self="submitted = false"
-        >
-            <div
-                x-show="submitted"
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                class="bg-white border border-light-400 rounded-2xl p-8 max-w-md w-full text-center shadow-soft-lg"
-            >
-                <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+        <div x-show="submitted" x-transition class="fixed inset-0 bg-light-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div x-show="submitted" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="bg-white border border-light-400 rounded-2xl p-8 max-w-md w-full shadow-soft-lg text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 </div>
                 <h3 class="text-2xl font-heading font-bold mb-3">Rezervare Trimisa!</h3>
-                <p class="text-light-700 text-sm mb-6">Multumim! Am primit cererea ta de programare. Te vom contacta in cel mai scurt timp pentru confirmare la numarul de telefon furnizat.</p>
+                <p class="text-light-700 text-sm mb-6">Multumim! Te vom contacta in cel mai scurt timp pentru confirmare.</p>
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="/index.html" class="flex-1 bg-light-200 text-light-950 px-6 py-3 rounded-xl font-heading font-semibold text-sm hover:bg-light-300 transition-colors text-center btn-press">Inapoi Acasa</a>
-                    <button @click="resetForm()" class="flex-1 bg-primary text-white px-6 py-3 rounded-xl font-heading font-semibold text-sm hover:bg-primary-light transition-colors btn-press">Rezervare Noua</button>
+                    <a href="/index.html" class="flex-1 btn-glass-outline text-light-700 px-6 py-3 rounded-full font-heading font-semibold text-sm text-center">Inapoi Acasa</a>
+                    <button @click="resetForm()" class="flex-1 btn-glass text-white px-6 py-3 rounded-full font-heading font-semibold text-sm">Rezervare Noua</button>
                 </div>
             </div>
         </div>
 
         <!-- Error Modal -->
-        <div
-            x-show="errorMessage"
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100"
-            x-transition:leave="transition ease-in duration-200"
-            x-transition:leave-start="opacity-100"
-            x-transition:leave-end="opacity-0"
-            class="fixed inset-0 bg-light-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            @click.self="errorMessage = ''"
-        >
-            <div
-                x-show="errorMessage"
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 scale-95"
-                x-transition:enter-end="opacity-100 scale-100"
-                class="bg-white border border-red-900/50 rounded-2xl p-8 max-w-md w-full text-center shadow-soft-lg"
-            >
-                <div class="w-16 h-16 bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+        <div x-show="errorMessage" x-transition class="fixed inset-0 bg-light-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div x-show="errorMessage" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="bg-white border border-red-300 rounded-2xl p-8 max-w-md w-full shadow-soft-lg text-center">
+                <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </div>
-                <h3 class="text-2xl font-heading font-bold mb-3 text-red-400">Eroare</h3>
+                <h3 class="text-2xl font-heading font-bold mb-3">Eroare</h3>
                 <p class="text-light-700 text-sm mb-6" x-text="errorMessage"></p>
-                <button @click="errorMessage = ''" class="bg-light-200 text-light-950 px-8 py-3 rounded-xl font-heading font-semibold text-sm hover:bg-light-300 transition-colors">Inchide</button>
+                <button @click="errorMessage = ''" class="btn-glass text-white px-8 py-3 rounded-full font-heading font-semibold text-sm">Incearca din nou</button>
+            </div>
+        </div>
+
+        <!-- Recovery Prompt Modal -->
+        <div x-show="showRecoveryPrompt" x-transition class="fixed inset-0 bg-light-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" @click.self="dismissRecovery()">
+            <div x-show="showRecoveryPrompt" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="bg-white border border-light-400 rounded-2xl p-8 max-w-md w-full shadow-soft-lg text-center">
+                <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="text-2xl font-heading font-bold mb-3">Ai o configuratie salvata</h3>
+                <p class="text-light-700 text-sm mb-6">Am gasit o configuratie recenta. Vrei sa o continui?</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button @click="dismissRecovery()" class="flex-1 btn-glass-outline text-light-700 px-6 py-3 rounded-full font-heading font-semibold text-sm">Ignora</button>
+                    <button @click="restoreConfig()" class="flex-1 btn-glass text-white px-6 py-3 rounded-full font-heading font-semibold text-sm">Continua</button>
+                </div>
             </div>
         </div>
 
@@ -545,8 +769,6 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
-                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
                         <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
                         <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
                         <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
@@ -582,29 +804,29 @@
         </div>
     </footer>
 
-    <!-- Load services data as module, expose to window for Alpine -->
+    <!-- Data Loading (event-driven pattern) -->
     <script type="module">
-        import { packages, addons, sizeMultipliers, conditionMultipliers, getPackageById, getAddonById, calculatePrice } from '/services-data.js';
-
-        window._servicesData = {
-            packages,
-            addons,
-            sizeMultipliers,
-            conditionMultipliers,
-            getPackageById,
-            getAddonById,
-            calculatePrice
-        };
-
-        // Dispatch event so Alpine knows data is ready
+        import { packages, addons, sizeMultipliers, conditionMultipliers, getPackageById, getAddonById, calculatePrice } from './services-data.js';
+        window._servicesData = { packages, addons, sizeMultipliers, conditionMultipliers, getPackageById, getAddonById, calculatePrice };
         window.dispatchEvent(new CustomEvent('services-data-ready'));
     </script>
 
-    <!-- Alpine.js Booking Form -->
+    <!-- Alpine Component -->
     <script>
-        function bookingForm() {
+        function unifiedBooking() {
+            var fmt = new Intl.NumberFormat('ro-RO');
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            // Formatted from the LOCAL date parts, not toISOString(): Romania is
+            // UTC+2/+3, so after midnight local the UTC date is still yesterday
+            // and the "earliest slot is tomorrow" rule would admit today.
+            var pad2 = function(n) { return String(n).padStart(2, '0'); };
+            var minDateStr = tomorrow.getFullYear()
+                + '-' + pad2(tomorrow.getMonth() + 1)
+                + '-' + pad2(tomorrow.getDate());
+
             return {
-                // Data from services-data.js (populated in init)
+                // Data from services-data.js
                 packages: [],
                 addons: [],
                 sizeMultipliers: {},
@@ -613,12 +835,239 @@
                 _getAddonById: null,
                 _calculatePrice: null,
 
-                // Form state
-                selectedPackage: '',
-                size: '',
-                condition: '',
+                // Step navigation
+                currentStep: 1,
+
+                // Form validation state
+                touched: { name: false, phone: false, email: false },
+
+                // Step 1: Vehicle
+                // Empty means "class not established yet" — NOT a silent default of
+                // Clasa Mare. calculatePrice() falls back to the full min-max range
+                // for an unknown key, which is exactly the advertised "de la" figure.
+                carSize: '',
+                condition: 'usoara',
                 carModel: '',
+                autoDetectedSize: false,
+                manualSize: false,
+                _detectTimer: null,
+
+                // Car model → size classification lookup
+                carClassification: {
+                    mica: [
+                        // Smart
+                        'smart','fortwo','forfour','smart eq',
+                        // Fiat
+                        'fiat 500','fiat 500e','fiat 500x','fiat 500c','fiat punto','fiat grande punto','fiat tipo','fiat panda','fiat doblo','fiat bravo',
+                        // Mini (hatches only)
+                        'mini cooper','mini one','mini cabrio','mini electric','mini hatch','mini 3-door','mini 5-door',
+                        // VW small
+                        'up!','volkswagen up','vw up','vw e-up',
+                        // Toyota small
+                        'aygo','toyota aygo','aygo x','yaris','toyota yaris','yaris cross','toyota yaris cross',
+                        // Citroen small
+                        'c1','citroen c1','c2','citroen c2','c3','citroen c3','c3 aircross','citroen c3 aircross','c-elysee','citroen c-elysee',
+                        // Hyundai small
+                        'i10','hyundai i10','i20','hyundai i20','bayon','hyundai bayon',
+                        // Kia small
+                        'picanto','kia picanto','rio','kia rio','stonic','kia stonic',
+                        // Renault small
+                        'twingo','renault twingo','clio','renault clio','zoe','renault zoe','symbol','renault symbol',
+                        // Ford small
+                        'ka','ford ka','ka+','ford ka+','fiesta','ford fiesta',
+                        // Opel small
+                        'corsa','opel corsa','corsa-e','adam','opel adam','karl','opel karl',
+                        // Seat / Cupra small
+                        'ibiza','seat ibiza','arona','seat arona',
+                        // Skoda small
+                        'fabia','skoda fabia','citigo','skoda citigo','scala','skoda scala',
+                        // Peugeot small
+                        '107','peugeot 107','108','peugeot 108','206','peugeot 206','207','peugeot 207','208','peugeot 208','e-208','peugeot e-208','301','peugeot 301',
+                        // Dacia small
+                        'sandero','dacia sandero','sandero stepway','logan','dacia logan','spring','dacia spring',
+                        // Audi small
+                        'a1','audi a1',
+                        // VW small-med
+                        'polo','volkswagen polo','vw polo',
+                        // Suzuki
+                        'swift','suzuki swift','ignis','suzuki ignis','baleno','suzuki baleno','celerio','suzuki celerio','splash','suzuki splash',
+                        // Honda small
+                        'jazz','honda jazz','honda e',
+                        // Nissan small
+                        'micra','nissan micra','note','nissan note','juke','nissan juke',
+                        // Mazda small
+                        'mazda 2','mazda2',
+                        // Mitsubishi small
+                        'space star','mitsubishi space star','mirage',
+                        // Alfa Romeo small
+                        'mito','alfa romeo mito','alfa mito',
+                        // Lancia
+                        'ypsilon','lancia ypsilon'
+                    ],
+                    medie: [
+                        // VW
+                        'golf','volkswagen golf','vw golf','golf gte','golf gti','golf r','golf variant','passat','volkswagen passat','vw passat','passat cc','passat variant','jetta','vw jetta','scirocco','vw scirocco','arteon','vw arteon','id.3','vw id.3','id.5','vw id.5','taigo','vw taigo','t-roc','vw t-roc',
+                        // Ford
+                        'focus','ford focus','focus st','focus rs','mondeo','ford mondeo','fusion','ford fusion','c-max','ford c-max','s-max','ford s-max','kuga','ford kuga','puma','ford puma',
+                        // Opel
+                        'astra','opel astra','astra sports tourer','insignia','opel insignia','insignia grand sport','mokka','opel mokka','mokka-e','crossland','opel crossland','grandland','opel grandland',
+                        // Skoda
+                        'octavia','skoda octavia','octavia rs','octavia combi','superb','skoda superb','superb combi','karoq','skoda karoq','kamiq','skoda kamiq',
+                        // Seat / Cupra
+                        'leon','seat leon','leon st','leon cupra','cupra leon','cupra born','cupra formentor','ateca','seat ateca','cupra ateca','tarraco','seat tarraco',
+                        // BMW compact
+                        'seria 1','bmw seria 1','bmw 1','114','116','118','120','125','128','seria 2','bmw seria 2','bmw 2','218','220','225','228','seria 2 active tourer','seria 2 gran coupe','seria 3','bmw seria 3','bmw 3','316','318','318d','320','320d','320i','325','325d','328','330','330d','330e','330i','335','340','seria 4','bmw seria 4','bmw 4','420','420d','425','428','430','430d','435','440','seria 4 gran coupe','i4','bmw i4','ix1','bmw ix1','x1','bmw x1','x2','bmw x2',
+                        // Mercedes compact
+                        'a-class','a class','a150','a160','a170','a180','a200','a220','a250','a35','a45','b-class','b class','b150','b170','b180','b200','b220','b250','c-class','c class','c160','c180','c180d','c200','c200d','c220','c220d','c250','c300','c300d','c350','c43','c63','cla','mercedes cla','cla 180','cla 200','cla 220','cla 250','cla 35','cla 45','gla','mercedes gla','gla 180','gla 200','gla 220','gla 250','gla 35','gla 45','glb','mercedes glb','glb 180','glb 200','glb 220','glb 250',
+                        // Audi compact/medium
+                        'a3','audi a3','a3 sportback','a3 sedan','s3','rs3','a4','audi a4','a4 avant','a4 allroad','s4','rs4','a5','audi a5','a5 sportback','a5 coupe','s5','rs5','q2','audi q2','q3','audi q3','q3 sportback',
+                        // Renault medium
+                        'megane','renault megane','megane rs','megane e-tech','scenic','renault scenic','grand scenic','kadjar','renault kadjar','austral','renault austral','talisman','renault talisman','laguna','renault laguna','fluence','renault fluence','koleos','renault koleos',
+                        // Peugeot medium
+                        '308','peugeot 308','308 sw','e-308','408','peugeot 408','508','peugeot 508','508 sw','508 pse','2008','peugeot 2008','e-2008','3008','peugeot 3008','e-3008',
+                        // Citroen medium
+                        'c4','citroen c4','c4 x','c4 cactus','c5 aircross','citroen c5 aircross','c5 x','citroen c5 x','c5','citroen c5',
+                        // Toyota medium
+                        'corolla','toyota corolla','corolla touring','corolla cross','auris','toyota auris','camry','toyota camry','prius','toyota prius','c-hr','toyota c-hr',
+                        // Honda medium
+                        'civic','honda civic','civic type r','accord','honda accord',
+                        // Mazda medium
+                        'mazda 3','mazda3','mazda 6','mazda6','cx-30','mazda cx-30',
+                        // Hyundai medium
+                        'i30','hyundai i30','i30 n','i40','hyundai i40','ioniq','hyundai ioniq','ioniq 6','hyundai ioniq 6','elantra','hyundai elantra','kona','hyundai kona','kona electric',
+                        // Kia medium
+                        'ceed','kia ceed','ceed gt','ceed sw','proceed','kia proceed','cerato','kia cerato','optima','kia optima','k5','niro','kia niro','niro ev','niro hybrid','xceed','kia xceed','ev3','kia ev3',
+                        // Volvo compact
+                        'v40','volvo v40','s40','volvo s40','c40','volvo c40',
+                        // Alfa Romeo
+                        'giulietta','alfa romeo giulietta','alfa giulietta',
+                        // Dacia medium
+                        'duster','dacia duster','jogger','dacia jogger','bigster','dacia bigster',
+                        // Nissan medium
+                        'qashqai','nissan qashqai',
+                        // Tesla medium
+                        'model 3','tesla model 3',
+                        // Mini crossover
+                        'mini countryman','mini clubman',
+                        // DS
+                        'ds3','ds 3','ds3 crossback','ds4','ds 4','ds4 crossback'
+                    ],
+                    mare: [
+                        // BMW large
+                        'seria 5','bmw seria 5','bmw 5','520','520d','520i','523','525','525d','528','530','530d','530e','530i','535','540','540d','540i','545','550','m5','seria 6','bmw seria 6','bmw 6','620','630','640','650','m6','seria 6 gran turismo','seria 7','bmw seria 7','bmw 7','725','725d','730','730d','730i','740','740d','740i','745','750','750d','760','m760','seria 8','bmw seria 8','bmw 8','840','850','m8','i5','bmw i5','i7','bmw i7','x3','bmw x3','x4','bmw x4','ix3','bmw ix3',
+                        // Mercedes large
+                        'e-class','e class','e200','e200d','e220','e220d','e250','e300','e300d','e350','e350d','e400','e43','e53','e63','s-class','s class','s350','s400','s450','s500','s560','s580','s600','s63','s65','cls','mercedes cls','cls 350','cls 400','cls 450','cls 53','cls 63','eqe','mercedes eqe','eqs','mercedes eqs','amg gt','mercedes amg gt','mercedes gt',
+                        // Audi large
+                        'a6','audi a6','a6 avant','a6 allroad','s6','rs6','a7','audi a7','a7 sportback','s7','rs7','a8','audi a8','a8 l','s8','e-tron gt','audi e-tron gt','rs e-tron gt',
+                        // Porsche sedans
+                        'panamera','porsche panamera','panamera sport turismo','taycan','porsche taycan',
+                        // Jaguar
+                        'xj','jaguar xj','xf','jaguar xf','xf sportbrake','xe','jaguar xe','f-type','jaguar f-type','i-pace','jaguar i-pace',
+                        // Volvo large
+                        'volvo s60','s60','volvo s90','s90','volvo v60','v60','v60 cross country','volvo v90','v90','v90 cross country',
+                        // Alfa Romeo large
+                        'giulia','alfa romeo giulia','alfa giulia','giulia quadrifoglio','stelvio','alfa romeo stelvio','alfa stelvio',
+                        // Maserati
+                        'maserati ghibli','ghibli','maserati quattroporte','quattroporte','maserati levante','levante','maserati grecale','grecale','maserati granturismo','granturismo',
+                        // Genesis
+                        'genesis g70','g70','genesis g80','g80','genesis g90','g90','genesis gv70','gv70',
+                        // Lexus large
+                        'lexus es','lexus gs','lexus ls','lexus is','lexus rc','lexus lc',
+                        // Peugeot large
+                        '5008','peugeot 5008','508 peugeot','508 gt',
+                        // BMW/Audi/Mercedes EVs (sedan size)
+                        'i4','bmw i4','eq','eqa','eqb',
+                        // Tesla large
+                        'model s','tesla model s',
+                        // DS large
+                        'ds7','ds 7','ds7 crossback','ds9','ds 9',
+                        // Porsche coupe/sports
+                        'porsche 911','911','porsche 718','718','cayman','porsche cayman','boxster','porsche boxster',
+                        // BMW coupes
+                        'z4','bmw z4',
+                        // Mercedes coupes
+                        'mercedes c coupe','mercedes e coupe','amg','c43 amg','c63 amg','e53 amg','e63 amg',
+                        // Audi coupes
+                        'tt','audi tt','audi tts','audi tt rs',
+                        // Nissan large
+                        'nissan x-trail','x-trail'
+                    ],
+                    suv: [
+                        // BMW SUV
+                        'x5','bmw x5','x5 m','x6','bmw x6','x6 m','x7','bmw x7','xm','bmw xm','ix','bmw ix',
+                        // Mercedes SUV
+                        'glc','mercedes glc','glc coupe','glc 200','glc 220','glc 250','glc 300','glc 350','glc 43','glc 63','gle','mercedes gle','gle coupe','gle 300','gle 350','gle 400','gle 450','gle 53','gle 63','gls','mercedes gls','gls 400','gls 450','gls 580','gls 600','gls 63','g-class','g class','g 350','g 400','g 500','g 63','mercedes g','eqc','mercedes eqc',
+                        // Audi SUV
+                        'q4','audi q4','q4 e-tron','q5','audi q5','q5 sportback','sq5','q7','audi q7','sq7','q8','audi q8','q8 e-tron','sq8','rsq8','rs q8','e-tron','audi e-tron',
+                        // Porsche SUV
+                        'cayenne','porsche cayenne','cayenne coupe','cayenne turbo','cayenne gts','macan','porsche macan','macan turbo','macan gts',
+                        // VW SUV
+                        'touareg','volkswagen touareg','vw touareg','tiguan','volkswagen tiguan','vw tiguan','tiguan allspace','id.4','vw id.4','id.5','vw id.5',
+                        // Skoda SUV
+                        'kodiaq','skoda kodiaq','kodiaq rs','enyaq','skoda enyaq','enyaq coupe','enyaq iv',
+                        // Seat / Cupra SUV (large)
+                        'cupra terramar',
+                        // Volvo SUV
+                        'xc40','volvo xc40','xc40 recharge','xc60','volvo xc60','xc60 recharge','xc90','volvo xc90','xc90 recharge','ex30','volvo ex30','ex90','volvo ex90',
+                        // Toyota SUV
+                        'rav4','toyota rav4','rav4 hybrid','highlander','toyota highlander','land cruiser','toyota land cruiser','land cruiser 300','land cruiser prado','bz4x','toyota bz4x',
+                        // Honda SUV
+                        'cr-v','honda cr-v','hr-v','honda hr-v','zr-v','honda zr-v',
+                        // Hyundai SUV
+                        'tucson','hyundai tucson','tucson hybrid','santa fe','hyundai santa fe','palisade','hyundai palisade','ioniq 5','hyundai ioniq 5',
+                        // Kia SUV
+                        'sportage','kia sportage','sportage hybrid','sorento','kia sorento','sorento hybrid','ev6','kia ev6','ev9','kia ev9','telluride','kia telluride',
+                        // Nissan SUV
+                        'x-trail','nissan x-trail','pathfinder','nissan pathfinder','murano','nissan murano','ariya','nissan ariya',
+                        // Mazda SUV
+                        'cx-5','mazda cx-5','cx-50','mazda cx-50','cx-60','mazda cx-60','cx-80','mazda cx-80','cx-90','mazda cx-90',
+                        // Renault SUV (large)
+                        'espace','renault espace','rafale','renault rafale',
+                        // Land Rover / Range Rover
+                        'range rover','range rover sport','range rover velar','range rover evoque','land rover discovery','discovery','discovery sport','defender','land rover defender','freelander',
+                        // Jeep
+                        'wrangler','jeep wrangler','grand cherokee','jeep grand cherokee','jeep cherokee','cherokee','compass','jeep compass','renegade','jeep renegade','commander','jeep commander',
+                        // Mitsubishi SUV
+                        'outlander','mitsubishi outlander','eclipse cross','mitsubishi eclipse cross','asx','mitsubishi asx',
+                        // Subaru SUV
+                        'forester','subaru forester','outback','subaru outback','solterra','subaru solterra','xv','subaru xv',
+                        // Tesla SUV
+                        'model x','tesla model x','model y','tesla model y',
+                        // Peugeot/Citroen large SUV
+                        'citroen c5 aircross','citroen c4 spacetourer',
+                        // Bentley/Rolls/Lambo SUV
+                        'urus','lamborghini urus','bentayga','bentley bentayga','cullinan','rolls royce cullinan',
+                        // SsangYong / Korean SUV
+                        'korando','ssangyong korando','rexton','ssangyong rexton',
+                        // Ford SUV
+                        'edge','ford edge','explorer','ford explorer','bronco','ford bronco','mustang mach-e','ford mustang mach-e',
+                        // Dacia SUV (large)
+                        'dacia bigster',
+                        // Genesis SUV
+                        'genesis gv80','gv80','genesis gv60','gv60',
+                        // Lexus SUV
+                        'lexus nx','lexus rx','lexus ux','lexus rz',
+                        // DS SUV
+                        'ds7 crossback',
+                        // Cupra SUV
+                        'cupra tavascan',
+                        // Dodge/US
+                        'tahoe','chevrolet tahoe','suburban','chevrolet suburban',
+                        // Honda SUV
+                        'pilot','honda pilot',
+                        // Polestar
+                        'polestar 3','polestar 4'
+                    ]
+                },
+
+                // Step 2: Package
+                selectedPackage: '',
+                expandedPkg: '',
+
+                // Step 3: Add-ons
                 selectedAddons: [],
+
+                // Step 4: Contact & Date
                 name: '',
                 phone: '',
                 email: '',
@@ -630,164 +1079,338 @@
                 submitting: false,
                 submitted: false,
                 errorMessage: '',
+                showRecoveryPrompt: false,
+                _recoveryConfig: null,
+                minDate: minDateStr,
 
-                // Min date (tomorrow)
-                minDate: (() => {
-                    const tomorrow = new Date();
-                    tomorrow.setDate(tomorrow.getDate() + 1);
-                    return tomorrow.toISOString().split('T')[0];
-                })(),
-
-                get calculatedPrice() {
+                // Computed: package price
+                get packagePrice() {
                     if (!this.selectedPackage || !this._calculatePrice) return { min: 0, max: 0 };
-                    const sizeKey = this.size || 'sedan';
-                    const condKey = this.condition || 'usoara';
-                    return this._calculatePrice(this.selectedPackage, sizeKey, condKey);
+                    return this._calculatePrice(this.selectedPackage, this.carSize, this.condition) || { min: 0, max: 0 };
                 },
 
+                // Computed: addons total
                 get addonsTotal() {
-                    if (!this._getAddonById) return 0;
-                    return this.selectedAddons.reduce((sum, id) => {
-                        const addon = this._getAddonById(id);
-                        return sum + (addon ? addon.price : 0);
-                    }, 0);
+                    var total = 0;
+                    for (var i = 0; i < this.selectedAddons.length; i++) {
+                        if (!this.isAddonExcluded(this.selectedAddons[i])) {
+                            var a = this._getAddonById ? this._getAddonById(this.selectedAddons[i]) : null;
+                            if (a) total += a.price;
+                        }
+                    }
+                    return total;
                 },
 
-                get totalMin() {
-                    return this.calculatedPrice.min + this.addonsTotal;
+                get totalMin() { return this.packagePrice.min + this.addonsTotal; },
+                get totalMax() { return this.packagePrice.max + this.addonsTotal; },
+
+                isValidPhone() {
+                    var digits = this.phone.replace(/\D/g, '');
+                    return digits.length >= 10;
                 },
-
-                get totalMax() {
-                    return this.calculatedPrice.max + this.addonsTotal;
+                isValidEmail() {
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email.trim());
                 },
-
-                get isFormValid() {
-                    return this.selectedPackage
-                        && this.size
-                        && this.condition
-                        && this.name.trim()
-                        && this.phone.trim()
-                        && this.email.trim()
-                        && this.date
-                        && this.timeSlot;
-                },
-
-                init() {
-                    const loadData = () => {
-                        if (window._servicesData) {
-                            this.packages = window._servicesData.packages;
-                            this.addons = window._servicesData.addons;
-                            this.sizeMultipliers = window._servicesData.sizeMultipliers;
-                            this.conditionMultipliers = window._servicesData.conditionMultipliers;
-                            this._getPackageById = window._servicesData.getPackageById;
-                            this._getAddonById = window._servicesData.getAddonById;
-                            this._calculatePrice = window._servicesData.calculatePrice;
-
-                            // Load saved config from configurator
-                            this.loadFromLocalStorage();
-
-                            // Override with URL param if present (e.g. from configurator link)
-                            const params = new URLSearchParams(window.location.search);
-                            const pachet = params.get('pachet');
-                            if (pachet && this._getPackageById(pachet)) {
-                                this.selectedPackage = pachet;
+                detectCarSize() {
+                    var input = this.carModel.toLowerCase().trim();
+                    if (input.length < 2) {
+                        this.autoDetectedSize = false;
+                        if (!this.manualSize) this.carSize = '';
+                        return;
+                    }
+                    var bestMatch = null;
+                    var bestLen = 0;
+                    var cats = ['mica','medie','mare','suv'];
+                    for (var c = 0; c < cats.length; c++) {
+                        var keywords = this.carClassification[cats[c]];
+                        for (var k = 0; k < keywords.length; k++) {
+                            if (input.indexOf(keywords[k]) !== -1 && keywords[k].length > bestLen) {
+                                bestMatch = cats[c];
+                                bestLen = keywords[k].length;
                             }
+                        }
+                    }
+                    if (bestMatch) {
+                        this.carSize = bestMatch;
+                        this.autoDetectedSize = true;
+                        this.manualSize = false;
+                    } else {
+                        this.autoDetectedSize = false;
+                        // Clear a previously detected class so retyping an unknown
+                        // model cannot leave a stale (and wrong) price on screen.
+                        if (!this.manualSize) this.carSize = '';
+                    }
+                },
+                onCarModelInput() {
+                    var self = this;
+                    clearTimeout(this._detectTimer);
+                    this._detectTimer = setTimeout(function() { self.detectCarSize(); }, 300);
+                },
+                setCarSize(key) {
+                    this.carSize = key;
+                    this.manualSize = true;
+                    this.autoDetectedSize = false;
+                },
+                clearCarSize() {
+                    this.carSize = '';
+                    this.manualSize = false;
+                    this.autoDetectedSize = false;
+                },
 
+                formatPhone() {
+                    var digits = this.phone.replace(/\D/g, '');
+                    if (digits.startsWith('40') && digits.length > 2) {
+                        this.phone = '+40 ' + digits.slice(2, 5) + (digits.length > 5 ? ' ' + digits.slice(5, 8) : '') + (digits.length > 8 ? ' ' + digits.slice(8, 11) : '');
+                    } else if (digits.startsWith('0') && digits.length > 1) {
+                        this.phone = digits.slice(0, 4) + (digits.length > 4 ? ' ' + digits.slice(4, 7) : '') + (digits.length > 7 ? ' ' + digits.slice(7, 10) : '');
+                    }
+                },
+
+                get canProceed() {
+                    if (this.currentStep === 1) return this.carModel.trim().length >= 2;
+                    if (this.currentStep === 2) return this.selectedPackage !== '';
+                    if (this.currentStep === 3) return true;
+                    if (this.currentStep === 4) return this.name.trim() && this.isValidPhone() && this.isValidEmail() && this.date && this.timeSlot;
+                    return true;
+                },
+
+                // Init
+                init() {
+                    var self = this;
+                    var loadData = function() {
+                        if (window._servicesData) {
+                            self.packages = window._servicesData.packages;
+                            self.addons = window._servicesData.addons;
+                            self.sizeMultipliers = window._servicesData.sizeMultipliers;
+                            self.conditionMultipliers = window._servicesData.conditionMultipliers;
+                            self._getPackageById = window._servicesData.getPackageById;
+                            self._getAddonById = window._servicesData.getAddonById;
+                            self._calculatePrice = window._servicesData.calculatePrice;
+
+                            self.checkForSavedConfig();
+                            self.processURLParams();
                             return true;
                         }
                         return false;
                     };
-
                     if (!loadData()) {
-                        window.addEventListener('services-data-ready', () => loadData());
+                        window.addEventListener('services-data-ready', function() { loadData(); });
                     }
                 },
 
-                loadFromLocalStorage() {
+                checkForSavedConfig() {
                     try {
-                        const saved = JSON.parse(localStorage.getItem('novaConfig') || '{}');
-                        if (saved.packageId) this.selectedPackage = saved.packageId;
-                        if (saved.size) this.size = saved.size;
-                        if (saved.condition) this.condition = saved.condition;
-                        if (saved.carModel) this.carModel = saved.carModel;
-                        if (saved.addons && Array.isArray(saved.addons)) this.selectedAddons = [...saved.addons];
-                    } catch (e) {
-                        // Silently ignore parse errors
+                        var saved = JSON.parse(localStorage.getItem('novaConfig') || '{}');
+                        var age = Date.now() - (saved.timestamp || 0);
+                        if (saved.packageId && age < 86400000) {
+                            this._recoveryConfig = saved;
+                            // Only show prompt if no URL params override
+                            var params = new URLSearchParams(window.location.search);
+                            if (!params.get('pachet')) {
+                                this.showRecoveryPrompt = true;
+                            } else {
+                                // URL param takes priority, silently apply saved config for non-conflicting fields
+                                if (saved.size) this.carSize = saved.size;
+                                if (saved.condition) this.condition = saved.condition;
+                                if (saved.carModel) this.carModel = saved.carModel;
+                                if (saved.addons) this.selectedAddons = saved.addons;
+                            }
+                        }
+                    } catch (e) {}
+                },
+
+                processURLParams() {
+                    var params = new URLSearchParams(window.location.search);
+                    var pachet = params.get('pachet');
+                    if (pachet && this._getPackageById && this._getPackageById(pachet)) {
+                        this.selectedPackage = pachet;
                     }
                 },
 
-                getSelectedPackage() {
-                    if (!this._getPackageById) return null;
-                    return this._getPackageById(this.selectedPackage);
+                restoreConfig() {
+                    if (!this._recoveryConfig) return;
+                    this.carSize = this._recoveryConfig.size || this.carSize;
+                    this.condition = this._recoveryConfig.condition || this.condition;
+                    this.selectedPackage = this._recoveryConfig.packageId || '';
+                    this.selectedAddons = this._recoveryConfig.addons || [];
+                    this.carModel = this._recoveryConfig.carModel || '';
+                    this.showRecoveryPrompt = false;
+                    if (this.selectedPackage) this.currentStep = 2;
                 },
 
-                getAddonByIdLocal(id) {
-                    if (!this._getAddonById) return null;
-                    return this._getAddonById(id);
+                dismissRecovery() {
+                    this.showRecoveryPrompt = false;
+                    localStorage.removeItem('novaConfig');
                 },
 
-                toggleAddon(id) {
-                    const idx = this.selectedAddons.indexOf(id);
+                saveToLocalStorage() {
+                    var config = {
+                        packageId: this.selectedPackage,
+                        size: this.carSize,
+                        condition: this.condition,
+                        carModel: this.carModel,
+                        addons: this.selectedAddons,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem('novaConfig', JSON.stringify(config));
+                },
+
+                // Step navigation
+                nextStep() {
+                    if (!this.canProceed || this.currentStep >= 5) return;
+                    this.currentStep++;
+                    this.saveToLocalStorage();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+
+                prevStep() {
+                    if (this.currentStep <= 1) return;
+                    this.currentStep--;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                },
+
+                goToStep(step) {
+                    if (step >= 1 && step < this.currentStep) {
+                        this.currentStep = step;
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                },
+
+                // Package & Addon logic
+                selectPackage(pkgId) {
+                    this.selectedPackage = pkgId;
+                    this.expandedPkg = '';
+                    this.cleanupAddons();
+                },
+
+                getPkgPrice(pkgId) {
+                    if (!this._calculatePrice) return { min: 0, max: 0 };
+                    return this._calculatePrice(pkgId, this.carSize, this.condition) || { min: 0, max: 0 };
+                },
+
+                isAddonExcluded(addonId) {
+                    if (!this.selectedPackage || !this._getPackageById) return false;
+                    var pkg = this._getPackageById(this.selectedPackage);
+                    return pkg && pkg.excludedAddons ? pkg.excludedAddons.indexOf(addonId) > -1 : false;
+                },
+
+                toggleAddon(addonId) {
+                    if (this.isAddonExcluded(addonId)) return;
+                    var idx = this.selectedAddons.indexOf(addonId);
                     if (idx > -1) {
                         this.selectedAddons.splice(idx, 1);
                     } else {
-                        this.selectedAddons.push(id);
+                        this.selectedAddons.push(addonId);
                     }
+                },
+
+                cleanupAddons() {
+                    if (!this.selectedPackage || !this._getPackageById) return;
+                    var pkg = this._getPackageById(this.selectedPackage);
+                    if (pkg && pkg.excludedAddons) {
+                        var excluded = pkg.excludedAddons;
+                        this.selectedAddons = this.selectedAddons.filter(function(id) { return excluded.indexOf(id) === -1; });
+                    }
+                },
+
+                activeAddons() {
+                    var self = this;
+                    return this.selectedAddons.filter(function(id) { return !self.isAddonExcluded(id); });
+                },
+
+                // Helpers
+                getSelectedPackage() {
+                    return this._getPackageById ? this._getPackageById(this.selectedPackage) : null;
+                },
+
+                getAddonByIdLocal(id) {
+                    return this._getAddonById ? this._getAddonById(id) : null;
+                },
+
+                formatNumber(n) { return fmt.format(n); },
+
+                getSizeLabel() {
+                    // No '(' in the fallback, so the existing .split('(')[0] calls
+                    // at the summary/review/WhatsApp sites pass it through intact.
+                    return (this.sizeMultipliers[this.carSize] || {}).label
+                        || 'Clasa se stabileste la inspectie';
+                },
+
+                getConditionLabel() {
+                    return (this.conditionMultipliers[this.condition] || {}).label || '-';
                 },
 
                 formatDate(dateStr) {
                     if (!dateStr) return '';
-                    const d = new Date(dateStr + 'T00:00:00');
-                    const days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
-                    const months = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
+                    var d = new Date(dateStr + 'T00:00:00');
+                    var days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
+                    var months = ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'];
                     return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
                 },
 
-                async submitBooking() {
-                    if (!this.isFormValid || this.submitting) return;
+                // WhatsApp
+                getWhatsAppText() {
+                    var pkg = this.getSelectedPackage();
+                    var text = 'Buna ziua! As dori o rezervare pentru:\n\n';
+                    text += 'Pachet: ' + (pkg ? pkg.name : 'Neselectat') + '\n';
+                    text += 'Vehicul: ' + (this.carModel || this.getSizeLabel().split('(')[0].trim()) + '\n';
+                    text += 'Stare: ' + this.getConditionLabel().split('(')[0].trim() + '\n';
+                    var active = this.activeAddons();
+                    if (active.length) {
+                        var self = this;
+                        var names = active.map(function(id) { var a = self.getAddonByIdLocal(id); return a ? a.name : id; }).join(', ');
+                        text += 'Extra: ' + names + '\n';
+                    }
+                    var totalText = this.totalMin === this.totalMax ? this.formatNumber(this.totalMin) + ' lei' : this.formatNumber(this.totalMin) + ' - ' + this.formatNumber(this.totalMax) + ' lei';
+                    text += 'Total estimat: ' + totalText + '\n';
+                    if (this.date && this.timeSlot) {
+                        text += 'Data dorita: ' + this.formatDate(this.date) + ', ' + this.timeSlot + '\n';
+                    }
+                    if (this.name) text += 'Nume: ' + this.name + '\n';
+                    if (this.phone) text += 'Telefon: ' + this.phone + '\n';
+                    text += '\nVa multumesc!';
+                    return text;
+                },
 
+                // Submit booking
+                async submitBooking() {
+                    if (!this.canProceed || this.submitting) return;
                     this.submitting = true;
                     this.errorMessage = '';
 
-                    const pkg = this.getSelectedPackage();
-
-                    const payload = {
+                    var pkg = this.getSelectedPackage();
+                    var self = this;
+                    var payload = {
                         package: this.selectedPackage,
                         packageName: pkg ? pkg.name : '',
-                        size: this.size,
-                        sizeLabel: this.sizeMultipliers[this.size]?.label || '',
+                        // Explicit marker so the atelier sees the class was never
+                        // resolved, rather than an ambiguous empty string.
+                        size: this.carSize || 'nedeterminat',
+                        sizeLabel: this.getSizeLabel(),
                         condition: this.condition,
-                        conditionLabel: this.conditionMultipliers[this.condition]?.label || '',
+                        conditionLabel: this.getConditionLabel(),
                         carModel: this.carModel,
-                        addons: this.selectedAddons,
-                        addonNames: this.selectedAddons.map(id => {
-                            const a = this.getAddonByIdLocal(id);
-                            return a ? a.name : id;
-                        }),
+                        addons: this.activeAddons(),
+                        addonNames: this.activeAddons().map(function(id) { var a = self.getAddonByIdLocal(id); return a ? a.name : id; }),
                         name: this.name.trim(),
                         phone: this.phone.trim(),
                         email: this.email.trim(),
                         date: this.date,
                         timeSlot: this.timeSlot,
                         notes: this.notes.trim(),
-                        estimatedPrice: {
-                            min: this.totalMin,
-                            max: this.totalMax
-                        }
+                        estimatedPrice: { min: this.totalMin, max: this.totalMax }
                     };
 
                     try {
-                        const response = await fetch('/api/create-booking', {
+                        var response = await fetch('/api/create-booking', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)
                         });
-
                         if (!response.ok) {
-                            const data = await response.json().catch(() => ({}));
+                            var data = await response.json().catch(function() { return {}; });
                             throw new Error(data.message || 'A aparut o eroare. Te rugam sa incerci din nou.');
                         }
-
                         this.submitted = true;
                         localStorage.removeItem('novaConfig');
                     } catch (err) {
@@ -798,10 +1421,14 @@
                 },
 
                 resetForm() {
-                    this.selectedPackage = '';
-                    this.size = '';
-                    this.condition = '';
+                    this.currentStep = 1;
+                    this.carSize = '';
+                    this.manualSize = false;
+                    this.autoDetectedSize = false;
+                    this.condition = 'usoara';
                     this.carModel = '';
+                    this.selectedPackage = '';
+                    this.expandedPkg = '';
                     this.selectedAddons = [];
                     this.name = '';
                     this.phone = '';
@@ -811,31 +1438,13 @@
                     this.notes = '';
                     this.submitted = false;
                     this.errorMessage = '';
+                    this.touched = { name: false, phone: false, email: false };
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
         }
     </script>
 
-    <script>
-    (function() {
-        var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        if (revealEls.length && 'IntersectionObserver' in window) {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-            revealEls.forEach(function(el) { observer.observe(el); });
-        } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
-        var nav = document.getElementById('main-nav');
-        if (nav) {
-            var ticking = false;
-            window.addEventListener('scroll', function() {
-                if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
-            }, { passive: true });
-        }
-    })();
-    </script>
-
+    <script type="module" src="/nova-home.js?v=7"></script>
 </body>
 </html>

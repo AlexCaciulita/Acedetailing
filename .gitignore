@@ -12,9 +12,15 @@ dist
 dist-ssr
 *.local
 .env
-data/
+
+# Runtime data stays out, but the finish-record seed is source and must ship —
+# note this has to ignore the directory CONTENTS, since git cannot re-include a
+# file whose parent directory is itself excluded.
+data/*
+!data/records.json
 
 # Editor directories and files
+.claude/settings.local.json
 .vscode/*
 !.vscode/extensions.json
 .idea

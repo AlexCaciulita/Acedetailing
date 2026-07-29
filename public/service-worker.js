@@ -1,21 +1,24 @@
-const CACHE_NAME = 'nova-detailing-v3.0';
+const CACHE_NAME = 'nova-detailing-v8.0';
 const OFFLINE_URL = '/index.html';
 
 // Files to cache for offline functionality
 const CORE_CACHE_FILES = [
   '/index.html',
   '/servicii.html',
-  '/configurator.html',
+  // configurator.html removed — merged into rezervare.html
+  // galerie.html removed — merged into despre.html#portofoliu
   '/rezervare.html',
   '/scoala.html',
   '/despre.html',
-  '/galerie.html',
   '/blog.html',
   '/contact.html',
   '/faq.html',
   '/politici.html',
-  '/manifest.webmanifest',
-  // External CDN resources
+  // NOT precached: nova-premium.css, nova-home.js, services-data.js and the web
+  // manifest are content-hashed by Vite in the production build, so their
+  // unhashed paths only exist in dev. The cache-first fetch handler below picks
+  // up whatever filename the page actually requests, on first visit.
+  // External CDN resources (still used by the inner pages)
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js'
 ];
@@ -32,14 +35,31 @@ const ASSET_CACHE_FILES = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
+      .then(async (cache) => {
         console.log('Service Worker: Caching core files');
-        return cache.addAll([...CORE_CACHE_FILES, ...ASSET_CACHE_FILES]);
+
+        // Deliberately NOT cache.addAll: that is atomic, so a single 404 or a
+        // CDN without CORS headers throws away the entire offline cache. Cache
+        // what we can and report the rest.
+        const results = await Promise.allSettled(
+          [...CORE_CACHE_FILES, ...ASSET_CACHE_FILES].map((url) =>
+            cache.add(url).catch((error) => {
+              throw new Error(`${url}: ${error.message}`);
+            })
+          )
+        );
+
+        const failed = results
+          .filter((result) => result.status === 'rejected')
+          .map((result) => result.reason.message);
+
+        if (failed.length) {
+          console.warn('Service Worker: some files were not cached:', failed);
+        } else {
+          console.log('Service Worker: Core files cached successfully');
+        }
       })
-      .then(() => {
-        console.log('Service Worker: Core files cached successfully');
-        return self.skipWaiting();
-      })
+      .then(() => self.skipWaiting())
       .catch((error) => {
         console.error('Service Worker: Cache installation failed:', error);
       })

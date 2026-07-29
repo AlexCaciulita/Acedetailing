@@ -6,20 +6,61 @@ export default async function handler(req, res) {
   try {
     const bookingData = req.body ?? {};
 
+    const asText = (value, max = 500) =>
+      typeof value === 'string' ? value.trim().slice(0, max) : '';
+
+    // rezervare.html sends a flat payload (timeSlot / estimatedPrice{min,max} /
+    // package / size / condition / addonNames). The pre-merge configurator sent
+    // time / estimatedAmount / configuration{}. Accept both so older clients and
+    // any queued offline submissions keep working.
+    const legacyConfig = bookingData.configuration || null;
+    const price = bookingData.estimatedPrice || null;
+
     const bookingInfo = {
       timestamp: bookingData.timestamp || new Date().toISOString(),
-      name: bookingData.name,
-      phone: bookingData.phone,
-      email: bookingData.email,
-      date: bookingData.date,
-      time: bookingData.time,
-      carBrand: bookingData.carBrand || 'N/A',
-      carModel: bookingData.carModel || 'N/A',
-      carYear: bookingData.carYear || 'N/A',
-      notes: bookingData.notes || '',
-      estimatedAmount: bookingData.estimatedAmount || 0,
-      configuration: bookingData.configuration || null
+      name: asText(bookingData.name, 120),
+      phone: asText(bookingData.phone, 40),
+      email: asText(bookingData.email, 160),
+      date: asText(bookingData.date, 20),
+      time: asText(bookingData.timeSlot) || asText(bookingData.time) || 'N/A',
+      carModel: asText(bookingData.carModel, 120) || 'N/A',
+      notes: asText(bookingData.notes, 2000),
+      packageName: asText(bookingData.packageName, 120)
+        || asText(legacyConfig?.packageName, 120)
+        || 'N/A',
+      sizeLabel: asText(bookingData.sizeLabel, 120)
+        || asText(legacyConfig?.carSize, 120)
+        || 'N/A',
+      conditionLabel: asText(bookingData.conditionLabel, 120)
+        || asText(legacyConfig?.condition, 120)
+        || 'N/A',
+      addonNames: Array.isArray(bookingData.addonNames)
+        ? bookingData.addonNames.map((a) => asText(a, 120)).filter(Boolean)
+        : (Array.isArray(legacyConfig?.addons) ? legacyConfig.addons.map((a) => asText(a, 120)) : []),
+      priceText: price && Number.isFinite(price.min)
+        ? (price.min === price.max
+            ? `${price.min} RON`
+            : `${price.min} - ${price.max} RON`)
+        : (Number.isFinite(bookingData.estimatedAmount) && bookingData.estimatedAmount > 0
+            ? `${bookingData.estimatedAmount} RON`
+            : 'de stabilit la inspecție')
     };
+
+    const missing = ['name', 'phone', 'email', 'date'].filter((field) => !bookingInfo[field]);
+    if (missing.length) {
+      return res.status(400).json({
+        success: false,
+        message: `Câmpuri obligatorii lipsă: ${missing.join(', ')}`
+      });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(bookingInfo.email)) {
+      return res.status(400).json({ success: false, message: 'Adresa de email nu este validă' });
+    }
+
+    if (bookingInfo.phone.replace(/\D/g, '').length < 10) {
+      return res.status(400).json({ success: false, message: 'Numărul de telefon nu este valid' });
+    }
 
     console.log('=== NEW BOOKING RECEIVED ===');
     console.log('Timestamp:', bookingInfo.timestamp);
@@ -28,13 +69,12 @@ export default async function handler(req, res) {
     console.log('Email:', bookingInfo.email);
     console.log('Date:', bookingInfo.date);
     console.log('Time:', bookingInfo.time);
-    console.log('Car:', `${bookingInfo.carBrand} ${bookingInfo.carModel} (${bookingInfo.carYear})`);
-    console.log('Estimated Amount:', bookingInfo.estimatedAmount, 'RON');
+    console.log('Car:', bookingInfo.carModel, '|', bookingInfo.sizeLabel);
+    console.log('Package:', bookingInfo.packageName);
+    console.log('Condition:', bookingInfo.conditionLabel);
+    console.log('Add-ons:', bookingInfo.addonNames.join(', ') || 'none');
+    console.log('Estimated:', bookingInfo.priceText);
     console.log('Notes:', bookingInfo.notes);
-
-    if (bookingInfo.configuration) {
-      console.log('Configuration:', JSON.stringify(bookingInfo.configuration, null, 2));
-    }
     console.log('===========================');
 
     const emailSubject = `Rezervare nouă - ${bookingInfo.name}`;
@@ -51,18 +91,14 @@ PROGRAMARE:
 - Ora: ${bookingInfo.time}
 
 MAȘINĂ:
-- Marcă: ${bookingInfo.carBrand}
 - Model: ${bookingInfo.carModel}
-- An: ${bookingInfo.carYear}
+- Clasă: ${bookingInfo.sizeLabel}
+- Stare: ${bookingInfo.conditionLabel}
 
-PREȚ ESTIMAT: ${bookingInfo.estimatedAmount} RON
+PACHET SELECTAT: ${bookingInfo.packageName}
+${bookingInfo.addonNames.length ? `Add-on-uri: ${bookingInfo.addonNames.join(', ')}` : 'Fără add-on-uri'}
 
-${bookingInfo.configuration ? `
-PACHET SELECTAT: ${bookingInfo.configuration.packageName || 'N/A'}
-Dimensiune vehicul: ${bookingInfo.configuration.carSize || 'N/A'}
-Stare vehicul: ${bookingInfo.configuration.condition || 'N/A'}
-${bookingInfo.configuration.addons?.length ? `Add-on-uri: ${bookingInfo.configuration.addons.join(', ')}` : ''}
-` : ''}
+PREȚ ESTIMAT: ${bookingInfo.priceText}
 
 ${bookingInfo.notes ? `NOTIȚE:\n${bookingInfo.notes}` : ''}
 
@@ -78,13 +114,14 @@ Bună ziua ${bookingInfo.name},
 DETALII REZERVARE:
 - Data: ${bookingInfo.date}
 - Ora: ${bookingInfo.time}
-${bookingInfo.configuration ? `- Preț estimat: ${bookingInfo.estimatedAmount} RON
-` : ''}
-MAȘINĂ:
-- ${bookingInfo.carBrand} ${bookingInfo.carModel} (${bookingInfo.carYear})
+- Preț estimat: ${bookingInfo.priceText}
 
-${bookingInfo.configuration ? `PACHET: ${bookingInfo.configuration.packageName || 'N/A'}
-${bookingInfo.configuration.addons?.length ? `Add-on-uri: ${bookingInfo.configuration.addons.join(', ')}\n` : ''}` : ''}
+MAȘINĂ:
+- ${bookingInfo.carModel} (${bookingInfo.sizeLabel})
+
+PACHET: ${bookingInfo.packageName}
+${bookingInfo.addonNames.length ? `Add-on-uri: ${bookingInfo.addonNames.join(', ')}\n` : ''}
+Prețul final se confirmă după inspecția mașinii.
 Plata se va face la fața locului (numerar sau card).
 
 Dacă ai întrebări sau dorești să modifici rezervarea, te rugăm să ne contactezi:

@@ -3,23 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Nova Detailing</title>
+    <title>Contact — Nova Detailing Bucuresti</title>
     <meta name="description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti. Telefon, email, adresa si program.">
     <link rel="canonical" href="https://novadetailing.ro/contact.html">
     <meta property="og:title" content="Contact | Nova Detailing">
     <meta property="og:description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://novadetailing.ro/contact.html">
-    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <meta property="og:locale" content="ro_RO">
     <meta property="og:site_name" content="Nova Detailing">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Contact | Nova Detailing">
     <meta name="twitter:description" content="Contacteaza Nova Detailing pentru servicii premium de auto detailing in Bucuresti.">
-    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#B8962F">
+    <meta name="theme-color" content="#F7F7F5">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,14 +30,14 @@
         theme: {
             extend: {
                 colors: {
-                    primary: '#B8962F',
-                    'primary-light': '#C9A84C',
-                    'primary-dark': '#8B7226',
+                    primary: '#826C3E',
+                    'primary-light': '#B5A17A',
+                    'primary-dark': '#6B5834',
                     secondary: '#1A1A1A',
                     light: {
-                        50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
-                        400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
-                        800: '#374151', 900: '#1F2937', 950: '#111827'
+                        50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
+                        400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
+                        800: '#343432', 900: '#262625', 950: '#1A1A1A'
                     }
                 },
                 fontFamily: {
@@ -44,8 +45,8 @@
                     body: ['Inter', 'system-ui', 'sans-serif']
                 },
                 boxShadow: {
-                    'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
-                    'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                    'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
+                    'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
                     'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
                     'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                 }
@@ -69,7 +70,7 @@
         "addressCountry": "RO"
       },
       "image": "https://novadetailing.ro/assets/rs=h_1000,cg_true.webp",
-      "priceRange": "800 - 6000 RON",
+      "priceRange": "1800 - 6000 RON",
       "areaServed": { "@type": "City", "name": "Bucuresti" }
     }
     </script>
@@ -81,15 +82,103 @@
     .reveal-scale.revealed { opacity: 1; transform: scale(1); }
     .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
     .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
-    .btn-press { position: relative; overflow: hidden; }
-    .btn-press:active { transform: scale(0.97); }
+    /* ─── Liquid Glass Buttons ─── */
+        @keyframes glassShine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .btn-glass {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(181,161,122,0.85) 0%, rgba(196,185,160,0.75) 50%, rgba(181,161,122,0.85) 100%);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 24px rgba(181,161,122,0.25), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass:hover {
+            background: linear-gradient(135deg, rgba(196,185,160,0.92) 0%, rgba(214,200,172,0.82) 50%, rgba(196,185,160,0.92) 100%);
+            box-shadow: 0 8px 32px rgba(181,161,122,0.35), 0 0 60px rgba(181,161,122,0.12), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .btn-glass:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass:active {
+            transform: scale(0.97) translateY(0);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.2), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-glass-outline {
+            position: relative;
+            overflow: hidden;
+            background: rgba(181,161,122,0.06);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(181,161,122,0.35);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.08), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass-outline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass-outline::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(181,161,122,0.12), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass-outline:hover {
+            background: rgba(181,161,122,0.12);
+            border-color: rgba(181,161,122,0.55);
+            box-shadow: 0 4px 20px rgba(181,161,122,0.15), 0 0 40px rgba(181,161,122,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        .btn-glass-outline:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass-outline:active {
+            transform: scale(0.97) translateY(0);
+            background: rgba(181,161,122,0.18);
+        }
+        .btn-press { position: relative; overflow: hidden; transition: all 0.2s cubic-bezier(0.22,1,0.36,1); }
+        .btn-press:active { transform: scale(0.97); }
     .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
     .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
     html { scroll-behavior: smooth; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
+    <link rel="stylesheet" href="/nova-premium.css?v=7">
 </head>
-<body class="bg-light-50 text-light-950 font-body">
+<body class="nova-premium nova-inner-page bg-light-50 text-light-950 font-body">
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -109,12 +198,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
                     <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
-                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
                     <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
                     <a href="/despre.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Despre</a>
-                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
                     <a href="/contact.html" class="text-primary font-medium text-sm font-heading">Contact</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all duration-200 text-sm font-heading font-semibold">Rezervare</a>
+                    <a href="/rezervare.html" class="btn-glass text-white px-5 py-2 rounded-full text-sm font-heading font-semibold">Rezerva Acum</a>
                 </div>
             </div>
         </div>
@@ -122,15 +209,24 @@
             <div class="px-4 py-4 space-y-2">
                 <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
                 <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
-                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
                 <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
                 <a href="/despre.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Despre</a>
-                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
                 <a href="/contact.html" class="block px-3 py-2 text-primary font-semibold font-heading text-sm">Contact</a>
-                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
+                <a href="/rezervare.html" class="block px-3 py-2 btn-glass text-white rounded-full font-semibold font-heading text-sm text-center mt-2">Rezerva Acum</a>
             </div>
         </div>
     </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-light-50 border-b border-light-200 pt-20 pb-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm text-light-500">
+                <a href="/index.html" class="hover:text-primary transition-colors">Acasa</a>
+                <span class="mx-2">&gt;</span>
+                <span class="text-primary font-medium">Contact</span>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Header -->
     <section class="pt-24 pb-12">
@@ -207,12 +303,27 @@
                     contactData: { name: '', email: '', phone: '', subject: '', message: '' },
                     contactSubmitted: false,
                     contactLoading: false,
-                    submitContact() {
+                    contactError: '',
+                    async submitContact() {
+                        if (this.contactLoading) return;
                         this.contactLoading = true;
-                        setTimeout(() => {
-                            this.contactLoading = false;
+                        this.contactError = '';
+                        try {
+                            const res = await fetch('/api/create-contact', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ ...this.contactData, timestamp: new Date().toISOString() })
+                            });
+                            if (!res.ok) {
+                                const data = await res.json().catch(() => ({}));
+                                throw new Error(data.message || 'Nu am putut trimite mesajul. Te rugam sa incerci din nou.');
+                            }
                             this.contactSubmitted = true;
-                        }, 1500);
+                        } catch (err) {
+                            this.contactError = err.message || 'Verifica conexiunea la internet si incearca din nou.';
+                        } finally {
+                            this.contactLoading = false;
+                        }
                     },
                     // Enrollment form state
                     enrollData: {
@@ -255,18 +366,35 @@
                         online: 'Online (self-paced) — 1.500 lei'
                     }
                 }">
-                    <!-- Tab Switcher -->
-                    <div class="flex border-b border-light-300 mb-8">
-                        <button @click="activeTab = 'contact'" :class="activeTab === 'contact' ? 'border-primary text-primary' : 'border-transparent text-light-600 hover:text-light-800'" class="pb-3 px-4 text-sm font-heading font-semibold border-b-2 transition-colors">
+                    <!-- Tab Switcher. aria-selected is the only state: aria-pressed
+                         is not allowed on role="tab" and the pair contradicted itself. -->
+                    <div class="nova-control-tray mb-8" role="tablist" aria-label="Tip formular"
+                        @keydown.arrow-right.prevent="activeTab = activeTab === 'contact' ? 'enrollment' : 'contact'; $refs[activeTab === 'contact' ? 'tabContact' : 'tabEnrollment'].focus()"
+                        @keydown.arrow-left.prevent="activeTab = activeTab === 'contact' ? 'enrollment' : 'contact'; $refs[activeTab === 'contact' ? 'tabContact' : 'tabEnrollment'].focus()"
+                        @keydown.home.prevent="activeTab = 'contact'; $refs.tabContact.focus()"
+                        @keydown.end.prevent="activeTab = 'enrollment'; $refs.tabEnrollment.focus()">
+                        <button type="button" x-ref="tabContact" id="tab-btn-contact" role="tab"
+                            aria-controls="panel-contact"
+                            :aria-selected="String(activeTab === 'contact')"
+                            :tabindex="activeTab === 'contact' ? 0 : -1"
+                            :class="{ active: activeTab === 'contact' }"
+                            @click="activeTab = 'contact'"
+                            class="gold-btn">
                             Mesaj
                         </button>
-                        <button @click="activeTab = 'enrollment'" :class="activeTab === 'enrollment' ? 'border-primary text-primary' : 'border-transparent text-light-600 hover:text-light-800'" class="pb-3 px-4 text-sm font-heading font-semibold border-b-2 transition-colors">
+                        <button type="button" x-ref="tabEnrollment" id="tab-btn-enrollment" role="tab"
+                            aria-controls="panel-enrollment"
+                            :aria-selected="String(activeTab === 'enrollment')"
+                            :tabindex="activeTab === 'enrollment' ? 0 : -1"
+                            :class="{ active: activeTab === 'enrollment' }"
+                            @click="activeTab = 'enrollment'"
+                            class="gold-btn">
                             Inscriere Curs
                         </button>
                     </div>
 
                     <!-- ===== CONTACT TAB ===== -->
-                    <div x-show="activeTab === 'contact'" x-transition>
+                    <div id="panel-contact" role="tabpanel" aria-labelledby="tab-btn-contact" x-show="activeTab === 'contact'" x-transition>
                         <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Trimite-ne un mesaj</h2>
                         <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
                         <p class="text-light-700 text-sm mb-8">Completeaza formularul de mai jos si te vom contacta in cel mai scurt timp posibil.</p>
@@ -285,6 +413,7 @@
 
                         <!-- Form -->
                         <form x-show="!contactSubmitted" @submit.prevent="submitContact()" class="space-y-5">
+                            <div x-show="contactError" x-transition role="alert" class="rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700" x-text="contactError"></div>
                             <div>
                                 <label for="contact-name" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Nume complet <span class="text-primary">*</span></label>
                                 <input type="text" id="contact-name" x-model="contactData.name" required placeholder="Ion Popescu" class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors">
@@ -314,7 +443,7 @@
                                 <label for="contact-message" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Mesaj <span class="text-primary">*</span></label>
                                 <textarea id="contact-message" x-model="contactData.message" required rows="5" placeholder="Descrie pe scurt cum te putem ajuta..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors resize-none"></textarea>
                             </div>
-                            <button type="submit" :disabled="contactLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                            <button type="submit" :disabled="contactLoading" class="btn-glass w-full text-white py-3.5 rounded-full font-heading font-semibold text-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                 <svg x-show="contactLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -325,7 +454,7 @@
                     </div>
 
                     <!-- ===== ENROLLMENT TAB ===== -->
-                    <div x-show="activeTab === 'enrollment'" x-transition>
+                    <div id="panel-enrollment" role="tabpanel" aria-labelledby="tab-btn-enrollment" x-show="activeTab === 'enrollment'" x-transition>
                         <h2 class="text-2xl font-heading font-bold text-light-950 mb-2">Inscriere Curs Detailing</h2>
                         <div class="w-10 h-0.5 bg-primary mb-6 rounded-full"></div>
                         <p class="text-light-700 text-sm mb-8">Completeaza formularul pentru a te inscrie la cursul dorit. Te vom contacta pentru confirmarea locului si detalii de plata.</p>
@@ -386,7 +515,7 @@
                                 <label for="enroll-notes" class="block text-sm font-heading font-medium text-light-700 mb-1.5">Informatii suplimentare</label>
                                 <textarea id="enroll-notes" x-model="enrollData.notes" rows="4" placeholder="Spune-ne mai mult despre obiectivele tale sau intrebari pe care le ai..." class="w-full bg-white border border-light-400 rounded-lg px-4 py-3 text-light-950 text-sm placeholder-light-600 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-colors resize-none"></textarea>
                             </div>
-                            <button type="submit" :disabled="enrollLoading" class="btn-press w-full bg-primary text-white py-3.5 rounded-lg font-heading font-semibold text-sm hover:bg-primary-light transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                            <button type="submit" :disabled="enrollLoading" class="btn-glass w-full text-white py-3.5 rounded-full font-heading font-semibold text-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
                                 <svg x-show="enrollLoading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
                                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -490,8 +619,7 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
-                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
+                        <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
                         <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
                         <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
                         <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
@@ -527,25 +655,6 @@
         </div>
     </footer>
 
-<script>
-(function() {
-    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-    if (revealEls.length && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        revealEls.forEach(function(el) { observer.observe(el); });
-    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
-    var nav = document.getElementById('main-nav');
-    if (nav) {
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
-        }, { passive: true });
-    }
-})();
-</script>
+    <script type="module" src="/nova-home.js?v=7"></script>
 </body>
 </html>

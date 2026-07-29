@@ -34,6 +34,15 @@ server {
     gzip_min_length 1000;
     gzip_vary on;
 
+    # Permanent redirects for retired pages. Exact-match (=) locations win over
+    # the regex and prefix locations below regardless of ordering in this file.
+    # The quotes around the #portofoliu targets are required — unquoted, nginx
+    # reads `#portofoliu";` as a comment and `nginx -t` fails.
+    location = /configurator.html { return 301 https://$host/rezervare.html; }
+    location = /configurator      { return 301 https://$host/rezervare.html; }
+    location = /galerie.html      { return 301 "https://$host/despre.html#portofoliu"; }
+    location = /galerie           { return 301 "https://$host/despre.html#portofoliu"; }
+
     # Static asset caching
     location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp|woff|woff2)$ {
         proxy_pass http://127.0.0.1:8000;

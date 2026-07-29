@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Despre Noi | Nova Detailing - Povestea din Spatele Excelentei</title>
+    <title>Despre Nova Detailing — Povestea Noastra & Galerie</title>
     <meta name="description" content="Descopera povestea Nova Detailing. 10+ ani de experienta in auto detailing, peste 1000 de masini lucrate, autor publicat si scoala profesionala de detailing in Bucuresti.">
     <link rel="canonical" href="https://novadetailing.ro/despre.html">
     <meta name="keywords" content="despre nova detailing, povestea noastra, experienta detailing, scoala detailing bucuresti, cursuri detailing">
@@ -14,19 +14,20 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://novadetailing.ro/despre.html">
     <meta property="og:locale" content="ro_RO">
-    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <meta property="og:site_name" content="Nova Detailing">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Despre Noi | Nova Detailing">
     <meta name="twitter:description" content="10+ ani de pasiune pentru detailing auto. Descopera povestea noastra.">
-    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#B8962F">
+    <meta name="theme-color" content="#F7F7F5">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,14 +41,14 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#B8962F',
-                        'primary-light': '#C9A84C',
-                        'primary-dark': '#8B7226',
+                        primary: '#826C3E',
+                        'primary-light': '#B5A17A',
+                        'primary-dark': '#6B5834',
                         secondary: '#1A1A1A',
                         light: {
-                            50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
-                            400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
-                            800: '#374151', 900: '#1F2937', 950: '#111827'
+                            50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
+                            400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
+                            800: '#343432', 900: '#262625', 950: '#1A1A1A'
                         }
                     },
                     fontFamily: {
@@ -55,8 +56,8 @@
                         body: ['Inter', 'system-ui', 'sans-serif']
                     },
                     boxShadow: {
-                        'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
-                        'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                        'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
+                        'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
                         'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
                         'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                     }
@@ -79,17 +80,17 @@
         .delay-300 { animation-delay: 0.3s; }
         .delay-400 { animation-delay: 0.4s; }
         .gold-shimmer {
-            background: linear-gradient(90deg, #B8962F 0%, #C9A84C 50%, #B8962F 100%);
+            background: linear-gradient(90deg, #B5A17A 0%, #C4B08A 50%, #B5A17A 100%);
             background-size: 200% auto;
             animation: shimmer 3s linear infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .gold-line {
-            background: linear-gradient(90deg, transparent, #B8962F, transparent);
+            background: linear-gradient(90deg, transparent, #B5A17A, transparent);
         }
         .timeline-line {
-            background: linear-gradient(to bottom, #B8962F, #C9A84C, #B8962F);
+            background: linear-gradient(to bottom, #B5A17A, #C4B08A, #B5A17A);
         }
         /* Scroll-triggered reveal */
         .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
@@ -102,15 +103,113 @@
         .reveal-scale.revealed { opacity: 1; transform: scale(1); }
         .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; }
         .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
-        .btn-press { position: relative; overflow: hidden; }
+        /* ─── Liquid Glass Buttons ─── */
+        @keyframes glassShine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .btn-glass {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(181,161,122,0.85) 0%, rgba(196,185,160,0.75) 50%, rgba(181,161,122,0.85) 100%);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 24px rgba(181,161,122,0.25), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass:hover {
+            background: linear-gradient(135deg, rgba(196,185,160,0.92) 0%, rgba(214,200,172,0.82) 50%, rgba(196,185,160,0.92) 100%);
+            box-shadow: 0 8px 32px rgba(181,161,122,0.35), 0 0 60px rgba(181,161,122,0.12), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .btn-glass:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass:active {
+            transform: scale(0.97) translateY(0);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.2), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-glass-outline {
+            position: relative;
+            overflow: hidden;
+            background: rgba(181,161,122,0.06);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(181,161,122,0.35);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.08), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass-outline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass-outline::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(181,161,122,0.12), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass-outline:hover {
+            background: rgba(181,161,122,0.12);
+            border-color: rgba(181,161,122,0.55);
+            box-shadow: 0 4px 20px rgba(181,161,122,0.15), 0 0 40px rgba(181,161,122,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        .btn-glass-outline:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass-outline:active {
+            transform: scale(0.97) translateY(0);
+            background: rgba(181,161,122,0.18);
+        }
+        .btn-press { position: relative; overflow: hidden; transition: all 0.2s cubic-bezier(0.22,1,0.36,1); }
         .btn-press:active { transform: scale(0.97); }
         .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
         .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
         html { scroll-behavior: smooth; }
+        /* Gallery / Portfolio styles */
+        .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease; }
+        .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12); }
+        .gallery-overlay { opacity: 0; transition: opacity 0.3s ease; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .masonry-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 0.75rem; }
+        @media (min-width: 768px) { .masonry-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 200px; gap: 1.25rem; } }
+        @media (min-width: 1024px) { .masonry-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 1.5rem; } }
+        .span-2-rows { grid-row: span 2; }
+        .lightbox-backdrop { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
+    <link rel="stylesheet" href="/nova-premium.css?v=7">
 </head>
-<body class="bg-light-50 text-light-950 font-body antialiased">
+<body class="nova-premium nova-inner-page bg-light-50 text-light-950 font-body antialiased">
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -135,12 +234,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
                     <a href="/servicii.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Servicii</a>
-                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
                     <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
                     <a href="/despre.html" class="text-primary font-medium text-sm font-heading">Despre</a>
-                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
                     <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
-                    <a href="/rezervare.html" class="bg-primary text-white px-5 py-2 rounded-md hover:bg-primary-light transition-all text-sm font-heading font-semibold">Rezervare</a>
+                    <a href="/rezervare.html" class="btn-glass text-white px-5 py-2 rounded-full text-sm font-heading font-semibold">Rezerva Acum</a>
                 </div>
             </div>
         </div>
@@ -150,15 +247,24 @@
             <div class="px-4 py-4 space-y-2">
                 <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
                 <a href="/servicii.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Servicii</a>
-                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
                 <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
                 <a href="/despre.html" class="block px-3 py-2 text-primary font-semibold font-heading text-sm">Despre</a>
-                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
                 <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
-                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-white rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
+                <a href="/rezervare.html" class="block px-3 py-2 btn-glass text-white rounded-full font-semibold font-heading text-sm text-center mt-2">Rezerva Acum</a>
             </div>
         </div>
     </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-light-50 border-b border-light-200 pt-20 pb-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm text-light-500">
+                <a href="/index.html" class="hover:text-primary transition-colors">Acasa</a>
+                <span class="mx-2">&gt;</span>
+                <span class="text-primary font-medium">Despre</span>
+            </nav>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="relative pt-16 overflow-hidden">
@@ -448,6 +554,235 @@
         </div>
     </section>
 
+    <!-- Portofoliul Nostru (Gallery) Section -->
+    <section id="portofoliu" class="py-20 sm:py-28 bg-white" x-data="{
+        activeFilter: 'toate',
+        lightbox: false,
+        lightboxItem: null,
+        items: [
+            {
+                id: 1,
+                category: 'interior',
+                image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
+                title: 'BMW X5 — Essential Interior',
+                description: 'Curatare profunda a interiorului din piele naturala, tratament si hidratare piele, curatare tapiterie plafon, aspirare completa.',
+                tall: true
+            },
+            {
+                id: 2,
+                category: 'exterior',
+                image: '/assets/car_detailing_carefree_arizona.webp',
+                title: 'Mercedes GLC — Spalare profesionala',
+                description: 'Spalare exterioara completa cu metoda contactless, decontaminare chimica si uscare profesionala cu aer comprimat.',
+                tall: false
+            },
+            {
+                id: 3,
+                category: 'polish',
+                image: '/assets/auburn-wa-usa-august-5-260nw-2188152971.webp',
+                title: 'Audi A6 — Polish 3 pasi + Ceramica',
+                description: 'Corectie vopsea in 3 pasi cu pasta abraziva profesionala, aplicare coating ceramic cu protectie pe 5 ani.',
+                tall: false
+            },
+            {
+                id: 4,
+                category: 'signature',
+                image: '/assets/signature-full-card.webp',
+                title: 'Porsche 911 — Pachet Signature Full',
+                description: 'Transformare completa: decontaminare, corectie vopsea multi-step, protectie ceramica profesionala, tratament interior premium din piele.',
+                tall: true
+            },
+            {
+                id: 5,
+                category: 'exterior',
+                image: '/assets/scoala-detailing.webp',
+                title: 'Range Rover — Decontaminare completa',
+                description: 'Spalare profesionala cu foam lance, decontaminare cu clay bar, tratament jante si anvelope, sealant rapid.',
+                tall: false
+            },
+            {
+                id: 6,
+                category: 'interior',
+                image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
+                title: 'Tesla Model 3 — Curatare profunda interior',
+                description: 'Aspirare completa, curatare cu abur, tratament suprafete plastic si piele vegana, odorizare profesionala, curatare geamuri.',
+                tall: false
+            },
+            {
+                id: 7,
+                category: 'polish',
+                image: '/assets/auburn-wa-usa-august-5-260nw-2188152971.webp',
+                title: 'BMW M4 — Corectie vopsea 2 pasi',
+                description: 'Masurare grosime lac, corectie vopsea in 2 pasi cu pasta abraziva profesionala, finisare cu efect de showroom.',
+                tall: true
+            },
+            {
+                id: 8,
+                category: 'signature',
+                image: '/assets/rs=h_1000,cg_true.webp',
+                title: 'Mercedes AMG GT — Transformare completa',
+                description: 'Pachet Signature Full: decontaminare completa, corectie vopsea multi-step, coating ceramic pe 5 ani, detailing interior premium.',
+                tall: false
+            },
+            {
+                id: 9,
+                category: 'exterior',
+                image: '/assets/car_detailing_carefree_arizona.webp',
+                title: 'Volkswagen Golf R — Wash & Protect',
+                description: 'Spalare in doua cuve, decontaminare chimica, aplicare sealant sintetic cu protectie 6 luni, tratament jante.',
+                tall: false
+            },
+            {
+                id: 10,
+                category: 'polish',
+                image: '/assets/scoala-detailing.webp',
+                title: 'Audi RS6 — Polish + PPF partial',
+                description: 'Corectie vopsea completa urmata de aplicare folie de protectie PPF pe capota, aripi si bara fata.',
+                tall: false
+            }
+        ],
+        get filteredItems() {
+            if (this.activeFilter === 'toate') return this.items;
+            return this.items.filter(item => item.category === this.activeFilter);
+        },
+        openLightbox(item) {
+            this.lightboxItem = item;
+            this.lightbox = true;
+            document.body.style.overflow = 'hidden';
+        },
+        closeLightbox() {
+            this.lightbox = false;
+            this.lightboxItem = null;
+            document.body.style.overflow = '';
+        }
+    }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="w-12 h-0.5 gold-line mx-auto mb-6"></div>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Portofoliul Nostru</h2>
+                <p class="text-light-600 max-w-2xl mx-auto">Transformari spectaculoase si rezultate impecabile. Fiecare masina primeste tratamentul pe care il merita, de la curatare profesionala la protectie ceramica de durata.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="nova-control-tray gold-tray--centered mb-12 reveal" role="group" aria-label="Filtre portofoliu">
+                <button @click="activeFilter = 'toate'"
+                    :class="{ active: activeFilter === 'toate' }"
+                    :aria-pressed="String(activeFilter === 'toate')"
+                    class="gold-btn">
+                    Toate
+                </button>
+                <button @click="activeFilter = 'interior'"
+                    :class="{ active: activeFilter === 'interior' }"
+                    :aria-pressed="String(activeFilter === 'interior')"
+                    class="gold-btn">
+                    Interior
+                </button>
+                <button @click="activeFilter = 'exterior'"
+                    :class="{ active: activeFilter === 'exterior' }"
+                    :aria-pressed="String(activeFilter === 'exterior')"
+                    class="gold-btn">
+                    Exterior
+                </button>
+                <button @click="activeFilter = 'polish'"
+                    :class="{ active: activeFilter === 'polish' }"
+                    :aria-pressed="String(activeFilter === 'polish')"
+                    class="gold-btn">
+                    Polish &amp; Protectie
+                </button>
+                <button @click="activeFilter = 'signature'"
+                    :class="{ active: activeFilter === 'signature' }"
+                    :aria-pressed="String(activeFilter === 'signature')"
+                    class="gold-btn">
+                    Signature
+                </button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="masonry-grid">
+                <template x-for="item in filteredItems" :key="item.id">
+                    <div class="gallery-item rounded-xl overflow-hidden bg-white shadow-soft cursor-pointer relative group"
+                         :class="item.tall ? 'span-2-rows' : ''"
+                         @click="openLightbox(item)">
+                        <img :src="item.image" :alt="item.title" class="w-full h-full object-cover" loading="lazy" width="600" height="400">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4 md:p-5">
+                            <span class="inline-block self-start px-3 py-1 rounded-full text-xs font-heading font-semibold uppercase tracking-wider mb-2"
+                                  :class="{
+                                      'bg-blue-500/20 text-blue-300': item.category === 'interior',
+                                      'bg-green-500/20 text-green-300': item.category === 'exterior',
+                                      'bg-amber-500/20 text-amber-300': item.category === 'polish',
+                                      'bg-purple-500/20 text-purple-300': item.category === 'signature'
+                                  }"
+                                  x-text="item.category === 'polish' ? 'Polish & Protectie' : item.category === 'signature' ? 'Signature' : item.category === 'interior' ? 'Interior' : 'Exterior'">
+                            </span>
+                            <h3 class="text-white font-heading font-semibold text-sm md:text-base leading-tight mb-1" x-text="item.title"></h3>
+                            <span class="text-primary-light text-xs font-medium flex items-center gap-1 mt-1">
+                                Vezi detalii
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Empty state -->
+            <div x-show="filteredItems.length === 0" x-cloak class="text-center py-16">
+                <svg class="w-16 h-16 text-light-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <p class="text-light-500 text-lg">Portofoliul nostru este in actualizare. Intre timp, contacteaza-ne pentru exemple.</p>
+            </div>
+        </div>
+
+        <!-- Lightbox Modal -->
+        <div x-show="lightbox" x-cloak
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @keydown.escape.window="closeLightbox()"
+             class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-black/80 lightbox-backdrop" @click="closeLightbox()"></div>
+            <div x-show="lightbox"
+                 x-transition:enter="transition ease-out duration-300 delay-100"
+                 x-transition:enter-start="opacity-0 scale-90"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-90"
+                 class="relative bg-white rounded-2xl overflow-hidden shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row z-10">
+                <button @click="closeLightbox()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <div class="md:w-3/5 flex-shrink-0 bg-light-100">
+                    <img x-show="lightboxItem" :src="lightboxItem?.image" :alt="lightboxItem?.title" class="w-full h-64 md:h-full object-cover">
+                </div>
+                <div class="md:w-2/5 p-6 md:p-8 flex flex-col justify-center" x-show="lightboxItem">
+                    <span class="inline-block self-start px-3 py-1 rounded-full text-xs font-heading font-semibold uppercase tracking-wider mb-4"
+                          :class="{
+                              'bg-blue-100 text-blue-700': lightboxItem?.category === 'interior',
+                              'bg-green-100 text-green-700': lightboxItem?.category === 'exterior',
+                              'bg-amber-100 text-amber-700': lightboxItem?.category === 'polish',
+                              'bg-purple-100 text-purple-700': lightboxItem?.category === 'signature'
+                          }"
+                          x-text="lightboxItem?.category === 'polish' ? 'Polish & Protectie' : lightboxItem?.category === 'signature' ? 'Signature' : lightboxItem?.category === 'interior' ? 'Interior' : 'Exterior'">
+                    </span>
+                    <h3 class="text-xl md:text-2xl font-heading font-bold text-light-950 mb-3" x-text="lightboxItem?.title"></h3>
+                    <p class="text-light-600 text-sm leading-relaxed mb-6" x-text="lightboxItem?.description"></p>
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="/rezervare.html" class="inline-flex items-center justify-center gap-2 btn-glass text-white px-5 py-2.5 rounded-full text-sm font-heading font-semibold">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            Programeaza-te
+                        </a>
+                        <a href="/rezervare.html" class="inline-flex items-center justify-center gap-2 btn-glass-outline text-light-700 px-5 py-2.5 rounded-full text-sm font-heading font-medium">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                            Calculeaza Pretul
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="py-20 sm:py-28 bg-light-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -457,10 +792,10 @@
                 <p class="text-light-600 mb-10 max-w-xl mx-auto">Configureaza pachetul ideal sau contacteaza-ne direct. Suntem aici sa transformam masina ta.</p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="/configurator.html" class="btn-press bg-primary text-white px-8 py-3.5 rounded-md text-base font-heading font-semibold hover:bg-primary-light transition-all duration-200 sm:min-w-[220px] shadow-gold">
-                        Configurator Pret
+                    <a href="/rezervare.html" class="btn-glass text-white px-8 py-3.5 rounded-full text-base font-heading font-semibold sm:min-w-[220px]">
+                        Calculeaza Pretul
                     </a>
-                    <a href="/contact.html" class="btn-press border border-primary/50 text-primary px-8 py-3.5 rounded-md text-base font-heading font-medium hover:bg-primary/10 transition-all duration-200 sm:min-w-[220px]">
+                    <a href="/contact.html" class="btn-glass-outline text-primary px-8 py-3.5 rounded-full text-base font-heading font-medium sm:min-w-[220px]">
                         Contact
                     </a>
                 </div>
@@ -488,8 +823,8 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
-                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
+                        <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/despre.html#portofoliu" class="text-light-400 hover:text-primary transition-colors text-sm">Portofoliu</a></li>
                         <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
                         <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
                         <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
@@ -525,25 +860,6 @@
         </div>
     </footer>
 
-<script>
-(function() {
-    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-    if (revealEls.length && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        revealEls.forEach(function(el) { observer.observe(el); });
-    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
-    var nav = document.getElementById('main-nav');
-    if (nav) {
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
-        }, { passive: true });
-    }
-})();
-</script>
+    <script type="module" src="/nova-home.js?v=7"></script>
 </body>
 </html>

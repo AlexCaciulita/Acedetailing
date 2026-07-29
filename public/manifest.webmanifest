@@ -4,8 +4,8 @@
   "description": "Servicii premium de auto detailing si scoala de detailing in Bucuresti. 10+ ani de experienta.",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#B8962F",
+  "background_color": "#F7F7F5",
+  "theme_color": "#F7F7F5",
   "orientation": "portrait-primary",
   "categories": ["automotive", "business", "lifestyle"],
   "lang": "ro",
@@ -14,52 +14,37 @@
       "src": "/assets/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/assets/icon-512.png", 
+      "src": "/assets/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/assets/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "purpose": "any"
     },
     {
-      "src": "/assets/screenshot-desktop.png", 
-      "sizes": "1280x720",
+      "src": "/assets/icon-maskable-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "form_factor": "wide"
+      "purpose": "maskable"
+    },
+    {
+      "src": "/assets/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
-      "name": "Configurator Preț",
-      "short_name": "Configurator", 
-      "description": "Calculează prețul pentru serviciile tale",
-      "url": "/configurator.html",
-      "icons": [
-        {
-          "src": "/assets/shortcut-config.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Rezervare",
+      "name": "Rezervă Acum",
       "short_name": "Rezervare",
-      "description": "Programează serviciile direct",
-      "url": "/rezervare.html", 
+      "description": "Calculează prețul și programează serviciile",
+      "url": "/rezervare.html",
       "icons": [
         {
           "src": "/assets/shortcut-booking.png",
-          "sizes": "96x96", 
+          "sizes": "96x96",
           "type": "image/png"
         }
       ]

@@ -4,6 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
 import enrollmentHandler from './api/create-enrollment.js';
+import contactHandler from './api/create-contact.js';
 import chatProxyHandler from './api/chat-proxy.js';
 import payuCreateOrderHandler from './api/payu-create-order.js';
 import payuNotifyHandler from './api/payu-notify.js';
@@ -15,6 +16,17 @@ const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 8000;
 const distDir = path.join(__dirname, 'dist');
 const PUBLIC_DIR = fs.existsSync(distDir) ? distDir : path.join(__dirname, 'public');
+
+// Permanent redirects for retired pages. Checked before static resolution so a
+// stale built file can never shadow the redirect.
+const REDIRECT_MAP = {
+  '/configurator.html': '/rezervare.html',
+  '/configurator': '/rezervare.html',
+  '/configurator/': '/rezervare.html',
+  '/galerie.html': '/despre.html#portofoliu',
+  '/galerie': '/despre.html#portofoliu',
+  '/galerie/': '/despre.html#portofoliu'
+};
 
 // MIME types for known file extensions
 const mimeTypes = {
@@ -71,6 +83,7 @@ const server = http.createServer((req, res) => {
   const apiRoutes = {
     '/api/create-booking': bookingHandler,
     '/api/create-enrollment': enrollmentHandler,
+    '/api/create-contact': contactHandler,
     '/api/chat-proxy': chatProxyHandler,
     '/api/payu-create-order': payuCreateOrderHandler,
     '/api/payu-notify': payuNotifyHandler
@@ -117,6 +130,20 @@ const server = http.createServer((req, res) => {
       }
     });
 
+    return;
+  }
+
+  // Must run before the trailing-slash normalization below, which would rewrite
+  // /galerie/ to /galerie/index.html and stop it ever matching.
+  const redirectTarget = REDIRECT_MAP[pathname.toLowerCase()];
+  if (redirectTarget) {
+    // A bare 301 is cached by browsers indefinitely; cap it so a future retarget
+    // is not permanently stuck in caches.
+    res.writeHead(301, {
+      Location: redirectTarget,
+      'Cache-Control': 'public, max-age=3600'
+    });
+    res.end();
     return;
   }
 

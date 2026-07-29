@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicii Premium de Detailing Auto | Nova Detailing Bucuresti</title>
+    <title>Servicii si Preturi Detailing Auto — Nova Detailing Bucuresti</title>
     <meta name="description" content="Pachete premium de auto detailing: Profesional, Premium si Signature. Preturi de la 1.800 lei. Abonamente lunare si anuale. Bucuresti.">
     <link rel="canonical" href="https://novadetailing.ro/servicii.html">
     <meta name="keywords" content="servicii detailing auto, pachete detailing, protectie ceramica, polish auto, abonament detailing Bucuresti">
@@ -14,17 +14,18 @@
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ro_RO">
     <meta property="og:url" content="https://novadetailing.ro/servicii.html">
-    <meta property="og:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta property="og:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
     <meta property="og:site_name" content="Nova Detailing">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Servicii Premium de Detailing | Nova Detailing">
     <meta name="twitter:description" content="Pachete de detailing auto de la 1.800 lei. Profesional, Premium, Signature + abonamente lunare.">
-    <meta name="twitter:image" content="https://novadetailing.ro/assets/rs=h_1000,cg_true.webp">
+    <meta name="twitter:image" content="https://novadetailing.ro/assets/og-nova-detailing.jpg">
 
     <!-- PWA & Favicon -->
     <link rel="manifest" href="/manifest.webmanifest">
-    <meta name="theme-color" content="#B8962F">
+    <meta name="theme-color" content="#F7F7F5">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,14 +39,14 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#B8962F',
-                        'primary-light': '#C9A84C',
-                        'primary-dark': '#8B7226',
+                        primary: '#826C3E',
+                        'primary-light': '#B5A17A',
+                        'primary-dark': '#6B5834',
                         secondary: '#1A1A1A',
                         light: {
-                            50: '#FFFFFF', 100: '#F9FAFB', 200: '#F3F4F6', 300: '#E5E7EB',
-                            400: '#D1D5DB', 500: '#9CA3AF', 600: '#6B7280', 700: '#4B5563',
-                            800: '#374151', 900: '#1F2937', 950: '#111827'
+                            50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
+                            400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
+                            800: '#343432', 900: '#262625', 950: '#1A1A1A'
                         }
                     },
                     fontFamily: {
@@ -53,8 +54,8 @@
                         body: ['Inter', 'system-ui', 'sans-serif']
                     },
                     boxShadow: {
-                        'gold': '0 4px 20px rgba(184, 150, 47, 0.15)',
-                        'gold-lg': '0 8px 40px rgba(184, 150, 47, 0.25)',
+                        'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
+                        'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
                         'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
                         'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
                     }
@@ -80,12 +81,12 @@
           {
             "@type": "Offer",
             "itemOffered": { "@type": "Service", "name": "Detailing Interior Profesional", "description": "Detailing complet al interiorului cu tratamente avansate pentru piele si protectie UV." },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "1200", "priceCurrency": "RON" }
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "1800", "maxPrice": "2600", "priceCurrency": "RON" }
           },
           {
             "@type": "Offer",
             "itemOffered": { "@type": "Service", "name": "Corectie Lac Profesionala", "description": "Corectie controlata a lacului cu inspectie si finisare profesionala." },
-            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "800", "maxPrice": "1200", "priceCurrency": "RON" }
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "2200", "maxPrice": "3500", "priceCurrency": "RON" }
           },
           {
             "@type": "Offer",
@@ -108,9 +109,93 @@
     .reveal-scale { opacity: 0; transform: scale(0.92); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
     .reveal-scale.revealed { opacity: 1; transform: scale(1); }
     .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.2s; } .stagger-3 { transition-delay: 0.3s; } .stagger-4 { transition-delay: 0.4s; }
-    /* Button press */
-    .btn-press { position: relative; overflow: hidden; }
-    .btn-press:active { transform: scale(0.97); }
+    /* ─── Liquid Glass Buttons ─── */
+        @keyframes glassShine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(200%) skewX(-15deg); }
+        }
+        .btn-glass {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(181,161,122,0.85) 0%, rgba(196,185,160,0.75) 50%, rgba(181,161,122,0.85) 100%);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 24px rgba(181,161,122,0.25), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass:hover {
+            background: linear-gradient(135deg, rgba(196,185,160,0.92) 0%, rgba(214,200,172,0.82) 50%, rgba(196,185,160,0.92) 100%);
+            box-shadow: 0 8px 32px rgba(181,161,122,0.35), 0 0 60px rgba(181,161,122,0.12), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(0,0,0,0.08);
+            transform: translateY(-1px);
+            border-color: rgba(255,255,255,0.35);
+        }
+        .btn-glass:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass:active {
+            transform: scale(0.97) translateY(0);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.2), inset 0 1px 0 rgba(255,255,255,0.2), inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-glass-outline {
+            position: relative;
+            overflow: hidden;
+            background: rgba(181,161,122,0.06);
+            backdrop-filter: blur(12px) saturate(150%);
+            -webkit-backdrop-filter: blur(12px) saturate(150%);
+            border: 1px solid rgba(181,161,122,0.35);
+            box-shadow: 0 2px 12px rgba(181,161,122,0.08), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+        }
+        .btn-glass-outline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        .btn-glass-outline::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 40%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(181,161,122,0.12), transparent);
+            transform: translateX(-100%) skewX(-15deg);
+            pointer-events: none;
+            transition: none;
+        }
+        .btn-glass-outline:hover {
+            background: rgba(181,161,122,0.12);
+            border-color: rgba(181,161,122,0.55);
+            box-shadow: 0 4px 20px rgba(181,161,122,0.15), 0 0 40px rgba(181,161,122,0.06), inset 0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(-1px);
+        }
+        .btn-glass-outline:hover::after { animation: glassShine 0.6s ease-out forwards; }
+        .btn-glass-outline:active {
+            transform: scale(0.97) translateY(0);
+            background: rgba(181,161,122,0.18);
+        }
+        .btn-press { position: relative; overflow: hidden; transition: all 0.2s cubic-bezier(0.22,1,0.36,1); }
+        .btn-press:active { transform: scale(0.97); }
     /* Card lift hover */
     .card-hover { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
@@ -118,8 +203,11 @@
     .nav-scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; }
     html { scroll-behavior: smooth; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
+    <link rel="stylesheet" href="/nova-premium.css?v=7">
 </head>
-<body class="bg-light-50 text-light-950 font-body antialiased">
+<body class="nova-premium nova-inner-page bg-light-50 text-light-950 font-body antialiased">
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -139,12 +227,10 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/index.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Acasa</a>
                     <a href="/servicii.html" class="text-primary font-medium text-sm font-heading">Servicii</a>
-                    <a href="/configurator.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Configurator</a>
                     <a href="/scoala.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Scoala</a>
                     <a href="/despre.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Despre</a>
-                    <a href="/galerie.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Galerie</a>
                     <a href="/contact.html" class="text-light-700 hover:text-primary transition-colors text-sm font-heading">Contact</a>
-                    <a href="/rezervare.html" class="bg-primary text-light-950 px-5 py-2 rounded-md hover:bg-primary-light transition-all text-sm font-heading font-semibold">Rezervare</a>
+                    <a href="/rezervare.html" class="btn-glass text-white px-5 py-2 rounded-full text-sm font-heading font-semibold">Rezerva Acum</a>
                 </div>
             </div>
         </div>
@@ -152,30 +238,76 @@
             <div class="px-4 py-4 space-y-2">
                 <a href="/index.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Acasa</a>
                 <a href="/servicii.html" class="block px-3 py-2 text-primary font-semibold font-heading text-sm">Servicii</a>
-                <a href="/configurator.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Configurator</a>
                 <a href="/scoala.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Scoala</a>
                 <a href="/despre.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Despre</a>
-                <a href="/galerie.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Galerie</a>
                 <a href="/contact.html" class="block px-3 py-2 text-light-700 hover:text-primary transition-colors font-heading text-sm">Contact</a>
-                <a href="/rezervare.html" class="block px-3 py-2 bg-primary text-light-950 rounded-md font-semibold font-heading text-sm text-center mt-2">Rezervare</a>
+                <a href="/rezervare.html" class="block px-3 py-2 btn-glass text-white rounded-full font-semibold font-heading text-sm text-center mt-2">Rezerva Acum</a>
             </div>
         </div>
     </nav>
 
-    <!-- Page Hero -->
-    <section class="pt-28 pb-16 bg-light-50 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <span class="text-primary text-sm font-heading font-semibold uppercase tracking-widest">Servicii Premium</span>
-            <h1 class="text-4xl sm:text-5xl font-heading font-bold text-light-950 mt-3 mb-4 tracking-tight">Pachete de Detailing Auto</h1>
-            <p class="text-light-700 max-w-2xl mx-auto text-lg">
-                De la ingrijire esentiala la transformari complete. Fiecare pachet este personalizat in functie de dimensiunea si starea masinii tale.
-            </p>
+    <!-- Breadcrumb -->
+    <div class="bg-light-50 border-b border-light-200 pt-20 pb-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="text-sm text-light-500">
+                <a href="/index.html" class="hover:text-primary transition-colors">Acasa</a>
+                <span class="mx-2">&gt;</span>
+                <span class="text-primary font-medium">Servicii</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Compact Hero -->
+    <section class="pt-20 pb-0 bg-light-950 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-light-950 via-light-950/95 to-light-950/80"></div>
+        <div class="absolute inset-0 opacity-10" style="background-image: url('/assets/car_detailing_carefree_arizona.webp'); background-size: cover; background-position: center;"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between gap-8">
+            <div class="reveal">
+                <h1 class="text-2xl sm:text-3xl font-heading font-bold text-white tracking-tight">Pachete de Detailing Auto</h1>
+                <p class="text-light-400 mt-2 text-sm max-w-lg">De la ingrijire esentiala la transformari complete. Pretul se calculeaza automat in functie de masina ta.</p>
+            </div>
+            <a href="/rezervare.html" class="hidden sm:inline-flex items-center gap-2 btn-glass text-white px-5 py-2.5 rounded-full font-heading font-semibold text-sm whitespace-nowrap flex-shrink-0">
+                Rezerva Acum
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
     </section>
 
+    <!-- Tab Navigation -->
+    <div class="sticky top-16 z-40 bg-white/95 backdrop-blur-xl border-b border-light-300 shadow-soft" x-data="{ activeTab: 'pachete' }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section jump buttons, not a tablist: all four sections stay rendered. -->
+            <div class="nova-control-tray" id="servicii-tabs" role="group" aria-label="Sari la sectiune">
+                <button type="button" @click="activeTab = 'pachete'; document.getElementById('tab-pachete').scrollIntoView({behavior:'smooth', block:'start'})"
+                    :class="{ active: activeTab === 'pachete' }"
+                    :aria-pressed="String(activeTab === 'pachete')"
+                    class="gold-btn">
+                    Pachete
+                </button>
+                <button type="button" @click="activeTab = 'comparatie'; document.getElementById('tab-comparatie').scrollIntoView({behavior:'smooth', block:'start'})"
+                    :class="{ active: activeTab === 'comparatie' }"
+                    :aria-pressed="String(activeTab === 'comparatie')"
+                    class="gold-btn">
+                    Comparatie
+                </button>
+                <button type="button" @click="activeTab = 'extra'; document.getElementById('tab-extra').scrollIntoView({behavior:'smooth', block:'start'})"
+                    :class="{ active: activeTab === 'extra' }"
+                    :aria-pressed="String(activeTab === 'extra')"
+                    class="gold-btn">
+                    Servicii Extra
+                </button>
+                <button type="button" @click="activeTab = 'abonamente'; document.getElementById('tab-abonamente').scrollIntoView({behavior:'smooth', block:'start'})"
+                    :class="{ active: activeTab === 'abonamente' }"
+                    :aria-pressed="String(activeTab === 'abonamente')"
+                    class="gold-btn">
+                    Abonamente
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Package Cards -->
-    <section class="py-16 bg-light-50">
+    <section id="tab-pachete" class="py-16 bg-light-50 scroll-mt-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="grid lg:grid-cols-2 gap-8" x-data="{ expandedPackage: null }">
@@ -184,7 +316,7 @@
                 <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-1">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg" alt="Detailing interior" class="w-full h-full object-cover" loading="lazy" width="600" height="400">
+                            <img src="/assets/services/interior-detailing.jpg" alt="Specialist care curata in profunzime interiorul unui automobil" class="w-full h-full object-cover" loading="lazy" width="1200" height="900">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -221,8 +353,8 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=detailing-interior" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
-                                Configureaza pretul
+                            <a href="/rezervare.html?pachet=detailing-interior" class="inline-block btn-glass-outline text-primary px-6 py-2.5 rounded-full text-sm font-heading font-medium">
+                                Rezerva acum
                             </a>
                         </div>
                     </div>
@@ -232,7 +364,7 @@
                 <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-2">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/car_detailing_carefree_arizona.webp" alt="Detailing exterior" class="w-full h-full object-cover" loading="lazy" width="1024" height="585">
+                            <img src="/assets/services/paint-correction.jpg" alt="Corectie controlata a lacului sub lumina de atelier" class="w-full h-full object-cover" loading="lazy" width="1200" height="900">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -273,8 +405,8 @@
                                 </div>
                             </div>
 
-                            <a href="/configurator.html?pachet=corectie-lac" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
-                                Configureaza pretul
+                            <a href="/rezervare.html?pachet=corectie-lac" class="inline-block btn-glass-outline text-primary px-6 py-2.5 rounded-full text-sm font-heading font-medium">
+                                Rezerva acum
                             </a>
                         </div>
                     </div>
@@ -285,7 +417,7 @@
                     <div class="absolute top-4 right-4 z-10 bg-primary text-light-950 text-xs font-heading font-bold px-3 py-1 rounded-full">Cel mai popular</div>
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/auburn-wa-usa-august-5-260nw-2188152971.webp" alt="Detailing premium complet" class="w-full h-full object-cover" loading="lazy" width="409" height="280">
+                            <img src="/assets/services/premium-complete.jpg" alt="Specialist care finiseaza vopseaua unui automobil rosu" class="w-full h-full object-cover" loading="lazy" width="1200" height="900">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -319,8 +451,8 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=premium-complet" class="inline-block bg-primary text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200 shadow-gold btn-press">
-                                Configureaza pretul
+                            <a href="/rezervare.html?pachet=premium-complet" class="inline-block btn-glass text-white px-6 py-2.5 rounded-full text-sm font-heading font-semibold">
+                                Rezerva acum
                             </a>
                         </div>
                     </div>
@@ -330,7 +462,7 @@
                 <div class="bg-white rounded-2xl border border-light-300 shadow-soft overflow-hidden hover:border-primary/30 transition-all duration-300 card-hover reveal stagger-2">
                     <div class="grid sm:grid-cols-5">
                         <div class="sm:col-span-2 h-48 sm:h-auto">
-                            <img src="/assets/car_detailing_carefree_arizona.webp" alt="Detailing signature full" class="w-full h-full object-cover" loading="lazy" width="1024" height="585">
+                            <img src="/assets/services/signature-ceramic.jpg" alt="Automobil premium cu finisaj lucios si efect hidrofob" class="w-full h-full object-cover" loading="lazy" width="1200" height="900">
                         </div>
                         <div class="sm:col-span-3 p-6 sm:p-8">
                             <div class="flex items-center gap-2 mb-2">
@@ -364,8 +496,8 @@
                                 </ul>
                             </div>
 
-                            <a href="/configurator.html?pachet=signature-full" class="inline-block bg-light-200 text-light-950 px-6 py-2.5 rounded-md text-sm font-heading font-medium hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">
-                                Configureaza pretul
+                            <a href="/rezervare.html?pachet=signature-full" class="inline-block btn-glass-outline text-primary px-6 py-2.5 rounded-full text-sm font-heading font-medium">
+                                Rezerva acum
                             </a>
                         </div>
                     </div>
@@ -376,47 +508,61 @@
     </section>
 
     <!-- Comparison Table -->
-    <section class="py-16 bg-light-100">
+    <section id="tab-comparatie" class="py-16 bg-light-100 scroll-mt-28">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
                 <h2 class="text-3xl font-heading font-bold text-light-950 mb-4 tracking-tight">Compara pachetele</h2>
                 <p class="text-light-700">Vezi rapid ce include fiecare pachet.</p>
             </div>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="border-b border-light-400">
-                            <th class="text-left py-4 px-3 text-light-600 font-heading font-medium">Caracteristici</th>
-                            <th class="text-center py-4 px-3 text-light-950 font-heading font-semibold">Profesional<br><span class="text-primary text-xs font-normal">de la 1.800 lei</span></th>
-                            <th class="text-center py-4 px-3 text-primary font-heading font-semibold">Premium<br><span class="text-xs font-normal">de la 2.500 lei</span></th>
-                            <th class="text-center py-4 px-3 text-light-950 font-heading font-semibold">Signature<br><span class="text-primary text-xs font-normal">de la 4.500 lei</span></th>
+            <div class="overflow-x-auto -mx-4 sm:mx-0 sm:rounded-xl border border-light-300 bg-white">
+                <table class="w-full text-sm table-fixed" style="min-width:0">
+                    <colgroup>
+                        <col class="w-[38%] sm:w-[34%]">
+                        <col class="w-[20%] sm:w-[22%]">
+                        <col class="w-[22%] sm:w-[22%]">
+                        <col class="w-[20%] sm:w-[22%]">
+                    </colgroup>
+                    <thead class="sticky top-28 z-30 bg-white shadow-soft">
+                        <tr class="border-b-2 border-primary/20">
+                            <th class="text-left py-3 px-3 text-light-600 font-heading font-medium text-xs sm:text-sm bg-white sticky left-0 z-10"></th>
+                            <th class="text-center py-3 px-1 sm:px-3 text-light-950 font-heading font-semibold text-xs sm:text-sm bg-white">Prof.<span class="hidden sm:inline">esional</span><br><span class="text-primary text-[10px] sm:text-xs font-normal">1.800 lei</span></th>
+                            <th class="text-center py-3 px-1 sm:px-3 text-primary font-heading font-semibold text-xs sm:text-sm bg-primary/5">Premium<br><span class="text-[10px] sm:text-xs font-normal">2.500 lei</span></th>
+                            <th class="text-center py-3 px-1 sm:px-3 text-light-950 font-heading font-semibold text-xs sm:text-sm bg-white">Sign.<span class="hidden sm:inline">ature</span><br><span class="text-primary text-[10px] sm:text-xs font-normal">4.500 lei</span></th>
                         </tr>
                     </thead>
-                    <tbody class="text-light-700">
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Spalare profesionala</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Decontaminare chimica</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Clay bar</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Polish corectiv</td><td class="text-center py-3 px-3 text-light-700">Corectie</td><td class="text-center py-3 px-3 text-light-700">2 pasi</td><td class="text-center py-3 px-3 text-primary font-semibold">3 pasi</td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Protectie ceramica</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3 text-light-700">1 strat</td><td class="text-center py-3 px-3 text-primary font-semibold">2 straturi</td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Garantie protectie</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3 text-light-700">12 luni</td><td class="text-center py-3 px-3 text-primary font-semibold">24 luni</td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Curatare tapiterie extractie</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Tratament piele premium</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-300"><td class="py-3 px-3">Detailing motor complet</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3 text-light-700">Basic</td><td class="text-center py-3 px-3 text-primary font-semibold">Complet</td></tr>
-                        <tr><td class="py-3 px-3">Inspectie 30 zile gratis</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3 text-light-400">-</td><td class="text-center py-3 px-3"><svg class="w-5 h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                    <tbody class="text-light-700 text-xs sm:text-sm">
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Spalare profesionala</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Decontaminare</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Clay bar</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Polish corectiv</td><td class="text-center py-2.5 px-1">Corectie</td><td class="text-center py-2.5 px-1 bg-primary/5">2 pasi</td><td class="text-center py-2.5 px-1 text-primary font-semibold">3 pasi</td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Protectie ceramica</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">1 strat</td><td class="text-center py-2.5 px-1 text-primary font-semibold">2 straturi</td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Garantie</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">12 luni</td><td class="text-center py-2.5 px-1 text-primary font-semibold">24 luni</td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Extractie tapiterie</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Tratament piele</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Detailing motor</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">Basic</td><td class="text-center py-2.5 px-1 text-primary font-semibold">Complet</td></tr>
+                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Inspectie 30 zile</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
                     </tbody>
+                    <tfoot>
+                        <tr class="border-t border-light-300 bg-light-50">
+                            <td class="py-3 px-3 sticky left-0 bg-light-50 z-10"></td>
+                            <td class="text-center py-3 px-1"><a href="/rezervare.html?pachet=detailing-interior" class="inline-block btn-glass-outline text-primary px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
+                            <td class="text-center py-3 px-1 bg-primary/5"><a href="/rezervare.html?pachet=premium-complet" class="inline-block btn-glass text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
+                            <td class="text-center py-3 px-1"><a href="/rezervare.html?pachet=signature-full" class="inline-block btn-glass-outline text-primary px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
     </section>
 
     <!-- Maintenance Plans -->
-    <section class="py-16 bg-light-50">
+    <section id="tab-abonamente" class="py-16 bg-light-50 scroll-mt-28">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 reveal">
                 <span class="text-primary text-sm font-heading font-semibold uppercase tracking-widest">Abonamente</span>
                 <h2 class="text-3xl font-heading font-bold text-light-950 mt-3 mb-4 tracking-tight">Mentenanta regulata</h2>
-                <p class="text-light-700 max-w-2xl mx-auto">Mentine-ti masina impecabila cu abonamente lunare sau anuale. Niciun competitor din Bucuresti nu ofera asta.</p>
+                <p class="text-light-700 max-w-2xl mx-auto">Mentine-ti masina impecabila printr-un plan predictibil de intretinere, cu verificari periodice ale vopselei si protectiei.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -434,7 +580,7 @@
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Protectie rapida exterior</li>
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Check-up stare vopsea</li>
                     </ul>
-                    <a href="/rezervare.html?tip=abonament-lunar" class="block text-center border border-primary text-primary px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary hover:text-light-950 transition-all duration-200 btn-press">Aboneaza-te</a>
+                    <a href="/rezervare.html?tip=abonament-lunar" class="block text-center btn-glass-outline text-primary px-4 py-2.5 rounded-full text-sm font-heading font-semibold">Aboneaza-te</a>
                 </div>
 
                 <!-- VIP Annual -->
@@ -453,14 +599,14 @@
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Discount 15% servicii extra</li>
                         <li class="flex items-center gap-2"><svg class="w-4 h-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Inspectii trimestriale gratuite</li>
                     </ul>
-                    <a href="/rezervare.html?tip=vip-anual" class="block text-center bg-primary text-light-950 px-4 py-2.5 rounded-md text-sm font-heading font-semibold hover:bg-primary-light transition-all duration-200 btn-press">Alege VIP</a>
+                    <a href="/rezervare.html?tip=vip-anual" class="block text-center btn-glass text-white px-4 py-2.5 rounded-full text-sm font-heading font-semibold">Alege VIP</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Add-on Services -->
-    <section class="py-16 bg-light-100">
+    <section id="tab-extra" class="py-16 bg-light-100 scroll-mt-28">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="text-primary text-sm font-heading font-semibold uppercase tracking-widest">Servicii Extra</span>
@@ -521,48 +667,13 @@
         </div>
     </section>
 
-    <!-- Why Price Ranges -->
-    <section class="py-16 bg-light-50">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl border border-light-300 shadow-soft p-8 sm:p-10">
-                <div class="flex items-start gap-4 mb-6">
-                    <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-heading font-bold text-light-950 mb-2">De ce afisam intervale de pret?</h3>
-                        <p class="text-light-700 mb-4">Credem in transparenta totala. Pretul final depinde de doi factori:</p>
-                    </div>
-                </div>
-
-                <div class="grid sm:grid-cols-2 gap-6 mb-6">
-                    <div class="bg-light-100 rounded-xl p-5">
-                        <h4 class="text-primary font-heading font-semibold mb-2">Dimensiunea masinii</h4>
-                        <ul class="text-light-700 text-sm space-y-1">
-                            <li>Mica (Smart, Mini) - multiplicator 0.85x</li>
-                            <li>Compacta (Golf, Focus) - multiplicator 0.95x</li>
-                            <li>Sedan (Seria 3, C-Class) - pret de baza 1.0x</li>
-                            <li>SUV / Van (X5, GLC, Q7) - multiplicator 1.2x</li>
-                        </ul>
-                    </div>
-                    <div class="bg-light-100 rounded-xl p-5">
-                        <h4 class="text-primary font-heading font-semibold mb-2">Starea masinii</h4>
-                        <ul class="text-light-700 text-sm space-y-1">
-                            <li>Perfecta (noua / recent detailata) - 0.9x</li>
-                            <li>Usoara (utilizare normala) - pret de baza 1.0x</li>
-                            <li>Medie (murdarie vizibila) - 1.1x</li>
-                            <li>Grea (foarte murdara) - 1.25x</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <a href="/configurator.html" class="inline-flex items-center bg-primary text-light-950 px-6 py-3 rounded-md font-heading font-semibold hover:bg-primary-light transition-all duration-200 shadow-gold">
-                        Calculeaza pretul exact in configurator
-                        <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-                    </a>
-                </div>
-            </div>
+    <!-- CTA to Booking -->
+    <section class="py-12 bg-light-50">
+        <div class="text-center">
+            <a href="/rezervare.html" class="inline-flex items-center btn-glass text-white px-6 py-3 rounded-full font-heading font-semibold">
+                Calculeaza pretul si rezerva
+                <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
         </div>
     </section>
 
@@ -584,9 +695,8 @@
                     <h3 class="text-sm font-heading font-semibold text-light-100 uppercase tracking-wider mb-4">Navigatie</h3>
                     <ul class="space-y-2">
                         <li><a href="/servicii.html" class="text-light-400 hover:text-primary transition-colors text-sm">Servicii</a></li>
-                        <li><a href="/configurator.html" class="text-light-400 hover:text-primary transition-colors text-sm">Configurator Pret</a></li>
-                        <li><a href="/galerie.html" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
                         <li><a href="/rezervare.html" class="text-light-400 hover:text-primary transition-colors text-sm">Rezervare</a></li>
+                        <li><a href="/despre.html#portofoliu" class="text-light-400 hover:text-primary transition-colors text-sm">Galerie</a></li>
                         <li><a href="/blog.html" class="text-light-400 hover:text-primary transition-colors text-sm">Blog</a></li>
                         <li><a href="/faq.html" class="text-light-400 hover:text-primary transition-colors text-sm">FAQ</a></li>
                     </ul>
@@ -621,27 +731,34 @@
         </div>
     </footer>
 
-<!-- Scroll Animations & Nav Effect -->
 <script>
+// Section scroll observer - highlight the jump button for the section in view
 (function() {
-    var revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-    if (revealEls.length && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
+    var tabSections = ['tab-pachete', 'tab-comparatie', 'tab-extra', 'tab-abonamente'];
+    var tabNames = ['pachete', 'comparatie', 'extra', 'abonamente'];
+    if ('IntersectionObserver' in window) {
+        var tabObs = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+                if (entry.isIntersecting) {
+                    var idx = tabSections.indexOf(entry.target.id);
+                    if (idx >= 0) {
+                        var tabEl = document.querySelector('[x-data*="activeTab"]');
+                        // Alpine 3 exposes component state via Alpine.$data; the
+                        // v2 `__x` property does not exist, so this never fired.
+                        var data = tabEl && window.Alpine && window.Alpine.$data(tabEl);
+                        if (data) data.activeTab = tabNames[idx];
+                    }
+                }
             });
-        }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-        revealEls.forEach(function(el) { observer.observe(el); });
-    } else { revealEls.forEach(function(el) { el.classList.add('revealed'); }); }
-    var nav = document.getElementById('main-nav');
-    if (nav) {
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) { requestAnimationFrame(function() { nav.classList.toggle('nav-scrolled', window.scrollY > 50); ticking = false; }); ticking = true; }
-        }, { passive: true });
+        }, { threshold: 0.2, rootMargin: '-120px 0px -50% 0px' });
+        tabSections.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) tabObs.observe(el);
+        });
     }
 })();
 </script>
 
+    <script type="module" src="/nova-home.js?v=7"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ export const packages = [
         classPrices: { mica: 1800, medie: 1900, mare: 2400, suv: 2600 },
         priceRange: { min: 1800, max: 2600 },
         duration: '2 zile',
-        image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
+        image: '/assets/services/interior-detailing.jpg',
         shortDescription: 'Detailing complet al interiorului cu tratamente avansate pentru piele si protectie UV.',
         included: [
             'Aspirare profesionala completa',
@@ -32,7 +32,7 @@ export const packages = [
         classPrices: { mica: 2200, medie: 2800, mare: 3200, suv: 3500 },
         priceRange: { min: 2200, max: 3500 },
         duration: '2-3 zile',
-        image: '/assets/car_detailing_carefree_arizona.webp',
+        image: '/assets/services/paint-correction.jpg',
         shortDescription: 'Corectie controlata a lacului cu inspectie si finisare profesionala.',
         included: [
             'Spalare profesionala (metoda celor doua galeti)',
@@ -55,7 +55,7 @@ export const packages = [
         tier: 'premium',
         priceRange: { min: 2500, max: 3500 },
         duration: '1-2 zile',
-        image: '/assets/auburn-wa-usa-august-5-260nw-2188152971.webp',
+        image: '/assets/services/premium-complete.jpg',
         shortDescription: 'Interior + Exterior complet cu polish si protectie ceramica.',
         popular: true,
         included: [
@@ -81,7 +81,7 @@ export const packages = [
         tier: 'signature',
         priceRange: { min: 4500, max: 6000 },
         duration: '2-3 zile',
-        image: '/assets/image.png',
+        image: '/assets/services/signature-ceramic.jpg',
         shortDescription: 'Transformare completa. Cel mai complet pachet de detailing.',
         included: [
             'Tot din PREMIUM Complet',

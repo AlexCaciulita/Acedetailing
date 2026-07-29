@@ -13,16 +13,10 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://novadetailing.ro/configurator.html</loc>
-    <lastmod>2026-02-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://novadetailing.ro/rezervare.html</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://novadetailing.ro/scoala.html</loc>
@@ -36,12 +30,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://novadetailing.ro/galerie.html</loc>
-    <lastmod>2026-02-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <!-- galerie.html redirects to despre.html#portofoliu -->
   <url>
     <loc>https://novadetailing.ro/blog.html</loc>
     <lastmod>2026-02-07</lastmod>
