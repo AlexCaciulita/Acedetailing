@@ -6,8 +6,8 @@ const BLOB_STORE = 'nova-admin';
 const BLOB_KEY = 'state-v1';
 
 // The existing API deliberately uses a synchronous store. On Netlify, each
-// request hydrates that store from a strongly-consistent Blob, then writes the
-// complete snapshot back with an optimistic concurrency check.
+// request hydrates that store from a site-level Blob, then writes the complete
+// snapshot back with an optimistic concurrency check.
 process.env.NOVA_DATA_DIR = DATA_DIR;
 
 const PUBLIC_STATE_ROUTES = new Set([
@@ -168,11 +168,8 @@ function mutatesState(route, method) {
 async function hydrateState(event, storeModule) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   connectLambda(event);
-  const blobStore = getStore({ name: BLOB_STORE, consistency: 'strong' });
-  const snapshot = await blobStore.getWithMetadata(BLOB_KEY, {
-    consistency: 'strong',
-    type: 'json'
-  });
+  const blobStore = getStore(BLOB_STORE);
+  const snapshot = await blobStore.getWithMetadata(BLOB_KEY, { type: 'json' });
   const collections = snapshot?.data?.collections || {};
 
   for (const name of Object.keys(storeModule.COLLECTIONS)) {
