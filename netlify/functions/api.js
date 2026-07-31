@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import { connectLambda, getStore } from '@netlify/blobs';
+import { getStore } from '@netlify/blobs';
 
 const DATA_DIR = '/tmp/nova-detailing-admin';
 const BLOB_STORE = 'nova-admin';
@@ -165,11 +165,13 @@ function mutatesState(route, method) {
   return PUBLIC_STATE_ROUTES.has(route) || route.startsWith('admin/');
 }
 
-async function hydrateState(event, storeModule) {
+async function hydrateState(storeModule) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
-  connectLambda(event);
-  const blobStore = getStore(BLOB_STORE);
-  const snapshot = await blobStore.getWithMetadata(BLOB_KEY, { type: 'json' });
+  const blobStore = getStore({ name: BLOB_STORE, consistency: 'strong' });
+  const snapshot = await blobStore.getWithMetadata(BLOB_KEY, {
+    consistency: 'strong',
+    type: 'json'
+  });
   const collections = snapshot?.data?.collections || {};
 
   for (const name of Object.keys(storeModule.COLLECTIONS)) {
@@ -220,7 +222,7 @@ function resolveHandler(route, modules, req) {
   return null;
 }
 
-export async function handler(event) {
+async function handleEvent(event) {
   const route = routeFromEvent(event);
   let req;
 
@@ -244,7 +246,7 @@ export async function handler(event) {
     }
 
     const persistence = needsState(route)
-      ? await hydrateState(event, modules.store)
+      ? await hydrateState(modules.store)
       : null;
 
     await routeHandler(req, response);
@@ -267,4 +269,28 @@ export async function handler(event) {
       message: 'Serviciul nu este disponibil momentan.'
     }).result();
   }
+}
+
+// Netlify's modern Request/Response function runtime provides the complete
+// Blobs context, including the uncached endpoint required for strong reads.
+export default async function netlifyHandler(request) {
+  const url = new URL(request.url);
+  const method = request.method || 'GET';
+  const hasBody = !['GET', 'HEAD'].includes(method);
+  const body = hasBody ? await request.text() : '';
+  const event = {
+    path: url.pathname,
+    rawUrl: request.url,
+    httpMethod: method,
+    headers: Object.fromEntries(request.headers.entries()),
+    body,
+    isBase64Encoded: false,
+    queryStringParameters: Object.fromEntries(url.searchParams.entries())
+  };
+
+  const result = await handleEvent(event);
+  return new Response(result.body, {
+    status: result.statusCode,
+    headers: result.headers
+  });
 }
