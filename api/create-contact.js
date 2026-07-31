@@ -1,3 +1,5 @@
+import { append } from './admin/_store.js';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
@@ -28,6 +30,13 @@ export default async function handler(req, res) {
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactInfo.email)) {
       return res.status(400).json({ success: false, message: 'Adresa de email nu este validă' });
+    }
+
+    let messageId = null;
+    try {
+      messageId = append('messages', 'msg', { ...contactInfo, read: false }).id;
+    } catch (storeError) {
+      console.error('Failed to persist contact message:', storeError);
     }
 
     console.log('=== NEW CONTACT MESSAGE ===');
@@ -85,7 +94,7 @@ ${contactInfo.message}
     return res.status(200).json({
       success: true,
       message: 'Mesaj trimis',
-      contactId: `CT-${Date.now()}`
+      contactId: messageId || `CT-${Date.now()}`
     });
   } catch (error) {
     console.error('Error processing contact message:', error);

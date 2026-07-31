@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova Detailing — Plan de dezvoltare: servicii noi și direcție strategică</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1a1a; --ink-soft:#343432; --muted:#5c5c5e; --faint:#8a8a86;
+  --line:rgba(26,26,26,.12); --line-soft:rgba(26,26,26,.07);
+  --surface:#f7f7f5; --tint:#efefed; --white:#fff;
+  --bronze:#826c3e; --accent:#b5a17a; --pale:#e9e1d2; --emerald:#2e433b;
+  --warn:#8a4b2a; --warn-bg:#fbf1ea;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--surface);color:var(--ink);
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:Manrope,Inter,sans-serif;letter-spacing:-.03em;line-height:1.15;margin:0}
+p{margin:0 0 1em}
+a{color:var(--bronze)}
+strong{font-weight:650}
+.shell{width:min(1000px,calc(100% - 44px));margin-inline:auto}
+
+/* ── masthead ─────────────────────────────────────────── */
+.masthead{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--bronze);margin:0 0 18px
+}
+.masthead h1{font-size:clamp(2.1rem,5vw,3.3rem);font-weight:800;max-width:22ch}
+.masthead .lede{margin-top:20px;font-size:1.16rem;color:var(--ink-soft);max-width:62ch}
+.meta{
+  display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--faint)
+}
+
+/* ── thesis ───────────────────────────────────────────── */
+.thesis{
+  margin:44px 0;padding:32px 34px;border-radius:18px;
+  background:var(--emerald);color:#f4f1e8
+}
+.thesis h2{font-size:1.5rem;color:var(--white);margin-bottom:12px}
+.thesis p{color:rgba(255,255,255,.86);margin-bottom:0}
+.thesis p+p{margin-top:12px}
+.thesis em{color:var(--pale);font-style:normal;font-weight:650}
+
+/* ── sections ─────────────────────────────────────────── */
+section{padding:52px 0;border-bottom:1px solid var(--line-soft)}
+section:last-of-type{border-bottom:0}
+.sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:8px}
+.sec-num{
+  font-family:var(--mono);font-size:.8rem;font-weight:600;color:var(--accent);
+  flex:0 0 auto;padding-top:.35em
+}
+h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:750}
+.sec-lede{max-width:66ch;color:var(--muted);margin-top:14px;font-size:1.04rem}
+h3{font-size:1.16rem;font-weight:700;margin:32px 0 10px}
+h4{font-size:.95rem;font-weight:700;margin:0 0 6px}
+
+/* ── data ─────────────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin:26px 0}
+.stat{padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.stat__n{font-family:Manrope,sans-serif;font-size:1.6rem;font-weight:800;letter-spacing:-.03em}
+.stat__l{font-size:.8rem;color:var(--muted);margin-top:4px;line-height:1.45}
+.stat--bad .stat__n{color:var(--warn)}
+.stat--good .stat__n{color:var(--emerald)}
+
+table{width:100%;border-collapse:collapse;margin:22px 0;font-size:.92rem}
+caption{
+  caption-side:bottom;margin-top:10px;font-size:.76rem;color:var(--faint);
+  text-align:left;font-family:var(--mono);letter-spacing:.04em
+}
+th,td{padding:11px 12px;text-align:left;border-bottom:1px solid var(--line-soft)}
+th{
+  font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line)
+}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tbody tr:last-child td{border-bottom:0}
+tr.hi td{background:var(--pale);font-weight:600}
+tr.lo td{color:var(--warn)}
+
+.flag{
+  margin:24px 0;padding:22px 24px;border-radius:14px;
+  background:var(--warn-bg);border:1px solid rgba(138,75,42,.2)
+}
+.flag h4{color:var(--warn);font-family:var(--mono);font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.flag p:last-child{margin-bottom:0}
+
+.note{
+  margin:22px 0;padding:18px 22px;border-left:3px solid var(--accent);
+  background:var(--white);border-radius:0 12px 12px 0;font-size:.94rem;color:var(--muted)
+}
+.note p:last-child{margin-bottom:0}
+.note strong{color:var(--ink)}
+
+/* ── service cards ────────────────────────────────────── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(288px,1fr));gap:16px;margin:26px 0}
+.card{
+  padding:24px;border:1px solid var(--line);border-radius:16px;background:var(--white);
+  display:flex;flex-direction:column
+}
+.card__tag{
+  font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bronze);margin-bottom:10px
+}
+.card h4{font-size:1.05rem;margin-bottom:8px}
+.card p{font-size:.92rem;color:var(--muted);margin-bottom:12px}
+.card ul{margin:0 0 14px;padding-left:18px;font-size:.88rem;color:var(--muted)}
+.card li{margin-bottom:5px}
+.card__foot{
+  margin-top:auto;padding-top:12px;border-top:1px solid var(--line-soft);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-soft)
+}
+.card__foot b{color:var(--bronze);font-weight:600}
+.card--key{border-color:var(--accent);box-shadow:0 12px 34px rgba(181,161,122,.16)}
+
+/* ── tiers ────────────────────────────────────────────── */
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:16px;margin:26px 0}
+.tier{padding:26px;border:1px solid var(--line);border-radius:16px;background:var(--white)}
+.tier--mid{background:var(--emerald);border-color:var(--emerald);color:#f4f1e8}
+.tier--mid h4,.tier--mid .tier__p{color:var(--white)}
+.tier--mid li,.tier--mid .tier__note{color:rgba(255,255,255,.8)}
+.tier__p{font-family:Manrope,sans-serif;font-size:1.45rem;font-weight:800;margin:6px 0 2px;line-height:1.25}
+/* Block, not inline: the longest price wrapped mid-unit on one card only,
+   leaving the three tiers visually misaligned. */
+.tier__per{display:block;font-family:Inter,sans-serif;font-size:.78rem;
+  color:var(--faint);font-weight:400;letter-spacing:0;margin-top:2px}
+.tier--mid .tier__per{color:rgba(255,255,255,.6)}
+.tier ul{margin:16px 0 0;padding-left:18px;font-size:.89rem;color:var(--muted)}
+.tier li{margin-bottom:6px}
+.tier__note{margin-top:16px;font-size:.78rem;color:var(--faint);line-height:1.5}
+
+/* ── roadmap ──────────────────────────────────────────── */
+.road{margin:26px 0}
+.step{
+  display:grid;grid-template-columns:auto 1fr;gap:20px;
+  padding:22px 0;border-bottom:1px solid var(--line-soft)
+}
+.step:last-child{border-bottom:0}
+.step__n{
+  width:38px;height:38px;border-radius:50%;background:var(--emerald);color:var(--white);
+  display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;font-weight:600
+}
+.step h4{margin-bottom:5px}
+.step p{font-size:.93rem;color:var(--muted);margin-bottom:6px}
+.step__when{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent)}
+
+.dont{display:grid;gap:14px;margin:24px 0}
+.dont__item{padding:18px 22px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.dont__item h4{margin-bottom:6px}
+.dont__item p{font-size:.92rem;color:var(--muted);margin-bottom:0}
+
+footer{padding:44px 0 60px;color:var(--faint);font-size:.85rem}
+footer p{max-width:70ch}
+
+@media (max-width:640px){
+  .masthead{padding:40px 0 30px}
+  section{padding:38px 0}
+  .thesis{padding:24px 22px}
+  .sec-head{gap:12px}
+}
+
+@media print{
+  body{background:#fff;font-size:10.5pt}
+  .shell{width:100%}
+  section{padding:20px 0;break-inside:avoid}
+  .thesis{background:#fff!important;color:#1a1a1a!important;border:1.5pt solid #2e433b}
+  .thesis h2,.thesis p{color:#1a1a1a!important}
+  .thesis em{color:#826c3e!important}
+  .tier--mid{background:#fff!important;color:#1a1a1a!important;border:1.5pt solid #2e433b}
+  .tier--mid h4,.tier--mid .tier__p,.tier--mid li,.tier--mid .tier__note{color:#1a1a1a!important}
+  .step__n{background:#fff;color:#1a1a1a;border:1pt solid #2e433b}
+  .card,.tier,.stat,.dont__item,.note{break-inside:avoid}
+  a{color:#1a1a1a;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="shell">
+    <p class="eyebrow">Document intern · Strategie comercială</p>
+    <h1>Cum devine Nova Detailing prima adresă din București</h1>
+    <p class="lede">
+      Nu prin mai mulți clienți. Capacitatea atelierului este deja limita, nu cererea.
+      Prin servicii care valorează mai mult pe zi de boxă — și prin servicii care aduc
+      bani fără să ocupe deloc o boxă.
+    </p>
+    <div class="meta">
+      <span>30 iulie 2026</span>
+      <span>Nova Detailing · București</span>
+      <span>Cifre din services-data.js</span>
+    </div>
+  </div>
+</header>
+
+<div class="shell">
+
+  <div class="thesis">
+    <h2>Teza</h2>
+    <p>
+      Atâta timp cât Nova este comparată cu alte firme de detailing, se negociază pe preț
+      într-o piață aglomerată. Soluția nu este să fim „cel mai bun detailing”, ci
+      <em>să ieșim din categorie</em>.
+    </p>
+    <p>
+      Clientul cu bani nu cumpără spălare sau polish. Cumpără să nu se mai gândească niciodată
+      la starea mașinilor lui. Acesta este un alt produs: <em>administrarea unei mașini</em>.
+      Nimeni în București nu îl vinde profesionist astăzi.
+    </p>
+    <p>
+      Norocul este că exact acest produs rezolvă și constrângerea de capacitate: mentenanța la
+      domiciliu, depozitarea și serviciul de concierge produc venit <em>fără să consume nicio
+      boxă</em>, iar mașina de curtoazie deblochează exact lucrările lungi și scumpe pe care
+      astăzi clienții le refuză din lipsă de timp.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Constrângerea reală: zilele de boxă</h2></div>
+    <p class="sec-lede">
+      Toate pachetele actuale se măsoară în zile, nu în ore. Asta înseamnă că produsul vândut
+      efectiv este <strong>ziua de boxă</strong>, iar numărul lor este fix. Marketingul nu
+      schimbă această limită — doar lungește lista de așteptare.
+    </p>
+
+    <table>
+      <caption>Calculat din services-data.js: preț mediu al intervalului împărțit la durata medie declarată.</caption>
+      <thead>
+        <tr>
+          <th>Pachet</th>
+          <th class="num">Preț mediu</th>
+          <th class="num">Zile</th>
+          <th class="num">Lei / zi-boxă</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="lo"><td>Detailing Interior</td><td class="num">2.200</td><td class="num">2,0</td><td class="num">1.100</td></tr>
+        <tr class="lo"><td>Corecție Lac</td><td class="num">2.850</td><td class="num">2,5</td><td class="num">1.140</td></tr>
+        <tr class="hi"><td>Premium Complet</td><td class="num">3.000</td><td class="num">1,5</td><td class="num">2.000</td></tr>
+        <tr class="hi"><td>Signature Full</td><td class="num">5.250</td><td class="num">2,5</td><td class="num">2.100</td></tr>
+      </tbody>
+    </table>
+
+    <div class="stats">
+      <div class="stat"><div class="stat__n">~1.585 lei</div><div class="stat__l">Randament mediu pe zi-boxă</div></div>
+      <div class="stat stat--good"><div class="stat__n">1,8×</div><div class="stat__l">Cât produce Signature față de Interior, pe aceeași zi de boxă</div></div>
+      <div class="stat"><div class="stat__n">~44.000 lei</div><div class="stat__l">Plafon lunar realist la 2 boxe și 70% ocupare</div></div>
+    </div>
+
+    <p>
+      Concluzia operațională: <strong>mixul contează mai mult decât volumul</strong>. Fiecare
+      Detailing Interior vândut în locul unui Premium Complet costă atelierul aproximativ
+      900 lei de randament pierdut pe zi. Iar „de la 1.800 lei” — mesajul din prima pagină —
+      atrage clienți exact spre produsul cu cel mai slab randament.
+    </p>
+
+    <div class="flag">
+      <h4>Trei probleme în oferta actuală</h4>
+      <p>
+        <strong>1. Duratele nu pot fi toate corecte.</strong> Premium Complet include tot ce
+        include Interior, <em>plus</em> exterior, plus polish în 2 pași, plus ceramică — și este
+        declarat la 1–2 zile, în timp ce Interior singur este declarat la 2 zile. Cel puțin
+        unul dintre ele este greșit evaluat, și fiind vorba de zile-boxă, greșeala se plătește
+        direct în bani.
+      </p>
+      <p>
+        <strong>2. VIP Anual se vinde sub randamentul propriu.</strong> Conține 2× Signature Full
+        (9.000–12.000 lei la listă) plus 12 mentenanțe (3.600–6.000 lei) — între 12.600 și 18.000 lei
+        de valoare, vândute la 6.000–9.000 lei. Consumă 7–9 zile-boxă, deci produce
+        <strong>667–1.286 lei/zi-boxă</strong>, față de 2.100 lei/zi-boxă pentru aceeași muncă
+        vândută separat. Fiecare abonat VIP blochează calendarul la cel mai prost tarif din ofertă.
+      </p>
+      <p>
+        <strong>3. Timpul nesupravegheat stă în boxe scumpe.</strong> Priza ceramicii (12–24 h),
+        uscarea după extracție și tratamentul cu ozon nu au nevoie nici de tehnician, nici de boxă
+        de lucru. O cameră ieftină, curată, de priză și uscare este singurul element din acest
+        document care <strong>creează capacitate fără angajări</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Clientul care nu are timp</h2></div>
+    <p class="sec-lede">
+      Segmentul-țintă: proprietari de mașini premium din Pipera, Băneasa, Primăverii, Floreasca,
+      Herăstrău, Corbeanca. Adesea 2–5 mașini. Traficul din București le face timpul cea mai rară
+      resursă. Nu sunt sensibili la preț — sunt sensibili la <strong>fricțiune</strong> și la
+      <strong>încredere</strong>. Obiecția lor nu este „e scump”, ci „nu pot să stau fără mașină
+      trei zile” și „cine îmi conduce mașina?”.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>Proiectăm pentru asistent, nu pentru proprietar.</strong> Oamenii din acest segment
+        delegă. Persoana care ne scrie va fi, în majoritatea cazurilor, asistenta sau șoferul.
+        Deci: un singur număr de WhatsApp, un consultant dedicat cu nume, și dreptul asistentului
+        de a aproba lucrări până la un plafon fără să deranjeze proprietarul.
+      </p>
+    </div>
+
+    <h3>Serviciile</h3>
+
+    <div class="cards">
+
+      <div class="card card--key">
+        <p class="card__tag">Deblochează tot restul</p>
+        <h4>Ridicare, livrare și mașină de curtoazie</h4>
+        <p>
+          Nu un beneficiu, ci condiția care face vandabile lucrările lungi. Un client nu îți dă
+          mașina 3 zile dacă rămâne fără mobilitate. Cu mașină la schimb, obiecția dispare — și
+          odată cu ea dispare bariera spre Signature și PPF, adică spre lucrările de 2.000+ lei/zi-boxă.
+        </p>
+        <ul>
+          <li>Șofer verificat, nominal, același de fiecare dată</li>
+          <li>Protocol foto/video la preluare și la predare</li>
+          <li>Urmărire live a mașinii pe durata transportului</li>
+          <li>Transport închis (platformă acoperită) pentru mașini de colecție</li>
+          <li>Mașină de curtoazie din clasă apropiată</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>da</b> · Necesită: asigurare de custodie, flotă curtoazie</div>
+      </div>
+
+      <div class="card card--key">
+        <p class="card__tag">Zero zile-boxă</p>
+        <h4>Mentenanță la domiciliu</h4>
+        <p>
+          Echipa vine la parcarea subterană a clientului. Spălare fără apă, aspirare, protecție
+          rapidă, verificare stare lac. Corecția și ceramica rămân în atelier — au nevoie de lumină
+          și mediu controlat. Împărțirea corectă este: <strong>mentenanța merge la client,
+          transformarea rămâne la noi</strong>.
+        </p>
+        <ul>
+          <li>Produse rinseless, fără apă curentă, fără zgomot</li>
+          <li>Interval fix lunar, aceeași zi din lună</li>
+          <li>Acord prealabil cu asociația de proprietari</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>nu</b> · Recurent lunar</div>
+      </div>
+
+      <div class="card card--key">
+        <p class="card__tag">Nimeni nu o face în București</p>
+        <h4>Custodie de colecție</h4>
+        <p>
+          Cine are 4 mașini are o problemă pe care nu o rezolvă nimeni: mașinile nefolosite se
+          degradează. Baterii descărcate, cauciucuri cu pete plate, discuri ruginite, garnituri
+          uscate, combustibil vechi. Nova preia răspunderea pentru starea întregii colecții.
+        </p>
+        <ul>
+          <li>Rulaje programate de întreținere</li>
+          <li>Redresoare, presiuni, fluide, huse, monitorizare umiditate</li>
+          <li>„Vreau 911-ul pregătit vineri” — pregătire la cerere</li>
+          <li>Fișă de finisaj separată pentru fiecare mașină</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>minim</b> · Marjă foarte mare — se vinde atenție, nu consumabile</div>
+      </div>
+
+      <div class="card">
+        <p class="card__tag">Zero zile-boxă</p>
+        <h4>Hotel auto — depozitare sezonieră</h4>
+        <p>
+          Cabriolete, mașini de colecție, mașini de vară. Spațiu securizat, climatizat, asigurat,
+          cu întreținere inclusă. Cel mai bun tip de venit recurent: se plătește pe metru pătrat
+          și pe lună, iar odată intrată o mașină, rămâne ani.
+        </p>
+        <ul>
+          <li>Acces controlat, supraveghere, asigurare pentru bunuri în custodie</li>
+          <li>Întreținere lunară inclusă</li>
+          <li>Livrare la cerere, pregătită și spălată</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>nu</b> · Necesită spațiu + autorizație PSI</div>
+      </div>
+
+      <div class="card card--key">
+        <p class="card__tag">Produsul care ne scoate din categorie</p>
+        <h4>Concierge auto</h4>
+        <p>
+          Un singur om care se ocupă de tot ce ține de mașină: ITP, reînnoire RCA și CASCO,
+          programare la reprezentanță, schimb de anvelope și hotel de anvelope, parbriz, PPF,
+          coordonarea unei daune după o zgârietură, chiar și vânzarea mașinii.
+        </p>
+        <ul>
+          <li>Onorariu anual + marjă pe serviciile coordonate</li>
+          <li>Costul de schimbare a furnizorului devine enorm</li>
+          <li>Detailingul devine poarta de intrare, nu produsul</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>nu</b> · Cel mai defensabil venit din listă</div>
+      </div>
+
+      <div class="card">
+        <p class="card__tag">Randament maxim</p>
+        <h4>Protecție la livrare (mașină nouă)</h4>
+        <p>
+          Interceptăm mașina între reprezentanță și proprietar. O preluăm, o protejăm complet —
+          PPF plus ceramică — și o livrăm deja protejată, fără nicio bătaie de cap pentru client.
+        </p>
+        <ul>
+          <li>Cel mai valoros moment din viața unei mașini pentru protecție</li>
+          <li>Eveniment programat cu săptămâni înainte — umple calendarul</li>
+          <li>Canal de recomandare prin dealerii premium</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>da</b> · Cel mai mare bilet din ofertă</div>
+      </div>
+
+      <div class="card">
+        <p class="card__tag">Preț de urgență</p>
+        <h4>Răspuns prioritar și momente-cheie</h4>
+        <p>
+          Cererea legată de un eveniment se vinde mai ușor decât rutina, iar urgența nu este
+          sensibilă la preț.
+        </p>
+        <ul>
+          <li>Cafea vărsată pe Nappa înainte de o ședință</li>
+          <li>Pregătire pentru nuntă, ședință foto, predare la vânzare</li>
+          <li>Sosire de la drum lung, înainte de o vacanță</li>
+          <li>Slot garantat în 24–48 h pentru abonați</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>da</b> · Tarif de urgență +40–60%</div>
+      </div>
+
+      <div class="card">
+        <p class="card__tag">Cost zero, loialitate mare</p>
+        <h4>Serviciu discret</h4>
+        <p>
+          Pentru persoane publice: boxă separată, fără fotografii, fără postări, transport
+          neinscripționat, acord de confidențialitate semnat. Nu costă aproape nimic și
+          justifică un tarif semnificativ mai mare.
+        </p>
+        <div class="card__foot">Consumă boxă: <b>da</b> · Diferențiere pură</div>
+      </div>
+
+      <div class="card">
+        <p class="card__tag">Nișă în creștere</p>
+        <h4>Program dedicat electrice</h4>
+        <p>
+          Fără compartiment motor de curățat, dar cu nevoi specifice: lac moale (Tesla în special),
+          ecrane mari, tapițerii albe. Lacul moale face PPF-ul <em>mai</em> valoros, nu mai puțin.
+        </p>
+        <ul>
+          <li>Returnare cu bateria încărcată la 80% — semnal mic, efect mare</li>
+          <li>Pachet dedicat „lac moale” cu corecție conservatoare</li>
+        </ul>
+        <div class="card__foot">Consumă boxă: <b>da</b> · Segment cu creștere rapidă în București</div>
+      </div>
+
+    </div>
+
+    <h3>Abonamente propuse — Nova Custodie</h3>
+    <p>
+      Clientul bogat nu vrea să cumpere servicii, vrea să nu mai ia decizii. Pachetele se
+      înlocuiesc cu niveluri de apartenență. <strong>Aceste prețuri sunt propuneri, nu
+      concluzii</strong> — trebuie validate pe primii 5 clienți înainte de publicare.
+    </p>
+
+    <div class="tiers">
+      <div class="tier">
+        <h4>Esențial</h4>
+        <div class="tier__p">900 – 1.200 lei<span class="tier__per">pe lună</span></div>
+        <ul>
+          <li>1 mașină</li>
+          <li>Mentenanță lunară la domiciliu</li>
+          <li>Ridicare și livrare incluse</li>
+          <li>Fișă de finisaj și panou online</li>
+        </ul>
+        <p class="tier__note">
+          Valoare à la carte: ~800 lei (mentenanță 500 + două curse de transport).
+          Prima se justifică prin zero fricțiune.
+        </p>
+      </div>
+
+      <div class="tier tier--mid">
+        <h4>Signature</h4>
+        <div class="tier__p">1.800 – 2.400 lei<span class="tier__per">pe lună</span></div>
+        <ul>
+          <li>Tot din Esențial</li>
+          <li>Un tratament major pe an (Signature Full)</li>
+          <li>Mașină de curtoazie pe durata lucrării</li>
+          <li>Slot garantat în 48 h</li>
+          <li>Verificări trimestriale documentate</li>
+        </ul>
+        <p class="tier__note">
+          Valoare à la carte ~1.300 lei/lună. Prima de 40–80% se plătește pentru mașina de
+          curtoazie și pentru prioritate — exact ce nu poate cumpăra clientul altundeva.
+        </p>
+      </div>
+
+      <div class="tier">
+        <h4>Colecție</h4>
+        <div class="tier__p">de la 4.500 lei<span class="tier__per">pe lună</span></div>
+        <ul>
+          <li>3+ mașini</li>
+          <li>Custodie completă a colecției</li>
+          <li>Concierge auto dedicat</li>
+          <li>Depozitare opțională în hotelul auto</li>
+          <li>Pregătire la cerere pentru evenimente</li>
+        </ul>
+        <p class="tier__note">
+          Se negociază individual. Aici nu vindem detailing — vindem liniște, iar comparația
+          cu un alt atelier nu mai există.
+        </p>
+      </div>
+    </div>
+
+    <div class="note">
+      <p>
+        <strong>Fișa de finisaj rezolvă obiecția de încredere.</strong> Cea mai mare frână la
+        ridicarea mașinii nu este prețul, ci „cine răspunde dacă se întâmplă ceva”. Documentul
+        pe care l-am construit — starea fiecărui panou, măsurată și datată, înainte și după —
+        este exact dovada care închide discuția. Serviciul de valet și fișa de finisaj se
+        vând mult mai bine împreună decât separat.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>PPF — oprim cadoul</h2></div>
+    <p class="sec-lede">
+      În lista de servicii, „Consultanță PPF” apare la <strong>0 lei, 30 de minute</strong>.
+      Adică Nova face partea grea — construiește încrederea și specifică lucrarea, identificând
+      un client cu intenție mare pentru cea mai scumpă lucrare din industrie — și apoi predă
+      factura altcuiva.
+    </p>
+    <div class="stats">
+      <div class="stat stat--bad"><div class="stat__n">0 lei</div><div class="stat__l">Cât se încasează azi pentru consultanța PPF</div></div>
+      <div class="stat stat--good"><div class="stat__n">cel mai mare</div><div class="stat__l">Bilet unitar din industrie, cu marjă și pe material</div></div>
+      <div class="stat"><div class="stat__n">Gtechniq · Zvizzer</div><div class="stat__l">Certificările există deja — poziționarea este câștigată</div></div>
+    </div>
+    <p>
+      Două variante, în ordinea preferinței: <strong>(a)</strong> aducem instalarea în casă, cu
+      un instalator format prin școală; <strong>(b)</strong> parteneriat exclusiv cu un instalator
+      bun, cu comision pe lucrare și cu lucrarea executată în atelierul nostru, sub brandul nostru.
+      Ce nu mai facem: trimitem clientul afară gratis.
+    </p>
+    <p>
+      PPF se leagă natural cu <em>Protecție la livrare</em> (secțiunea 02) și cu programul pentru
+      electrice — lacul moale al mașinilor noi face folia mai ușor de vândut, nu mai greu.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>B2B: flote și retur de leasing</h2></div>
+    <p class="sec-lede">
+      Astăzi nu există absolut nicio ofertă pentru persoane juridice. Cuvintele „flotă”,
+      „leasing”, „corporate”, „persoane juridice” apar pe site doar în pagina de politici —
+      text legal, nu comercial. Într-un oraș plin de leasing operațional, asta este o absență,
+      nu o opțiune.
+    </p>
+
+    <h3>De ce se potrivește exact cu constrângerea noastră</h3>
+    <p>
+      Returnările de leasing sunt <strong>programate cu luni înainte</strong>. Umplu exact
+      săptămânile moarte pe care clientul de retail nu le acoperă niciodată. Firmele plătesc
+      pe factură, deduc TVA-ul și nu negociază ca un client de stradă.
+    </p>
+
+    <div class="note">
+      <p>
+        <strong>Argumentul de vânzare pe care niciun concurent nu îl poate da.</strong> La
+        predarea unei mașini în leasing, utilizatorul este taxat pentru uzură și avarii.
+        O fișă de finisaj cu starea fiecărui panou, măsurată și datată la predare, este exact
+        dovada de care are nevoie ca să conteste o taxare nedreaptă. Nu vindem o spălare —
+        vindem protecție împotriva unui risc financiar cuantificabil.
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <p class="card__tag">Programat</p>
+        <h4>Condiționare pentru retur</h4>
+        <p>Pachet fix, preț fix, cu fișă de finisaj la predare. Se vinde utilizatorului, nu firmei de leasing.</p>
+        <div class="card__foot">Umple: <b>săptămânile slabe</b></div>
+      </div>
+      <div class="card">
+        <p class="card__tag">Volum</p>
+        <h4>Contract de flotă</h4>
+        <p>Mentenanță periodică pentru flote de directori. Facturare lunară consolidată, un singur punct de contact.</p>
+        <div class="card__foot">Recurent · plată pe factură</div>
+      </div>
+      <div class="card">
+        <p class="card__tag">Canal</p>
+        <h4>Dealeri premium</h4>
+        <p>Protecția mașinilor noi la livrare, prin reprezentanță. Ei câștigă un argument de vânzare, noi câștigăm lucrarea cu cel mai mare bilet.</p>
+        <div class="card__foot">Recomandare · fără cost de achiziție client</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Școala este afacerea mai bună</h2></div>
+    <p class="sec-lede">
+      Comparația pe zi de muncă este necruțătoare, și schimbă felul în care ar trebui gândită
+      firma.
+    </p>
+
+    <table>
+      <caption>Curs Fundamentals: 3 zile, maximum 6 studenți, de la 2.000 lei. Advanced: 2 zile, de la 2.500 lei.</caption>
+      <thead>
+        <tr><th>Activitate</th><th class="num">Venit pe zi</th><th>Scalabilitate</th></tr>
+      </thead>
+      <tbody>
+        <tr class="lo"><td>Detailing (medie)</td><td class="num">~1.585 lei</td><td>Limitat de boxe și de mâini</td></tr>
+        <tr class="hi"><td>Curs Fundamentals</td><td class="num">~4.000 lei</td><td>Limitat doar de sală</td></tr>
+        <tr class="hi"><td>Curs Advanced</td><td class="num">~7.500 lei</td><td>Limitat doar de sală</td></tr>
+        <tr class="hi"><td>Curs online</td><td class="num">cost marginal ~0</td><td>Nelimitat</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      Nova este structurată ca un atelier de detailing cu o școală atașată. Cifrele spun că este
+      o școală cu un atelier de demonstrație atașat.
+    </p>
+
+    <div class="flag">
+      <h4>Cei 600 de absolvenți sunt astăzi o scurgere</h4>
+      <p>
+        Nova își formează proprii concurenți și nu încasează nimic din volumul lor de mai târziu.
+        Transformarea acestei scurgeri în rețea este cea mai mare mișcare structurală disponibilă:
+        <strong>rețea de ateliere certificate Nova</strong> — protocolul nostru, aparatele noastre
+        calibrate, dreptul de a emite o Carte de Finisaj, taxă anuală plus comision pe fișă emisă.
+      </p>
+      <p>
+        Partea cea mai grea a unei francize este instruirea. Nova o are deja. Nova devine
+        organismul care <em>definește ce înseamnă detailing în România</em> și încasează din
+        volum pe care nu trebuie să îl execute niciodată.
+      </p>
+    </div>
+
+    <h3>Consumabile sub brand propriu</h3>
+    <p>
+      600 de oameni instruiți care cumpără chimicale lunar, și un canal de comunicare cu ei care
+      nu costă nimic. Produs alb etichetat Nova, venit recurent, marjă de produs, zero zile-boxă.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Vindem sezonul</h2></div>
+    <p class="sec-lede">
+      Sarea de pe șosele face din iarnă un eveniment previzibil. Asta se pre-vinde.
+    </p>
+    <p>
+      Campanie de <strong>„Armură de iarnă”</strong> în octombrie–noiembrie și
+      <strong>„Recuperare de primăvară”</strong> în martie–aprilie, ambele cu avans.
+      Sistemul de avans de 30% prin PayU există deja. Rezultatul: bani încasați înainte de a
+      presta munca, două vârfuri de cerere proiectate în locul a două goluri, și un motiv
+      legitim de a contacta fiecare client din istoric de două ori pe an.
+    </p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><h2>Prerechizite — de rezolvat înainte de vânzare</h2></div>
+    <p class="sec-lede">
+      Serviciile din secțiunea 02 presupun că preluăm în custodie bunuri de 100.000–300.000 EUR.
+      Greșelile aici nu se repară cu scuze.
+    </p>
+    <div class="dont">
+      <div class="dont__item">
+        <h4>Asigurare pentru bunuri în custodie</h4>
+        <p>
+          RCA acoperă terții, nu mașina clientului aflată în grija noastră. Este nevoie de o
+          poliță specifică de răspundere pentru bunurile primite în custodie, cu limită pe
+          eveniment suficientă pentru cea mai scumpă mașină pe care o acceptăm. Certificatul
+          se arată clientului <em>înainte</em> să întrebe.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Șoferi verificați și procedură de predare</h4>
+        <p>
+          Șoferi nominali, cu permis verificat, instruiți. Protocol foto/video obligatoriu la
+          preluare și la predare — protejează ambele părți și elimină orice discuție ulterioară.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Acordul asociațiilor de proprietari</h4>
+        <p>
+          Mentenanța în parcarea subterană are nevoie de acceptul administrației clădirii.
+          Se rezolvă o dată per clădire, iar o clădire din Pipera sau Floreasca poate conține
+          zeci de clienți potențiali.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Camera de priză și uscare</h4>
+        <p>
+          Cel mai ieftin metru pătrat din plan și singurul care creează capacitate.
+          Scoate priza ceramicii și uscarea din boxele scumpe.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Costul real al flotei de curtoazie</h4>
+        <p>
+          Mașinile de curtoazie costă: achiziție sau leasing, CASCO, deprecierea, curățenia între
+          clienți. Trebuie modelat pe cap de abonat înainte de a promite. Alternativa de start:
+          parteneriat cu o firmă de închirieri, cu preț negociat pe zi.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Ce nu facem</h2></div>
+    <div class="dont">
+      <div class="dont__item">
+        <h4>Nu urmărim volum și nu dăm discount</h4>
+        <p>
+          La capacitate maximă, un discount este pierdere curată de marjă — nu există unitate
+          suplimentară de câștigat. Prima măsură este repararea VIP Anual, nu adăugarea de clienți.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Nu luăm recondiționări de volum pentru dealeri sub numele Nova</h4>
+        <p>
+          Dealerii vor ieftin și rapid, ceea ce este structural opus unui brand premium și se va
+          scurge în felul în care ne evaluează clienții de retail. Dacă vrem acel venit, se face
+          sub alt brand.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Nu deschidem a doua locație înainte de standard</h4>
+        <p>
+          Fără protocol scris și fără audit, o a doua locație înjumătățește calitatea și dublează
+          riscul. Rețeaua de ateliere certificate aduce aceeași creștere fără capital.
+        </p>
+      </div>
+      <div class="dont__item">
+        <h4>Nu promitem mașina de curtoazie înainte să avem flota</h4>
+        <p>
+          Este singura promisiune din acest document care, nerespectată o singură dată, distruge
+          exact clientul pe care încercăm să îl câștigăm.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Ordinea de implementare</h2></div>
+    <p class="sec-lede">
+      Ordinea nu este negociabilă: mai întâi reparăm economia, apoi vindem scump, apoi construim
+      poziția pe care nimeni nu o poate copia.
+    </p>
+
+    <div class="road">
+      <div class="step">
+        <div class="step__n">1</div>
+        <div>
+          <p class="step__when">Săptămânile 1–4 · cost aproape zero</p>
+          <h4>Reparăm economia existentă</h4>
+          <p>
+            Cronometrăm real cele patru pachete și corectăm duratele declarate. Reevaluăm sau
+            eliminăm VIP Anual. Amenajăm camera de priză și uscare. Niciun leu de marketing până
+            aici — sunt bani care se câștigă din aritmetică.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">2</div>
+        <div>
+          <p class="step__when">Luna 2–3 · venit în trimestrul curent</p>
+          <h4>PPF și primul contract B2B</h4>
+          <p>
+            Aducem PPF în ofertă cu preț propriu. În paralel, trei întâlniri cu firme de leasing
+            operațional, cu fișa de finisaj ca argument principal. Ambele sunt venit nou fără
+            produs nou de inventat.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">3</div>
+        <div>
+          <p class="step__when">Luna 3–6 · pilot cu 5 clienți</p>
+          <h4>Nova Custodie, în variantă minimă</h4>
+          <p>
+            Asigurarea de custodie, un șofer, mașină de curtoazie închiriată la nevoie,
+            mentenanță la domiciliu. Cinci clienți selectați manual din baza existentă,
+            preț de pilot, feedback săptămânal. Nu publicăm nimic până nu funcționează.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">4</div>
+        <div>
+          <p class="step__when">Luna 6–12</p>
+          <h4>Sezonul și canalul de dealeri</h4>
+          <p>
+            Prima campanie „Armură de iarnă” cu avans. Protecție la livrare prin două
+            reprezentanțe premium. Programul pentru electrice.
+          </p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step__n">5</div>
+        <div>
+          <p class="step__when">Anul 2</p>
+          <h4>Rețeaua și consumabilele</h4>
+          <p>
+            Protocol scris, aparate calibrate, audit, contract de atelier certificat. Primii zece
+            absolvenți convertiți din concurenți în parteneri. Consumabile sub brand propriu
+            vândute în rețea. Aici Nova încetează să fie un atelier și devine un standard.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Cifrele de randament sunt calculate din <code>public/services-data.js</code> — prețuri și
+      durate declarate în catalogul actual. Ipoteze folosite: 2 boxe, 22 de zile lucrătoare pe
+      lună, 70% ocupare, o zi de boxă = o zi calendaristică. Prețurile de abonament din secțiunea
+      02 sunt propuneri de discuție, nu recomandări finale: trebuie testate pe primii clienți
+      înainte de publicare.
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

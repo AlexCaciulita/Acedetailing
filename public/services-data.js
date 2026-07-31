@@ -54,7 +54,7 @@ export const packages = [
         name: 'PREMIUM Complet',
         tier: 'premium',
         priceRange: { min: 2500, max: 3500 },
-        duration: '1-2 zile',
+        duration: 'Durata se confirma dupa inspectie',
         image: '/assets/services/premium-complete.jpg',
         shortDescription: 'Interior + Exterior complet cu polish si protectie ceramica.',
         popular: true,
@@ -113,18 +113,17 @@ export const maintenancePlans = [
         ]
     },
     {
-        id: 'vip-anual',
-        name: 'VIP Anual',
-        priceRange: { min: 6000, max: 9000 },
-        period: 'an',
-        bestValue: true,
-        description: 'Pachetul complet de ingrijire anuala. Fara griji, fara surprize.',
+        id: 'mentenanta-personalizata',
+        name: 'Plan de Mentenanta Personalizat',
+        priceRange: { min: 0, max: 0 },
+        period: 'oferta',
+        description: 'Frecventa, serviciile si pretul se stabilesc dupa inspectie si utilizarea reala a masinii.',
         included: [
-            '2x Pachet SIGNATURE Full pe an',
-            'Mentenanta lunara inclusa (12 vizite)',
-            'Programare prioritara',
-            'Discount 15% la orice serviciu extra',
-            'Inspectii trimestriale gratuite'
+            'Inspectie initiala si obiectiv de mentenanta',
+            'Frecventa adaptata utilizarii',
+            'Servicii si limite descrise in oferta',
+            'Calendar confirmat impreuna',
+            'Revizuire dupa primele vizite'
         ]
     }
 ];

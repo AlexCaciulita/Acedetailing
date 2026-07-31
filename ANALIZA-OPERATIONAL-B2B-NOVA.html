@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Analiză operațională și plan B2B pentru Nova Detailing: ofertă, operațiuni, vânzare, contractare și plan 30–60–90 zile.">
+  <title>Nova Detailing — analiză operațională și plan B2B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171815;
+      --ink-soft: #33352f;
+      --muted: #676961;
+      --faint: #96988f;
+      --line: rgba(23, 24, 21, .13);
+      --line-soft: rgba(23, 24, 21, .075);
+      --paper: #f4f3ef;
+      --surface: #faf9f6;
+      --white: #fff;
+      --bronze: #846f43;
+      --gold: #b8a47c;
+      --pale: #e9e1d1;
+      --forest: #263e35;
+      --forest-light: #3d5c50;
+      --warning: #934c2c;
+      --warning-bg: #fbefe7;
+      --success-bg: #e9f0eb;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+      --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --display: Manrope, Inter, sans-serif;
+      --shadow: 0 24px 70px rgba(35, 37, 30, .09);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(184, 164, 124, .16), transparent 30rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 100;
+      width: var(--reading-progress, 0%);
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--forest));
+    }
+    a { color: var(--bronze); text-underline-offset: .2em; }
+    a:hover { color: var(--forest); }
+    h1, h2, h3, h4 { font-family: var(--display); letter-spacing: -.035em; line-height: 1.15; }
+    p { margin: 0 0 1em; }
+    strong { font-weight: 700; }
+    code {
+      padding: .15em .38em;
+      border: 1px solid var(--line-soft);
+      border-radius: .35em;
+      background: rgba(255, 255, 255, .68);
+      font-family: var(--mono);
+      font-size: .84em;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 20px;
+      z-index: 200;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: var(--forest);
+      color: #fff;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      background: rgba(24, 27, 23, .92);
+      color: #fff;
+      backdrop-filter: blur(15px);
+    }
+    .topbar-inner {
+      width: min(1440px, calc(100% - 40px));
+      min-height: 64px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 34px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: 50%;
+      color: var(--pale);
+      font-family: var(--display);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: -.06em;
+    }
+    .brand-copy {
+      font-family: var(--mono);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .topbar-actions { display: flex; align-items: center; gap: 10px; }
+    .topbar-label {
+      color: rgba(255, 255, 255, .58);
+      font-family: var(--mono);
+      font-size: .63rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .print-button {
+      appearance: none;
+      padding: 9px 13px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+    .print-button:hover { border-color: var(--gold); color: var(--pale); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(68px, 10vw, 132px) 0 72px;
+      background: var(--forest);
+      color: #f6f3eb;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: min(62vw, 820px);
+      aspect-ratio: 1;
+      top: -70%;
+      right: -14%;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 80px rgba(255, 255, 255, .025),
+        0 0 0 180px rgba(255, 255, 255, .018);
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 44px));
+      margin-inline: auto;
+    }
+    .eyebrow {
+      margin: 0 0 22px;
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      max-width: 980px;
+      margin: 0;
+      font-size: clamp(2.45rem, 6vw, 5.8rem);
+      font-weight: 800;
+      letter-spacing: -.06em;
+      line-height: .98;
+      text-wrap: balance;
+    }
+    .hero-lede {
+      max-width: 720px;
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, .73);
+      font-size: clamp(1.02rem, 2vw, 1.28rem);
+      line-height: 1.6;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 30px;
+      margin-top: 32px;
+      color: rgba(255, 255, 255, .48);
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      max-width: 980px;
+      margin-top: 52px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .1);
+    }
+    .hero-stat {
+      min-height: 132px;
+      padding: 24px;
+      background: rgba(14, 23, 19, .48);
+    }
+    .hero-stat b {
+      display: block;
+      color: #fff;
+      font-family: var(--display);
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      letter-spacing: -.045em;
+      line-height: 1.1;
+    }
+    .hero-stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, .58);
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
+    .page-layout {
+      width: min(1440px, calc(100% - 40px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 850px);
+      justify-content: center;
+      gap: clamp(42px, 6vw, 96px);
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 88px;
+      max-height: calc(100vh - 112px);
+      padding: 50px 0;
+      overflow: auto;
+      scrollbar-width: thin;
+    }
+    .toc-title {
+      margin: 0 0 15px 44px;
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .toc-link {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 10px;
+      align-items: baseline;
+      padding: 7px 10px 7px 4px;
+      border-left: 2px solid transparent;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .toc-link span {
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .6rem;
+      text-align: right;
+    }
+    .toc-link strong {
+      font-size: .74rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .toc-link:hover,
+    .toc-link.is-active {
+      border-left-color: var(--gold);
+      color: var(--ink);
+      transform: translateX(3px);
+    }
+    .toc-link.is-active strong { font-weight: 700; }
+
+    main {
+      min-width: 0;
+      padding: 16px 0 90px;
+    }
+    .report-section {
+      position: relative;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .report-section:last-child { border-bottom: 0; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+    .section-number {
+      padding-top: .48em;
+      color: var(--gold);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+    }
+    .report-section h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 3.7vw, 2.65rem);
+      font-weight: 800;
+      text-wrap: balance;
+    }
+    .report-section h3 {
+      margin: 42px 0 14px;
+      padding-top: 4px;
+      color: var(--ink);
+      font-size: 1.2rem;
+      font-weight: 750;
+    }
+    .report-section h4 {
+      margin: 28px 0 10px;
+      font-size: 1rem;
+    }
+    .report-section > p,
+    .report-section > ul,
+    .report-section > ol {
+      max-width: 74ch;
+    }
+    .report-section ul,
+    .report-section ol {
+      margin: 14px 0 24px;
+      padding-left: 1.3rem;
+    }
+    .report-section li { margin: 7px 0; padding-left: .25rem; }
+    .report-section li::marker {
+      color: var(--bronze);
+      font-family: var(--mono);
+      font-size: .82em;
+      font-weight: 600;
+    }
+    .report-section > ul,
+    .report-section > ol {
+      padding: 20px 24px 20px 44px;
+      border: 1px solid var(--line-soft);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .58);
+    }
+    .report-section:nth-of-type(3) > ul:first-of-type,
+    .report-section:nth-of-type(15) > ul:first-of-type {
+      border-color: rgba(147, 76, 44, .22);
+      background: var(--warning-bg);
+    }
+    .report-section:nth-of-type(16) {
+      margin: 34px 0;
+      padding: 42px;
+      border: 0;
+      border-radius: 22px;
+      background: var(--forest);
+      color: #f6f3eb;
+      box-shadow: var(--shadow);
+    }
+    .report-section:nth-of-type(16) .section-number { color: var(--gold); }
+    .report-section:nth-of-type(16) h2,
+    .report-section:nth-of-type(16) strong { color: #fff; }
+    .report-section:nth-of-type(16) > ol {
+      border-color: rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .06);
+    }
+    .report-section:nth-of-type(16) li::marker { color: var(--pale); }
+
+    .thesis-callout {
+      position: relative;
+      margin: 32px 0;
+      padding: 30px 34px 30px 72px;
+      border: 0;
+      border-radius: 18px;
+      background: var(--forest);
+      color: rgba(255, 255, 255, .88);
+      box-shadow: var(--shadow);
+    }
+    .thesis-callout::before {
+      content: "N";
+      position: absolute;
+      left: 26px;
+      top: 27px;
+      width: 30px;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      color: var(--pale);
+      font-family: var(--display);
+      font-size: .7rem;
+      font-weight: 800;
+    }
+    .thesis-callout p { margin: 0; font-size: 1.05rem; }
+    .thesis-callout strong { color: #fff; }
+
+    pre {
+      max-width: 100%;
+      margin: 22px 0 28px;
+      padding: 22px 24px;
+      overflow: auto;
+      border: 1px solid rgba(255, 255, 255, .08);
+      border-radius: 14px;
+      background: #202821;
+      color: #f4f0e6;
+      box-shadow: 0 12px 34px rgba(32, 40, 33, .1);
+      line-height: 1.75;
+    }
+    pre code {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font-size: .76rem;
+    }
+
+    .report-section:last-child ul {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      list-style: none;
+    }
+    .report-section:last-child li {
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .report-section:last-child li:last-child { border-bottom: 0; }
+    .report-section:last-child a { font-weight: 650; }
+
+    .closing {
+      padding: 40px 0 60px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .closing-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: end;
+    }
+    .closing p { max-width: 620px; margin: 0; font-size: .9rem; }
+    .closing-mark {
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    @media (max-width: 1050px) {
+      .page-layout { grid-template-columns: minmax(0, 850px); }
+      .toc { display: none; }
+      main { padding-top: 0; }
+    }
+    @media (max-width: 760px) {
+      body { font-size: 15px; }
+      .topbar-inner { width: min(100% - 28px, 1440px); }
+      .topbar-label { display: none; }
+      .hero { padding: 62px 0 48px; }
+      .hero-inner,
+      .page-layout { width: min(100% - 32px, 1180px); }
+      .hero h1 { font-size: clamp(2.3rem, 12vw, 4rem); }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat { min-height: 118px; padding: 19px; }
+      .report-section { padding: 46px 0; }
+      .section-heading { grid-template-columns: 34px 1fr; gap: 10px; }
+      .thesis-callout { padding: 68px 24px 24px; }
+      .thesis-callout::before { left: 24px; top: 22px; }
+      .report-section > ul,
+      .report-section > ol { padding: 16px 18px 16px 36px; }
+      .report-section:nth-of-type(16) {
+        margin-inline: -8px;
+        padding: 32px 24px;
+      }
+      .closing-inner { display: block; }
+      .closing-mark { margin-top: 18px; text-align: left; }
+    }
+    @media (max-width: 440px) {
+      .brand-copy { display: none; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-stat { min-height: auto; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 16mm 15mm 18mm; }
+      body { background: #fff; color: #111; font-size: 9.4pt; line-height: 1.52; }
+      body::before, .topbar, .toc { display: none !important; }
+      .hero {
+        padding: 12mm 0 9mm;
+        background: #fff;
+        color: #111;
+        border-bottom: 1.5pt solid #263e35;
+      }
+      .hero::before { display: none; }
+      .hero-inner, .page-layout { width: 100%; display: block; }
+      .eyebrow { color: #846f43; }
+      .hero h1 { max-width: 100%; color: #111; font-size: 28pt; }
+      .hero-lede { color: #333; font-size: 11pt; }
+      .hero-meta { color: #666; }
+      .hero-stats { grid-template-columns: repeat(4, 1fr); border-color: #ccc; }
+      .hero-stat { min-height: auto; padding: 10pt; background: #f5f4ef; }
+      .hero-stat b { color: #111; font-size: 15pt; }
+      .hero-stat span { color: #555; font-size: 7.5pt; }
+      main { padding: 0; }
+      .report-section { padding: 9mm 0; break-before: auto; }
+      .report-section h2, .report-section h3 { break-after: avoid; }
+      .report-section > ul,
+      .report-section > ol,
+      pre,
+      .thesis-callout { break-inside: avoid; }
+      .report-section:nth-of-type(16),
+      .thesis-callout {
+        color: #111;
+        background: #f4f3ef;
+        border: 1pt solid #263e35;
+        box-shadow: none;
+      }
+      .report-section:nth-of-type(16) h2,
+      .report-section:nth-of-type(16) strong,
+      .thesis-callout strong { color: #111; }
+      .thesis-callout::before { color: #263e35; border-color: #263e35; }
+      pre { color: #111; background: #f3f3f1; border-color: #bbb; box-shadow: none; }
+      a { color: #111; text-decoration: none; }
+      .closing { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#report">Sari la raport</a>
+
+  <nav class="topbar" aria-label="Bară document">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Nova Detailing — început document">
+        <span class="brand-mark">ND</span>
+        <span class="brand-copy">Nova Detailing</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="topbar-label">Document intern · Strategie comercială</span>
+        <button class="print-button" type="button" onclick="window.print()">Tipărește / PDF</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Analiză operațională · Plan de vânzare B2B</p>
+      <h1>De la ofertă la primul client semnat.</h1>
+      <p class="hero-lede">
+        Un sistem executabil pentru Nova Detailing: economie pe serviciu, capacitate,
+        ofertă-pilot, prospectare, contractare și implementare în 90 de zile.
+      </p>
+      <div class="hero-meta">
+        <span>Audit: 30 iulie 2026</span>
+        <span>Nova Detailing · București</span>
+        <span>17 capitole · Plan executabil</span>
+      </div>
+      <div class="hero-stats" aria-label="Obiectivele principale ale planului">
+        <div class="hero-stat"><b>30–45 zile</b><span>țintă realistă până la prima semnătură</span></div>
+        <div class="hero-stat"><b>3 mașini</b><span>pilotul B2B recomandat pentru validare</span></div>
+        <div class="hero-stat"><b>50–60</b><span>conturi în lista inițială de prospectare</span></div>
+        <div class="hero-stat"><b>1 contract</b><span>obiectivul funnel-ului în primele 45 de zile</span></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="toc" aria-label="Cuprins">
+      <p class="toc-title">Cuprins</p>
+      <a class="toc-link" href="#1-verdict-executiv"><span>01</span><strong>Verdict executiv</strong></a>
+<a class="toc-link" href="#2-ce-este-bun-in-planul-actual"><span>02</span><strong>Ce este bun în planul actual</strong></a>
+<a class="toc-link" href="#3-corectii-necesare-in-plan-si-in-documente"><span>03</span><strong>Corecții necesare în plan și în documente</strong></a>
+<a class="toc-link" href="#4-model-operational-recomandat"><span>04</span><strong>Model operațional recomandat</strong></a>
+<a class="toc-link" href="#5-situatia-tehnica-si-digitala"><span>05</span><strong>Situația tehnică și digitală</strong></a>
+<a class="toc-link" href="#6-clientul-b2b-ideal-pentru-prima-vanzare"><span>06</span><strong>Clientul B2B ideal pentru prima vânzare</strong></a>
+<a class="toc-link" href="#7-oferta-cu-care-trebuie-inceput"><span>07</span><strong>Oferta cu care trebuie început</strong></a>
+<a class="toc-link" href="#8-kitul-comercial-necesar"><span>08</span><strong>Kitul comercial necesar</strong></a>
+<a class="toc-link" href="#9-procesul-pana-la-prima-semnatura"><span>09</span><strong>Procesul până la prima semnătură</strong></a>
+<a class="toc-link" href="#10-ce-trebuie-sa-contina-contractul-b2b"><span>10</span><strong>Ce trebuie să conțină contractul B2B</strong></a>
+<a class="toc-link" href="#11-pipeline-si-crm"><span>11</span><strong>Pipeline și CRM</strong></a>
+<a class="toc-link" href="#12-pagina-b2b"><span>12</span><strong>Pagina B2B</strong></a>
+<a class="toc-link" href="#13-kpi-uri-pentru-primele-45-de-zile"><span>13</span><strong>KPI-uri pentru primele 45 de zile</strong></a>
+<a class="toc-link" href="#14-plan-306090-zile"><span>14</span><strong>Plan 30–60–90 zile</strong></a>
+<a class="toc-link" href="#15-reguli-de-oprire"><span>15</span><strong>Reguli de oprire</strong></a>
+<a class="toc-link" href="#16-prioritatea-absoluta-pentru-urmatoarele-72-de-ore"><span>16</span><strong>Prioritatea absolută pentru următoarele 72 de ore</strong></a>
+<a class="toc-link" href="#17-surse-oficiale-si-verificari-externe"><span>17</span><strong>Surse oficiale și verificări externe</strong></a>
+    </aside>
+
+    <main id="report">
+      <section class="report-section" id="1-verdict-executiv">
+<div class="section-heading"><span class="section-number">01</span><h2>Verdict executiv</h2></div>
+<p>Nova are trei active comerciale reale:</p>
+<ol>
+<li>experiența fondatorilor și baza de încredere creată prin școală;</li>
+<li>poziționarea premium, cu proces documentat, nu doar „spălare/detailing”;</li>
+<li>ideea de Carte de Finisaj și de raport foto, care poate diferenția serviciul.</li>
+</ol>
+<p>Blocajul actual nu este lipsa de idei și nici lipsa de servicii. Blocajul este lipsa unui sistem verificat care leagă:</p>
+<ul>
+<li>costul real al fiecărui serviciu;</li>
+<li>capacitatea atelierului;</li>
+<li>o promisiune B2B îngustă și credibilă;</li>
+<li>un proces repetabil de prospectare și ofertare;</li>
+<li>contractul, predarea mașinii, controlul calității și facturarea;</li>
+<li>infrastructura digitală care nu pierde date și notifică echipa.</li>
+</ul>
+<p>Recomandarea principală este să nu fie lansate simultan custodia, flotele, dealerii, PPF-ul, rețeaua de absolvenți și private label. Prima ofertă B2B trebuie să fie:</p>
+<blockquote class="thesis-callout">
+<p><strong>Pilot de pregătire pre-retur leasing pentru 3 autoturisme, într-o singură locație, cu audit foto, raport de risc în 48 de ore și lucrări aprobate separat.</strong></p>
+</blockquote>
+<p>Primul client potrivit nu este o mare companie de leasing și nici o flotă națională. Este o companie condusă direct de proprietar sau de un manager accesibil, din București–Ilfov, cu 5–30 de autoturisme și 2–5 retururi în următoarele 90 de zile.</p>
+<p>Ținta realistă pentru prima semnătură este de 30–45 de zile, dacă sunt executate zilnic activitățile comerciale din acest plan.</p>
+</section>
+<section class="report-section" id="2-ce-este-bun-in-planul-actual">
+<div class="section-heading"><span class="section-number">02</span><h2>Ce este bun în planul actual</h2></div>
+<p>Documentul <code>PLAN-DEZVOLTARE-NOVA.html</code> identifică bine câteva realități:</p>
+<ul>
+<li>capacitatea este limitată de zilele de boxă, orele tehnicienilor și timpii de uscare, nu de numărul de lead-uri;</li>
+<li>VIP Annual este subevaluat și riscă să ocupe capacitatea cu marjă slabă;</li>
+<li>durata Premium este incompatibilă cu lista de servicii incluse;</li>
+<li>o zonă separată de uscare/polimerizare poate elibera boxele productive;</li>
+<li>serviciile de custodie și pre-retur leasing pot muta compania de la tranzacții izolate la venit recurent;</li>
+<li>PPF-ul nu trebuie lăsat permanent la stadiul de consultație gratuită;</li>
+<li>școala și cei aproximativ 600 de absolvenți pot deveni un canal de reputație, recrutare și distribuție.</li>
+</ul>
+<p>Direcția este bună. Problemele apar când ipotezele sunt tratate ca rezultate dovedite.</p>
+</section>
+<section class="report-section" id="3-corectii-necesare-in-plan-si-in-documente">
+<div class="section-heading"><span class="section-number">03</span><h2>Corecții necesare în plan și în documente</h2></div>
+<h3>3.1 Capacitatea nu este încă măsurată suficient</h3>
+<p>Planul folosește venit pe „zi de boxă”, dar ziua este o unitate prea grosieră. Pentru fiecare lucrare trebuie măsurate:</p>
+<ul>
+<li>orele efective ale tehnicianului;</li>
+<li>orele în care mașina blochează boxa;</li>
+<li>orele de uscare/polimerizare;</li>
+<li>minutele de recepție, fotografiere, ofertare și predare;</li>
+<li>transportul;</li>
+<li>materialele consumate;</li>
+<li>remedierile și rework-ul;</li>
+<li>externalizările;</li>
+<li>întârzierea produsă de lipsa aprobării clientului.</li>
+</ul>
+<p>Calculul din plan are și o diferență aritmetică: 2 boxe × 22 zile × 70% × 1.585 lei/zi înseamnă aproximativ 48.818 lei venit brut, nu 44.000 lei. Diferența este secundară; problema importantă este că randamentul de 1.585 lei nu este încă susținut de măsurători.</p>
+<h3>3.2 Pachetul Premium are o contradicție de durată</h3>
+<p>În datele site-ului, Premium include Interior, Corecție, polish în două etape și protecție ceramică, dar durata comunicată este 1–2 zile. Interiorul singur are durata de 2 zile, iar Corecția 2–3 zile.</p>
+<p>Acțiune:</p>
+<ul>
+<li>eliminați durata publică până la efectuarea unui time study;</li>
+<li>sau comunicați un interval realist, condiționat de inspecție;</li>
+<li>separați timpul activ de lucru de timpul de polimerizare;</li>
+<li>nu acceptați o dată de predare înainte de inspecția inițială.</li>
+</ul>
+<h3>3.3 VIP Annual este economic periculos</h3>
+<p>Pachetul de 6.000–9.000 lei/an promite două servicii Signature, 12 întrețineri și reducere la servicii suplimentare. Valoarea serviciilor incluse depășește probabil prețul, iar capacitatea consumată poate ajunge la 7–9 zile de boxă per client.</p>
+<p>În forma actuală, pachetul trebuie:</p>
+<ul>
+<li>retras temporar din ofertare; sau</li>
+<li>limitat explicit prin număr de ore, tip de mașină, frecvență și ferestre de programare;</li>
+<li>repricing-uit pe cost și capacitate;</li>
+<li>transformat într-un abonament de prioritate + mentenanțe clar definite, nu acces „aproape nelimitat”.</li>
+</ul>
+<p>Nu vindeți niciun abonament înainte de a calcula contribuția per oră de tehnician și per oră de boxă.</p>
+<h3>3.4 Vechiul business plan nu mai poate fi folosit ca document de decizie</h3>
+<p><code>Plan_Business_Detailing_2026.docx</code> conține informații depășite sau insuficient fundamentate:</p>
+<ul>
+<li>17+ ani experiență, în timp ce documentul de corecții și site-ul actual folosesc 10+;</li>
+<li>rating Google 4,8, deși documentul de corecții spune că nu există încă rating;</li>
+<li>comparații de piață și competitori fără o datare și o metodologie verificabilă;</li>
+<li>„profit brut” calculat ca venit minus o listă incompletă de costuri;</li>
+<li>prag de rentabilitate de trei mașini/lună, fără salariul fondatorului, taxe, amortizare, asigurări, chirie completă, utilități, rework și costuri de plată;</li>
+<li>recomandare de discount de 30% pentru primii clienți, incompatibilă cu poziționarea premium;</li>
+<li>cod CAEN 4520, care trebuie actualizat/verificat în contextul CAEN Rev.3.</li>
+</ul>
+<p>Documentul poate rămâne istoric, dar nu trebuie prezentat finanțatorilor sau folosit pentru buget fără o reconstrucție financiară.</p>
+<h3>3.5 Raportul Nova nu este o evaluare oficială a locatorului</h3>
+<p>Ghidurile de retur consultate arată că inspecția oficială poate fi efectuată de entități independente precum SGS, DEKRA sau Macadam, în funcție de locator. Raportul Nova poate ajuta clientul să vadă riscurile înainte de retur, dar nu trebuie descris ca:</p>
+<ul>
+<li>raport oficial de daună;</li>
+<li>expertiză juridică;</li>
+<li>garanție de eliminare a taxelor;</li>
+<li>dovadă care obligă locatorul;</li>
+<li>certificat emis de o autoritate independentă, dacă Nova nu are acea acreditare.</li>
+</ul>
+<p>Formularea sigură este:</p>
+<blockquote class="thesis-callout">
+<p>„Diagnostic vizual și dosar de pregătire înainte de retur, realizat în raport cu ghidul locatorului. Nu înlocuiește inspecția sau evaluarea oficială a locatorului.”</p>
+</blockquote>
+<h3>3.6 Afirmațiile absolute trebuie eliminate</h3>
+<p>Nu folosiți în ofertă:</p>
+<ul>
+<li>„nimeni din București nu face asta”;</li>
+<li>„eliminăm costurile de retur”;</li>
+<li>„firmele nu negociază”;</li>
+<li>„TVA-ul este întotdeauna deductibil”;</li>
+<li>„școala este garantat mai profitabilă decât atelierul”.</li>
+</ul>
+<p>Înlocuiți-le cu ipoteze măsurabile și rezultate documentate după primele proiecte.</p>
+</section>
+<section class="report-section" id="4-model-operational-recomandat">
+<div class="section-heading"><span class="section-number">04</span><h2>Model operațional recomandat</h2></div>
+<h3>4.1 Unitățile corecte de management</h3>
+<p>Pentru fiecare comandă, calculați:</p>
+<pre><code class="language-text">Venit net fără TVA
+– materiale
+– ore directe × cost total/oră
+– transport și subcontractori
+– rezervă de rework
+= contribuție
+</code></pre>
+<p>Apoi urmăriți:</p>
+<pre><code class="language-text">Contribuție / oră de tehnician
+Contribuție / oră de boxă
+Venit / zi calendaristică ocupată
+Procent de livrări la timp
+Procent de rework
+Timp până la aprobarea clientului
+</code></pre>
+<p>Costul total/oră trebuie să includă salariu sau remunerație, contribuții, concedii, timp neproductiv, echipamente, consumabile generale și partea alocată din costurile fixe.</p>
+<h3>4.2 Time study pentru următoarele 20 de lucrări</h3>
+<p>Înregistrați pentru fiecare etapă:</p>
+<ol>
+<li>recepție și fotografii;</li>
+<li>pregătire și mascări;</li>
+<li>lucru activ pe zone;</li>
+<li>așteptare/uscare/polimerizare;</li>
+<li>control de calitate;</li>
+<li>corecții;</li>
+<li>raport și comunicare;</li>
+<li>predare;</li>
+<li>transport, dacă există.</li>
+</ol>
+<p>După 20 de lucrări:</p>
+<ul>
+<li>recalculați duratele;</li>
+<li>stabiliți marja minimă;</li>
+<li>modificați prețurile;</li>
+<li>definiți ce lucrări pot fi suprapuse;</li>
+<li>identificați dacă o zonă de uscare separată se justifică.</li>
+</ul>
+<h3>4.3 Reguli de programare</h3>
+<ul>
+<li>Nu rezervați o boxă întreagă pentru o lucrare care poate trece în zona de uscare.</li>
+<li>Nu promiteți ora de predare înainte de inspecție.</li>
+<li>Introduceți un buffer de 10–15% pentru lucrările complexe.</li>
+<li>Orice descoperire suplimentară necesită aprobare scrisă.</li>
+<li>Nu începeți lucrarea dacă recepția foto și fișa de stare nu sunt semnate.</li>
+<li>Pentru B2B, grupați mașinile în aceeași locație și aceeași zi.</li>
+<li>Nu acceptați servicii urgente dacă reduc contribuția totală a săptămânii.</li>
+</ul>
+<h3>4.4 Tablou de control zilnic</h3>
+<p>Tabloul operațional trebuie să arate:</p>
+<ul>
+<li>mașinile aflate în atelier și boxa ocupată;</li>
+<li>responsabilul și stadiul;</li>
+<li>ora/data promisă;</li>
+<li>aprobările în așteptare;</li>
+<li>piesele/materialele lipsă;</li>
+<li>riscurile de întârziere;</li>
+<li>controlul de calitate;</li>
+<li>încasarea și documentele de predare.</li>
+</ul>
+<h3>4.5 SOP-uri obligatorii</h3>
+<ol>
+<li>Programare și confirmare.</li>
+<li>Recepție, identificare vehicul, kilometraj și combustibil.</li>
+<li>Inventar: chei, acte și accesorii.</li>
+<li>Fotografierea daunelor preexistente.</li>
+<li>Păstrarea și accesul la chei.</li>
+<li>Protecția habitaclului și a caroseriei.</li>
+<li>Aprobare pentru lucrări suplimentare.</li>
+<li>Transport/valet și cine are dreptul să conducă.</li>
+<li>Execuție pe fiecare serviciu.</li>
+<li>Control de calitate în doi pași.</li>
+<li>Raport foto și Carte de Finisaj.</li>
+<li>Predare și acceptanță.</li>
+<li>Incident, daună sau întârziere.</li>
+<li>Reclamație și rework.</li>
+<li>Retenția și ștergerea datelor/fotografiilor.</li>
+</ol>
+<h3>4.6 Asigurări și conformitate</h3>
+<p>Înainte de custodie, valet, transport sau mașină la schimb, obțineți în scris de la broker ce riscuri sunt acoperite:</p>
+<ul>
+<li>răspundere civilă față de clienți;</li>
+<li>bunuri/vehicule aflate în custodie;</li>
+<li>conducerea vehiculelor clienților;</li>
+<li>transport;</li>
+<li>furt, incendiu și vandalism;</li>
+<li>daune provocate în timpul lucrării;</li>
+<li>mașină la schimb, dacă va exista.</li>
+</ul>
+<p>Verificați împreună cu avocatul, contabilul și autoritățile competente:</p>
+<ul>
+<li>obiectul de activitate și CAEN Rev.3; corespondența ONRC indică 9531 pentru repararea și întreținerea autovehiculelor, inclusiv spălare/lustruire;</li>
+<li>regimul TVA și pragul de înregistrare;</li>
+<li>RO e-Factura și termenul de transmitere;</li>
+<li>autorizațiile locale, de mediu și PSI aplicabile spațiului;</li>
+<li>evacuarea apelor uzate și necesitatea separatorului de hidrocarburi, nămol și nisip;</li>
+<li>contractele pentru deșeuri și substanțe;</li>
+<li>medicina muncii, SSM și PSI;</li>
+<li>informarea GDPR și politica de retenție.</li>
+</ul>
+<p>Această listă este de verificare, nu consultanță juridică sau fiscală.</p>
+</section>
+<section class="report-section" id="5-situatia-tehnica-si-digitala">
+<div class="section-heading"><span class="section-number">05</span><h2>Situația tehnică și digitală</h2></div>
+<h3>5.1 Ce există deja</h3>
+<p>Sistemul local include:</p>
+<ul>
+<li>rezervări retail în cinci pași;</li>
+<li>estimare de preț și selecție de pachete;</li>
+<li>clienți, vehicule, lucrări, task-uri și inventar;</li>
+<li>mesaje și rezervări;</li>
+<li>calendar și indicatori de utilizare;</li>
+<li>companie/CUI în profilul clientului;</li>
+<li>Carte de Finisaj cu fotografii și măsurători.</li>
+</ul>
+<p>Acestea sunt o bază bună pentru operare.</p>
+<h3>5.2 Riscuri identificate</h3>
+<p>La data auditului:</p>
+<ul>
+<li>domeniul <code>novadetailing.ro</code> nu s-a rezolvat DNS din mediul de verificare;</li>
+<li>versiunea publică Netlify răspunde pentru paginile principale, dar <code>/admin</code> și <code>/api/admin/session</code> răspund cu 404;</li>
+<li>codul local actualizat nu pare să fie versiunea publicată;</li>
+<li>configurația locală inspectată nu are credențiale active pentru PayU și furnizorul de e-mail;</li>
+<li>parola admin configurată prin hash nu este prezentă în mediul local inspectat;</li>
+<li>nu există analytics/UTM/conversii implementate;</li>
+<li>nu au fost identificate teste automate;</li>
+<li>sesiunea admin este ținută în memorie;</li>
+<li>datele operaționale sunt în fișiere JSON;</li>
+<li>configurația PM2 folosește mai multe procese, ceea ce poate produce sesiuni admin inconsistente și scrieri concurente pierdute;</li>
+<li>configurația Docker nu definește un volum persistent pentru <code>data</code>, deci o recreare a containerului poate pierde informațiile scrise după build.</li>
+</ul>
+<p>Aceste constatări se referă la fișierele și endpoint-urile accesibile în audit; mediul de producție poate avea variabile diferite.</p>
+<h3>5.3 Ordinea corectă de remediere</h3>
+<ol>
+<li>Reparați DNS-ul domeniului și decideți o singură platformă de producție.</li>
+<li>Publicați versiunea actuală a aplicației.</li>
+<li>Configurați e-mailul tranzacțional și testați livrarea.</li>
+<li>Configurați autentificarea admin.</li>
+<li>Rulați un singur proces până când datele și sesiunile sunt mutate într-o bază de date.</li>
+<li>Folosiți PostgreSQL sau o alternativă persistentă, cu backup automat și test de restaurare.</li>
+<li>Adăugați analytics, evenimente de conversie și UTM.</li>
+<li>Testați complet rezervarea, confirmarea, anularea și notificarea.</li>
+<li>Nu comunicați plata PayU/avans 30% până când fluxul este testat end-to-end.</li>
+<li>Pentru B2B, folosiți inițial factură și transfer bancar, cu termeni scriși.</li>
+</ol>
+</section>
+<section class="report-section" id="6-clientul-b2b-ideal-pentru-prima-vanzare">
+<div class="section-heading"><span class="section-number">06</span><h2>Clientul B2B ideal pentru prima vânzare</h2></div>
+<h3>6.1 Profil recomandat</h3>
+<ul>
+<li>București sau Ilfov;</li>
+<li>5–30 de autoturisme;</li>
+<li>2–5 retururi de leasing în următoarele 90 de zile;</li>
+<li>cel puțin câteva mașini executive/premium;</li>
+<li>toate sau majoritatea într-o singură locație;</li>
+<li>proprietarul, directorul administrativ sau fleet managerul este accesibil;</li>
+<li>poate aproba un pilot fără licitație națională;</li>
+<li>a avut costuri surpriză, indisponibilitate sau experiențe slabe la retur.</li>
+</ul>
+<h3>6.2 Segmente potrivite</h3>
+<ul>
+<li>firme de consultanță, avocatură, IT, servicii financiare și medicale;</li>
+<li>agenții și companii cu mașini de management;</li>
+<li>antreprenori cu flotă mică în leasing;</li>
+<li>administratori de proprietăți și servicii profesionale;</li>
+<li>brokeri de leasing și asigurări care pot face introduceri.</li>
+</ul>
+<h3>6.3 Segmente de evitat la început</h3>
+<ul>
+<li>flote naționale de peste 100 de mașini;</li>
+<li>achiziții publice și licitații;</li>
+<li>ride-hailing, rent-a-car și volume cu preț foarte mic;</li>
+<li>dealeri care cer stoc permanent, termene lungi și preț de volum;</li>
+<li>acoperire națională;</li>
+<li>companii care cer 30–60 de zile la plată pentru primul pilot.</li>
+</ul>
+<p>Marile companii de leasing pot deveni ulterior parteneri sau canale, dar au onboarding, audit, achiziții și furnizori aprobați. Nu sunt cea mai rapidă cale spre prima semnătură.</p>
+</section>
+<section class="report-section" id="7-oferta-cu-care-trebuie-inceput">
+<div class="section-heading"><span class="section-number">07</span><h2>Oferta cu care trebuie început</h2></div>
+<h3>7.1 Nume de lucru</h3>
+<p><strong>Pilot Retur Fără Surprize — 3 mașini</strong></p>
+<h3>7.2 Ce include</h3>
+<ul>
+<li>verificare vizuală raportată la ghidul locatorului;</li>
+<li>caroserie, geamuri, jante/anvelope, lumini, interior;</li>
+<li>verificarea cheilor, documentelor și accesoriilor declarate;</li>
+<li>fotografii datate;</li>
+<li>raport cu trei clase: acceptabil, risc, necesită clarificare;</li>
+<li>recomandare de intervenție și prioritate;</li>
+<li>ofertă separată pentru remedieri;</li>
+<li>raport în 24–48 de ore de la inspecție;</li>
+<li>o discuție de 20 de minute cu responsabilul flotei.</li>
+</ul>
+<h3>7.3 Ce nu include</h3>
+<ul>
+<li>evaluare oficială;</li>
+<li>diagnoză mecanică;</li>
+<li>constatare juridică;</li>
+<li>garanția acceptării de către locator;</li>
+<li>remedieri fără aprobare;</li>
+<li>transport gratuit nelimitat;</li>
+<li>eliminarea sigură a taxelor de retur.</li>
+</ul>
+<h3>7.4 Preț de validat</h3>
+<p>Pentru trei mașini în aceeași locație:</p>
+<ul>
+<li><strong>1.350–1.800 lei + TVA/pilot</strong>, adică 450–600 lei/mașină;</li>
+<li>lucrările se aprobă și se facturează separat;</li>
+<li>avans sau plată integrală la comandă pentru primul pilot;</li>
+<li>o parte din taxa de audit poate fi creditată numai la semnarea unui contract anual, nu acordată ca discount general.</li>
+</ul>
+<p>Prețul nu trebuie publicat înainte de verificarea prin formula:</p>
+<pre><code class="language-text">ore × cost total/oră
++ deplasare
++ fotografie și raport
++ materiale
++ rezervă de rework
++ marja țintă
+</code></pre>
+<h3>7.5 Oferta a doua, doar după pilot</h3>
+<p><strong>Executive Fleet Care</strong></p>
+<ul>
+<li>5–15 mașini;</li>
+<li>sloturi lunare definite;</li>
+<li>mentenanțe cu conținut explicit;</li>
+<li>factură consolidată;</li>
+<li>raport per vehicul;</li>
+<li>minimum lunar;</li>
+<li>preț per clasă/dimensiune;</li>
+<li>fără servicii „nelimitate”.</li>
+</ul>
+</section>
+<section class="report-section" id="8-kitul-comercial-necesar">
+<div class="section-heading"><span class="section-number">08</span><h2>Kitul comercial necesar</h2></div>
+<p>Pregătiți în maximum cinci zile:</p>
+<ol>
+<li>O pagină cu problema, procesul, livrabilele și limitele.</li>
+<li>Un raport-demo anonimizat de 3–5 pagini.</li>
+<li>Un model de recepție cu fotografii.</li>
+<li>Lista de prețuri nete + TVA.</li>
+<li>Un model scurt de ofertă-pilot.</li>
+<li>Un acord/contract-pilot.</li>
+<li>Certificatul de înregistrare, constatatorul, IBAN-ul și datele de facturare.</li>
+<li>Dovada asigurărilor relevante.</li>
+<li>Politica de confidențialitate și informarea GDPR.</li>
+<li>Două exemple before/after, folosite cu acord.</li>
+<li>O biografie factuală și consecventă a fondatorilor.</li>
+<li>Un răspuns standard pentru incidente, întârzieri și reclamații.</li>
+</ol>
+<p>Cartea de Finisaj trebuie prezentată ca exemplu numai după ce există un flux real de emitere, actualizare și predare. În prezent, conceptul și exemplul tehnic sunt bune, dar lipsește fluxul complet de administrare a înregistrării.</p>
+</section>
+<section class="report-section" id="9-procesul-pana-la-prima-semnatura">
+<div class="section-heading"><span class="section-number">09</span><h2>Procesul până la prima semnătură</h2></div>
+<h3>Faza 1 — Pregătire, zilele 1–5</h3>
+<ul>
+<li>fixați oferta-pilot și limitele;</li>
+<li>calculați costul;</li>
+<li>finalizați raportul-demo;</li>
+<li>obțineți modelul de contract;</li>
+<li>pregătiți documentele de furnizor;</li>
+<li>configurați un pipeline simplu;</li>
+<li>definiți cine prospectează, cine califică și cine semnează;</li>
+<li>blocați în calendar două ferestre pentru pilot.</li>
+</ul>
+<h3>Faza 2 — Lista de conturi, zilele 3–7</h3>
+<p>Construiți 50–60 de conturi și două contacte per cont.</p>
+<p>Ordinea surselor:</p>
+<ol>
+<li>relații calde ale fondatorilor;</li>
+<li>actuali și foști clienți care dețin firme;</li>
+<li>cei aproximativ 600 de absolvenți și rețeaua lor;</li>
+<li>contabili, brokeri de leasing și brokeri de asigurări;</li>
+<li>antreprenori locali și comunități business;</li>
+<li>cercetare manuală pe LinkedIn și site-urile companiilor.</li>
+</ol>
+<p>Colectați numai date profesionale necesare, notați sursa și oferiți o modalitate clară de opoziție la contactare.</p>
+<h3>Faza 3 — Prospectare, zilele 8–25</h3>
+<p>Ritm zilnic minim:</p>
+<ul>
+<li>10 conturi noi cercetate;</li>
+<li>5 apeluri;</li>
+<li>10 e-mailuri sau mesaje LinkedIn personalizate;</li>
+<li>5 follow-up-uri;</li>
+<li>toate activitățile înregistrate.</li>
+</ul>
+<p>Secvență:</p>
+<ul>
+<li>Ziua 0: e-mail scurt cu întrebarea despre retururi;</li>
+<li>Ziua 2: conectare LinkedIn;</li>
+<li>Ziua 4: apel;</li>
+<li>Ziua 7: o pagină din raportul-demo sau un caz relevant;</li>
+<li>Ziua 12: mesaj de închidere a buclei.</li>
+</ul>
+<h3>E-mail inițial</h3>
+<p>Subiect: <code>3 mașini care ies din leasing în [lună]?</code></p>
+<blockquote class="thesis-callout">
+<p>Bună ziua, [Nume]. Ajutăm firmele din București să identifice din timp ce poate genera costuri la retur și să remedieze doar ce merită. Propunem un pilot pe trei mașini: audit foto, raport de risc în 48 de ore și ofertă separată pentru intervenții. Nu înlocuiește evaluarea locatorului și nu promite eliminarea taxelor; vă oferă control înainte de predare. Aveți 2–3 mașini cu retur în următoarele 90 de zile? Dacă da, putem discuta 15 minute marți sau miercuri?</p>
+</blockquote>
+<h3>Deschiderea apelului</h3>
+<blockquote class="thesis-callout">
+<p>Nu vă sun pentru spălări de flotă. Lucrăm pe pregătirea pre-retur și pe mașinile de management, unde indisponibilitatea și costurile-surpriză contează. Cine gestionează la dumneavoastră returnările și aprobă remedierile?</p>
+</blockquote>
+<h3>Întrebări de discovery</h3>
+<ol>
+<li>Câte mașini aveți și în ce locații?</li>
+<li>Câte ies din leasing în următoarele 90 de zile?</li>
+<li>Cu ce locatori lucrați?</li>
+<li>Care au fost ultimele costuri sau surprize la retur?</li>
+<li>Cine face pregătirea astăzi?</li>
+<li>Câtă indisponibilitate acceptați?</li>
+<li>Cine aprobă intervențiile și până la ce valoare?</li>
+<li>Ce documente cere procurement-ul?</li>
+<li>Ce termen de plată utilizați?</li>
+<li>Cum ar arăta un pilot reușit?</li>
+</ol>
+<p>Calificați oportunitatea numai dacă sunt adevărate cel puțin trei:</p>
+<ul>
+<li>există minimum două retururi în 90 de zile;</li>
+<li>problema este concretă sau cuantificată;</li>
+<li>decidentul participă;</li>
+<li>mașinile pentru pilot sunt disponibile;</li>
+<li>procesul de achiziție și bugetul sunt cunoscute.</li>
+</ul>
+<h3>Întâlnirea de 30 de minute</h3>
+<ul>
+<li>5 minute: context;</li>
+<li>10 minute: procesul actual și costurile;</li>
+<li>5 minute: raportul-demo;</li>
+<li>5 minute: definiția pilotului;</li>
+<li>5 minute: decizia, responsabilul și data de start.</li>
+</ul>
+<p>Nu transformați întâlnirea într-o prezentare generală despre toate serviciile Nova.</p>
+<h3>Oferta</h3>
+<p>Trimiteți în aceeași zi, maximum două pagini:</p>
+<ul>
+<li>problema confirmată;</li>
+<li>trei mașini/locația;</li>
+<li>ce primiți și ce nu primiți;</li>
+<li>termenul;</li>
+<li>prețul net + TVA;</li>
+<li>responsabilitățile clientului;</li>
+<li>data de start;</li>
+<li>valabilitate 10 zile;</li>
+<li>un singur pas de acceptare.</li>
+</ul>
+<p>Remedierile sunt opționale și necesită aprobare scrisă.</p>
+<h3>Follow-up și închidere</h3>
+<ul>
+<li>Ziua 1: confirmați primirea.</li>
+<li>Ziua 3: întrebați ce împiedică decizia.</li>
+<li>Ziua 7: reconfirmați fereastra rezervată.</li>
+<li>Ziua 10: închideți politicos bucla.</li>
+</ul>
+<p>După acordul verbal:</p>
+<ol>
+<li>trimiteți documentele de furnizor;</li>
+<li>semnați acordul-pilot/comanda;</li>
+<li>încasați conform termenilor;</li>
+<li>executați pilotul;</li>
+<li>faceți review în 24 de ore de la raport;</li>
+<li>calculați ce risc a fost identificat și ce intervenții au fost aprobate;</li>
+<li>propuneți contractul-cadru pe 12 luni;</li>
+<li>obțineți semnătura și prima planificare recurentă.</li>
+</ol>
+<h3>Regula de negociere</h3>
+<p>Nu acordați discount fără o contraprestație. Prețul poate scădea numai în schimbul:</p>
+<ul>
+<li>volum minim lunar;</li>
+<li>mașini în aceeași locație;</li>
+<li>programare cu preaviz;</li>
+<li>plată mai rapidă;</li>
+<li>contract mai lung;</li>
+<li>permisiune pentru studiu de caz, fără date sensibile.</li>
+</ul>
+</section>
+<section class="report-section" id="10-ce-trebuie-sa-contina-contractul-b2b">
+<div class="section-heading"><span class="section-number">10</span><h2>Ce trebuie să conțină contractul B2B</h2></div>
+<p>Solicitați revizuire juridică. Checklist:</p>
+<ul>
+<li>părțile, CUI, reprezentanții și persoanele autorizate;</li>
+<li>obiectul, serviciile și excluderile;</li>
+<li>tipurile de vehicule eligibile;</li>
+<li>comanda și anularea;</li>
+<li>SLA de răspuns, raport și livrare;</li>
+<li>prețuri nete + TVA;</li>
+<li>volum minim, deplasare și no-show;</li>
+<li>pragul și canalul aprobării scrise;</li>
+<li>recepția, acceptanța și reclamațiile;</li>
+<li>daunele preexistente;</li>
+<li>custodia, cheile, accesoriile și documentele;</li>
+<li>dreptul de a conduce și transportul;</li>
+<li>răspunderea și limitele sale;</li>
+<li>excepții pentru culpă gravă/fraudă, stabilite de avocat;</li>
+<li>asigurările;</li>
+<li>subcontractorii;</li>
+<li>confidențialitatea și utilizarea fotografiilor;</li>
+<li>rolurile GDPR, scopul, retenția și eventualul DPA;</li>
+<li>facturarea, RO e-Factura, termenul de plată și penalitățile;</li>
+<li>durata, reînnoirea și încetarea;</li>
+<li>forța majoră și soluționarea disputelor;</li>
+<li>anexă servicii și prețuri;</li>
+<li>anexă SLA;</li>
+<li>fișă de recepție;</li>
+<li>proces-verbal de predare.</li>
+</ul>
+</section>
+<section class="report-section" id="11-pipeline-si-crm">
+<div class="section-heading"><span class="section-number">11</span><h2>Pipeline și CRM</h2></div>
+<p>Admin-ul actual are date operaționale, dar nu are un pipeline B2B complet. Sunt necesare:</p>
+<ul>
+<li>Companii;</li>
+<li>Contacte;</li>
+<li>Oportunități;</li>
+<li>Activități;</li>
+<li>Oferte;</li>
+<li>Contracte;</li>
+<li>Facturi și termene;</li>
+<li>Reînnoiri.</li>
+</ul>
+<p>Etapele recomandate:</p>
+<pre><code class="language-text">Target
+→ Contactat
+→ Discovery programat
+→ Calificat
+→ Pilot propus
+→ Pilot programat
+→ Pilot livrat
+→ Contract anual propus
+→ Negociere
+→ Câștigat / Pierdut
+</code></pre>
+<p>Pentru prima vânzare, un tabel disciplinat este suficient. Nu amânați prospectarea până la dezvoltarea CRM-ului.</p>
+</section>
+<section class="report-section" id="12-pagina-b2b">
+<div class="section-heading"><span class="section-number">12</span><h2>Pagina B2B</h2></div>
+<p>Pagina <code>/pentru-companii</code> trebuie construită după primele discuții, nu înaintea validării mesajului.</p>
+<p>Structură:</p>
+<ol>
+<li>Titlu: „Pregătire documentată pentru retur și îngrijire pentru flote executive.”</li>
+<li>Cele trei probleme rezolvate.</li>
+<li>Pilotul de trei mașini.</li>
+<li>Procesul în patru pași.</li>
+<li>Exemplu de raport.</li>
+<li>Limitele și disclaimer-ul.</li>
+<li>Dovezi: experiență, asigurări, proces, cazuri.</li>
+<li>Formular B2B.</li>
+</ol>
+<p>Formularul trebuie să ceară:</p>
+<ul>
+<li>companie și CUI;</li>
+<li>nume, rol, telefon, e-mail;</li>
+<li>număr și tip de mașini;</li>
+<li>locație;</li>
+<li>locator/locatori;</li>
+<li>câte retururi urmează și când;</li>
+<li>problema principală;</li>
+<li>acceptul de confidențialitate.</li>
+</ul>
+<p>Formularul trebuie să creeze Companie + Contact + Oportunitate, nu o rezervare retail.</p>
+</section>
+<section class="report-section" id="13-kpi-uri-pentru-primele-45-de-zile">
+<div class="section-heading"><span class="section-number">13</span><h2>KPI-uri pentru primele 45 de zile</h2></div>
+<p>Ținta de funnel:</p>
+<ul>
+<li>50–60 conturi;</li>
+<li>100 contacte;</li>
+<li>80–120 atingeri personalizate;</li>
+<li>12 conversații cu decidenți;</li>
+<li>5 întâlniri discovery;</li>
+<li>3 piloți ofertați;</li>
+<li>1–2 piloți executați;</li>
+<li>1 contract-cadru semnat.</li>
+</ul>
+<p>KPI comercial:</p>
+<ul>
+<li>rata de răspuns;</li>
+<li>conversații cu decidentul;</li>
+<li>întâlniri/conturi contactate;</li>
+<li>pilot propus/discovery;</li>
+<li>pilot acceptat/pilot propus;</li>
+<li>contract/pilot executat;</li>
+<li>zile până la semnare;</li>
+<li>motivul pierderii.</li>
+</ul>
+<p>KPI operațional:</p>
+<ul>
+<li>contribuție per oră tehnician;</li>
+<li>contribuție per oră boxă;</li>
+<li>abatere timp estimat vs. real;</li>
+<li>livrare la timp;</li>
+<li>rework;</li>
+<li>incidente;</li>
+<li>aprobare client;</li>
+<li>DSO/zile până la încasare.</li>
+</ul>
+</section>
+<section class="report-section" id="14-plan-306090-zile">
+<div class="section-heading"><span class="section-number">14</span><h2>Plan 30–60–90 zile</h2></div>
+<h3>Zilele 1–30</h3>
+<ul>
+<li>suspendați/recalculați VIP;</li>
+<li>corectați durata Premium;</li>
+<li>începeți time study;</li>
+<li>finalizați oferta și contractul-pilot;</li>
+<li>reparați domeniul, e-mailul și producția;</li>
+<li>creați lista de 50–60 conturi;</li>
+<li>începeți prospectarea;</li>
+<li>programați minimum cinci discovery calls;</li>
+<li>vindeți primul pilot.</li>
+</ul>
+<h3>Zilele 31–60</h3>
+<ul>
+<li>executați 1–2 piloți;</li>
+<li>colectați feedback și date reale;</li>
+<li>transformați cel mai bun pilot în contract anual;</li>
+<li>publicați o pagină B2B validată;</li>
+<li>mutați datele într-un sistem persistent;</li>
+<li>documentați SOP-urile;</li>
+<li>obțineți dovada asigurărilor și setul complet de conformitate;</li>
+<li>definiți Executive Fleet Care.</li>
+</ul>
+<h3>Zilele 61–90</h3>
+<ul>
+<li>obțineți al doilea și al treilea client;</li>
+<li>analizați profitabilitatea pe segment;</li>
+<li>automatizați CRM și raportarea;</li>
+<li>selectați un partener PPF pe contract și comision clar;</li>
+<li>testați custodia doar cu cinci clienți și numai după asigurare/SOP;</li>
+<li>decideți investiția în zona de uscare pe baza gradului real de ocupare.</li>
+</ul>
+<p>Dealerii mari, rețeaua certificată, private label și extinderea națională rămân inițiative de anul 2, după ce modelul este repetabil.</p>
+</section>
+<section class="report-section" id="15-reguli-de-oprire">
+<div class="section-heading"><span class="section-number">15</span><h2>Reguli de oprire</h2></div>
+<ul>
+<li>Nu vindeți sub pragul de marjă.</li>
+<li>Nu promiteți servicii nelimitate.</li>
+<li>Nu oferiți custodie, valet sau mașină la schimb fără asigurare și SOP.</li>
+<li>Nu acceptați termene lungi de plată la primul pilot.</li>
+<li>Nu folosiți afirmații de inspecție oficială.</li>
+<li>Nu publicați cifre de experiență, clienți sau rating fără dovadă.</li>
+<li>Nu rulați aplicația cu mai multe procese peste fișiere JSON.</li>
+<li>Nu scalați școala/rețeaua înainte de standarde, marcă, QA și contracte.</li>
+<li>Nu investiți în servicii noi înainte de a măsura capacitatea actuală.</li>
+</ul>
+</section>
+<section class="report-section" id="16-prioritatea-absoluta-pentru-urmatoarele-72-de-ore">
+<div class="section-heading"><span class="section-number">16</span><h2>Prioritatea absolută pentru următoarele 72 de ore</h2></div>
+<ol>
+<li>Decideți cine este owner-ul vânzării B2B.</li>
+<li>Alegeți exact pachetul-pilot și calculați costul.</li>
+<li>Selectați trei vehicule reale pentru raportul-demo.</li>
+<li>Pregătiți contractul scurt și documentele de furnizor.</li>
+<li>Extrageți primele 20 de introduceri calde din clienți, absolvenți și parteneri.</li>
+<li>Trimiteți primele zece mesaje.</li>
+<li>Rezervați în calendar prima fereastră de pilot.</li>
+</ol>
+<p>Prima semnătură nu va veni dintr-o pagină perfectă, ci dintr-o problemă bine aleasă, un decident accesibil, un pilot cu risc redus și un follow-up riguros.</p>
+</section>
+<section class="report-section" id="17-surse-oficiale-si-verificari-externe">
+<div class="section-heading"><span class="section-number">17</span><h2>Surse oficiale și verificări externe</h2></div>
+<ul>
+<li>ONRC, <a href="https://www.onrc.ro/documente/anunturi/Corespondenta-CAEN-Rev.2-CAEN-Rev.3.pdf" target="_blank" rel="noopener noreferrer">corespondența CAEN Rev.2–CAEN Rev.3</a></li>
+<li>ONRC, <a href="https://www.onrc.ro/documente/caen/CAEN_Rev.3_structura_completa.pdf" target="_blank" rel="noopener noreferrer">structura completă CAEN Rev.3</a></li>
+<li>Portal Legislativ, <a href="https://legislatie.just.ro/Public/FormaPrintabila/00000G012QBCRT1Y8T53PX5094E4IB57" target="_blank" rel="noopener noreferrer">Ordinul nr. 377/2024 privind actualizarea CAEN</a></li>
+<li>ANAF, <a href="https://static.anaf.ro/static/10/Anaf/AsistentaContribuabili_r/Cotele_de_TVA_09.2025.pdf" target="_blank" rel="noopener noreferrer">cotele de TVA aplicabile din august 2025</a></li>
+<li>ANAF, <a href="https://static.anaf.ro/static/3/Ploiesti/20260115111226_comunicat%20ajfp%20arges%20-%20modificari%20ro%20e-factura%20site.pdf" target="_blank" rel="noopener noreferrer">modificări RO e-Factura aplicabile în 2026</a></li>
+<li>Apele Române, <a href="https://rowater.ro/2023/11/29/ce-sunt-avizele-si-autorizatiile-de-gospodarire-a-apelor-ce-acte-trebuie-sa-depui-2/" target="_blank" rel="noopener noreferrer">avize și autorizații de gospodărire a apelor</a></li>
+<li>Portal Legislativ, <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/262281" target="_blank" rel="noopener noreferrer">condiții tehnice pentru evacuarea apelor uzate</a></li>
+<li>Portal Legislativ, <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/98310" target="_blank" rel="noopener noreferrer">NTPA-002</a></li>
+<li>Ayvens, <a href="https://www.ayvens.com/-/media/ayvens/public/ro/ghid-returnare-vehicule-flota-ex-lp.pdf?rev=-1" target="_blank" rel="noopener noreferrer">ghid de returnare a vehiculelor de flotă</a></li>
+<li>Business Lease, <a href="https://www.businesslease.ro/pentru-clienti/returnarea-masinii" target="_blank" rel="noopener noreferrer">procesul de returnare a mașinii</a></li>
+<li>EUR-Lex, <a href="https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX%3A32016R0679" target="_blank" rel="noopener noreferrer">Regulamentul general privind protecția datelor</a></li>
+<li>ASLOR, <a href="https://www.aslor.ro/en/members/member-companies/" target="_blank" rel="noopener noreferrer">companii membre</a></li>
+</ul>
+
+</section>
+      <footer class="closing">
+        <div class="closing-inner">
+          <p>
+            Document de lucru bazat pe fișierele Nova Detailing și pe sursele oficiale
+            enumerate în capitolul 17. Elementele juridice, fiscale și de asigurare trebuie
+            confirmate de profesioniști autorizați înainte de implementare.
+          </p>
+          <div class="closing-mark">Nova Detailing<br>Operational × B2B</div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const sections = [...document.querySelectorAll(".report-section")];
+    const tocLinks = [...document.querySelectorAll(".toc-link")];
+
+    const updateProgress = () => {
+      const root = document.documentElement;
+      const available = root.scrollHeight - root.clientHeight;
+      const progress = available > 0 ? (root.scrollTop / available) * 100 : 0;
+      document.body.style.setProperty("--reading-progress", `${progress}%`);
+    };
+    updateProgress();
+    addEventListener("scroll", updateProgress, { passive: true });
+
+    const spy = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+      if (!visible) return;
+      tocLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.hash === `#${visible.target.id}`);
+      });
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
+    sections.forEach((section) => spy.observe(section));
+  </script>
+</body>
+</html>

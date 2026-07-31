@@ -1,3 +1,5 @@
+import { append } from './admin/_store.js';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method not allowed' });
@@ -60,6 +62,15 @@ export default async function handler(req, res) {
 
     if (bookingInfo.phone.replace(/\D/g, '').length < 10) {
       return res.status(400).json({ success: false, message: 'Numărul de telefon nu este valid' });
+    }
+
+    // Persist before any email attempt: a booking that reaches us must survive
+    // even if the mail provider is down, otherwise it is silently lost.
+    let bookingId = null;
+    try {
+      bookingId = append('bookings', 'bkg', { ...bookingInfo, status: 'nou' }).id;
+    } catch (storeError) {
+      console.error('Failed to persist booking:', storeError);
     }
 
     console.log('=== NEW BOOKING RECEIVED ===');
@@ -194,7 +205,7 @@ Excelenta in fiecare detaliu.
     return res.status(200).json({
       success: true,
       message: 'Rezervare confirmată',
-      bookingId: `BK-${Date.now()}`
+      bookingId: bookingId || `BK-${Date.now()}`
     });
   } catch (error) {
     console.error('Error processing booking:', error);

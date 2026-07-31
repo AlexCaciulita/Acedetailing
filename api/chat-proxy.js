@@ -23,12 +23,14 @@ export default async function handler(req, res) {
 Servicii disponibile (preturile depind de clasa vehiculului; valorile de mai jos sunt intervalele publice):
 - Detailing Interior Profesional: 1800-2600 lei, 2 zile
 - Corectie Profesionala Lac: 2200-3500 lei, 2-3 zile
-- PREMIUM Complet: 2500-3500 lei, 1-2 zile (interior + exterior + polish + ceramica)
+- PREMIUM Complet: 2500-3500 lei; durata se confirma dupa inspectie (interior + exterior + polish + ceramica)
 - SIGNATURE Full: 4500-6000 lei, 2-3 zile (cel mai complet pachet)
 
 Add-on-uri: Polish Faruri (150 lei), Curatare Motor (300 lei), Tratament Piele (400 lei), Eliminare Mirosuri (200 lei), Curatare Tapiterie (300 lei), Detailing Jante (200 lei), Corectie Vopsea per panou (250 lei), Consultanta PPF (gratis).
 
-Abonamente: Lunar (300-500 lei/luna), VIP Anual (6000-9000 lei/an).
+Mentenanta: plan lunar 300-500 lei/luna sau plan personalizat ofertat dupa inspectie. Nu promite reduceri ori beneficii care nu apar in oferta scrisa.
+
+Companii: pilot pre-retur leasing pentru 3 autoturisme intr-o singura locatie, cu inspectie foto si raport in 24-48h. Remedierile se oferteaza separat si se executa numai cu acord scris. Raportul Nova nu este evaluarea oficiala a lessorului si nu garanteaza eliminarea costurilor de retur. Pentru calificare, indruma compania catre /companii.html.
 
 Scoala de Detailing: Fundamentals (5 zile, 4500 lei), Advanced (3 zile, 3500 lei), Online (self-paced, 1500 lei).
 

@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
 import enrollmentHandler from './api/create-enrollment.js';
 import contactHandler from './api/create-contact.js';
+import b2bLeadHandler from './api/create-b2b-lead.js';
 import recordHandler from './api/get-record.js';
+import adminHandler from './api/admin/index.js';
 import chatProxyHandler from './api/chat-proxy.js';
 import payuCreateOrderHandler from './api/payu-create-order.js';
 import payuNotifyHandler from './api/payu-notify.js';
@@ -85,10 +87,44 @@ const server = http.createServer((req, res) => {
     '/api/create-booking': bookingHandler,
     '/api/create-enrollment': enrollmentHandler,
     '/api/create-contact': contactHandler,
+    '/api/create-b2b-lead': b2bLeadHandler,
     '/api/chat-proxy': chatProxyHandler,
     '/api/payu-create-order': payuCreateOrderHandler,
     '/api/payu-notify': payuNotifyHandler
   };
+
+  // Admin API. Prefix-routed because it dispatches its own sub-paths, and it is
+  // the only surface here that reads request bodies on non-POST verbs.
+  if (pathname === '/api/admin' || pathname.startsWith('/api/admin/')) {
+    let body = '';
+    req.on('data', (chunk) => { body += chunk; });
+    req.on('end', async () => {
+      try {
+        req.body = body ? JSON.parse(body) : {};
+      } catch {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, message: 'Corpul cererii nu este JSON valid' }));
+        return;
+      }
+      req.adminPath = pathname.replace(/^\/api\/admin\/?/, '');
+      try {
+        await adminHandler(req, createExpressLikeResponse(res));
+      } catch (handlerError) {
+        console.error('API handler error (/api/admin):', handlerError);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
+        }
+      }
+    });
+    req.on('error', () => {
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: false, message: 'Eroare server' }));
+      }
+    });
+    return;
+  }
 
   // Parameterised route: /api/record/<cod>. Kept separate from the exact-match
   // map above because it carries a path parameter.
@@ -168,6 +204,13 @@ const server = http.createServer((req, res) => {
   // client-side. Rewritten before static resolution so no /vin directory exists.
   if (/^\/vin(\/|$)/.test(pathname)) {
     pathname = '/vin.html';
+  }
+
+  // Same idea for the dashboard: /admin and any sub-route render one document
+  // that routes client-side. The document itself is public — everything it can
+  // actually show is behind /api/admin, which requires a session.
+  if (/^\/admin(\/|$)/.test(pathname)) {
+    pathname = '/admin.html';
   }
 
   if (pathname.endsWith('/')) {

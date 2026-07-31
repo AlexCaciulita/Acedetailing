@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Planul complet Nova Detailing 2026–2027: strategie, operațiuni, B2B, primul client, 30 de prospecți, model financiar și plan de execuție.">
+  <meta name="theme-color" content="#193129">
+  <title>Nova Detailing — plan de business complet 2026–2027</title>
+  <style>
+    :root {
+      --ink: #171914;
+      --muted: #62675f;
+      --faint: #8e938a;
+      --paper: #f3f1eb;
+      --surface: #fbfaf6;
+      --surface-2: #eeece5;
+      --line: rgba(23, 25, 20, .13);
+      --line-strong: rgba(23, 25, 20, .24);
+      --forest: #193129;
+      --forest-2: #284b3f;
+      --green: #1b7f50;
+      --green-soft: #e5f1ea;
+      --gold: #b5a078;
+      --gold-soft: #eee7d8;
+      --red: #b52b22;
+      --red-soft: #f9e9e7;
+      --amber: #9d6325;
+      --amber-soft: #f7eddd;
+      --shadow: 0 24px 70px rgba(27, 33, 27, .09);
+      --radius: 18px;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --display: Manrope, Inter, ui-sans-serif, system-ui, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 92% 2%, rgba(181, 160, 120, .18), transparent 31rem),
+        var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 100;
+      width: var(--reading-progress, 0%);
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), #fff, var(--green));
+    }
+    a { color: var(--forest-2); text-underline-offset: .18em; }
+    a:hover { color: var(--green); }
+    button, input { font: inherit; }
+    h1, h2, h3, h4 { margin-top: 0; font-family: var(--display); line-height: 1.1; letter-spacing: -.035em; }
+    p { margin: 0 0 1em; }
+    ul, ol { padding-left: 1.25rem; }
+    li + li { margin-top: .38rem; }
+    .skip-link {
+      position: fixed; top: -80px; left: 18px; z-index: 300;
+      padding: 10px 14px; border-radius: 9px; background: #fff; color: var(--forest);
+    }
+    .skip-link:focus { top: 12px; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 80;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(20, 40, 33, .94);
+      color: #fff; backdrop-filter: blur(16px);
+    }
+    .topbar-inner {
+      width: min(1480px, calc(100% - 36px)); min-height: 66px; margin: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; }
+    .brand-mark {
+      width: 36px; aspect-ratio: 1; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.38); border-radius: 50%;
+      color: var(--gold); font-weight: 900; font-size: .72rem; letter-spacing: -.06em;
+    }
+    .brand-copy { font-family: var(--mono); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .top-actions { display: flex; gap: 9px; align-items: center; }
+    .top-label { color: rgba(255,255,255,.56); font-family: var(--mono); font-size: .63rem; letter-spacing: .09em; text-transform: uppercase; }
+    .action-button {
+      appearance: none; padding: 8px 13px; border: 1px solid rgba(255,255,255,.23);
+      border-radius: 999px; background: transparent; color: #fff; cursor: pointer;
+      font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .action-button:hover { border-color: var(--gold); color: #f5ead2; }
+
+    .hero { position: relative; overflow: hidden; padding: clamp(70px, 9vw, 126px) 0 74px; background: var(--forest); color: #f7f4ec; }
+    .hero::before {
+      content: ""; position: absolute; width: min(60vw, 800px); aspect-ratio: 1;
+      top: -68%; right: -12%; border: 1px solid rgba(255,255,255,.08); border-radius: 50%;
+      box-shadow: 0 0 0 76px rgba(255,255,255,.024), 0 0 0 172px rgba(255,255,255,.016);
+    }
+    .hero-inner { position: relative; z-index: 1; width: min(1220px, calc(100% - 42px)); margin: auto; }
+    .eyebrow { margin: 0 0 20px; color: var(--gold); font-family: var(--mono); font-size: .7rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+    .hero h1 { max-width: 1060px; margin: 0; font-size: clamp(2.6rem, 6.4vw, 6.2rem); font-weight: 850; letter-spacing: -.065em; line-height: .96; text-wrap: balance; }
+    .hero-lede { max-width: 800px; margin: 28px 0 0; color: rgba(255,255,255,.72); font-size: clamp(1.03rem, 1.8vw, 1.28rem); line-height: 1.6; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 30px; margin-top: 30px; color: rgba(255,255,255,.48); font-family: var(--mono); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; }
+    .hero-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 50px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.1); }
+    .hero-stat { min-height: 128px; padding: 22px; background: rgba(8, 22, 17, .48); }
+    .hero-stat b { display: block; color: #fff; font-family: var(--display); font-size: clamp(1.45rem, 2.8vw, 2.08rem); letter-spacing: -.045em; line-height: 1.1; }
+    .hero-stat span { display: block; margin-top: 10px; color: rgba(255,255,255,.56); font-size: .78rem; }
+
+    .shell { width: min(1480px, calc(100% - 36px)); margin: 0 auto; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: clamp(28px, 4vw, 66px); }
+    .toc { position: sticky; top: 92px; align-self: start; max-height: calc(100vh - 116px); padding: 36px 0; overflow: auto; }
+    .toc-label { margin: 0 0 13px; color: var(--faint); font-family: var(--mono); font-size: .63rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .toc a { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 8px 10px; border-radius: 8px; color: var(--muted); text-decoration: none; font-size: .78rem; line-height: 1.3; }
+    .toc a span { color: var(--faint); font-family: var(--mono); font-size: .66rem; }
+    .toc a:hover, .toc a[aria-current="true"] { background: rgba(255,255,255,.72); color: var(--forest); }
+    .toc a[aria-current="true"] span { color: var(--green); }
+    main { min-width: 0; padding: 72px 0 110px; }
+    .section { padding: 0 0 76px; border-bottom: 1px solid var(--line); margin-bottom: 76px; }
+    .section:last-child { margin-bottom: 0; border: 0; }
+    .section-head { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 18px; align-items: start; margin-bottom: 34px; }
+    .section-no { padding-top: 7px; color: var(--gold); font-family: var(--mono); font-size: .74rem; font-weight: 800; letter-spacing: .08em; }
+    .section h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.85rem); letter-spacing: -.055em; }
+    .section-intro { max-width: 850px; margin: 13px 0 0; color: var(--muted); font-size: 1.02rem; }
+    .section h3 { margin: 40px 0 16px; font-size: clamp(1.35rem, 2.5vw, 2rem); }
+    .section h4 { margin-bottom: 8px; font-size: 1rem; letter-spacing: -.015em; }
+
+    .grid { display: grid; gap: 16px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.64); box-shadow: 0 1px 0 rgba(255,255,255,.65) inset; }
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+    .card-label { margin: 0 0 8px; color: var(--faint); font-family: var(--mono); font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .metric { min-height: 154px; display: flex; flex-direction: column; justify-content: space-between; }
+    .metric strong { display: block; color: var(--forest); font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1; letter-spacing: -.055em; }
+    .metric small { color: var(--muted); }
+    .callout { display: grid; grid-template-columns: 9px 1fr; overflow: hidden; margin: 26px 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .callout::before { content: ""; background: var(--green); }
+    .callout.warning::before { background: var(--amber); }
+    .callout.danger::before { background: var(--red); }
+    .callout-body { padding: 24px 26px; }
+    .callout-body strong { color: var(--forest); }
+    .callout-body p:last-child { margin-bottom: 0; }
+    .tag { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 9px; border-radius: 999px; background: var(--surface-2); color: var(--muted); font-family: var(--mono); font-size: .64rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+    .tag.a, .tag.pass { background: var(--green-soft); color: #13643d; }
+    .tag.b { background: var(--gold-soft); color: #735d33; }
+    .tag.c, .tag.warn { background: var(--amber-soft); color: #86521b; }
+    .tag.stop { background: var(--red-soft); color: #912119; }
+
+    .table-wrap { overflow: auto; margin: 18px 0 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 8px 28px rgba(31,37,30,.045); }
+    table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    th { padding: 13px 14px; background: var(--forest); color: #fff; text-align: left; font-family: var(--mono); font-size: .67rem; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    td { padding: 13px 14px; border-top: 1px solid var(--line); vertical-align: top; }
+    tbody tr:nth-child(even) td { background: rgba(40,75,63,.035); }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    td.positive { color: #11663c; font-weight: 750; }
+    td.negative { color: var(--red); font-weight: 750; }
+    .formula { padding: 14px 16px; border-radius: 11px; background: #e9e6dc; font-family: var(--mono); font-size: .75rem; color: #3b4039; }
+
+    .steps { counter-reset: step; display: grid; gap: 12px; margin: 22px 0; }
+    .step { counter-increment: step; display: grid; grid-template-columns: 42px minmax(0,1fr); gap: 15px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.58); }
+    .step::before { content: counter(step, decimal-leading-zero); display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--forest); color: var(--gold); font-family: var(--mono); font-size: .72rem; font-weight: 800; }
+    .step b { display: block; margin-bottom: 3px; }
+    .step p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .quote { margin: 22px 0; padding: 24px; border-left: 5px solid var(--gold); background: var(--gold-soft); color: #403827; font-size: 1.02rem; }
+    .script-box { padding: 25px; border-radius: var(--radius); background: var(--forest); color: rgba(255,255,255,.78); }
+    .script-box strong { color: var(--gold); }
+    .script-box p:last-child { margin-bottom: 0; }
+
+    .funnel { display: grid; gap: 8px; margin-top: 20px; }
+    .funnel-row { display: grid; grid-template-columns: minmax(115px, .85fr) minmax(90px, .55fr) 2fr; gap: 12px; align-items: center; }
+    .funnel-stage { font-weight: 750; }
+    .funnel-target { font-family: var(--mono); font-size: .75rem; color: var(--green); }
+    .funnel-bar { position: relative; height: 38px; overflow: hidden; border-radius: 8px; background: #e2dfd6; }
+    .funnel-bar span { display: flex; align-items: center; height: 100%; padding: 0 12px; background: linear-gradient(90deg, var(--forest-2), var(--green)); color: #fff; font-size: .76rem; white-space: nowrap; }
+
+    .prospect-tools { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; margin: 20px 0; }
+    .search { width: min(420px, 100%); min-height: 44px; padding: 10px 13px; border: 1px solid var(--line-strong); border-radius: 10px; background: #fff; color: var(--ink); }
+    .filter-group { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filter-button { padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.62); color: var(--muted); cursor: pointer; font-size: .76rem; font-weight: 750; }
+    .filter-button[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: #fff; }
+    .prospect-count { color: var(--muted); font-size: .84rem; }
+    .prospect-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .prospect-card { padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.68); }
+    .prospect-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .prospect-rank { color: var(--faint); font-family: var(--mono); font-size: .72rem; }
+    .prospect-card h3 { margin: 7px 0 4px; font-size: 1.12rem; }
+    .prospect-meta { margin: 0 0 14px; color: var(--muted); font-size: .78rem; }
+    .prospect-detail { display: grid; grid-template-columns: 100px 1fr; gap: 6px 12px; font-size: .82rem; }
+    .prospect-detail dt { color: var(--faint); }
+    .prospect-detail dd { margin: 0; overflow-wrap: anywhere; }
+    .prospect-detail a { word-break: break-all; }
+
+    .finance-chart { display: grid; grid-template-columns: repeat(12, minmax(48px,1fr)); gap: 8px; min-height: 320px; margin: 26px 0 16px; padding: 22px 18px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow-x: auto; }
+    .month-bar { min-width: 48px; display: grid; grid-template-rows: 220px auto; gap: 8px; }
+    .bar-field { position: relative; display: flex; align-items: flex-end; gap: 4px; border-bottom: 1px solid var(--line-strong); }
+    .bar-revenue { width: 58%; height: var(--rev); min-height: 2px; border-radius: 6px 6px 0 0; background: linear-gradient(180deg, var(--green), var(--forest)); }
+    .bar-profit { position: absolute; left: 64%; bottom: 50%; width: 27%; height: var(--profit); border-radius: 4px 4px 0 0; background: var(--gold); }
+    .bar-profit.neg { top: 50%; bottom: auto; border-radius: 0 0 4px 4px; background: var(--red); }
+    .zero-line { position: absolute; inset: 50% 0 auto; border-top: 1px dashed var(--line-strong); }
+    .month-label { text-align: center; color: var(--muted); font-family: var(--mono); font-size: .62rem; white-space: nowrap; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: .76rem; }
+    .legend span::before { content: ""; display: inline-block; width: 11px; height: 11px; margin-right: 6px; border-radius: 3px; vertical-align: -1px; background: var(--forest-2); }
+    .legend .profit::before { background: var(--gold); }
+    .legend .loss::before { background: var(--red); }
+
+    .day-groups { display: grid; gap: 18px; }
+    details.plan-group { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.62); }
+    details.plan-group > summary { cursor: pointer; list-style: none; padding: 18px 22px; display: flex; align-items: center; justify-content: space-between; gap: 14px; font-weight: 800; }
+    details.plan-group > summary::-webkit-details-marker { display: none; }
+    details.plan-group > summary::after { content: "+"; color: var(--gold); font-size: 1.5rem; }
+    details.plan-group[open] > summary::after { content: "−"; }
+    .day-list { display: grid; border-top: 1px solid var(--line); }
+    .day-row { display: grid; grid-template-columns: 90px 120px minmax(0,1fr) minmax(155px,.55fr); }
+    .day-row > div { padding: 13px 15px; border-top: 1px solid var(--line); }
+    .day-row:first-child > div { border-top: 0; }
+    .day-date { font-family: var(--mono); font-size: .72rem; color: var(--muted); }
+    .day-theme { font-weight: 750; }
+    .day-output { color: var(--forest-2); font-weight: 700; }
+    .gate { padding: 18px 20px; background: var(--red-soft); color: #6e201a; }
+    .week-grid, .month-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+    .period-card { position: relative; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.63); }
+    .period-no { position: absolute; top: 17px; right: 18px; color: var(--gold); font-family: var(--mono); font-size: .72rem; font-weight: 800; }
+    .period-card h3 { margin: 0 48px 8px 0; font-size: 1.08rem; }
+    .period-card p { margin: 0; color: var(--muted); font-size: .86rem; }
+    .period-threshold { margin-top: 12px !important; color: var(--forest) !important; font-weight: 750; }
+
+    .checklist { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .checklist li { position: relative; margin: 0; padding: 14px 16px 14px 46px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.58); }
+    .checklist li::before { content: ""; position: absolute; left: 16px; top: 16px; width: 16px; height: 16px; border: 2px solid var(--green); border-radius: 4px; }
+    .source-list { display: grid; gap: 10px; }
+    .source-item { display: grid; grid-template-columns: 140px 1fr auto; gap: 16px; align-items: start; padding: 16px; border-bottom: 1px solid var(--line); }
+    .source-type { color: var(--faint); font-family: var(--mono); font-size: .66rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .source-item p { margin: 0; }
+    .source-item a { white-space: nowrap; font-size: .8rem; }
+    .footer { padding: 42px 0; background: var(--forest); color: rgba(255,255,255,.58); }
+    .footer-inner { width: min(1220px, calc(100% - 42px)); margin: auto; display: flex; justify-content: space-between; gap: 24px; }
+    .footer strong { color: #fff; }
+
+    @media (max-width: 1100px) {
+      .hero-stats { grid-template-columns: repeat(3,1fr); }
+      .shell { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      main { padding-top: 58px; }
+      .prospect-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .top-label { display: none; }
+      .hero-stats { grid-template-columns: repeat(2,1fr); }
+      .grid-2, .grid-3, .grid-4, .week-grid, .month-grid { grid-template-columns: 1fr; }
+      .section-head { grid-template-columns: 1fr; gap: 8px; }
+      .section-no { padding: 0; }
+      .day-row { grid-template-columns: 74px 1fr; }
+      .day-row > div:nth-child(3), .day-row > div:nth-child(4) { grid-column: 1 / -1; }
+      .funnel-row { grid-template-columns: 110px 70px minmax(180px,1fr); overflow-x: auto; }
+      .source-item { grid-template-columns: 1fr; gap: 6px; }
+      .source-item a { white-space: normal; }
+      .footer-inner { display: block; }
+    }
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { background: #fff; color: #111; font-size: 10pt; }
+      body::before, .topbar, .toc, .prospect-tools { display: none !important; }
+      .hero { padding: 24mm 0 16mm; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .hero h1 { font-size: 34pt; }
+      .hero-stats { grid-template-columns: repeat(5,1fr); }
+      .shell { display: block; width: 100%; }
+      main { padding: 14mm 0 0; }
+      .section { break-before: page; padding-bottom: 0; margin-bottom: 0; border: 0; }
+      .section:first-child { break-before: auto; }
+      .card, .callout, .table-wrap, .prospect-card, .period-card, details.plan-group { break-inside: avoid; box-shadow: none; }
+      .prospect-grid, .week-grid, .month-grid { grid-template-columns: repeat(2,1fr); }
+      details.plan-group > * { display: block !important; }
+      details.plan-group > summary::after { display: none; }
+      a { color: inherit; text-decoration: none; }
+      .footer { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Sari la conținut</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">ND</span><span class="brand-copy">Nova Detailing · Plan 2026</span></a>
+      <div class="top-actions"><span class="top-label">Document de lucru · 31.07.2026</span><button class="action-button" type="button" onclick="window.print()">Tipărește / PDF</button></div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Plan de business complet · București–Ilfov</p>
+      <h1>De la atelier premium la primul client B2B profitabil.</h1>
+      <p class="hero-lede">Un singur document care unește strategia, oferta, vânzarea, operațiunile, modelul financiar, lista de 30 de prospecți și planul de execuție pe zile, săptămâni și luni.</p>
+      <div class="hero-meta"><span>Interval: august 2026 – iulie 2027</span><span>Model net de TVA</span><span>Scenariu de bază</span><span>Ipoteze de validat după 20 lucrări</span></div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>30–45 zile</b><span>ținta realistă pentru primul client</span></div>
+        <div class="hero-stat"><b>630.300 lei</b><span>venit net proiectat în 12 luni</span></div>
+        <div class="hero-stat"><b>30.969 lei</b><span>rezultat operațional anual</span></div>
+        <div class="hero-stat"><b>ian. 2027</b><span>prima lună operațional pozitivă</span></div>
+        <div class="hero-stat"><b>5 clienți</b><span>B2B activi la finalul perioadei</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <aside class="toc" aria-label="Cuprins">
+      <p class="toc-label">Cuprins</p>
+      <a href="#rezumat"><span>01</span>Rezumat executiv</a>
+      <a href="#decizii"><span>02</span>Corecții și decizii</a>
+      <a href="#model"><span>03</span>Model de business</a>
+      <a href="#oferta"><span>04</span>Oferta B2B</a>
+      <a href="#client"><span>05</span>Primul client</a>
+      <a href="#mesaje"><span>06</span>Mesaje comerciale</a>
+      <a href="#prospecti"><span>07</span>30 de prospecți</a>
+      <a href="#operational"><span>08</span>Model operațional</a>
+      <a href="#financiar"><span>09</span>Plan financiar</a>
+      <a href="#zile"><span>10</span>Plan 30 zile</a>
+      <a href="#saptamani"><span>11</span>Plan 13 săptămâni</a>
+      <a href="#luni"><span>12</span>Plan 12 luni</a>
+      <a href="#kpi"><span>13</span>KPI și guvernanță</a>
+      <a href="#conformare"><span>14</span>Conformare</a>
+      <a href="#riscuri"><span>15</span>Riscuri</a>
+      <a href="#ore72"><span>16</span>Primele 72 ore</a>
+      <a href="#surse"><span>17</span>Surse și limitări</a>
+    </aside>
+
+    <main id="content">
+      <section class="section" id="rezumat">
+        <div class="section-head"><span class="section-no">01 / 17</span><div><h2>Rezumat executiv</h2><p class="section-intro">Nova nu trebuie să devină o spălătorie de flotă. Motorul de marjă rămâne retailul premium; B2B începe îngust, printr-un pilot pre-retur de leasing ușor de cumpărat și de măsurat.</p></div></div>
+        <div class="callout"><div class="callout-body"><p class="card-label">Teza de business</p><p><strong>Retail premium + pilot B2B + recurență controlată.</strong> Nova păstrează sloturile profitabile de atelier și adaugă un serviciu pentru companii: 3 autoturisme, inspecție foto, raport în 24–48h și remedieri aprobate separat.</p></div></div>
+        <div class="grid grid-4">
+          <div class="card metric"><p class="card-label">Cash inițial</p><strong>50.000 lei</strong><small>ipoteză de planificare</small></div>
+          <div class="card metric"><p class="card-label">Cash minim</p><strong>10.210 lei</strong><small>risc estimat în luna 5</small></div>
+          <div class="card metric"><p class="card-label">Buffer recomandat</p><strong>45.000 lei</strong><small>aprox. 1,3 luni de cost fix</small></div>
+          <div class="card metric"><p class="card-label">Capital suplimentar</p><strong>34.790 lei</strong><small>pentru păstrarea bufferului</small></div>
+        </div>
+        <h3>Ce trebuie să fie adevărat</h3>
+        <div class="grid grid-2">
+          <div class="card"><h4>Motor comercial</h4><ul><li>Retail: 8–12 lucrări/lună la ticket net mediu de ~2.800 lei.</li><li>Piloți: de la 1 la 3–4/lună.</li><li>Minimum 2 clienți recurenți până în luna 5.</li></ul></div>
+          <div class="card"><h4>Motor operațional</h4><ul><li>Cost fix menținut în jur de 35.100 lei/lună.</li><li>Capacitate condusă pe zile-boxă, cu prag utilizabil de 85%.</li><li>Prețuri recalibrate după 20 de lucrări măsurate.</li></ul></div>
+        </div>
+        <div class="callout danger"><div class="callout-body"><p><strong>Concluzie:</strong> modelul poate deveni pozitiv lunar în jurul lunii 6, dar este subcapitalizat față de buffer. Până la refacerea bufferului sunt blocate angajările suplimentare, capex-ul mare și campaniile plătite agresive.</p></div></div>
+      </section>
+
+      <section class="section" id="decizii">
+        <div class="section-head"><span class="section-no">02 / 17</span><div><h2>Corecții și decizii obligatorii</h2><p class="section-intro">Ordinea corectă este: măsurare și ofertă → primul pilot → contract cadru → repetabilitate → scalare.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Element</th><th>Problemă</th><th>Decizie</th></tr></thead><tbody>
+          <tr><td>VIP anual 6.000–9.000 lei</td><td>Nu susține 2 Signature + 12 mentenanțe.</td><td>Se retrage; mentenanță personalizată după evaluare.</td></tr>
+          <tr><td>Promisiune avans online</td><td>PayU/email/webhook nu sunt încă dovadă de flux real.</td><td>CTA neutru până la testarea plății end-to-end.</td></tr>
+          <tr><td>Durate fixe contradictorii</td><td>Premium și Signature diferă între pagini.</td><td>Durata se confirmă după inspecție și time-study.</td></tr>
+          <tr><td>„Raport oficial de retur”</td><td>Evaluarea finală aparține lessorului/evaluatorului.</td><td>Raport diagnostic pre-retur, cu disclaimer clar.</td></tr>
+          <tr><td>Creștere prin discount</td><td>Consumă boxă și tehnician fără contribuție protejată.</td><td>Reduci scopul sau ceri volum ferm; nu cobori standardul.</td></tr>
+        </tbody></table></div>
+        <div class="grid grid-3">
+          <div class="card"><span class="tag stop">Oprit</span><h3>Extinderea prematură</h3><p>Fără al treilea tehnician, locație nouă sau echipamente majore înainte de cerere contractată.</p></div>
+          <div class="card"><span class="tag warn">Separat</span><h3>Școala</h3><p>Rămâne o linie opțională și se modelează separat; nu finanțează artificial operaționalul.</p></div>
+          <div class="card"><span class="tag a">Prioritar</span><h3>Dovada</h3><p>Primul pilot plătit are prioritate peste redesign, pachete noi sau promisiuni de marketing.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="model">
+        <div class="section-head"><span class="section-no">03 / 17</span><div><h2>Modelul de business revizuit</h2><p class="section-intro">Trei motoare economice, un singur criteriu: contribuția după costul variabil și consumul real de capacitate.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Motor</th><th>Rol</th><th>Client</th><th>Venit țintă</th><th>Regulă</th></tr></thead><tbody>
+          <tr><td><strong>Retail premium</strong></td><td>Cash și marjă</td><td>Proprietar auto</td><td>~2.800 lei net/lucrare</td><td>Protejează sloturile și prețul.</td></tr>
+          <tr><td><strong>Pilot B2B</strong></td><td>Achiziție și dovadă</td><td>Companie cu 5–30 autoturisme</td><td>1.350–1.800 lei + TVA / 3 mașini</td><td>Raport 24–48h; remedieri separat.</td></tr>
+          <tr><td><strong>B2B recurent</strong></td><td>Predictibilitate</td><td>Client pilot convertit</td><td>~4.800 lei net/client/lună</td><td>SLA, grilă de preț și calendar de retur.</td></tr>
+        </tbody></table></div>
+        <h3>Clientul ideal inițial</h3>
+        <div class="grid grid-2">
+          <div class="card"><h4>Condiții obligatorii</h4><ul><li>Companie owner-led sau filială locală în București–Ilfov.</li><li>5–30 autoturisme de pasageri.</li><li>2–5 retururi în următoarele 90 zile.</li><li>Decident local și pilot aprobabil fără licitație regională.</li></ul></div>
+          <div class="card"><h4>Roluri-țintă</h4><p>Office Manager, Operations, Procurement, Administrativ, Fleet sau CFO.</p><p class="formula">Calificare = flotă + lessor + date retur + aprobator + problemă + termen</p></div>
+        </div>
+        <h3>Segmente în ordinea priorității</h3>
+        <div class="grid grid-4">
+          <div class="card"><span class="tag a">A</span><h4>Imobiliar & inginerie</h4><p>Deplasări locale, proiecte, management accesibil. Flota trebuie confirmată.</p></div>
+          <div class="card"><span class="tag a">A/B</span><h4>Tehnologie antreprenorială</h4><p>Decizie locală și cultură de pilot. Unele echipe nu au flotă.</p></div>
+          <div class="card"><span class="tag b">B</span><h4>Servicii juridice</h4><p>Vehicule premium și discreție. Loturile pot fi mici.</p></div>
+          <div class="card"><span class="tag c">C</span><h4>Contractori mari</h4><p>Valoare potențială mare, dar procurement lent; utilitarele nu sunt ICP inițial.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="oferta">
+        <div class="section-head"><span class="section-no">04 / 17</span><div><h2>Oferta B2B: „Pilot Retur Fără Surprize”</h2><p class="section-intro">Un produs de intrare restrâns, clar și cumpărabil, care creează dovadă înainte de contractul recurent.</p></div></div>
+        <div class="grid grid-2">
+          <div class="card"><h3>Ce primește clientul</h3><ul><li>Inspecție vizuală documentată pentru 3 autoturisme, într-o singură locație.</li><li>Set foto standard și raport per vehicul: constatare, severitate, recomandare, prioritate.</li><li>Raport agregat în 24–48h.</li><li>Deviz separat; nicio remediere fără aprobare scrisă.</li><li>Opțional: predare la atelier și re-inspecție internă.</li></ul></div>
+          <div class="card"><h3>Ce nu promite</h3><ul><li>Nu înlocuiește evaluarea oficială a lessorului.</li><li>Nu garantează eliminarea costurilor de retur.</li><li>Nu oferă verdict juridic și nu schimbă ghidul de uzură.</li><li>Nu include mecanică ori tinichigerie structurală.</li></ul></div>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Element</th><th>Pilot</th><th>După validare</th></tr></thead><tbody>
+          <tr><td>Inspecție + raport</td><td>1.350–1.800 lei + TVA / 3 mașini</td><td>Preț fix pe lot sau per mașină</td></tr>
+          <tr><td>Remedieri</td><td>Separate, aprobate per vehicul</td><td>Grilă pe tip de intervenție</td></tr>
+          <tr><td>SLA</td><td>24–48h pentru raport</td><td>Contractual doar după 2 piloți reușiți</td></tr>
+          <tr><td>Deplasare</td><td>O locație inclusă</td><td>Tarif zonal / kilometraj</td></tr>
+          <tr><td>Plată</td><td>Conform ofertei și bonității</td><td>Termen negociat; e-Factura în flux</td></tr>
+        </tbody></table></div>
+        <div class="callout"><div class="callout-body"><p><strong>Contract cadru după pilot:</strong> 6 luni, fără exclusivitate, anexă de servicii/prețuri, procedură de aprobare, custodie chei, răspundere, protecția datelor și calendar de retururi pe 90 zile.</p></div></div>
+      </section>
+
+      <section class="section" id="client">
+        <div class="section-head"><span class="section-no">05 / 17</span><div><h2>Cum se semnează primul client</h2><p class="section-intro">Obiectivul realist este un pilot plătit în 30–45 zile, nu un contract mare obținut dintr-un singur email.</p></div></div>
+        <div class="grid grid-4">
+          <div class="card metric"><p class="card-label">Listă activă</p><strong>50–60</strong><small>companii calificate</small></div>
+          <div class="card metric"><p class="card-label">Canale</p><strong>100</strong><small>contacte / roluri</small></div>
+          <div class="card metric"><p class="card-label">Activitate</p><strong>80–120</strong><small>atingeri/lună</small></div>
+          <div class="card metric"><p class="card-label">Rezultat</p><strong>5 / 3 / 1</strong><small>discovery / oferte / client</small></div>
+        </div>
+        <h3>Funnel lunar</h3><div class="funnel" id="funnelChart" aria-label="Funnel de vânzări B2B"></div>
+        <h3>Secvența de contact — 12 zile</h3><div class="steps" id="contactSequence"></div>
+        <div class="quote"><strong>Întrebarea de calificare:</strong> „Aveți 2–5 autoturisme care ies din leasing în următoarele 90 de zile și cine gestionează procesul?”</div>
+      </section>
+
+      <section class="section" id="mesaje">
+        <div class="section-head"><span class="section-no">06 / 17</span><div><h2>Mesaje comerciale și închidere</h2><p class="section-intro">Mesajul nu vinde detailing de flotă; identifică un eveniment concret de retur și propune o verificare limitată.</p></div></div>
+        <div class="grid grid-2">
+          <div class="script-box"><p><strong>Subiect:</strong> Aveți 3 mașini care ies din leasing în următoarele 90 zile?</p><p>Bună ziua,</p><p>Nova Detailing ajută echipele din București–Ilfov să verifice vizual autoturismele înainte de retur: 3 mașini, fotografii standard și raport în 24–48h. Orice remediere se propune separat și începe doar cu acordul companiei. Raportul este diagnostic pre-retur și nu înlocuiește evaluarea lessorului.</p><p>Cine gestionează la [Companie] mașinile care ies din leasing și calendarul retururilor? Dacă există 2–5 retururi în următoarele 90 zile, putem discuta 15 minute.</p></div>
+          <div class="script-box"><p><strong>Script de apel — 25 secunde</strong></p><p>„Bună ziua, sunt [nume] de la Nova Detailing. Nu sun pentru spălare de flotă. Avem un pilot pentru 3 autoturisme care urmează să fie returnate din leasing: inspecție foto și raport pre-retur. Cine gestionează la dumneavoastră retururile și datele acestora?”</p></div>
+        </div>
+        <h3>Obiecții</h3><div class="table-wrap"><table><thead><tr><th>Obiecție</th><th>Răspuns recomandat</th></tr></thead><tbody id="objectionRows"></tbody></table></div>
+        <div class="callout"><div class="callout-body"><p><strong>Reguli de închidere:</strong> fiecare discuție se termină cu o dată, un owner și un pas. Oferta pleacă în maximum 2 ore după discovery, follow-up-ul cere decizia sau blocajul, iar contractul se cere după pilot.</p></div></div>
+      </section>
+
+      <section class="section" id="prospecti">
+        <div class="section-head"><span class="section-no">07 / 17</span><div><h2>30 de prospecți B2B</h2><p class="section-intro">Canale publice verificate la 31 iulie 2026. Flota și calendarul retururilor nu sunt confirmate public; fiecare companie se califică înainte de ofertă.</p></div></div>
+        <div class="prospect-tools">
+          <input class="search" id="prospectSearch" type="search" placeholder="Caută companie, segment, rol sau locație…" aria-label="Caută în lista de prospecți">
+          <div class="filter-group" aria-label="Filtrare prioritate"><button class="filter-button" type="button" data-priority="all" aria-pressed="true">Toate</button><button class="filter-button" type="button" data-priority="A" aria-pressed="false">Prioritate A</button><button class="filter-button" type="button" data-priority="B" aria-pressed="false">Prioritate B</button><button class="filter-button" type="button" data-priority="C" aria-pressed="false">Prioritate C</button></div>
+        </div>
+        <p class="prospect-count" id="prospectCount" aria-live="polite"></p>
+        <div class="prospect-grid" id="prospectGrid"></div>
+      </section>
+
+      <section class="section" id="operational">
+        <div class="section-head"><span class="section-no">08 / 17</span><div><h2>Modelul operațional</h2><p class="section-intro">Pilotul este livrat printr-un flux cu aprobări explicite, custodie controlată, time-study și QA înainte de predare.</p></div></div>
+        <h3>Flux standard — 9 pași</h3><div class="steps" id="operationalSteps"></div>
+        <h3>Roluri minime</h3><div class="table-wrap"><table><thead><tr><th>Rol</th><th>Responsabilități</th><th>KPI</th></tr></thead><tbody id="roleRows"></tbody></table></div>
+        <div class="grid grid-2">
+          <div class="card"><h4>Rutina zilnică</h4><p><strong>08:30:</strong> capacitate, lucrări, blocaje.<br><strong>17:30:</strong> ore, consumabile, rework și următorul pas comercial.</p></div>
+          <div class="card"><h4>Cadenta fondatorului</h4><p>Luni listă/pipeline; marți outbound; miercuri discovery/piloți; joi follow-up/oferte; vineri cash, KPI și QA.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="financiar">
+        <div class="section-head"><span class="section-no">09 / 17</span><div><h2>Economia unitară și planul financiar</h2><p class="section-intro">Toate valorile sunt ipoteze. Modelul este net de TVA și exclude impozitul pe profit/micro, ratele, investițiile majore și venitul din școală.</p></div></div>
+        <div class="grid grid-3">
+          <div class="card"><h4>Retail</h4><p>Ticket 2.800 lei · 1,8 zile-boxă · cost variabil 27%.</p></div>
+          <div class="card"><h4>Pilot + remediere</h4><p>Pilot 1.500 lei / 3 mașini · remediere medie 2.800 lei · conversie 35%.</p></div>
+          <div class="card"><h4>Recurent</h4><p>4.800 lei net/client/lună · cost variabil 30% · 1,8 zile-boxă/client.</p></div>
+          <div class="card"><h4>Capacitate</h4><p>2 boxe × 22 zile × 85% = <strong>37,4 zile-boxă utilizabile</strong>.</p></div>
+          <div class="card"><h4>Cost fix</h4><p><strong>35.100 lei/lună</strong>, inclusiv fondator și doi tehnicieni.</p></div>
+          <div class="card"><h4>Utilizare maximă</h4><p><strong>81,8%</strong> în scenariul de bază; păstrează buffer pentru întârzieri și rework.</p></div>
+        </div>
+        <h3>Rampa financiară — 12 luni</h3><div class="legend"><span>Venit net</span><span class="profit">Rezultat pozitiv</span><span class="loss">Pierdere</span></div><div class="finance-chart" id="financeChart" aria-label="Grafic venit net și rezultat operațional"></div>
+        <div class="table-wrap"><table><thead><tr><th>Lună</th><th>Retail</th><th>Piloți</th><th>Clienți activi</th><th>Venit total</th><th>Contribuție</th><th>Rezultat op.</th><th>Cash final</th><th>Utilizare</th></tr></thead><tbody id="financialRows"></tbody></table></div>
+        <div class="grid grid-2">
+          <div class="card"><h4>Interpretare</h4><ul><li>Pierderile cumulate ating ~39.790 lei înainte de revenire.</li><li>Break-even lunar în ianuarie 2027.</li><li>Profitul anual de 30.969 lei este modest și sensibil la abateri.</li><li>Cash inițial recomandat pentru buffer: ~84.790 lei.</li></ul></div>
+          <div class="card"><h4>Praguri de preț și control</h4><ul><li>Contribuție pilot ≥55%.</li><li>Contribuție totală ≥68%.</li><li>Rework &lt;5%.</li><li>Utilizare boxe ≤85%.</li><li>Cash buffer ≥45.000 lei.</li></ul></div>
+        </div>
+      </section>
+
+      <section class="section" id="zile">
+        <div class="section-head"><span class="section-no">10 / 17</span><div><h2>Plan pe 30 de zile lucrătoare</h2><p class="section-intro">Ordinea este intenționată: ofertă → măsurare → outbound → pilot → raport → contract → gate.</p></div></div>
+        <div class="day-groups" id="dayGroups"></div>
+      </section>
+
+      <section class="section" id="saptamani">
+        <div class="section-head"><span class="section-no">11 / 17</span><div><h2>Plan pe 13 săptămâni</h2><p class="section-intro">Fiecare săptămână se închide vineri cu 30 de minute pentru KPI, cash și următorul experiment.</p></div></div>
+        <div class="week-grid" id="weekGrid"></div>
+        <div class="callout"><div class="callout-body"><p><strong>Timp minim de vânzări:</strong> fondatorul blochează minimum 10 ore/săptămână pentru listă, outreach, discovery și follow-up până la 2 clienți recurenți.</p></div></div>
+      </section>
+
+      <section class="section" id="luni">
+        <div class="section-head"><span class="section-no">12 / 17</span><div><h2>Plan pe 12 luni</h2><p class="section-intro">Scalarea este condiționată de marjă, cash și capacitate. Angajarea se aprobă numai cu cerere contractată.</p></div></div>
+        <div class="month-grid" id="monthGrid"></div>
+        <h3>Porți de decizie</h3><div class="table-wrap"><table><thead><tr><th>Moment</th><th>Continuă dacă</th><th>Corecție dacă nu</th></tr></thead><tbody>
+          <tr><td>30 zile</td><td>1 pilot sau 3 oferte active</td><td>Rescrie ICP și mesajul.</td></tr>
+          <tr><td>60 zile</td><td>2 piloți; contribuție ≥55%</td><td>Reprețuire / scop mai mic.</td></tr>
+          <tr><td>90 zile</td><td>1–2 clienți activi</td><td>Pivot de segment.</td></tr>
+          <tr><td>180 zile</td><td>Rezultat lunar pozitiv</td><td>Reducere cost fix / ticket mai mare.</td></tr>
+          <tr><td>12 luni</td><td>Cash &gt;45k; rezultat anual pozitiv</td><td>Fără angajare nouă; revizie model.</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section class="section" id="kpi">
+        <div class="section-head"><span class="section-no">13 / 17</span><div><h2>KPI, control și guvernanță</h2><p class="section-intro">Nu se urmărește doar cifra de afaceri. Contribuția, cash-ul, rework-ul și utilizarea decid sănătatea modelului.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>KPI</th><th>Frecvență</th><th>Țintă</th><th>Sursă</th><th>Owner</th></tr></thead><tbody id="kpiRows"></tbody></table></div>
+        <div class="grid grid-2">
+          <div class="card"><h4>Ședința de vineri — 30 minute</h4><p>5 min cash/facturi · 5 min capacitate/rework · 10 min funnel/oferte · 5 min marjă · 5 min experiment.</p></div>
+          <div class="card"><h4>Reguli de dashboard</h4><p>Orice KPI fără sursă și owner este scos. Orice ofertă sub contribuție cere aprobare și motiv documentat.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="conformare">
+        <div class="section-head"><span class="section-no">14 / 17</span><div><h2>Conformare, contractare și infrastructură</h2><p class="section-intro">Planul indică zonele de verificat; validarea juridică, fiscală și de mediu aparține profesioniștilor autorizați.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Domeniu</th><th>Acțiune</th><th>Owner</th></tr></thead><tbody>
+          <tr><td>CAEN</td><td>Confirmă codul Rev.3 relevant (9531) și autorizarea punctului de lucru.</td><td>Contabil / ONRC</td></tr>
+          <tr><td>TVA</td><td>Facturează la cota standard curentă; modelul este net de TVA.</td><td>Contabil</td></tr>
+          <tr><td>e-Factura</td><td>Transmitere în termenul legal și reconciliere.</td><td>Contabil</td></tr>
+          <tr><td>Contract</td><td>Comandă pilot, SLA, custodie, aprobare, răspundere, limitări.</td><td>Avocat</td></tr>
+          <tr><td>GDPR</td><td>Informare pentru formular, CRM, fotografii/VIN și retenție.</td><td>Avocat / DPO</td></tr>
+          <tr><td>Mediu</td><td>Verifică apă uzată, separator, deșeuri și autorizații locale.</td><td>Consultant mediu</td></tr>
+          <tr><td>Asigurare</td><td>Răspundere pentru vehicule în custodie și test drive.</td><td>Broker asigurare</td></tr>
+        </tbody></table></div>
+        <h3>Checklist tehnic înainte de trafic plătit</h3>
+        <ul class="checklist"><li>Deploy-ul public corespunde codului local; domeniul și DNS-ul sunt verificate.</li><li>Formularul B2B ajunge în inbox și în registrul intern; test end-to-end.</li><li>PayU, merchant, secret și webhook sunt configurate înainte de promisiunea avansului.</li><li>Admin, sesiune, Pipeline, CRM și stocare funcționează în mediul real.</li><li>Evenimente: view Companii, click CTA, submit lead, rezervare începută/finalizată.</li><li>Backup, retenție, export CRM și drepturile persoanelor vizate sunt documentate.</li></ul>
+      </section>
+
+      <section class="section" id="riscuri">
+        <div class="section-head"><span class="section-no">15 / 17</span><div><h2>Riscuri și răspunsuri</h2><p class="section-intro">Fiecare risc are un semnal măsurabil și o acțiune prestabilită. Impresiile nu înlocuiesc gate-urile.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Risc</th><th>Semnal</th><th>Răspuns</th></tr></thead><tbody id="riskRows"></tbody></table></div>
+        <div class="callout danger"><div class="callout-body"><p><strong>Decizii blocate:</strong> al treilea tehnician, locație nouă, echipamente majore, discounturi mari, SLA greu de susținut, campanii ample și reintroducerea VIP anual în forma veche.</p></div></div>
+      </section>
+
+      <section class="section" id="ore72">
+        <div class="section-head"><span class="section-no">16 / 17</span><div><h2>Primele 72 de ore</h2><p class="section-intro">Un singur obiectiv: pregătirea și lansarea primului val comercial către conturile A.</p></div></div>
+        <div class="grid grid-4">
+          <div class="card metric"><p class="card-label">Ofertă</p><strong>1</strong><small>fișă ofertă aprobată</small></div>
+          <div class="card metric"><p class="card-label">Livrare</p><strong>1</strong><small>șablon raport gata</small></div>
+          <div class="card metric"><p class="card-label">Listă</p><strong>10</strong><small>conturi validate</small></div>
+          <div class="card metric"><p class="card-label">Outbound</p><strong>10</strong><small>mesaje pregătite</small></div>
+        </div>
+        <div class="steps">
+          <div class="step"><div><b>Astăzi</b><p>Aprobă oferta pilot și disclaimerul; alocă owner pentru time-study.</p></div></div>
+          <div class="step"><div><b>Mâine</b><p>Verifică 10 companii A, personalizează mesajele și testează formularul B2B.</p></div></div>
+          <div class="step"><div><b>În 72 de ore</b><p>Trimite primul lot, sună 5 centrale și blochează două ferestre de pilot.</p></div></div>
+          <div class="step"><div><b>Până vineri</b><p>Actualizează CRM-ul cu Actual, Gap și următorul pas pentru fiecare cont.</p></div></div>
+        </div>
+        <div class="callout"><div class="callout-body"><p><strong>Obiectiv unic:</strong> primul pilot plătit este mai valoros decât încă o rundă de redesign, încă un pachet sau încă o promisiune de marketing.</p></div></div>
+      </section>
+
+      <section class="section" id="surse">
+        <div class="section-head"><span class="section-no">17 / 17</span><div><h2>Surse, ipoteze și limitări</h2><p class="section-intro">Sursele publice au fost verificate la 31 iulie 2026. Informațiile comerciale despre flote și retururi se validează direct cu fiecare companie.</p></div></div>
+        <div class="source-list">
+          <div class="source-item"><span class="source-type">Fiscal</span><p>TVA standard 21% începând cu 1 august 2025.</p><a href="https://static.anaf.ro/static/10/Anaf/AsistentaContribuabili_r/Cotele_de_TVA_09.2025.pdf" target="_blank" rel="noreferrer">ANAF</a></div>
+          <div class="source-item"><span class="source-type">Fiscal</span><p>RO e-Factura: termen de transmitere de 5 zile lucrătoare în 2026.</p><a href="https://static.anaf.ro/static/3/Ploiesti/20260115111226_comunicat%20ajfp%20arges%20-%20modificari%20ro%20e-factura%20site.pdf" target="_blank" rel="noreferrer">ANAF</a></div>
+          <div class="source-item"><span class="source-type">Registru</span><p>Corespondența CAEN Rev.2–Rev.3: vechiul 4520 asociat cu 9531.</p><a href="https://www.onrc.ro/documente/anunturi/Corespondenta-CAEN-Rev.2-CAEN-Rev.3.pdf" target="_blank" rel="noreferrer">ONRC</a></div>
+          <div class="source-item"><span class="source-type">Leasing</span><p>Standarde și ghid de returnare pentru vehicule de flotă.</p><a href="https://www.ayvens.com/-/media/ayvens/public/ro/ghid-returnare-vehicule-flota-ex-lp.pdf?rev=-1" target="_blank" rel="noreferrer">Ayvens</a></div>
+          <div class="source-item"><span class="source-type">Leasing</span><p>Procesul de returnare și evaluare rămâne în controlul lessorului/evaluatorului.</p><a href="https://www.businesslease.ro/pentru-clienti/returnarea-masinii" target="_blank" rel="noreferrer">Business Lease</a></div>
+          <div class="source-item"><span class="source-type">Date personale</span><p>GDPR pentru datele colectate prin formular, CRM, fotografii și rapoarte.</p><a href="https://eur-lex.europa.eu/legal-content/RO/TXT/?uri=CELEX%3A32016R0679" target="_blank" rel="noreferrer">EUR-Lex</a></div>
+        </div>
+        <div class="callout warning"><div class="callout-body"><p><strong>Limitare financiară:</strong> scenariul nu este prognoză garantată. Ipotezele de ticket, cost, timp, conversie și cash se înlocuiesc cu date reale după minimum 20 de lucrări măsurate și după primele două piloți.</p></div></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="footer"><div class="footer-inner"><p><strong>Nova Detailing</strong><br>Plan de business complet 2026–2027</p><p>Retail premium · Pilot B2B · Profitabilitate controlată</p></div></footer>
+
+  <script>
+    const prospects = [
+      {rank:1,company:'Speedwell',segment:'Dezvoltare imobiliară',priority:'A',score:9.2,location:'București, Sector 1',fit:'Echipă locală și proiecte multiple; mobilitate probabilă între birou și șantiere.',role:'COO / Office Manager / Procurement',channel:'office@speedwell.be · +40 753 130 352',source:'https://www.speedwell.be/were-here/',question:'Există 5–30 autoturisme și 2–5 retururi în următoarele 90 zile?',next:'Email scurt + apel la 24h'},
+      {rank:2,company:'HILS Development',segment:'Dezvoltare imobiliară',priority:'A',score:9.0,location:'București, Sector 3',fit:'Portofoliu local mare și echipe de vânzări/șantier; accesibilitate bună pentru pilot.',role:'Director operațional / Administrativ / Achiziții',channel:'vanzari@hils.ro · +40 310 050 806',source:'https://hils.ro/',question:'Cine gestionează mașinile de management și datele de retur?',next:'Cere redirecționare către administrativ'},
+      {rank:3,company:'REDPORT',segment:'Dezvoltare imobiliară',priority:'A',score:8.9,location:'București, Sector 1',fit:'Dezvoltator antreprenorial local; ciclu de decizie probabil mai scurt decât la corporații.',role:'COO / Office Manager / Procurement',channel:'office@redport.ro · +40 310 052 150',source:'https://redport.ro/ro/contact/',question:'Ce vehicule ies din leasing în următoarele 3–6 luni?',next:'Email cu pilot pentru 3 mașini'},
+      {rank:4,company:'Nusco Imobiliara',segment:'Dezvoltare imobiliară',priority:'A',score:8.8,location:'București, Sector 2',fit:'Mai multe proiecte și deplasări de management/vânzări în București–Ilfov.',role:'Administrativ / Procurement / CFO',channel:'info@nusco.ro · +40 311 309 748',source:'https://nusco.ro/temp/contact-us/',question:'Au ghiduri de retur diferite pe lessor sau un singur furnizor?',next:'Email + apel de calificare'},
+      {rank:5,company:'IMPACT Developer & Contractor',segment:'Dezvoltare imobiliară',priority:'A',score:8.7,location:'București, Sector 1',fit:'Dezvoltator listat cu proiecte locale; procese administrative și vehicule de companie probabile.',role:'Procurement / Administrativ / Fleet',channel:'office@impactsa.ro · +40 21 230 7570',source:'https://impactsa.ro/contact',question:'Câte mașini sunt alocate managementului și echipelor de proiect?',next:'Telefon pentru identificarea responsabilului'},
+      {rank:6,company:'Genesis Property',segment:'Property management',priority:'A',score:8.6,location:'București, Sector 6',fit:'Administrează campusuri de birouri; operațiuni și deplasări locale recurente.',role:'COO / Facility / Procurement',channel:'office@genesisproperty.net · +40 21 539 0107',source:'https://www.genesisproperty.net/en/contact/leasing/',question:'Există ferestre trimestriale de retur sau înlocuire a mașinilor?',next:'Email către office, solicitare administrativ'},
+      {rank:7,company:'Graphein',segment:'Inginerie / BIM / topografie',priority:'A',score:8.5,location:'București, Sector 1',fit:'Echipă de proiect cu deplasări; profil antreprenorial și accesibil pentru pilot.',role:'COO / Operations / Office Manager',channel:'office@graphein.ro · +40 742 799 626',source:'https://graphein.ro/en/contact/',question:'Câte mașini sunt folosite pentru vizite pe teren și când se returnează?',next:'Email personalizat pe operațiuni de teren'},
+      {rank:8,company:'Leviatan Design',segment:'Inginerie / construcții',priority:'A',score:8.4,location:'București, Sector 3',fit:'Companie de proiectare cu echipe de teren și sediu local; potrivire bună pentru pre-retur.',role:'Procurement / Operations / Fleet',channel:'formular oficial · +40 21 320 0138',source:'https://leviatan.ro/en/home/',question:'Care este lessorul și cine aprobă recondiționarea înainte de retur?',next:'Apel și cerere Procurement'},
+      {rank:9,company:'Zitec',segment:'Tehnologie',priority:'A',score:8.2,location:'București, Sector 3',fit:'Companie antreprenorială matură, sediu local și decizie administrativă accesibilă.',role:'Office Manager / Finance / Operations',channel:'contact@zitec.com · +40 31 710 0114',source:'https://zitec.com/contact/',question:'Există mașini de management sau benefit auto în leasing operațional?',next:'Email către contact cu cerere Office Manager'},
+      {rank:10,company:'mindit.io',segment:'Tehnologie',priority:'A',score:8.1,location:'București, Sector 2',fit:'Companie românească, echipă de management locală și cultură de proiect-pilot.',role:'Office Manager / COO / Finance',channel:'contact@mindit.io',source:'https://mindit.io/contact-us/',question:'Cine gestionează contractele auto și ce retururi sunt planificate?',next:'Mesaj scurt, pilot și întrebare de calificare'},
+      {rank:11,company:'One United Properties',segment:'Dezvoltare imobiliară',priority:'B',score:8.0,location:'București, Sector 1',fit:'Portofoliu mare și multe deplasări; valoare potențială mare, dar procurement mai lent.',role:'Procurement / Administrativ / Fleet',channel:'office@one.ro · +40 31 225 1000',source:'https://www.one.ro/ro/contact/',question:'Există o flotă locală sub 30 de autoturisme într-o divizie ce poate pilota?',next:'Cere pilot într-o singură entitate/divizie'},
+      {rank:12,company:'Forte Partners',segment:'Dezvoltare imobiliară',priority:'B',score:7.9,location:'București',fit:'Dezvoltator de birouri cu echipă locală și activitate de proiect.',role:'COO / Office Manager / Procurement',channel:'formular oficial',source:'https://www.forte-partners.ro/',question:'Cine răspunde de mașinile de management și de retururile de leasing?',next:'Formular + LinkedIn pe rolul companiei'},
+      {rank:13,company:'Cordia România',segment:'Dezvoltare imobiliară',priority:'B',score:7.8,location:'București, Sector 1',fit:'Dezvoltator local, proiecte rezidențiale și echipă de management în București.',role:'Administrativ / Operations / CFO',channel:'+40 759 890 890 · formular',source:'https://cordia.ro/contact/',question:'Câte mașini sunt în leasing și când este următoarea fereastră de retur?',next:'Apel pentru responsabil administrativ'},
+      {rank:14,company:'Hagag Development Europe',segment:'Dezvoltare imobiliară',priority:'B',score:7.7,location:'București',fit:'Portofoliu local premium; aliniere bună cu poziționarea Nova.',role:'Office Manager / Procurement / COO',channel:'formular oficial',source:'https://hagag-development-europe.com/',question:'Există vehicule premium ce ies din leasing în 90–180 zile?',next:'Contact general + cerere administrativ'},
+      {rank:15,company:'Softbinator Technologies',segment:'Tehnologie',priority:'B',score:7.6,location:'București, Sector 5',fit:'Companie listată, management local și sediu accesibil.',role:'Office Manager / Operations / CFO',channel:'contact@softbinator.com · +40 757 404 781',source:'https://softbinator.com/contact/',question:'Există flotă/benefit auto pentru management și un calendar de retur?',next:'Email personalizat'},
+      {rank:16,company:'Connections Consult',segment:'Tehnologie',priority:'B',score:7.5,location:'București, Sector 1',fit:'Grup tehnologic românesc cu operațiuni locale și mai multe centre.',role:'Administrativ / Procurement / Finance',channel:'office@connectionsconsult.ro · +40 372 368 332',source:'https://connectionsconsult.ro/contact/',question:'Cine gestionează vehiculele și relația cu lessorul?',next:'Email + apel în 24h'},
+      {rank:17,company:'Trencadis',segment:'Tehnologie',priority:'B',score:7.4,location:'București, Sector 2',fit:'Companie românească cu birou local; decident operațional identificabil.',role:'COO / Administrativ / Procurement',channel:'office@trencadis.ro · +40 212 112 111',source:'https://trencadis.ro/contact-us.html',question:'Există 2–5 retururi de leasing în următorul trimestru?',next:'Email scurt și apel'},
+      {rank:18,company:'Bittnet Group',segment:'Tehnologie / training',priority:'B',score:7.3,location:'București, Sector 5',fit:'Grup local, management și mai multe entități în același hub.',role:'Administrativ / CFO / Procurement',channel:'askformore@bittnet.ro · +40 731 700 226',source:'https://www.bittnet.ro/despre-noi/contact/',question:'Se poate pilota pe o singură entitate din grup?',next:'Cere redirecționare spre administrativ'},
+      {rank:19,company:'NNDKP',segment:'Servicii juridice',priority:'B',score:7.1,location:'București, Sector 2',fit:'Firmă mare de avocatură; posibile vehicule premium de parteneri/management.',role:'COO / Office Manager / Administrativ',channel:'office@nndkp.ro · +40 21 201 1200',source:'https://www.nndkp.ro/',question:'Există mașini de companie/parteneri în leasing ce necesită retur pregătit?',next:'Email către office; fără outreach personal nesolicitat'},
+      {rank:20,company:'Țuca Zbârcea & Asociații',segment:'Servicii juridice',priority:'B',score:7.0,location:'București',fit:'Firmă antreprenorială mare cu management local.',role:'Office Manager / COO / Administrativ',channel:'formular oficial',source:'https://www.tuca.ro/',question:'Cine gestionează furnizorii auto și calendarul retururilor?',next:'Contact general + cerere Office Manager'},
+      {rank:21,company:'Mușat & Asociații',segment:'Servicii juridice',priority:'B',score:6.9,location:'București, Sector 1',fit:'Firmă locală mare, sediu și canal general public.',role:'Office Manager / Administrativ / COO',channel:'general@musat.ro · +40 21 202 5900',source:'https://www.musat.ro/contact/',question:'Există vehicule premium în leasing cu retur în 3–6 luni?',next:'Email scurt, orientat pe discreție și documentare'},
+      {rank:22,company:'Filip & Company',segment:'Servicii juridice',priority:'B',score:6.8,location:'București, Sector 2',fit:'Firmă de business law cu management local și canal general public.',role:'COO / Office Manager / Administrativ',channel:'office@filipandcompany.com · +40 21 527 2000',source:'https://filipandcompany.com/',question:'Câte autoturisme de management au fereastră de retur în trimestrul următor?',next:'Email office, fără contactarea avocaților individuali'},
+      {rank:23,company:'RTPR',segment:'Servicii juridice',priority:'B',score:6.7,location:'București, Sector 1',fit:'Firmă locală cu parteneri și sediu central; posibil lot mic de vehicule premium.',role:'Office Manager / Administrativ / Finance',channel:'office@rtpr.ro · +40 31 405 7777',source:'https://www.rtpr.ro/contact/',question:'Există 2–3 mașini care pot fi incluse într-un pilot?',next:'Contact office + follow-up telefonic'},
+      {rank:24,company:'PeliPartners',segment:'Servicii juridice',priority:'B',score:6.6,location:'București, Sector 1',fit:'Firmă antreprenorială de dimensiune medie; potențial decizie mai scurtă.',role:'Office Manager / COO / Administrativ',channel:'office@pelipartners.com · +40 721 540 051',source:'https://pelipartners.com/',question:'Cine aprobă furnizorii auto și ce retururi urmează?',next:'Email către office'},
+      {rank:25,company:'Popovici Nițu Stoica & Asociații',segment:'Servicii juridice',priority:'B',score:6.5,location:'București, Sector 1',fit:'Firmă locală mare, cu sediu și operațiuni centralizate.',role:'Office Manager / Administrativ / COO',channel:'office@pnsa.ro · +40 21 317 7919',source:'https://pnsa.ro/contact.asp',question:'Există mașini în leasing operațional ce ies în următoarele 180 zile?',next:'Email general orientat pe pilot'},
+      {rank:26,company:'Schoenherr România',segment:'Servicii juridice',priority:'C',score:6.3,location:'București, Sector 1',fit:'Echipă mare; potențial lot premium, dar achiziție corporativă.',role:'Office Manager / Procurement / Finance',channel:'office.romania@schoenherr.eu · +40 21 319 6790',source:'https://www.schoenherr.eu/locations/romania',question:'Procesul de furnizor este local sau regional?',next:'Califică procurement înainte de ofertă'},
+      {rank:27,company:'Wolf Theiss România',segment:'Servicii juridice',priority:'C',score:6.2,location:'București, Sector 1',fit:'Birou regional mare; potențial bun, dar aprobare posibil regională.',role:'Office Manager / Procurement / Finance',channel:'bucuresti@wolftheiss.com · +40 21 308 8100',source:'https://www.wolftheiss.com/countries/romania/',question:'Poate biroul din București aproba un pilot local?',next:'Email general, calificare proces'},
+      {rank:28,company:'Concelex',segment:'Construcții',priority:'C',score:6.1,location:'București, Sector 1',fit:'Operațiuni de șantier; flotă probabilă, dar proces mai lung și vehicule diverse.',role:'Fleet / Procurement / Operations',channel:'office@concelex.ro · +40 21 318 5489',source:'https://concelex.ro/',question:'Se poate izola lotul de autoturisme, separat de utilitare?',next:'Cere Fleet/Procurement și pilot pe autoturisme'},
+      {rank:29,company:"Bog'Art",segment:'Construcții',priority:'C',score:6.0,location:'București, Sector 1',fit:'Contractor mare, echipe multiple și valoare mare, cu ciclu de achiziție lung.',role:'Procurement Director / Fleet / Operations',channel:'office@bogart.ro · +40 21 310 3238',source:'https://www.bogart.ro/contact-us/',question:'Ce autoturisme de management pot intra într-un pilot separat de flotă?',next:'Cere Procurement, nu ofertă generică'},
+      {rank:30,company:'Reff & Associates',segment:'Servicii juridice',priority:'C',score:5.9,location:'București',fit:'Firmă mare într-o rețea globală; potențial, dar onboarding de furnizor mai lent.',role:'Office Manager / Procurement / Administrativ',channel:'formular oficial',source:'https://www.reff-associates.ro/re/en/contact/contact-us.html',question:'Achiziția se aprobă local și există vehicule eligibile?',next:'Califică procesul înainte de propunere'}
+    ];
+
+    const financials = [
+      {month:'Aug-26',retail:8,pilots:1,clients:0,revenue:26700,contribution:19381,result:-15719,cash:34281,util:35.8},
+      {month:'Sep-26',retail:9,pilots:2,clients:0,revenue:33800,contribution:24454,result:-10646,cash:23635,util:43.0},
+      {month:'Oct-26',retail:9,pilots:2,clients:1,revenue:38600,contribution:27814,result:-7286,cash:16349,util:47.0},
+      {month:'Nov-26',retail:10,pilots:3,clients:1,revenue:45700,contribution:32887,result:-2213,cash:14136,util:54.2},
+      {month:'Dec-26',retail:9,pilots:2,clients:2,revenue:43400,contribution:31174,result:-3926,cash:10210,util:51.1},
+      {month:'Ian-27',retail:10,pilots:3,clients:2,revenue:50500,contribution:36247,result:1147,cash:11357,util:58.3},
+      {month:'Feb-27',retail:10,pilots:3,clients:3,revenue:55300,contribution:39607,result:4507,cash:15864,util:62.4},
+      {month:'Mar-27',retail:11,pilots:3,clients:3,revenue:58100,contribution:41651,result:6551,cash:22415,util:66.5},
+      {month:'Apr-27',retail:11,pilots:3,clients:4,revenue:62900,contribution:45011,result:9911,cash:32326,util:70.6},
+      {month:'Mai-27',retail:12,pilots:3,clients:4,revenue:65700,contribution:47055,result:11955,cash:44281,util:74.7},
+      {month:'Iun-27',retail:12,pilots:4,clients:5,revenue:74800,contribution:53444,result:18344,cash:62625,util:81.8},
+      {month:'Iul-27',retail:12,pilots:4,clients:5,revenue:74800,contribution:53444,result:18344,cash:80969,util:81.8}
+    ];
+
+    const days = [
+      {d:1,date:'03.08',theme:'Ofertă',work:'Blochează pilotul: 3 mașini, o locație, raport 24–48h, remediere separată.',out:'Fișă ofertă v1'},
+      {d:2,date:'04.08',theme:'Măsurare',work:'Pornește time-study pe tehnician, boxă, materiale și rework pentru 20 lucrări.',out:'100% lucrări pontate'},
+      {d:3,date:'05.08',theme:'Documente',work:'Ofertă, comandă, termeni, GDPR și disclaimer pre-retur.',out:'Set comercial gata'},
+      {d:4,date:'06.08',theme:'Raport',work:'Finalizează șablonul foto, severitate, recomandare și accept client.',out:'Raport Nova v1'},
+      {d:5,date:'07.08',theme:'CRM',work:'Importă cei 30 de prospecți și verifică primele 10 canale.',out:'10 conturi validate'},
+      {d:6,date:'10.08',theme:'Research',work:'Identifică rolurile-țintă și motivul specific pentru primele 10 companii.',out:'10 mesaje'},
+      {d:7,date:'11.08',theme:'Script',work:'Testează email, apel și follow-up; elimină jargonul.',out:'Script v2'},
+      {d:8,date:'12.08',theme:'Outbound',work:'Trimite primele 10 emailuri corporate; loghează următorul pas.',out:'10 atingeri'},
+      {d:9,date:'13.08',theme:'Apel',work:'Sună 5 companii; cere responsabilul și calendarul retururilor.',out:'5 apeluri'},
+      {d:10,date:'14.08',theme:'Site',work:'Publică pagina Companii și structura pilotului.',out:'Pagină validată'},
+      {d:11,date:'17.08',theme:'Outbound',work:'Trimite al doilea lot de 10 mesaje, adaptat pe segment.',out:'20 conturi atinse'},
+      {d:12,date:'18.08',theme:'Follow-up',work:'Revino la lotul 1 cu o întrebare și CTA de 15 minute.',out:'≥3 răspunsuri cumulat'},
+      {d:13,date:'19.08',theme:'Discovery',work:'Colectează flotă, lessor, retur, durere, aprobator și termen.',out:'1–2 discovery'},
+      {d:14,date:'20.08',theme:'Ofertare',work:'Trimite oferta pilot în maximum 2 ore, cu două date.',out:'1 ofertă trimisă'},
+      {d:15,date:'21.08',theme:'Review',work:'Analizează 50+ atingeri; dacă răspunsul e sub 5%, schimbă ICP sau mesajul.',out:'Decizie documentată'},
+      {d:16,date:'24.08',theme:'Outbound',work:'Următoarele 10 conturi + 5 introduceri calde.',out:'15 atingeri'},
+      {d:17,date:'25.08',theme:'Simulare',work:'Simulează inspecția a 3 mașini și măsoară timpul complet.',out:'Timp real pilot'},
+      {d:18,date:'26.08',theme:'Follow-up',work:'Revino la ofertele deschise și cere data deciziei.',out:'2 oferte active'},
+      {d:19,date:'27.08',theme:'Pilot',work:'Confirmă în scris; colectează ghid lessor și lista VIN.',out:'Pilot programat'},
+      {d:20,date:'28.08',theme:'Execuție',work:'Inspectează și fotografiază; nu remedia fără acord.',out:'3 fișe complete'},
+      {d:21,date:'31.08',theme:'Livrare',work:'Trimite raportul în 24–48h cu recomandări pe vehicul.',out:'SLA respectat'},
+      {d:22,date:'01.09',theme:'Remediere',work:'Prezintă separat preț, timp și risc; cere aprobare.',out:'Decizie client'},
+      {d:23,date:'02.09',theme:'Dovadă',work:'Cere feedback și permisiune pentru studiu de caz anonim.',out:'Feedback utilizabil'},
+      {d:24,date:'03.09',theme:'Cadru',work:'Propune acord 6 luni cu SLA și prețuri pe intervenție.',out:'Propunere cadru'},
+      {d:25,date:'04.09',theme:'Pipeline',work:'Adaugă 20 de companii similare contului care a răspuns.',out:'50 conturi CRM'},
+      {d:26,date:'07.09',theme:'SOP',work:'Recepție, fotografii, chei, aprobare, rework și predare.',out:'SOP v1'},
+      {d:27,date:'08.09',theme:'Marjă',work:'Calculează lei/oră, lei/zi boxă și contribuția pilotului.',out:'Unit economics'},
+      {d:28,date:'09.09',theme:'Închidere',work:'Negociază scopul/volumul, nu standardul; cere semnătura.',out:'Obiecție finală sau acord'},
+      {d:29,date:'10.09',theme:'Admin',work:'Testează contract, factură, e-Factura, arhivare și email.',out:'Flux testat'},
+      {d:30,date:'11.09',theme:'Gate',work:'Scalează, ajustează sau oprește ipoteza pe KPI-uri.',out:'1 pilot + 3 oferte sau pivot'}
+    ];
+
+    const weeks = [
+      ['Oferta și măsurarea','Oferta pilot, raportul și time-study sunt gata.','20 conturi validate; 0 promisiuni neacoperite'],
+      ['Primul outbound','Primele două loturi de outreach și scriptul de apel.','35–40 atingeri; ≥2 răspunsuri'],
+      ['Discovery','Calificare strictă după flotă, retur, lessor și aprobator.','2–3 discovery; 1 ofertă pilot'],
+      ['Primul pilot','Programare și execuție pilot sau decizie de schimbare a segmentului.','1 pilot programat; ≥80 atingeri cumulat'],
+      ['Dovadă','Raport livrat la termen și marjă calculată.','SLA 100%; contribuție ≥55%'],
+      ['Al doilea pilot','Aplică lecțiile și scurtează timpul fără să reduci standardul.','2 piloți cumulat; rework <5%'],
+      ['Studiu de caz','Caz anonim și oferta cadru pentru 6 luni.','1 studiu de caz; 1 propunere cadru'],
+      ['Primul acord','Închide acordul cu o fereastră concretă de lucru.','1 client cadru semnat'],
+      ['Pipeline 2','Extinde la încă 20–30 companii similare contului câștigat.','60 conturi; 120 atingeri/lună'],
+      ['Recurență','Calendar de retururi pe 90 zile și forecast de capacitate.','2 luni vizibile în pipeline'],
+      ['Parteneriate','Testează introduceri prin brokeri, contabili, administratori și clienți.','5 introduceri calde'],
+      ['Marjă','Reprețuiește orice serviciu sub pragul de contribuție.','Nicio ofertă sub 55%'],
+      ['Gate 90 zile','Revizuiește segment, ofertă, cash și capacitate.','2 clienți activi sau pivot documentat']
+    ];
+
+    const months = [
+      ['Validare','1 pilot plătit, ofertă repetabilă, 20 lucrări măsurate.','80–120 atingeri; 5 discovery; 3 oferte; 1 pilot','Nu angaja și nu cumpăra echipamente mari.'],
+      ['Dovadă','2 piloți cumulat și un studiu de caz utilizabil.','SLA ≥95%; contribuție ≥55%; rework <5%','Dacă nu există piloți, restrânge ICP-ul.'],
+      ['Primul contract','1 client cadru și calendar de retururi pe 90 zile.','1 client activ; B2B ≥10% venit','Păstrează doar segmentele cu răspuns.'],
+      ['Repetabilitate','Al doilea client activ și raport standard stabil.','2 clienți; 3 piloți/lună','Nu accepta discount fără volum sau scop redus.'],
+      ['Capacitate','Planificare retail+B2B pe boxă și tehnician.','Utilizare 55–65%; rework <4%','Protejează sloturile retail profitabile.'],
+      ['Break-even','Rezultat operațional lunar pozitiv în scenariul de bază.','Venit net ~50k; rezultat >0; cash pozitiv','Limitează investițiile dacă bufferul nu este finanțat.'],
+      ['Recurență','3 clienți activi și forecast pe 8 săptămâni.','B2B ≥20% venit; churn 0','Adaugă SLA doar dacă operațional este susținut.'],
+      ['Referințe','2 studii de caz și un mecanism de recomandări.','5 introduceri calde/lună','Nu publica economii nevalidate.'],
+      ['Scalare controlată','Al patrulea client activ; CRM și ofertare disciplinate.','Pipeline ponderat ≥2× ținta lunară','Nu extinde geografic înainte de densitate locală.'],
+      ['Eficiență','Timpul mediu de raport și remediere scade.','Lei/oră tehnician +10% față de L2','Standardizează, nu grăbi controlul.'],
+      ['Portofoliu','Renegociază clienții sub marjă și retrage serviciile slabe.','Contribuție totală ≥68%','Elimină VIP anual în forma veche.'],
+      ['Profitabilitate','5 clienți activi, rezultat anual pozitiv și cash refăcut.','Venit 12M ~600k; cash >45k','Angajare doar cu cerere contractată.']
+    ];
+
+    const funnel = [
+      ['Conturi țintă','40/lună','10 noi/săptămână',100],['Contacte valide','80/lună','minimum 2 per cont',92],['Atingeri','120/lună','30/săptămână',84],['Răspunsuri','12/lună','optimizare dacă <5%',65],['Discovery','5/lună','15–20 minute',50],['Piloți ofertați','3/lună','ofertă în 2 ore',40],['Piloți executați','2/lună','SLA 24–48h',31],['Contracte cadru','1/lună','dată + fereastră',24]
+    ];
+    const contact = [
+      ['Ziua 0 · Email','Întreabă despre 2–5 retururi în următoarele 90 zile.'],['Ziua 1 · Telefon','Identifică responsabilul și verifică fereastra de retur.'],['Ziua 3 · Email','Trimite structura pilotului, nu o prezentare lungă.'],['Ziua 6 · Telefon / WhatsApp Business','Clarifică blocajul și cere 15 minute.'],['Ziua 9 · Email','Exemplu anonim de raport + două date de pilot.'],['Ziua 12 · Break-up','Închide politicos și cere luna potrivită de revenire.']
+    ];
+    const objections = [
+      ['„Avem deja furnizor.”','Perfect. Pilotul poate rămâne un al doilea control înainte de retur; nu cere schimbarea furnizorului.'],['„Trimiteți o ofertă.”','O trimit astăzi. Ca să fie relevantă: câte mașini, ce lessor și ce dată de retur?'],['„Nu vrem cost suplimentar.”','Scopul este o decizie informată. Remedierea nu este automată și nu se promite economie fără dovadă.'],['„Este evaluare oficială?”','Nu. Este diagnostic pre-retur; evaluatorul/lessorul păstrează decizia finală.'],['„Prețul este mare.”','Putem reduce scopul sau volumul, nu standardul. Comparăm cu timpul și riscul deciziei în orb.'],['„Nu avem retururi acum.”','În ce lună apar următoarele 2–3 retururi? Revenim cu 30 zile înainte.']
+    ];
+    const operations = [
+      ['Calificare','Fondator','Flotă, retur, lessor, aprobator','Fără ofertă dacă lipsesc datele'],['Confirmare','Fondator','Comandă + VIN + locație + ghid','Acord scris'],['Inspecție','Tehnician','Cadre foto și constatări','Checklist complet'],['Triere','Lead tehnic','Severitate și recomandare','Fără promisiuni de taxare'],['Raport','Fondator / QA','Raport per vehicul + agregat','Livrare 24–48h'],['Deviz','Fondator','Preț, timp și risc per remediere','Aprobare per mașină'],['Execuție','Atelier','Lucrare + time-study','Rework <5%'],['Predare','Fondator','Raport final + factură','Arhivare și e-Factura'],['Close','Fondator','Feedback + propunere cadru','Dată de decizie']
+    ];
+    const roles = [
+      ['Fondator / GM','Vânzări, ofertare, QA raport, cash, relația cu clientul','30 atingeri/săptămână; marjă; cash'],['Lead tehnic','Standard foto, triere, QA, time-study','SLA; rework; lei/oră'],['Tehnicieni','Execuție și pontaj disciplinat','Timp standard; consumabile; rework'],['Contabil extern','Facturare, e-Factura, fiscalitate','0 întârzieri; reconciliere'],['Avocat / consultant','Contracte, răspundere, GDPR, mediu','Documente aprobate înainte de scalare']
+    ];
+    const kpis = [
+      ['Atingeri outbound','Săptămânal','30','CRM','Fondator'],['Rată răspuns','Săptămânal','≥10%','CRM','Fondator'],['Discovery','Lunar','5','CRM','Fondator'],['Piloți ofertați','Lunar','3','CRM','Fondator'],['Piloți executați','Lunar','2','Operațional','Atelier'],['Marjă contribuție pilot','Per pilot','≥55%','Fișă cost','Fondator'],['SLA raport în 48h','Lunar','≥95%','Rapoarte','Atelier'],['Rework','Lunar','<5%','Jobs','Lead tehnic'],['Lei / oră tehnician','Lunar','≥180 lei','Time-study','Fondator'],['Utilizare max. boxe','Lunar','≤85%','Calendar','Fondator'],['Cash final','Săptămânal','≥45.000 lei','Bancă + cashflow','Fondator'],['Clienți B2B activi','Lunar','2 la L5; 5 la L12','Contracte','Fondator']
+    ];
+    const risks = [
+      ['Nicio cerere B2B','<5% răspuns după 50 atingeri','Schimbă ICP/mesajul; nu doar volumul.'],['Pilot neprofitabil','Contribuție <55%','Reprețuire sau scop mai mic.'],['Supraîncărcare atelier','>85% utilizare','Replanifică și păstrează buffer.'],['Cash prea mic','<45k buffer','Blochează capex și costuri discreționare.'],['Rework','>5%','Stop scalare; analiză cauză tehnică.'],['Ciclu corporate lung','>45 zile fără pilot','Revino la owner-led și divizii locale.'],['Promisiuni de retur','Clientul cere garanție de cost zero','Disclaimer; raport diagnostic.'],['Canal public fără decident','3 încercări fără rol corect','Introduceri calde / telefon centrală.'],['Discount eroziv','Reducere fără volum','Reduce scopul, nu standardul.'],['Dependență de fondator','>10 clienți fără procese','CRM, SOP și delegare după validare.']
+    ];
+
+    const e = value => String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+    const lei = value => new Intl.NumberFormat('ro-RO').format(value) + ' lei';
+
+    document.getElementById('funnelChart').innerHTML = funnel.map(item => `<div class="funnel-row"><div class="funnel-stage">${e(item[0])}</div><div class="funnel-target">${e(item[1])}</div><div class="funnel-bar"><span style="width:${item[3]}%">${e(item[2])}</span></div></div>`).join('');
+    document.getElementById('contactSequence').innerHTML = contact.map(item => `<div class="step"><div><b>${e(item[0])}</b><p>${e(item[1])}</p></div></div>`).join('');
+    document.getElementById('objectionRows').innerHTML = objections.map(item => `<tr><td><strong>${e(item[0])}</strong></td><td>${e(item[1])}</td></tr>`).join('');
+    document.getElementById('operationalSteps').innerHTML = operations.map(item => `<div class="step"><div><b>${e(item[0])} · ${e(item[1])}</b><p>${e(item[2])} <span class="tag pass">${e(item[3])}</span></p></div></div>`).join('');
+    document.getElementById('roleRows').innerHTML = roles.map(item => `<tr><td><strong>${e(item[0])}</strong></td><td>${e(item[1])}</td><td>${e(item[2])}</td></tr>`).join('');
+    document.getElementById('kpiRows').innerHTML = kpis.map(item => `<tr><td><strong>${e(item[0])}</strong></td><td>${e(item[1])}</td><td>${e(item[2])}</td><td>${e(item[3])}</td><td>${e(item[4])}</td></tr>`).join('');
+    document.getElementById('riskRows').innerHTML = risks.map(item => `<tr><td><strong>${e(item[0])}</strong></td><td>${e(item[1])}</td><td>${e(item[2])}</td></tr>`).join('');
+
+    const financeMax = Math.max(...financials.map(item => item.revenue));
+    const resultMax = Math.max(...financials.map(item => Math.abs(item.result)));
+    document.getElementById('financeChart').innerHTML = financials.map(item => {
+      const rev = Math.max(4, item.revenue / financeMax * 94);
+      const profit = Math.max(2, Math.abs(item.result) / resultMax * 44);
+      return `<div class="month-bar" title="${e(item.month)}: venit ${e(lei(item.revenue))}, rezultat ${e(lei(item.result))}"><div class="bar-field"><span class="zero-line"></span><span class="bar-revenue" style="--rev:${rev}%"></span><span class="bar-profit ${item.result < 0 ? 'neg' : ''}" style="--profit:${profit}%"></span></div><span class="month-label">${e(item.month)}</span></div>`;
+    }).join('');
+    document.getElementById('financialRows').innerHTML = financials.map(item => `<tr><td><strong>${e(item.month)}</strong></td><td class="num">${item.retail}</td><td class="num">${item.pilots}</td><td class="num">${item.clients}</td><td class="num">${e(lei(item.revenue))}</td><td class="num">${e(lei(item.contribution))}</td><td class="num ${item.result >= 0 ? 'positive' : 'negative'}">${e(lei(item.result))}</td><td class="num">${e(lei(item.cash))}</td><td class="num">${item.util.toFixed(1)}%</td></tr>`).join('');
+
+    const gates = [
+      'Pagina Companii, time-study-ul și primele 10 conturi sunt gata. Dacă nu, nu începe al doilea val.',
+      'Nu executa remedieri fără acord scris, chiar dacă problema pare evidentă.',
+      'Rezultat minim: 1 pilot plătit sau 3 oferte active. În lipsă, pivot documentat — fără angajări și fără capex.'
+    ];
+    document.getElementById('dayGroups').innerHTML = [0,1,2].map(group => {
+      const start = group * 10 + 1;
+      const end = start + 9;
+      const rows = days.slice(group * 10, group * 10 + 10).map(item => `<div class="day-row"><div class="day-date">Z${item.d}<br>${e(item.date)}</div><div class="day-theme">${e(item.theme)}</div><div>${e(item.work)}</div><div class="day-output">${e(item.out)}</div></div>`).join('');
+      return `<details class="plan-group" ${group === 0 ? 'open' : ''}><summary>Zilele ${start}–${end}<span class="tag ${group === 2 ? 'stop' : 'b'}">Gate Z${end}</span></summary><div class="day-list">${rows}</div><div class="gate"><strong>Gate la ziua ${end}:</strong> ${e(gates[group])}</div></details>`;
+    }).join('');
+
+    document.getElementById('weekGrid').innerHTML = weeks.map((item,index) => `<article class="period-card"><span class="period-no">S${index+1}</span><h3>${e(item[0])}</h3><p>${e(item[1])}</p><p class="period-threshold">Prag: ${e(item[2])}</p></article>`).join('');
+    document.getElementById('monthGrid').innerHTML = months.map((item,index) => `<article class="period-card"><span class="period-no">L${index+1}</span><h3>${e(item[0])}</h3><p>${e(item[1])}</p><p class="period-threshold">KPI: ${e(item[2])}</p><p><strong>Regulă:</strong> ${e(item[3])}</p></article>`).join('');
+
+    let activePriority = 'all';
+    const renderProspects = () => {
+      const query = document.getElementById('prospectSearch').value.trim().toLocaleLowerCase('ro');
+      const visible = prospects.filter(item => {
+        const matchesPriority = activePriority === 'all' || item.priority === activePriority;
+        const haystack = [item.company,item.segment,item.location,item.role,item.fit,item.channel].join(' ').toLocaleLowerCase('ro');
+        return matchesPriority && (!query || haystack.includes(query));
+      });
+      document.getElementById('prospectCount').textContent = `${visible.length} din ${prospects.length} companii afișate`;
+      document.getElementById('prospectGrid').innerHTML = visible.map(item => `<article class="prospect-card"><div class="prospect-head"><div><span class="prospect-rank">#${item.rank} · scor ${item.score.toFixed(1)}</span><h3>${e(item.company)}</h3><p class="prospect-meta">${e(item.segment)} · ${e(item.location)}</p></div><span class="tag ${item.priority.toLowerCase()}">${e(item.priority)}</span></div><dl class="prospect-detail"><dt>Fit</dt><dd>${e(item.fit)}</dd><dt>Rol-țintă</dt><dd>${e(item.role)}</dd><dt>Canal</dt><dd>${e(item.channel)}</dd><dt>Calificare</dt><dd>${e(item.question)}</dd><dt>Primul pas</dt><dd><strong>${e(item.next)}</strong></dd><dt>Sursă</dt><dd><a href="${e(item.source)}" target="_blank" rel="noreferrer">canal oficial</a></dd></dl></article>`).join('');
+    };
+    document.getElementById('prospectSearch').addEventListener('input', renderProspects);
+    document.querySelectorAll('.filter-button').forEach(button => button.addEventListener('click', () => {
+      activePriority = button.dataset.priority;
+      document.querySelectorAll('.filter-button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      renderProspects();
+    }));
+    renderProspects();
+
+    const tocLinks = [...document.querySelectorAll('.toc a')];
+    const observedSections = [...document.querySelectorAll('main .section')];
+    const observer = new IntersectionObserver(entries => {
+      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      tocLinks.forEach(link => link.setAttribute('aria-current', String(link.getAttribute('href') === `#${visible.target.id}`)));
+    }, {rootMargin:'-20% 0px -65% 0px', threshold:[0,.2,.5]});
+    observedSections.forEach(section => observer.observe(section));
+    const updateProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? Math.min(100, window.scrollY / scrollable * 100) : 0;
+      document.body.style.setProperty('--reading-progress', `${progress}%`);
+    };
+    addEventListener('scroll', updateProgress, {passive:true});
+    updateProgress();
+
+    let printOpenState = [];
+    addEventListener('beforeprint', () => {
+      const groups = [...document.querySelectorAll('details.plan-group')];
+      printOpenState = groups.map(group => group.open);
+      groups.forEach(group => { group.open = true; });
+    });
+    addEventListener('afterprint', () => {
+      [...document.querySelectorAll('details.plan-group')].forEach((group,index) => { group.open = printOpenState[index]; });
+    });
+  </script>
+</body>
+</html>

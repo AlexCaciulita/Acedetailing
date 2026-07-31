@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url'
 import bookingHandler from './api/create-booking.js'
 import enrollmentHandler from './api/create-enrollment.js'
 import contactHandler from './api/create-contact.js'
+import b2bLeadHandler from './api/create-b2b-lead.js'
 import chatProxyHandler from './api/chat-proxy.js'
+import adminHandler from './api/admin/index.js'
 import { createExpressLikeResponse } from './api/response-utils.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -74,7 +76,30 @@ function apiPlugin() {
       server.middlewares.use(createApiMiddleware('/api/create-booking', bookingHandler));
       server.middlewares.use(createApiMiddleware('/api/create-enrollment', enrollmentHandler));
       server.middlewares.use(createApiMiddleware('/api/create-contact', contactHandler));
+      server.middlewares.use(createApiMiddleware('/api/create-b2b-lead', b2bLeadHandler));
       server.middlewares.use(createApiMiddleware('/api/chat-proxy', chatProxyHandler));
+
+      // Prefix-routed, unlike the exact-match handlers above.
+      server.middlewares.use((req, res, next) => {
+        const url = (req.url || '').split('?')[0];
+        if (!url.startsWith('/api/admin')) return next();
+        let body = '';
+        req.on('data', (c) => { body += c; });
+        req.on('end', async () => {
+          try { req.body = body ? JSON.parse(body) : {}; }
+          catch {
+            res.statusCode = 400;
+            res.end(JSON.stringify({ success: false, message: 'Corpul cererii nu este JSON valid' }));
+            return;
+          }
+          req.adminPath = url.replace(/^\/api\/admin\/?/, '');
+          try { await adminHandler(req, createExpressLikeResponse(res)); }
+          catch (e) {
+            console.error('admin handler error (dev):', e);
+            if (!res.headersSent) { res.statusCode = 500; res.end(JSON.stringify({ success: false, message: 'Eroare server' })); }
+          }
+        });
+      });
     }
   }
 }
@@ -91,6 +116,14 @@ const ROOT_STATIC_FILES = [
   'manifest.webmanifest'
 ];
 
+// Internal strategy documents live at the project root. Keep their stable
+// filenames in the production bundle so the authenticated admin library can
+// display them in an iframe without duplicating their source.
+const ROOT_DOCUMENT_FILES = [
+  'ANALIZA-OPERATIONAL-B2B-NOVA.html',
+  'PLAN-DEZVOLTARE-NOVA.html'
+];
+
 function rootStaticPlugin() {
   return {
     name: 'nova-detailing-root-static',
@@ -102,6 +135,15 @@ function rootStaticPlugin() {
         const from = path.resolve(__dirname, 'public', name);
         if (!fs.existsSync(from)) {
           this.warn(`root static file missing, not copied: ${name}`);
+          continue;
+        }
+        fs.copyFileSync(from, path.join(outDir, name));
+      }
+
+      for (const name of ROOT_DOCUMENT_FILES) {
+        const from = path.resolve(__dirname, name);
+        if (!fs.existsSync(from)) {
+          this.warn(`root document missing, not copied: ${name}`);
           continue;
         }
         fs.copyFileSync(from, path.join(outDir, name));
@@ -138,6 +180,7 @@ export default defineConfig({
       input: {
         main: 'public/index.html',
         servicii: 'public/servicii.html',
+        companii: 'public/companii.html',
         rezervare: 'public/rezervare.html',
         scoala: 'public/scoala.html',
         despre: 'public/despre.html',
@@ -145,7 +188,9 @@ export default defineConfig({
         contact: 'public/contact.html',
         faq: 'public/faq.html',
         politici: 'public/politici.html',
-        vin: 'public/vin.html'
+        vin: 'public/vin.html',
+        admin: 'public/admin.html',
+        businessPlan: 'public/PLAN-BUSINESS-COMPLET-NOVA-2026.html'
       }
     }
   },
