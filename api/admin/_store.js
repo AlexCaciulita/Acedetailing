@@ -6,12 +6,10 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const DATA_DIR = process.env.NOVA_DATA_DIR
   ? path.resolve(process.env.NOVA_DATA_DIR)
-  : path.resolve(__dirname, '../../data');
+  : path.resolve(process.cwd(), 'data');
 
 // Every collection is an object keyed by id, matching data/records.json.
 export const COLLECTIONS = {

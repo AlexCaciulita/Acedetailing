@@ -1,0 +1,39 @@
+[build]
+command = "npm run build"
+publish = "dist"
+functions = "netlify/functions"
+
+[functions]
+node_bundler = "esbuild"
+included_files = ["data/records.json"]
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/api/:splat"
+status = 200
+force = true
+
+[[redirects]]
+from = "/admin"
+to = "/admin.html"
+status = 200
+
+[[redirects]]
+from = "/admin/*"
+to = "/admin.html"
+status = 200
+
+[[redirects]]
+from = "/vin/*"
+to = "/vin.html"
+status = 200
+
+[[redirects]]
+from = "/configurator*"
+to = "/rezervare.html"
+status = 301
+
+[[redirects]]
+from = "/galerie*"
+to = "/despre.html#portofoliu"
+status = 301

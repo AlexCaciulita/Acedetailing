@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const RECORDS_PATH = path.resolve(__dirname, '../data/records.json');
+const RECORDS_PATH = path.resolve(process.cwd(), 'data/records.json');
 
 // Public codes are the only lookup key exposed. Format is fixed so a malformed
 // or probing request is rejected before it can reach the store.

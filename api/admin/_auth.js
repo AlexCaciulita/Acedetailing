@@ -23,6 +23,7 @@ const sessions = new Map();
 const attempts = new Map();
 
 const isProduction = () => process.env.NODE_ENV === 'production';
+const usesStatelessSessions = () => process.env.NETLIFY === 'true' || Boolean(process.env.AWS_LAMBDA_FUNCTION_NAME);
 
 /* ── password hashing ─────────────────────────────────────────────────────── */
 
@@ -106,10 +107,46 @@ function setCookie(res, value, maxAgeSeconds) {
   res.setHeader('Set-Cookie', bits.join('; '));
 }
 
+function createSignedToken(now = Date.now()) {
+  const payload = Buffer.from(JSON.stringify({ created: now })).toString('base64url');
+  const signature = crypto
+    .createHmac('sha256', process.env.ADMIN_PASSWORD_HASH)
+    .update(payload)
+    .digest('base64url');
+  return `${payload}.${signature}`;
+}
+
+function verifySignedToken(token) {
+  try {
+    const [payload, signature] = String(token || '').split('.');
+    if (!payload || !signature || !process.env.ADMIN_PASSWORD_HASH) return null;
+
+    const expected = crypto
+      .createHmac('sha256', process.env.ADMIN_PASSWORD_HASH)
+      .update(payload)
+      .digest('base64url');
+    const actualBuffer = Buffer.from(signature);
+    const expectedBuffer = Buffer.from(expected);
+    if (actualBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(actualBuffer, expectedBuffer)) {
+      return null;
+    }
+
+    const parsed = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    const created = Number(parsed.created);
+    const now = Date.now();
+    if (!Number.isFinite(created) || created > now + 60_000 || now - created > SESSION_TTL_MS) return null;
+    return { created, seen: created };
+  } catch {
+    return null;
+  }
+}
+
 export function startSession(req, res) {
-  const token = crypto.randomBytes(32).toString('base64url');
   const now = Date.now();
-  sessions.set(token, { created: now, seen: now });
+  const token = usesStatelessSessions()
+    ? createSignedToken(now)
+    : crypto.randomBytes(32).toString('base64url');
+  if (!usesStatelessSessions()) sessions.set(token, { created: now, seen: now });
   setCookie(res, token, Math.floor(SESSION_TTL_MS / 1000));
   clearFailures(req);
   return token;
@@ -124,6 +161,11 @@ export function endSession(req, res) {
 export function currentSession(req) {
   const token = parseCookies(req)[COOKIE];
   if (!token) return null;
+
+  // A serverless request may land on a different function instance, so its
+  // session cannot depend on an in-memory Map. The signed cookie is still
+  // HttpOnly, SameSite=Strict and expires after one working day.
+  if (usesStatelessSessions()) return verifySignedToken(token);
 
   const session = sessions.get(token);
   if (!session) return null;
