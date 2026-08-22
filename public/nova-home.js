@@ -149,11 +149,21 @@ function enhanceCards(root) {
     });
 
     collect(root, '.btn-glass').forEach((button) => {
-        button.classList.add('nova-button', 'nova-button--primary');
+        if (!button.classList.contains('nova-button')) {
+            button.classList.add('nova-button');
+        }
+        if (!button.classList.contains('nova-button--primary')) {
+            button.classList.add('nova-button--primary');
+        }
     });
 
     collect(root, '.btn-glass-outline').forEach((button) => {
-        button.classList.add('nova-button', 'nova-button--secondary');
+        if (!button.classList.contains('nova-button')) {
+            button.classList.add('nova-button');
+        }
+        if (!button.classList.contains('nova-button--secondary')) {
+            button.classList.add('nova-button--secondary');
+        }
     });
 
     collect(root, '.gold-line, .gold-shimmer').forEach((accent) => {
@@ -498,11 +508,6 @@ function watchForDynamicContent() {
 
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-            if (mutation.type === 'attributes') {
-                enhanceCards(mutation.target);
-                return;
-            }
-
             mutation.addedNodes.forEach((node) => {
                 if (node.nodeType !== 1) return;
                 enhanceCards(node);
@@ -513,9 +518,7 @@ function watchForDynamicContent() {
 
     observer.observe(document.body, {
         childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['class']
+        subtree: true
     });
 }
 
