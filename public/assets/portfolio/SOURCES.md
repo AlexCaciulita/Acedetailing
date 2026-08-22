@@ -4,6 +4,11 @@ The portfolio uses real editorial photographs from Pexels pages marked “Free t
 
 | Local asset | Photographer | Source |
 |---|---|---|
+| `premium-cockpit-detail.jpg` | Ivane Buadze | https://www.pexels.com/photo/luxury-car-interior-with-steering-wheel-close-up-35231963/ |
+| `premium-leather-seat.jpg` | Redyar Rzgar | https://www.pexels.com/photo/luxury-sports-car-interior-leather-seat-37147620/ |
+| `hand-finish-polish.jpg` | Melih Can | https://www.pexels.com/photo/close-up-of-hand-polishing-car-surface-35149476/ |
+| `hydrophobic-paint-protection.jpg` | Kagan Karatay | https://www.pexels.com/photo/close-up-of-sleek-car-hood-with-water-droplets-29909550/ |
+| `exotic-wheel-foam.jpg` | Luke Miller | https://www.pexels.com/photo/close-up-shot-of-a-car-wheel-during-car-wash-14231678/ |
 | `interior-leather-cleaning.webp` | Bulat843 | https://www.pexels.com/photo/person-cleaning-car-interior-with-cloth-for-maintenance-31389821/ |
 | `interior-deep-clean.webp` | Kagan Karatay | https://www.pexels.com/photo/professional-car-interior-cleaning-in-eskisehir-29909578/ |
 | `wheel-foam-detail.webp` | A Fresh Detail | https://www.pexels.com/photo/close-up-of-a-car-wheel-covered-in-foam-in-a-car-wash-15002717/ |
