@@ -36,6 +36,36 @@ test('public inner pages use local pinned assets and expose a main landmark', ()
   });
 });
 
+test('portfolio keeps exactly ten sourced images in every category', () => {
+  const about = read('public/despre.html');
+  const marker = 'x-data="{\n        activeFilter';
+  const dataStart = about.indexOf(marker) + 'x-data="'.length;
+  const dataEnd = about.indexOf('}">\n        <div class="max-w-7xl', dataStart);
+  assert.ok(dataStart >= 'x-data="'.length && dataEnd > dataStart);
+
+  const portfolio = Function(`"use strict"; return (${about.slice(dataStart, dataEnd + 1)});`)();
+  const categories = portfolio.items.map((item) => item.category);
+  const counts = categories.reduce((totals, category) => {
+    totals[category] = (totals[category] || 0) + 1;
+    return totals;
+  }, {});
+
+  assert.equal(categories.length, 40);
+  ['interior', 'exterior', 'polish', 'signature'].forEach((category) => {
+    assert.equal(counts[category], 10, `${category} needs exactly ten portfolio images`);
+  });
+
+  const images = portfolio.items.map((item) => item.image.replace('/assets/portfolio/', ''));
+  assert.equal(images.length, 40);
+  images.forEach((image) => {
+    assert.equal(
+      fs.existsSync(path.join(projectRoot, 'public/assets/portfolio', image)),
+      true,
+      `${image} must exist locally`
+    );
+  });
+});
+
 test('blog cards open real articles and newsletter submits to the API', () => {
   const blog = read('public/blog.html');
   const data = read('public/blog-data.js');
