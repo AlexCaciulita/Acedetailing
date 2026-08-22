@@ -101,7 +101,7 @@ function sharedFooterMarkup() {
                         <ul>
                             <li><a href="tel:+40742122222">+40 742 122 222</a></li>
                             <li><a href="mailto:contact@novadetailing.ro">contact@novadetailing.ro</a></li>
-                            <li>București, România</li>
+                            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=%C8%98oseaua%20de%20Centur%C4%83%20nr.%20100%20A%2C%20Domne%C8%99ti%2C%20Ilfov%2C%20Rom%C3%A2nia" target="_blank" rel="noopener noreferrer">Șoseaua de Centură nr. 100 A, Domnești</a></li>
                             <li>L–V 08:00–18:00 · S 08:00–16:00</li>
                         </ul>
                     </div>

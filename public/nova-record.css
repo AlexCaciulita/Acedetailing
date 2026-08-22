@@ -830,3 +830,138 @@
         background: none !important;
     }
 }
+
+/* Obsidian Lab screen treatment. Kept inside @media screen so the verified
+   white, high-contrast A4 print record above remains unchanged. */
+@media screen {
+    :root {
+        color-scheme: dark;
+        --rec-ink: #f4f7f7;
+        --rec-ink-soft: #d4dee0;
+        --rec-muted: #9ba8ac;
+        --rec-faint: #6f7f85;
+        --rec-line: rgba(174, 225, 238, 0.17);
+        --rec-line-soft: rgba(174, 225, 238, 0.10);
+        --rec-paper: #071014;
+        --rec-surface: #030608;
+        --rec-tint: #0a161a;
+        --rec-bronze: #d8bd82;
+        --rec-bronze-deep: #f1d998;
+        --rec-emerald: #a8e8f8;
+    }
+
+    .rec-body {
+        position: relative;
+        color: var(--rec-ink);
+        background:
+            radial-gradient(circle at 8% 2%, rgba(53, 163, 189, 0.14), transparent 27rem),
+            radial-gradient(circle at 92% 20%, rgba(216, 189, 130, 0.09), transparent 25rem),
+            linear-gradient(180deg, #04090b, #020405) fixed;
+    }
+
+    .rec-body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image:
+            linear-gradient(rgba(171, 224, 238, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(171, 224, 238, 0.035) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: linear-gradient(#000, transparent 88%);
+    }
+
+    .rec-masthead {
+        border-color: var(--rec-line);
+        background: rgba(4, 10, 12, 0.86);
+        box-shadow: 0 20px 62px rgba(0, 0, 0, 0.36), inset 0 1px rgba(255, 255, 255, 0.04);
+        -webkit-backdrop-filter: blur(22px) saturate(130%);
+        backdrop-filter: blur(22px) saturate(130%);
+    }
+
+    .rec-masthead__brand,
+    .rec-kicker,
+    .rec-section__eyebrow,
+    .rec-id__label,
+    .rec-stat__label {
+        color: var(--rec-bronze-deep);
+    }
+
+    .rec-section {
+        border-color: var(--rec-line);
+        background:
+            radial-gradient(circle at 100% 0, rgba(216, 189, 130, 0.055), transparent 22rem),
+            linear-gradient(145deg, rgba(11, 22, 26, 0.95), rgba(5, 10, 12, 0.97));
+        box-shadow: 0 26px 68px rgba(0, 0, 0, 0.30), inset 0 1px rgba(255, 255, 255, 0.035);
+    }
+
+    .rec-id__code,
+    .rec-stat,
+    .rec-qr__code,
+    .rec-btn--ghost,
+    .rec-timeline__item,
+    .rec-auth {
+        border-color: var(--rec-line);
+        background: rgba(3, 8, 10, 0.72);
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+    }
+
+    .rec-btn {
+        border-color: rgba(241, 217, 152, 0.42);
+        color: #071012;
+        background: linear-gradient(135deg, var(--rec-bronze-deep), #c2a15d);
+        box-shadow: 0 13px 34px rgba(189, 151, 75, 0.15);
+    }
+
+    .rec-btn:hover {
+        filter: brightness(1.06);
+        transform: translateY(-1px);
+    }
+
+    .rec-btn--ghost {
+        color: var(--rec-ink);
+    }
+
+    .rec-table,
+    .rec-table th,
+    .rec-table td {
+        border-color: var(--rec-line);
+    }
+
+    .rec-table thead,
+    .rec-table th {
+        color: var(--rec-bronze-deep);
+        background: rgba(216, 189, 130, 0.07);
+    }
+
+    .rec-table tbody tr:hover {
+        background: rgba(168, 232, 248, 0.035);
+    }
+
+    .rec-map__svg {
+        border-color: var(--rec-line);
+        background:
+            linear-gradient(rgba(168, 232, 248, 0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(168, 232, 248, 0.025) 1px, transparent 1px),
+            rgba(3, 8, 10, 0.64);
+        background-size: 26px 26px;
+    }
+
+    .rec-bar,
+    .rec-legend__swatch {
+        border-color: var(--rec-line);
+    }
+
+    .rec-footer {
+        border-color: var(--rec-line);
+        color: var(--rec-muted);
+        background: linear-gradient(180deg, rgba(7, 16, 20, 0.82), rgba(2, 4, 5, 0.96));
+    }
+
+    .rec-footer a,
+    .rec-skip:focus {
+        color: var(--rec-bronze-deep);
+    }
+}
