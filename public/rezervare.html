@@ -304,8 +304,8 @@
                                         <!-- Popular badge -->
                                         <div x-show="pkg.popular" class="absolute -top-3 right-4 bg-primary text-white text-xs font-heading font-bold px-3 py-1 rounded-full z-10">Popular</div>
                                         <!-- Selection checkmark -->
-                                        <div x-show="selectedPackage === pkg.id" class="absolute top-4 left-4">
-                                            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                        <div x-show="selectedPackage === pkg.id" x-transition.opacity aria-hidden="true" class="absolute top-4 right-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-500/25 ring-2 ring-green-300/30">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
                                         </div>
 
                                         <!-- Clickable area -->
