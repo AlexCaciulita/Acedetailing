@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nova-detailing-v9.17';
+const CACHE_NAME = 'nova-detailing-v10.0';
 const OFFLINE_URL = '/index.html';
 
 // Files to cache for offline functionality
@@ -12,6 +12,7 @@ const CORE_CACHE_FILES = [
   '/scoala.html',
   '/despre.html',
   '/blog.html',
+  '/articol.html',
   '/contact.html',
   '/faq.html',
   '/politici.html',
@@ -19,9 +20,7 @@ const CORE_CACHE_FILES = [
   // manifest are content-hashed by Vite in the production build, so their
   // unhashed paths only exist in dev. The cache-first fetch handler below picks
   // up whatever filename the page actually requests, on first visit.
-  // External CDN resources (still used by the inner pages)
-  'https://cdn.tailwindcss.com',
-  'https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js'
+  // CSS and JavaScript are content-hashed by Vite and cached on first use.
 ];
 
 // Assets to cache (images, icons)
@@ -91,9 +90,7 @@ self.addEventListener('activate', (event) => {
 // Fetch event - serve cached content when offline
 self.addEventListener('fetch', (event) => {
   // Skip cross-origin requests and non-GET requests
-  if (!event.request.url.startsWith(self.location.origin) && 
-      !event.request.url.startsWith('https://cdn.tailwindcss.com') &&
-      !event.request.url.startsWith('https://unpkg.com/alpinejs')) {
+  if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
 

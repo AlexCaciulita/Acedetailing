@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import bookingHandler from './api/create-booking.js';
 import enrollmentHandler from './api/create-enrollment.js';
 import contactHandler from './api/create-contact.js';
+import newsletterHandler from './api/create-newsletter.js';
 import b2bLeadHandler from './api/create-b2b-lead.js';
 import recordHandler from './api/get-record.js';
 import adminHandler from './api/admin/index.js';
@@ -87,6 +88,7 @@ const server = http.createServer((req, res) => {
     '/api/create-booking': bookingHandler,
     '/api/create-enrollment': enrollmentHandler,
     '/api/create-contact': contactHandler,
+    '/api/create-newsletter': newsletterHandler,
     '/api/create-b2b-lead': b2bLeadHandler,
     '/api/chat-proxy': chatProxyHandler,
     '/api/payu-create-order': payuCreateOrderHandler,

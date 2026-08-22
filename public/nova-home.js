@@ -190,16 +190,6 @@ function applyInnerPageDesign() {
         legacyFooter.remove();
     }
 
-    if (!document.querySelector('.nova-mobile-booking')) {
-        document.body.insertAdjacentHTML('beforeend', `
-            <div class="nova-mobile-booking" data-mobile-booking>
-                <a class="nova-button nova-button--primary" href="/rezervare.html">
-                    Configurează și rezervă <span class="nova-arrow" aria-hidden="true">→</span>
-                </a>
-            </div>
-        `);
-    }
-
     const heading = document.querySelector('h1');
     const hero = heading?.closest('section');
     if (hero) {
@@ -501,6 +491,27 @@ function setupCurrentYear() {
     });
 }
 
+function setupAccordions() {
+    document.querySelectorAll('button').forEach((button, index) => {
+        const panel = button.nextElementSibling;
+        if (!panel?.hasAttribute('x-show') || !panel.classList.contains('px-6')) return;
+
+        const panelId = `faq-panel-${index + 1}`;
+        button.type = 'button';
+        button.setAttribute('aria-controls', panelId);
+        panel.id = panelId;
+        panel.setAttribute('role', 'region');
+
+        const syncState = () => {
+            button.setAttribute('aria-expanded', String(panel.style.display !== 'none'));
+        };
+
+        const observer = new MutationObserver(syncState);
+        observer.observe(panel, { attributes: true, attributeFilter: ['style', 'class'] });
+        window.requestAnimationFrame(syncState);
+    });
+}
+
 // Alpine renders `x-for` content after this module evaluates and re-renders it on
 // every filter change, so nodes have to be picked up as they appear.
 function watchForDynamicContent() {
@@ -552,4 +563,5 @@ run(setupLiquidControls);
 run(setupComparisonSlider);
 run(setupCounters);
 run(setupCurrentYear);
+run(setupAccordions);
 run(setupServiceWorker);

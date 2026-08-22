@@ -1637,6 +1637,12 @@ body.nova-premium::selection {
     }
 }
 
+@media (max-width: 639px) {
+    .nova-inner-page .nova-inner-hero .hidden.sm\:inline-flex {
+        display: none !important;
+    }
+}
+
 /* --------------------------------------------------------------------------
    Aurum controls
    The conic layer is a background clipped to the transparent border ring.
@@ -4791,4 +4797,161 @@ body.nova-premium .nova-button > svg:last-child {
 body.nova-premium .nova-button:hover > svg:last-child {
     background: rgba(255, 245, 217, 0.09);
     transform: translateX(2px);
+}
+
+/* Audit polish: stronger reading contrast, calmer motion and mobile controls
+   that expose every option instead of silently clipping the final pills. */
+body.nova-site-dark.nova-inner-page .nova-inner-hero h1,
+body.nova-site-dark.nova-inner-page .nova-inner-hero h1 span {
+    color: #f8fbfb !important;
+    -webkit-text-fill-color: currentColor !important;
+    text-shadow: 0 3px 28px rgba(0, 0, 0, 0.58);
+}
+
+body.nova-site-dark.nova-inner-page .nova-inner-hero h1 span.nova-page-accent {
+    color: #f1d998 !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+body.nova-site-dark.nova-inner-page .nova-inner-hero p {
+    color: #d2dcde !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.56);
+}
+
+body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--media .absolute.inset-0 > .absolute.inset-0 {
+    background:
+        linear-gradient(90deg, rgba(2, 6, 8, 0.82), rgba(2, 6, 8, 0.56) 58%, rgba(2, 6, 8, 0.40)),
+        linear-gradient(to top, rgba(2, 6, 8, 0.72), rgba(2, 6, 8, 0.14) 70%) !important;
+}
+
+.nova-inner-page :is(.reveal, .reveal-left, .reveal-right, .reveal-scale) {
+    transition-duration: 450ms !important;
+}
+
+.nova-honeypot {
+    position: absolute !important;
+    left: -10000px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+.article-cover {
+    width: 100%;
+    max-height: 620px;
+    margin-top: -18px;
+    border: 1px solid var(--site-line, rgba(255, 255, 255, 0.10));
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 30px 72px rgba(0, 0, 0, 0.32);
+}
+
+.article-copy {
+    width: min(760px, 100%);
+    margin: 52px auto 0;
+}
+
+.article-lede {
+    margin-bottom: 48px;
+    color: #d6dfe1 !important;
+    font-size: clamp(1.15rem, 2vw, 1.42rem);
+    line-height: 1.7;
+}
+
+.article-copy-section {
+    display: grid;
+    gap: 18px;
+}
+
+.article-check-item {
+    position: relative;
+    padding-left: 28px;
+}
+
+.article-check-item::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--site-gold-bright, #f1d998);
+    font-weight: 800;
+}
+
+.article-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 64px;
+    padding: 28px;
+    border: 1px solid var(--site-gold-line, rgba(216, 189, 130, 0.30));
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(27, 29, 24, 0.76), rgba(6, 12, 14, 0.92));
+}
+
+.article-cta p {
+    max-width: 420px;
+    margin: 0;
+    color: #e9efef;
+    font-weight: 650;
+}
+
+@media (max-width: 620px) {
+    body.nova-inner-page {
+        overflow-x: clip;
+    }
+
+    .nova-inner-page .reveal-left:not(.revealed),
+    .nova-inner-page .reveal-right:not(.revealed) {
+        transform: translateY(18px) !important;
+    }
+
+    body.nova-premium .nova-control-tray {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        width: 100%;
+        overflow: visible;
+    }
+
+    body.nova-premium .nova-control-tray .gold-btn {
+        min-width: 0;
+        width: 100%;
+        min-height: 42px;
+        padding-inline: 8px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2 !important;
+    }
+
+    body.nova-premium .nova-control-tray .gold-btn:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+
+    body.nova-page-booking .fixed.bottom-0 .nova-button,
+    body.nova-page-booking .fixed.bottom-0 button {
+        width: auto !important;
+    }
+
+    body.nova-page-booking .nova-inline-next {
+        display: none !important;
+    }
+
+    .article-cover {
+        margin-top: -8px;
+        border-radius: 18px;
+    }
+
+    body.nova-page-article .nova-inner-hero h1 {
+        font-size: clamp(2.35rem, 11vw, 3.3rem) !important;
+    }
+
+    .article-copy {
+        margin-top: 36px;
+    }
+
+    .article-cta {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 22px;
+    }
 }

@@ -25,37 +25,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#826C3E',
-                    'primary-light': '#B5A17A',
-                    'primary-dark': '#6B5834',
-                    secondary: '#1A1A1A',
-                    light: {
-                        50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
-                        400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
-                        800: '#343432', 900: '#262625', 950: '#1A1A1A'
-                    }
-                },
-                fontFamily: {
-                    heading: ['Montserrat', 'system-ui', 'sans-serif'],
-                    body: ['Inter', 'system-ui', 'sans-serif']
-                },
-                boxShadow: {
-                    'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
-                    'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
-                    'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
-                    'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
-                }
-            }
-        }
-    }
-    </script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="/tailwind.css?direct">
+    <script type="module" src="/alpine-runtime.js"></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -66,7 +37,7 @@
           "name": "Ce include un pachet PREMIUM Complet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pachetul PREMIUM Complet include urmatoarele servicii: Spalare exterioara completa si decontaminare, Curatare interior profunda (aspirare, curatare tapiterie, piele), Corectie vopsea intr-un singur pas (one-step polish), Protectie ceramica 1 strat (12 luni), Tratament jante si anvelope, Curatare si tratament geamuri, Parfumare interior premium."
+            "text": "Pachetul PREMIUM Complet include urmatoarele servicii: Spalare exterioara completa si decontaminare, Curatare interior profunda (aspirare, curatare tapiterie, piele), Corectie vopsea in doi pasi (cut si finish), Protectie ceramica 1 strat (12 luni), Tratament jante si anvelope, Curatare si tratament geamuri, Parfumare interior premium."
           }
         },
         {
@@ -294,9 +265,10 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
-    <link rel="stylesheet" href="/nova-premium.css?v=19">
+    <link rel="stylesheet" href="/nova-premium.css?v=24">
 </head>
-<body class="nova-premium nova-inner-page nova-site-dark bg-light-50 text-light-950 font-body">
+<body class="nova-premium nova-inner-page nova-site-dark nova-page-faq bg-light-50 text-light-950 font-body">
+    <a class="nova-skip-link" href="#continut">Sari la conținut</a>
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -335,6 +307,7 @@
         </div>
     </nav>
 
+    <main id="continut">
     <!-- Hero Header -->
     <section class="pt-24 pb-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -372,7 +345,7 @@
                                 <ul class="text-light-700 text-sm leading-relaxed space-y-1.5">
                                     <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Spalare exterioara completa si decontaminare</li>
                                     <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Curatare interior profunda (aspirare, curatare tapiterie, piele)</li>
-                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Corectie vopsea intr-un singur pas (one-step polish)</li>
+                                    <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Corectie vopsea in doi pasi (cut si finish)</li>
                                     <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Protectie ceramica 1 strat (12 luni)</li>
                                     <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Tratament jante si anvelope</li>
                                     <li class="flex items-start gap-2"><span class="text-primary mt-0.5">&#10003;</span> Curatare si tratament geamuri</li>
@@ -661,6 +634,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="bg-light-950 border-t border-light-300 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -711,6 +686,6 @@
         </div>
     </footer>
 
-    <script type="module" src="/nova-home.js?v=14"></script>
+    <script type="module" src="/nova-home.js?v=16"></script>
 </body>
 </html>

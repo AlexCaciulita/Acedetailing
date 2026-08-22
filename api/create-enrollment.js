@@ -8,15 +8,38 @@ export default async function handler(req, res) {
   try {
     const enrollmentData = req.body ?? {};
 
+    const asText = (value, max = 500) =>
+      typeof value === 'string' ? value.trim().slice(0, max) : '';
+
+    if (asText(enrollmentData.website, 200)) {
+      return res.status(200).json({ success: true, message: 'Inscriere confirmata' });
+    }
+
     const enrollmentInfo = {
-      timestamp: enrollmentData.timestamp || new Date().toISOString(),
-      name: enrollmentData.name,
-      phone: enrollmentData.phone,
-      email: enrollmentData.email,
-      course: enrollmentData.course || 'N/A',
-      experience: enrollmentData.experience || 'N/A',
-      notes: enrollmentData.notes || ''
+      timestamp: asText(enrollmentData.timestamp, 40) || new Date().toISOString(),
+      name: asText(enrollmentData.name, 120),
+      phone: asText(enrollmentData.phone, 40),
+      email: asText(enrollmentData.email, 160),
+      course: asText(enrollmentData.course, 160) || 'N/A',
+      experience: asText(enrollmentData.experience, 500) || 'N/A',
+      notes: asText(enrollmentData.notes, 2000)
     };
+
+    const missing = ['name', 'phone', 'email'].filter((field) => !enrollmentInfo[field]);
+    if (missing.length) {
+      return res.status(400).json({
+        success: false,
+        message: `Câmpuri obligatorii lipsă: ${missing.join(', ')}`
+      });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(enrollmentInfo.email)) {
+      return res.status(400).json({ success: false, message: 'Adresa de email nu este validă' });
+    }
+
+    if (enrollmentInfo.phone.replace(/\D/g, '').length < 10) {
+      return res.status(400).json({ success: false, message: 'Numărul de telefon nu este valid' });
+    }
 
     let storedId = null;
     try {

@@ -39,8 +39,44 @@
   <!-- galerie.html redirects to despre.html#portofoliu -->
   <url>
     <loc>https://novadetailing.ro/blog.html</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=cum-protejezi-vopseaua-masinii</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=greseli-curatare-interior-auto</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=protectie-ceramica-versus-ppf</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=de-ce-curs-profesional-detailing</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=polish-auto-unu-doi-trei-pasi</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://novadetailing.ro/articol.html?slug=intretinere-masina-iarna</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>

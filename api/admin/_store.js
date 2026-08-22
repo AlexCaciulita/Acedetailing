@@ -20,6 +20,7 @@ export const COLLECTIONS = {
   bookings: 'bookings.json',
   messages: 'messages.json',
   enrollments: 'enrollments.json',
+  subscribers: 'subscribers.json',
   inventory: 'inventory.json',
   opportunities: 'opportunities.json',
   activities: 'activities.json',

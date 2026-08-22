@@ -25,37 +25,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: '#826C3E',
-                    'primary-light': '#B5A17A',
-                    'primary-dark': '#6B5834',
-                    secondary: '#1A1A1A',
-                    light: {
-                        50: '#F7F7F5', 100: '#EFEFED', 200: '#E8E7E2', 300: '#DCDBD5',
-                        400: '#C4C3BE', 500: '#9A9A94', 600: '#5C5C5E', 700: '#45454A',
-                        800: '#343432', 900: '#262625', 950: '#1A1A1A'
-                    }
-                },
-                fontFamily: {
-                    heading: ['Montserrat', 'system-ui', 'sans-serif'],
-                    body: ['Inter', 'system-ui', 'sans-serif']
-                },
-                boxShadow: {
-                    'gold': '0 4px 20px rgba(181, 161, 122, 0.18)',
-                    'gold-lg': '0 8px 40px rgba(181, 161, 122, 0.28)',
-                    'soft': '0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06)',
-                    'soft-lg': '0 4px 12px rgba(0, 0, 0, 0.08)'
-                }
-            }
-        }
-    }
-    </script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="/tailwind.css?direct">
+    <script type="module" src="/alpine-runtime.js"></script>
     <style>
         [x-cloak] { display: none !important; }
         .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
@@ -158,9 +129,10 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script>(function(e){e.classList.add('nova-js');setTimeout(function(){if(!e.hasAttribute('data-nova-ready'))e.classList.remove('nova-js')},3000)})(document.documentElement)</script>
-    <link rel="stylesheet" href="/nova-premium.css?v=19">
+    <link rel="stylesheet" href="/nova-premium.css?v=24">
 </head>
-<body class="nova-premium nova-inner-page nova-site-dark bg-light-50 text-light-950 font-body">
+<body class="nova-premium nova-inner-page nova-site-dark nova-page-booking bg-light-50 text-light-950 font-body">
+    <a class="nova-skip-link" href="#continut">Sari la conținut</a>
 
     <!-- Navigation -->
     <nav id="main-nav" class="fixed top-0 w-full bg-white/90 backdrop-blur-xl border-b-2 border-primary shadow-soft z-50" x-data="{ open: false }">
@@ -211,7 +183,7 @@
     </div>
 
     <!-- Main Content -->
-    <main x-data="unifiedBooking()" x-cloak class="pt-10 sm:pt-12 pb-20">
+    <main id="continut" x-data="unifiedBooking()" x-cloak class="pt-10 sm:pt-12 pb-36 lg:pb-20">
         <h1 class="sr-only">Configureaza si rezerva servicii de detailing</h1>
 
         <!-- Step Progress Bar -->
@@ -219,7 +191,9 @@
             <div class="flex items-center justify-center gap-1 sm:gap-2">
                 <template x-for="step in 5" :key="step">
                     <div class="flex items-center">
-                        <button @click="step < currentStep ? goToStep(step) : null"
+                        <button type="button" @click="step < currentStep ? goToStep(step) : null"
+                            :aria-label="'Pasul ' + step + ': ' + stepLabels[step - 1] + (step === currentStep ? ', curent' : step < currentStep ? ', finalizat' : '')"
+                            :aria-current="step === currentStep ? 'step' : null"
                             :class="step === currentStep ? 'bg-primary text-white' : step < currentStep ? 'bg-primary/20 text-primary cursor-pointer hover:bg-primary/30' : 'bg-light-300 text-light-500'"
                             class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full font-heading font-bold text-xs sm:text-sm transition-all duration-200">
                             <span x-show="step >= currentStep" x-text="step"></span>
@@ -230,7 +204,7 @@
                 </template>
             </div>
             <div class="flex justify-center mt-2">
-                <span class="text-xs text-light-600 font-heading" x-text="['Vehicul', 'Pachet', 'Extra', 'Date & Contact', 'Confirmare'][currentStep - 1]"></span>
+                <span class="text-xs text-light-600 font-heading" x-text="stepLabels[currentStep - 1]"></span>
             </div>
         </section>
 
@@ -253,8 +227,8 @@
 
                             <!-- Car Model -->
                             <div>
-                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Model Masina</label>
-                                <input type="text" x-model="carModel" @input="onCarModelInput()" placeholder="ex: BMW X5 2023" class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
+                                <label for="booking-car-model" class="block text-sm font-heading font-medium text-light-700 mb-2">Model Masina</label>
+                                <input id="booking-car-model" type="text" x-model="carModel" @input="onCarModelInput()" placeholder="ex: BMW X5 2023" class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors">
                                 <p x-show="autoDetectedSize" x-transition class="text-green-600 text-xs mt-1.5 flex items-center gap-1">
                                     <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                                     <span>Detectat: <strong x-text="sizeMultipliers[carSize] ? sizeMultipliers[carSize].label.split('(')[0].trim() : ''"></strong></span>
@@ -309,7 +283,9 @@
                                         </div>
 
                                         <!-- Clickable area -->
-                                        <div class="p-5 cursor-pointer" @click="selectPackage(pkg.id)">
+                                        <button type="button" class="block w-full p-5 cursor-pointer text-left" @click="selectPackage(pkg.id)"
+                                            :aria-pressed="String(selectedPackage === pkg.id)"
+                                            :aria-label="'Selecteaza pachetul ' + pkg.name">
                                             <span class="text-primary text-xs font-heading font-semibold uppercase tracking-wider" x-text="pkg.tier"></span>
                                             <h3 class="text-lg font-heading font-bold text-light-950 mt-1" x-text="pkg.name"></h3>
                                             <p class="text-light-600 text-sm mt-1" x-text="pkg.shortDescription"></p>
@@ -325,15 +301,18 @@
                                             </div>
                                             <div class="text-xs text-light-500 mt-1" x-text="pkg.duration"></div>
                                             <p x-show="!carSize" class="text-xs text-light-500 mt-1">Pret final dupa stabilirea clasei vehiculului</p>
-                                        </div>
+                                        </button>
 
                                         <!-- Expandable details -->
                                         <div class="px-5 pb-4">
-                                            <button @click.stop="expandedPkg = expandedPkg === pkg.id ? '' : pkg.id" class="flex items-center gap-1 text-xs text-primary font-heading font-semibold hover:text-primary-light transition-colors">
+                                            <button type="button" @click.stop="expandedPkg = expandedPkg === pkg.id ? '' : pkg.id"
+                                                :aria-expanded="String(expandedPkg === pkg.id)"
+                                                :aria-controls="'package-details-' + pkg.id"
+                                                class="flex items-center gap-1 text-xs text-primary font-heading font-semibold hover:text-primary-light transition-colors">
                                                 <span x-text="expandedPkg === pkg.id ? 'Ascunde detalii' : 'Vezi ce include'"></span>
                                                 <svg :class="expandedPkg === pkg.id ? 'rotate-180' : ''" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                                             </button>
-                                            <div x-show="expandedPkg === pkg.id" x-transition class="mt-3 pt-3 border-t border-light-300">
+                                            <div x-show="expandedPkg === pkg.id" x-transition :id="'package-details-' + pkg.id" class="mt-3 pt-3 border-t border-light-300">
                                                 <p class="text-xs text-primary font-heading font-semibold uppercase tracking-wider mb-2">Include:</p>
                                                 <ul class="space-y-1.5">
                                                     <template x-for="item in pkg.included" :key="item">
@@ -370,7 +349,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                                 Inapoi
                             </button>
-                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
+                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="nova-inline-next flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
                                 Continua
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </button>
@@ -390,7 +369,9 @@
 
                             <div class="grid sm:grid-cols-2 gap-3">
                                 <template x-for="addon in addons" :key="addon.id">
-                                    <button @click="toggleAddon(addon.id)" :disabled="isAddonExcluded(addon.id)" :class="isAddonExcluded(addon.id) ? 'border-green-500 bg-green-50 cursor-not-allowed' : selectedAddons.includes(addon.id) ? 'border-primary bg-primary/5' : 'border-light-400 hover:border-light-500'" class="flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all duration-200">
+                                    <button type="button" @click="toggleAddon(addon.id)" :disabled="isAddonExcluded(addon.id)"
+                                        :aria-pressed="String(selectedAddons.includes(addon.id) || isAddonExcluded(addon.id))"
+                                        :class="isAddonExcluded(addon.id) ? 'border-green-500 bg-green-50 cursor-not-allowed' : selectedAddons.includes(addon.id) ? 'border-primary bg-primary/5' : 'border-light-400 hover:border-light-500'" class="flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all duration-200">
                                         <div class="flex-shrink-0 mt-0.5">
                                             <div :class="isAddonExcluded(addon.id) ? 'bg-green-500 border-green-500' : selectedAddons.includes(addon.id) ? 'bg-primary border-primary' : 'border-light-400'" class="w-5 h-5 rounded border-2 flex items-center justify-center">
                                                 <svg x-show="selectedAddons.includes(addon.id) || isAddonExcluded(addon.id)" class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -414,7 +395,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                                 Inapoi
                             </button>
-                            <button @click="nextStep()" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm btn-glass text-white">
+                            <button @click="nextStep()" class="nova-inline-next flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm btn-glass text-white">
                                 Continua
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </button>
@@ -438,9 +419,9 @@
                                     <h3 class="text-sm font-heading font-semibold text-light-950 mb-3">Informatii Contact</h3>
                                     <div class="space-y-4">
                                         <div class="relative">
-                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Nume Complet <span class="text-primary">*</span></label>
+                                            <label for="booking-name" class="block text-sm font-heading font-medium text-light-700 mb-2">Nume Complet <span class="text-primary">*</span></label>
                                             <div class="relative">
-                                                <input type="text" x-model="name" @blur="touched.name = true" placeholder="Ion Popescu" required
+                                                <input id="booking-name" type="text" x-model="name" @blur="touched.name = true" placeholder="Ion Popescu" required
                                                     :class="touched.name && !name.trim() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.name && name.trim() ? 'border-green-400' : 'border-light-400')"
                                                     class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
                                                 <svg x-show="touched.name && name.trim()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -449,9 +430,9 @@
                                         </div>
                                         <div class="grid sm:grid-cols-2 gap-4">
                                             <div>
-                                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Telefon <span class="text-primary">*</span></label>
+                                                <label for="booking-phone" class="block text-sm font-heading font-medium text-light-700 mb-2">Telefon <span class="text-primary">*</span></label>
                                                 <div class="relative">
-                                                    <input type="tel" x-model="phone" @blur="touched.phone = true" @input="formatPhone()" placeholder="+40 7XX XXX XXX" required
+                                                    <input id="booking-phone" type="tel" x-model="phone" @blur="touched.phone = true" @input="formatPhone()" placeholder="+40 7XX XXX XXX" required
                                                         :class="touched.phone && !isValidPhone() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.phone && isValidPhone() ? 'border-green-400' : 'border-light-400')"
                                                         class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
                                                     <svg x-show="touched.phone && isValidPhone()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -459,9 +440,9 @@
                                                 <p x-show="touched.phone && !isValidPhone()" class="text-red-500 text-xs mt-1">Introdu un numar de telefon valid.</p>
                                             </div>
                                             <div>
-                                                <label class="block text-sm font-heading font-medium text-light-700 mb-2">Email <span class="text-primary">*</span></label>
+                                                <label for="booking-email" class="block text-sm font-heading font-medium text-light-700 mb-2">Email <span class="text-primary">*</span></label>
                                                 <div class="relative">
-                                                    <input type="email" x-model="email" @blur="touched.email = true" placeholder="email@exemplu.ro" required
+                                                    <input id="booking-email" type="email" x-model="email" @blur="touched.email = true" placeholder="email@exemplu.ro" required
                                                         :class="touched.email && !isValidEmail() ? 'border-red-400 focus:border-red-500 focus:ring-red-400' : (touched.email && isValidEmail() ? 'border-green-400' : 'border-light-400')"
                                                         class="w-full bg-light-100 border rounded-lg px-4 py-3 pr-10 text-light-950 placeholder-light-500 focus:outline-none focus:ring-1 transition-colors">
                                                     <svg x-show="touched.email && isValidEmail()" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -477,12 +458,12 @@
                                     <h3 class="text-sm font-heading font-semibold text-light-950 mb-3">Programare</h3>
                                     <div class="grid sm:grid-cols-2 gap-4">
                                         <div>
-                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Data Dorita <span class="text-primary">*</span></label>
-                                            <input type="date" x-model="date" :min="minDate" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors [color-scheme:light]">
+                                            <label for="booking-date" class="block text-sm font-heading font-medium text-light-700 mb-2">Data Dorita <span class="text-primary">*</span></label>
+                                            <input id="booking-date" type="date" x-model="date" :min="minDate" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors [color-scheme:light]">
                                         </div>
                                         <div>
-                                            <label class="block text-sm font-heading font-medium text-light-700 mb-2">Interval Orar <span class="text-primary">*</span></label>
-                                            <select x-model="timeSlot" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none cursor-pointer">
+                                            <label for="booking-time-slot" class="block text-sm font-heading font-medium text-light-700 mb-2">Interval Orar <span class="text-primary">*</span></label>
+                                            <select id="booking-time-slot" x-model="timeSlot" required class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors appearance-none cursor-pointer">
                                                 <option value="" disabled>Selecteaza intervalul</option>
                                                 <option value="08:00-10:00">08:00 - 10:00</option>
                                                 <option value="10:00-12:00">10:00 - 12:00</option>
@@ -497,8 +478,8 @@
 
                                 <!-- Notes -->
                                 <div>
-                                    <label class="block text-sm font-heading font-medium text-light-700 mb-2">Observatii <span class="text-light-500">(optional)</span></label>
-                                    <textarea x-model="notes" rows="3" placeholder="Detalii suplimentare despre masina sau cerinte speciale..." class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"></textarea>
+                                    <label for="booking-notes" class="block text-sm font-heading font-medium text-light-700 mb-2">Observatii <span class="text-light-500">(optional)</span></label>
+                                    <textarea id="booking-notes" x-model="notes" rows="3" placeholder="Detalii suplimentare despre masina sau cerinte speciale..." class="w-full bg-light-100 border border-light-400 rounded-lg px-4 py-3 text-light-950 placeholder-light-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -509,7 +490,7 @@
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                                 Inapoi
                             </button>
-                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
+                            <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="nova-inline-next flex items-center gap-2 px-8 py-3 rounded-full font-heading font-semibold text-sm">
                                 Verifica si Confirma
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                             </button>
@@ -691,13 +672,13 @@
         </div>
 
         <!-- Mobile Bottom Bar -->
-        <div x-show="currentStep >= 2 && currentStep < 5" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t-2 border-light-300 shadow-soft-lg z-40 p-4">
-            <div class="flex items-center justify-between gap-4">
-                <div class="flex-1">
-                    <p class="text-xs text-light-600">Total estimat</p>
-                    <p class="text-lg font-heading font-bold text-primary" x-text="selectedPackage ? formatNumber(totalMin) + (totalMin !== totalMax ? ' - ' + formatNumber(totalMax) : '') + ' lei' : '— lei'"></p>
+        <div x-show="currentStep >= 2 && currentStep < 5" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-light-300 shadow-soft-lg z-40 p-3 pb-[max(.75rem,env(safe-area-inset-bottom))]">
+            <div class="mx-auto flex max-w-lg items-center gap-3">
+                <div class="min-w-0 flex-1">
+                    <p class="text-[11px] leading-none text-light-600">Total estimat</p>
+                    <p class="mt-1 whitespace-nowrap text-base font-heading font-bold text-primary" x-text="selectedPackage ? formatNumber(totalMin) + (totalMin !== totalMax ? ' - ' + formatNumber(totalMax) : '') + ' lei' : '— lei'"></p>
                 </div>
-                <button @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="px-6 py-3 rounded-full font-heading font-semibold text-sm" x-text="currentStep === 4 ? 'Verifica' : 'Continua'">
+                <button type="button" @click="nextStep()" :disabled="!canProceed" :class="canProceed ? 'btn-glass text-white' : 'bg-light-300 text-light-600 cursor-not-allowed'" class="min-w-[9rem] shrink-0 px-5 py-3 rounded-full font-heading font-semibold text-sm" x-text="currentStep === 4 ? 'Verifica' : 'Continua'">
                 </button>
             </div>
         </div>
@@ -828,6 +809,7 @@
 
                 // Step navigation
                 currentStep: 1,
+                stepLabels: ['Vehicul', 'Pachet', 'Extra', 'Date & Contact', 'Confirmare'],
 
                 // Form validation state
                 touched: { name: false, phone: false, email: false },
@@ -1436,6 +1418,6 @@
         }
     </script>
 
-    <script type="module" src="/nova-home.js?v=14"></script>
+    <script type="module" src="/nova-home.js?v=16"></script>
 </body>
 </html>

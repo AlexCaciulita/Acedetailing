@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import bookingHandler from './api/create-booking.js'
 import enrollmentHandler from './api/create-enrollment.js'
 import contactHandler from './api/create-contact.js'
+import newsletterHandler from './api/create-newsletter.js'
 import b2bLeadHandler from './api/create-b2b-lead.js'
 import chatProxyHandler from './api/chat-proxy.js'
 import adminHandler from './api/admin/index.js'
@@ -76,6 +77,7 @@ function apiPlugin() {
       server.middlewares.use(createApiMiddleware('/api/create-booking', bookingHandler));
       server.middlewares.use(createApiMiddleware('/api/create-enrollment', enrollmentHandler));
       server.middlewares.use(createApiMiddleware('/api/create-contact', contactHandler));
+      server.middlewares.use(createApiMiddleware('/api/create-newsletter', newsletterHandler));
       server.middlewares.use(createApiMiddleware('/api/create-b2b-lead', b2bLeadHandler));
       server.middlewares.use(createApiMiddleware('/api/chat-proxy', chatProxyHandler));
 
@@ -185,6 +187,7 @@ export default defineConfig({
         scoala: 'public/scoala.html',
         despre: 'public/despre.html',
         blog: 'public/blog.html',
+        articol: 'public/articol.html',
         contact: 'public/contact.html',
         faq: 'public/faq.html',
         politici: 'public/politici.html',
