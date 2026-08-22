@@ -200,6 +200,7 @@
         .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12); }
         .gallery-overlay { opacity: 0; transition: opacity 0.3s ease; }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
+        @media (hover: none) { .gallery-overlay { opacity: 1; } }
         .masonry-grid { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 0.75rem; }
         @media (min-width: 768px) { .masonry-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 200px; gap: 1.25rem; } }
         @media (min-width: 1024px) { .masonry-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 200px; gap: 1.5rem; } }
@@ -564,81 +565,101 @@
             {
                 id: 1,
                 category: 'interior',
-                image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
-                title: 'BMW X5 — Essential Interior',
-                description: 'Curatare profunda a interiorului din piele naturala, tratament si hidratare piele, curatare tapiterie plafon, aspirare completa.',
+                image: '/assets/portfolio/interior-leather-cleaning.webp',
+                title: 'Curatare si hidratare piele',
+                description: 'Proces profesional pentru scaune, fete de usi si suprafete din piele: curatare controlata, extragerea reziduurilor si conditionare.',
+                credit: 'Bulat843',
+                source: 'https://www.pexels.com/photo/person-cleaning-car-interior-with-cloth-for-maintenance-31389821/',
                 tall: true
             },
             {
                 id: 2,
-                category: 'exterior',
-                image: '/assets/car_detailing_carefree_arizona.webp',
-                title: 'Mercedes GLC — Spalare profesionala',
-                description: 'Spalare exterioara completa cu metoda contactless, decontaminare chimica si uscare profesionala cu aer comprimat.',
+                category: 'interior',
+                image: '/assets/portfolio/interior-deep-clean.webp',
+                title: 'Igienizare interioara cu abur',
+                description: 'Aburul controlat desprinde murdaria din zonele greu accesibile si permite curatarea detaliilor fara a satura materialele.',
+                credit: 'Kagan Karatay',
+                source: 'https://www.pexels.com/photo/professional-car-interior-cleaning-in-eskisehir-29909578/',
                 tall: false
             },
             {
                 id: 3,
-                category: 'polish',
-                image: '/assets/auburn-wa-usa-august-5-260nw-2188152971.webp',
-                title: 'Audi A6 — Polish 3 pasi + Ceramica',
-                description: 'Corectie vopsea in 3 pasi cu pasta abraziva profesionala, aplicare coating ceramic cu protectie pe 5 ani.',
+                category: 'exterior',
+                image: '/assets/portfolio/wheel-foam-detail.webp',
+                title: 'Detailing jante si anvelope',
+                description: 'Curatare dedicata pentru jante, flancuri si pasajele rotilor, cu solutii adaptate contaminarii si finisajului.',
+                credit: 'A Fresh Detail',
+                source: 'https://www.pexels.com/photo/close-up-of-a-car-wheel-covered-in-foam-in-a-car-wash-15002717/',
                 tall: false
             },
             {
                 id: 4,
-                category: 'signature',
-                image: '/assets/signature-full-card.webp',
-                title: 'Porsche 911 — Pachet Signature Full',
-                description: 'Transformare completa: decontaminare, corectie vopsea multi-step, protectie ceramica profesionala, tratament interior premium din piele.',
+                category: 'exterior',
+                image: '/assets/portfolio/audi-foam-headlight.webp',
+                title: 'Prespalare cu spuma activa',
+                description: 'Stratul de spuma inmoaie pelicula rutiera inainte de spalarea de contact si reduce riscul de microzgarieturi.',
+                credit: 'Luca Istrate',
+                source: 'https://www.pexels.com/photo/close-up-of-an-audi-a5-headlight-and-hood-covered-in-foam-at-a-car-wash-15469368/',
                 tall: true
             },
             {
                 id: 5,
-                category: 'exterior',
-                image: '/assets/scoala-detailing.webp',
-                title: 'Range Rover — Decontaminare completa',
-                description: 'Spalare profesionala cu foam lance, decontaminare cu clay bar, tratament jante si anvelope, sealant rapid.',
+                category: 'polish',
+                image: '/assets/portfolio/paint-correction-buffing.webp',
+                title: 'Corectie controlata a lacului',
+                description: 'Polish executat pe zone mici, cu lumina de inspectie si combinatii de pad si pasta alese dupa starea lacului.',
+                credit: 'Hasan Gulec',
+                source: 'https://www.pexels.com/photo/man-buffing-the-paint-of-the-car-11139239/',
                 tall: false
             },
             {
                 id: 6,
-                category: 'interior',
-                image: '/assets/P90449718-the-natural-leather-variants-castanea-pictured-and-amido-that-are-currently-available-as-options-in--600px.jpg',
-                title: 'Tesla Model 3 — Curatare profunda interior',
-                description: 'Aspirare completa, curatare cu abur, tratament suprafete plastic si piele vegana, odorizare profesionala, curatare geamuri.',
+                category: 'polish',
+                image: '/assets/portfolio/black-car-buffing.webp',
+                title: 'Polish orbital si finisare',
+                description: 'Masina orbitala rafineaza suprafata si reda claritatea reflexiei, mentinand o temperatura sigura pentru stratul de lac.',
+                credit: 'Gustavo Fring',
+                source: 'https://www.pexels.com/photo/a-person-buffing-a-car-6870296/',
                 tall: false
             },
             {
                 id: 7,
                 category: 'polish',
-                image: '/assets/auburn-wa-usa-august-5-260nw-2188152971.webp',
-                title: 'BMW M4 — Corectie vopsea 2 pasi',
-                description: 'Masurare grosime lac, corectie vopsea in 2 pasi cu pasta abraziva profesionala, finisare cu efect de showroom.',
+                image: '/assets/portfolio/headlight-polishing.webp',
+                title: 'Restaurare optica faruri',
+                description: 'Matreata si oxidarea sunt indepartate gradual, apoi suprafata este finisata si pregatita pentru protectie UV.',
+                credit: 'Khunkorn Laowisit',
+                source: 'https://www.pexels.com/photo/person-using-a-polishing-machine-on-the-car-5233268/',
                 tall: true
             },
             {
                 id: 8,
                 category: 'signature',
-                image: '/assets/rs=h_1000,cg_true.webp',
-                title: 'Mercedes AMG GT — Transformare completa',
-                description: 'Pachet Signature Full: decontaminare completa, corectie vopsea multi-step, coating ceramic pe 5 ani, detailing interior premium.',
+                image: '/assets/portfolio/ppf-installation.webp',
+                title: 'Aplicare folie de protectie PPF',
+                description: 'Folia transparenta este pozitionata umed, aliniata pe muchii si racletata atent pentru o protectie discreta a vopselei.',
+                credit: 'Tejas JR',
+                source: 'https://www.pexels.com/photo/applying-paint-protection-film-on-a-car-door-36021355/',
                 tall: false
             },
             {
                 id: 9,
-                category: 'exterior',
-                image: '/assets/car_detailing_carefree_arizona.webp',
-                title: 'Volkswagen Golf R — Wash & Protect',
-                description: 'Spalare in doua cuve, decontaminare chimica, aplicare sealant sintetic cu protectie 6 luni, tratament jante.',
+                category: 'signature',
+                image: '/assets/portfolio/ceramic-coating-application.webp',
+                title: 'Aplicare coating ceramic',
+                description: 'Coatingul este dozat pe aplicator si distribuit uniform pe panouri pregatite, in conditii controlate de lumina si temperatura.',
+                credit: 'WAVYVISUALS',
+                source: 'https://www.pexels.com/photo/applying-car-cleaner-on-blue-sponge-20051453/',
                 tall: false
             },
             {
                 id: 10,
-                category: 'polish',
-                image: '/assets/scoala-detailing.webp',
-                title: 'Audi RS6 — Polish + PPF partial',
-                description: 'Corectie vopsea completa urmata de aplicare folie de protectie PPF pe capota, aripi si bara fata.',
+                category: 'signature',
+                image: '/assets/portfolio/final-inspection.webp',
+                title: 'Inspectie finala sub lumina dedicata',
+                description: 'Verificarea finala urmareste uniformitatea finisajului, muchiile, zonele joase si claritatea reflexiei inainte de predare.',
+                credit: 'Geancarlo Peruzzolo',
+                source: 'https://www.pexels.com/photo/a-man-looking-the-white-car-14021827/',
                 tall: false
             }
         ],
@@ -660,8 +681,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
                 <div class="w-12 h-0.5 gold-line mx-auto mb-6"></div>
-                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Portofoliul Nostru</h2>
-                <p class="text-light-600 max-w-2xl mx-auto">Transformari spectaculoase si rezultate impecabile. Fiecare masina primeste tratamentul pe care il merita, de la curatare profesionala la protectie ceramica de durata.</p>
+                <h2 class="text-3xl sm:text-4xl font-heading font-bold text-light-950 mb-4">Procese &amp; Portofoliu</h2>
+                <p class="text-light-600 max-w-2xl mx-auto">O selectie editoriala cu procese reale de detailing, fotografiate in ateliere independente: de la curatare profesionala la corectie de lac, PPF si protectie ceramica.</p>
+                <p class="mt-4 text-xs uppercase tracking-[0.16em] text-light-500">Imagini de referinta · Surse si autori verificati</p>
             </div>
 
             <!-- Filter Tabs -->
@@ -769,6 +791,7 @@
                     </span>
                     <h3 class="text-xl md:text-2xl font-heading font-bold text-light-950 mb-3" x-text="lightboxItem?.title"></h3>
                     <p class="text-light-600 text-sm leading-relaxed mb-6" x-text="lightboxItem?.description"></p>
+                    <a :href="lightboxItem?.source" target="_blank" rel="noopener noreferrer" class="text-xs text-light-500 hover:text-primary transition-colors mb-6" x-text="`Fotografie de referinta: ${lightboxItem?.credit} · Pexels`"></a>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="/rezervare.html" class="inline-flex items-center justify-center gap-2 btn-glass text-white px-5 py-2.5 rounded-full text-sm font-heading font-semibold">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
