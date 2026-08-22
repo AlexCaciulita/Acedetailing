@@ -7,6 +7,7 @@ const isInnerPage = document.body.classList.contains('nova-inner-page');
 // `[data-reveal]` + `.is-revealed`. Both are driven by the one observer below.
 const REVEAL_SELECTOR = '[data-reveal], .reveal, .reveal-left, .reveal-right, .reveal-scale';
 const CARD_SELECTOR = 'article, div, a, form';
+const LIQUID_CONTROL_SELECTOR = '.nova-button, .btn-glass, .btn-glass-outline, .nova-nav-mobile-cta, .nova-menu-toggle, .gold-btn';
 
 const enhancedCards = new WeakSet();
 const observedReveals = new WeakSet();
@@ -371,6 +372,58 @@ function setupGlareCards() {
     }, { passive: true });
 }
 
+// Liquid controls respond to the pointer like a small optical lens. The light
+// is localized instead of playing a canned sweep animation, so every movement
+// is caused by the visitor and the resting state remains quiet.
+function setupLiquidControls() {
+    if (!finePointer || motionIsReduced) return;
+
+    let frame = 0;
+    let pending = null;
+
+    const resetControl = (control) => {
+        control.style.setProperty('--glass-x', '18%');
+        control.style.setProperty('--glass-y', '0%');
+        control.classList.remove('is-optically-active');
+    };
+
+    document.addEventListener('pointermove', (event) => {
+        const control = event.target instanceof Element
+            ? event.target.closest(LIQUID_CONTROL_SELECTOR)
+            : null;
+        if (!control) return;
+
+        pending = { control, clientX: event.clientX, clientY: event.clientY };
+        if (frame) return;
+
+        frame = window.requestAnimationFrame(() => {
+            frame = 0;
+            if (!pending) return;
+
+            const { control: target, clientX, clientY } = pending;
+            const bounds = target.getBoundingClientRect();
+            if (!bounds.width || !bounds.height) return;
+
+            const x = Math.min(Math.max((clientX - bounds.left) / bounds.width, 0), 1);
+            const y = Math.min(Math.max((clientY - bounds.top) / bounds.height, 0), 1);
+            target.style.setProperty('--glass-x', `${Math.round(x * 100)}%`);
+            target.style.setProperty('--glass-y', `${Math.round(y * 100)}%`);
+            target.classList.add('is-optically-active');
+        });
+    }, { passive: true });
+
+    document.addEventListener('pointerout', (event) => {
+        const control = event.target instanceof Element
+            ? event.target.closest(LIQUID_CONTROL_SELECTOR)
+            : null;
+        if (!control) return;
+        if (event.relatedTarget instanceof Node && control.contains(event.relatedTarget)) return;
+
+        pending = null;
+        resetControl(control);
+    }, { passive: true });
+}
+
 function setupComparisonSlider() {
     const comparison = document.querySelector('[data-comparison]');
     const range = comparison?.querySelector('[data-comparison-range]');
@@ -445,6 +498,11 @@ function watchForDynamicContent() {
 
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes') {
+                enhanceCards(mutation.target);
+                return;
+            }
+
             mutation.addedNodes.forEach((node) => {
                 if (node.nodeType !== 1) return;
                 enhanceCards(node);
@@ -453,7 +511,12 @@ function watchForDynamicContent() {
         });
     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class']
+    });
 }
 
 function setupServiceWorker() {
@@ -482,6 +545,7 @@ run(setupScrollReveals);
 run(watchForDynamicContent);
 run(setupNavigation);
 run(setupGlareCards);
+run(setupLiquidControls);
 run(setupComparisonSlider);
 run(setupCounters);
 run(setupCurrentYear);
