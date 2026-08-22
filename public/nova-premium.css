@@ -4570,6 +4570,81 @@ body.nova-premium .nova-control-tray .gold-btn:is(.active, [aria-pressed="true"]
         inset 0 1px rgba(255, 255, 255, 0.10);
 }
 
+/* Services section rail
+   The legacy sticky wrapper still carried a translucent white surface after the
+   site moved to the midnight palette. This keeps the jump controls visually
+   attached to the hero while separating them from the package grid with one
+   quiet material transition. */
+body.nova-site-dark.nova-inner-page .servicii-section-nav {
+    position: sticky;
+    isolation: isolate;
+    border-top: 1px solid rgba(185, 231, 241, 0.08) !important;
+    border-bottom: 1px solid rgba(185, 231, 241, 0.13) !important;
+    background:
+        radial-gradient(circle at 12% -80%, rgba(87, 190, 214, 0.12), transparent 25rem),
+        linear-gradient(180deg, rgba(6, 15, 18, 0.97), rgba(3, 8, 10, 0.94)) !important;
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.26),
+        inset 0 1px rgba(255, 255, 255, 0.025) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(130%) !important;
+    backdrop-filter: blur(24px) saturate(130%) !important;
+}
+
+body.nova-site-dark.nova-inner-page .servicii-section-nav::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 2%, rgba(168, 232, 248, 0.18) 32%, rgba(216, 189, 130, 0.20) 68%, transparent 98%);
+    pointer-events: none;
+}
+
+body.nova-site-dark.nova-inner-page .servicii-section-nav > div {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+
+body.nova-site-dark.nova-inner-page #servicii-tabs.nova-control-tray {
+    gap: 6px;
+    margin: 0;
+    padding: 5px !important;
+    border-color: rgba(181, 225, 236, 0.12);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 8% 0, rgba(168, 232, 248, 0.06), transparent 15rem),
+        rgba(2, 7, 9, 0.62) !important;
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.25),
+        inset 0 1px rgba(255, 255, 255, 0.035) !important;
+}
+
+body.nova-site-dark.nova-inner-page #servicii-tabs.nova-control-tray > button {
+    min-height: 38px;
+    padding: 8px 14px !important;
+    border-radius: 11px !important;
+    letter-spacing: 0.055em;
+}
+
+@media (max-width: 620px) {
+    body.nova-site-dark.nova-inner-page .servicii-section-nav > div {
+        padding: 8px 12px;
+    }
+
+    body.nova-site-dark.nova-inner-page #servicii-tabs.nova-control-tray {
+        gap: 4px;
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    body.nova-site-dark.nova-inner-page #servicii-tabs.nova-control-tray > button {
+        min-height: 36px;
+        padding: 7px 11px !important;
+    }
+}
+
 body.nova-premium .nova-menu-toggle {
     --glass-x: 24%;
     --glass-y: 0%;
