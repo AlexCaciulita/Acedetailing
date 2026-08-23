@@ -119,7 +119,9 @@ function createResponse() {
     },
     send(value) {
       if (typeof value === 'object' && value !== null) return response.json(value);
-      response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      if (!response.getHeader('Content-Type')) {
+        response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      }
       body = String(value ?? '');
       return response;
     },
@@ -157,6 +159,7 @@ function requestFromEvent(event, route) {
 function needsState(route) {
   if (PUBLIC_STATE_ROUTES.has(route)) return true;
   if (!route.startsWith('admin/')) return false;
+  if (route.startsWith('admin/plans/')) return false;
   return !['admin/session', 'admin/login', 'admin/logout'].includes(route);
 }
 

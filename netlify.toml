@@ -5,13 +5,38 @@ functions = "netlify/functions"
 
 [functions]
 node_bundler = "esbuild"
-included_files = ["data/records.json"]
+included_files = [
+  "data/records.json",
+  "PLAN-BUSINESS-COMPLET-NOVA-2026.html",
+  "ANALIZA-OPERATIONAL-B2B-NOVA.html",
+  "PLAN-DEZVOLTARE-NOVA.html"
+]
 
 [[redirects]]
 from = "/api/*"
 to = "/.netlify/functions/api/:splat"
 status = 200
 force = true
+
+[[redirects]]
+from = "/index.html"
+to = "/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/articol.html"
+to = "/articole/:slug.html"
+status = 301
+force = true
+query = {slug = ":slug"}
+
+[[redirects]]
+from = "/articol"
+to = "/articole/:slug.html"
+status = 301
+force = true
+query = {slug = ":slug"}
 
 [[redirects]]
 from = "/admin"
@@ -37,3 +62,80 @@ status = 301
 from = "/galerie*"
 to = "/despre.html#portofoliu"
 status = 301
+
+[[redirects]]
+from = "/servicii"
+to = "/servicii.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/companii"
+to = "/companii.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/rezervare"
+to = "/rezervare.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/scoala"
+to = "/scoala.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/despre"
+to = "/despre.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/blog"
+to = "/blog.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/contact"
+to = "/contact.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/faq"
+to = "/faq.html"
+status = 301
+force = true
+
+[[redirects]]
+from = "/politici"
+to = "/politici.html"
+status = 301
+force = true
+
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+for = "/admin*"
+[headers.values]
+Cache-Control = "private, no-store"
+X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+for = "/vin*"
+[headers.values]
+Cache-Control = "private, no-store"
+X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[headers]]
+for = "/api/*"
+[headers.values]
+Cache-Control = "no-store"
+X-Robots-Tag = "noindex, nofollow, nosnippet"

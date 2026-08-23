@@ -6,6 +6,8 @@ export const articles = [
     title: 'Ghid complet: Cum să îți protejezi vopseaua mașinii',
     excerpt: 'Află cele mai eficiente metode de protecție a vopselei, de la ceară tradițională la protecția ceramică profesională.',
     date: '15 Ianuarie 2026',
+    datePublished: '2026-01-15',
+    dateModified: '2026-08-22',
     readTime: '8 min citire',
     sections: [
       {
@@ -37,6 +39,8 @@ export const articles = [
     title: '5 greșeli pe care le faci când cureți interiorul mașinii',
     excerpt: 'Evită cele mai frecvente erori care pot deteriora tapițeria și plasticele interioare ale mașinii tale.',
     date: '8 Ianuarie 2026',
+    datePublished: '2026-01-08',
+    dateModified: '2026-08-22',
     readTime: '5 min citire',
     sections: [
       {
@@ -61,6 +65,8 @@ export const articles = [
     title: 'Protecția ceramică vs. PPF: Ce alegi pentru mașina ta?',
     excerpt: 'O comparație clară între două soluții premium de protecție a vopselei, cu roluri și limite diferite.',
     date: '2 Ianuarie 2026',
+    datePublished: '2026-01-02',
+    dateModified: '2026-08-22',
     readTime: '10 min citire',
     sections: [
       {
@@ -85,6 +91,8 @@ export const articles = [
     title: 'De ce merită să investești într-un curs de detailing',
     excerpt: 'Un curs practic te ajută să transformi pasiunea într-un proces repetabil, sigur și profitabil.',
     date: '20 Decembrie 2025',
+    datePublished: '2025-12-20',
+    dateModified: '2026-08-22',
     readTime: '6 min citire',
     sections: [
       {
@@ -109,6 +117,8 @@ export const articles = [
     title: 'Polish auto: 1 pas, 2 pași sau 3 pași?',
     excerpt: 'Înțelege diferențele dintre nivelurile de corecție a vopselei și când este potrivit fiecare proces.',
     date: '12 Decembrie 2025',
+    datePublished: '2025-12-12',
+    dateModified: '2026-08-22',
     readTime: '7 min citire',
     sections: [
       {
@@ -133,6 +143,8 @@ export const articles = [
     title: 'Întreținerea mașinii iarna: Checklist complet',
     excerpt: 'Pregătește mașina pentru sezonul rece cu o rutină simplă de curățare și protecție.',
     date: '5 Decembrie 2025',
+    datePublished: '2025-12-05',
+    dateModified: '2026-08-22',
     readTime: '4 min citire',
     sections: [
       {

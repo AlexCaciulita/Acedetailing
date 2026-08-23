@@ -5,12 +5,15 @@
   "type": "module",
   "main": "public/index.html",
   "scripts": {
+    "predev": "npm run seo:generate",
     "dev": "vite",
+    "prebuild": "npm run seo:generate",
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server.js",
     "test": "node --test",
-    "admin:password": "node scripts/admin-password.js"
+    "admin:password": "node scripts/admin-password.js",
+    "seo:generate": "node scripts/generate-seo-pages.mjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

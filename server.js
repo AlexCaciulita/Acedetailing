@@ -13,6 +13,7 @@ import chatProxyHandler from './api/chat-proxy.js';
 import payuCreateOrderHandler from './api/payu-create-order.js';
 import payuNotifyHandler from './api/payu-notify.js';
 import { createExpressLikeResponse } from './api/response-utils.js';
+import { articles } from './public/blog-data.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,13 +25,34 @@ const PUBLIC_DIR = fs.existsSync(distDir) ? distDir : path.join(__dirname, 'publ
 // Permanent redirects for retired pages. Checked before static resolution so a
 // stale built file can never shadow the redirect.
 const REDIRECT_MAP = {
+  '/index.html': '/',
+  '/index': '/',
   '/configurator.html': '/rezervare.html',
   '/configurator': '/rezervare.html',
   '/configurator/': '/rezervare.html',
   '/galerie.html': '/despre.html#portofoliu',
   '/galerie': '/despre.html#portofoliu',
-  '/galerie/': '/despre.html#portofoliu'
+  '/galerie/': '/despre.html#portofoliu',
+  '/servicii': '/servicii.html',
+  '/companii': '/companii.html',
+  '/rezervare': '/rezervare.html',
+  '/scoala': '/scoala.html',
+  '/despre': '/despre.html',
+  '/blog': '/blog.html',
+  '/contact': '/contact.html',
+  '/faq': '/faq.html',
+  '/politici': '/politici.html'
 };
+
+const ARTICLE_SLUGS = new Set(articles.map((article) => article.slug));
+const PRIVATE_DOCUMENT_PATHS = new Set([
+  '/plan-business-complet-nova-2026.html',
+  '/plan-business-complet-nova-2026',
+  '/analiza-operational-b2b-nova.html',
+  '/analiza-operational-b2b-nova',
+  '/plan-dezvoltare-nova.html',
+  '/plan-dezvoltare-nova'
+]);
 
 // MIME types for known file extensions
 const mimeTypes = {
@@ -82,6 +104,16 @@ const buildRequestPathname = (req) => {
 
 const server = http.createServer((req, res) => {
   let pathname = buildRequestPathname(req);
+
+  if (PRIVATE_DOCUMENT_PATHS.has(pathname.toLowerCase())) {
+    res.writeHead(404, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'X-Robots-Tag': 'noindex, nofollow, noarchive'
+    });
+    res.end(renderHtmlResponse(404, 'Pagina nu a fost găsită', '404 - Pagina nu a fost găsită', 'Resursa solicitată nu este publică.'));
+    return;
+  }
 
   // API routing
   const apiRoutes = {
@@ -188,6 +220,21 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  if (pathname === '/articol.html' || pathname === '/articol') {
+    let slug = '';
+    try {
+      slug = new URL(req.url, `http://${req.headers.host || 'localhost'}`).searchParams.get('slug') || '';
+    } catch {
+      // Invalid legacy URLs fall back to the article index below.
+    }
+    const location = ARTICLE_SLUGS.has(slug)
+      ? `/articole/${encodeURIComponent(slug)}.html`
+      : '/blog.html';
+    res.writeHead(301, { Location: location, 'Cache-Control': 'public, max-age=3600' });
+    res.end();
+    return;
+  }
+
   // Must run before the trailing-slash normalization below, which would rewrite
   // /galerie/ to /galerie/index.html and stop it ever matching.
   const redirectTarget = REDIRECT_MAP[pathname.toLowerCase()];
@@ -240,7 +287,10 @@ const server = http.createServer((req, res) => {
 
   fs.access(normalizedPath, fs.constants.F_OK, (accessError) => {
     if (accessError) {
-      res.writeHead(404, { 'Content-Type': 'text/html' });
+      res.writeHead(404, {
+        'Content-Type': 'text/html; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow, noarchive'
+      });
       res.end(
         renderHtmlResponse(
           404,
@@ -279,7 +329,16 @@ const server = http.createServer((req, res) => {
         return;
       }
 
-      res.writeHead(200, { 'Content-Type': contentType });
+      const headers = { 'Content-Type': contentType };
+      if (pathname.startsWith('/assets/')) {
+        headers['Cache-Control'] = 'public, max-age=2592000, stale-while-revalidate=86400';
+      } else if (pathname === '/admin.html' || pathname === '/vin.html') {
+        headers['Cache-Control'] = 'private, no-store';
+        headers['X-Robots-Tag'] = 'noindex, nofollow, noarchive';
+      } else if (ext === '.html') {
+        headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
+      }
+      res.writeHead(200, headers);
       res.end(data);
     });
   });

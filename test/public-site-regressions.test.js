@@ -24,7 +24,13 @@ function responseMock() {
 test('public inner pages use local pinned assets and expose a main landmark', () => {
   const pages = [
     'servicii.html', 'rezervare.html', 'scoala.html', 'despre.html',
-    'blog.html', 'contact.html', 'faq.html', 'politici.html', 'articol.html'
+    'blog.html', 'contact.html', 'faq.html', 'politici.html',
+    'articole/cum-protejezi-vopseaua-masinii.html',
+    'articole/greseli-curatare-interior-auto.html',
+    'articole/protectie-ceramica-versus-ppf.html',
+    'articole/de-ce-curs-profesional-detailing.html',
+    'articole/polish-auto-unu-doi-trei-pasi.html',
+    'articole/intretinere-masina-iarna.html'
   ];
 
   pages.forEach((page) => {
@@ -69,13 +75,45 @@ test('portfolio keeps exactly ten sourced images in every category', () => {
 test('blog cards open real articles and newsletter submits to the API', () => {
   const blog = read('public/blog.html');
   const data = read('public/blog-data.js');
-  const article = read('public/articol.html');
+  const article = read('public/articole/cum-protejezi-vopseaua-masinii.html');
 
-  assert.match(blog, /articol\.html\?slug=/);
+  assert.match(blog, /\/articole\/cum-protejezi-vopseaua-masinii\.html/);
+  assert.doesNotMatch(blog, /articol\.html\?slug=/);
   assert.doesNotMatch(blog, /<a href="#"[^>]*>\s*(?:<img|Citeste)/);
   assert.match(blog, /\/api\/create-newsletter/);
   assert.match(data, /slug: 'cum-protejezi-vopseaua-masinii'/);
-  assert.match(article, /data-article-content/);
+  assert.match(article, /"@type": "BlogPosting"/);
+  assert.match(article, /<h1[^>]*>Ghid complet: Cum să îți protejezi vopseaua mașinii/);
+});
+
+test('SEO surfaces use static URLs, valid JSON-LD and no removed volume claims', () => {
+  const sitemap = read('public/sitemap.xml');
+  const publicFiles = fs.readdirSync(path.join(projectRoot, 'public'))
+    .filter((name) => name.endsWith('.html'));
+  const articleFiles = fs.readdirSync(path.join(projectRoot, 'public/articole'))
+    .filter((name) => name.endsWith('.html'));
+
+  assert.equal(articleFiles.length, 6);
+  articleFiles.forEach((name) => {
+    assert.match(sitemap, new RegExp(`/articole/${name.replace('.', '\\.')}<`));
+  });
+  assert.doesNotMatch(sitemap, /articol\.html\?slug=/);
+
+  const indexablePages = [...publicFiles, ...articleFiles.map((name) => `articole/${name}`)]
+    .filter((name) => !['admin.html', 'vin.html', '404.html'].includes(name));
+
+  indexablePages.forEach((name) => {
+    const html = read(`public/${name}`);
+    assert.doesNotMatch(html, /(?:peste\s+)?1[ .]?000\+?\s+(?:de\s+)?ma(?:ș|s)ini/i, `${name} contains the removed vehicle-volume claim`);
+    assert.doesNotMatch(html, /600\+?\s+(?:de\s+)?(?:absolvenți|absolventi|studenți|studenti)/i, `${name} contains the removed graduate claim`);
+
+    for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+      assert.doesNotThrow(() => JSON.parse(match[1]), `${name} contains invalid JSON-LD`);
+    }
+  });
+
+  assert.equal(fs.existsSync(path.join(projectRoot, 'public/PLAN-BUSINESS-COMPLET-NOVA-2026.html')), false);
+  assert.doesNotMatch(read('vite.config.js'), /ROOT_DOCUMENT_FILES/);
 });
 
 test('booking selection and fields expose keyboard and label semantics', () => {

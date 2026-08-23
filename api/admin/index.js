@@ -5,6 +5,23 @@ import * as store from './_store.js';
 import { guard, login, endSession, currentSession, isConfigured } from './_auth.js';
 import { seedDemo, clearAll, defaultSettings } from './_seed.js';
 import { PROSPECTS, prospectToOpportunity } from './_prospects.js';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const moduleDir = path.dirname(fileURLToPath(import.meta.url));
+const INTERNAL_PLAN_FILES = {
+  'business-complete': 'PLAN-BUSINESS-COMPLET-NOVA-2026.html',
+  'operational-b2b': 'ANALIZA-OPERATIONAL-B2B-NOVA.html',
+  development: 'PLAN-DEZVOLTARE-NOVA.html'
+};
+
+function resolveInternalPlan(filename) {
+  return [
+    path.resolve(process.cwd(), filename),
+    path.resolve(moduleDir, '../..', filename)
+  ].find((candidate) => fs.existsSync(candidate));
+}
 
 const COLLECTION_PREFIX = {
   customers: 'cust',
@@ -256,6 +273,18 @@ export default async function handler(req, res) {
   // --- everything below requires a session --------------------------------
   const denied = guard(req);
   if (denied) return res.status(denied.status).json({ success: false, message: denied.message });
+
+  if (head === 'plans' && param && method === 'GET') {
+    const filename = INTERNAL_PLAN_FILES[param];
+    const filePath = filename ? resolveInternalPlan(filename) : null;
+    if (!filePath) return res.status(404).json({ success: false, message: 'Documentul nu există.' });
+
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'private, no-store, max-age=0');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
+    res.setHeader('Content-Security-Policy', "frame-ancestors 'self'");
+    return res.status(200).send(fs.readFileSync(filePath, 'utf8'));
+  }
 
   if (head === 'bootstrap' && method === 'GET') {
     const payload = { settings: settings() };

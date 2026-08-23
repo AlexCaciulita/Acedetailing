@@ -6,7 +6,7 @@ const PLANS = [
     title: 'Plan de business complet 2026–2027',
     eyebrow: 'Document principal',
     description: 'Strategie, ofertă B2B, 30 de prospecți, model financiar și execuție pe 30 zile / 13 săptămâni / 12 luni.',
-    url: '/PLAN-BUSINESS-COMPLET-NOVA-2026.html',
+    url: '/api/admin/plans/business-complete',
     accent: 'green'
   },
   {
@@ -14,7 +14,7 @@ const PLANS = [
     title: 'Analiză operațională și B2B',
     eyebrow: 'Audit și playbook',
     description: 'Capacitate, ofertă, kit comercial, contractare, Pipeline, CRM și procesul până la prima semnătură.',
-    url: '/ANALIZA-OPERATIONAL-B2B-NOVA.html',
+    url: '/api/admin/plans/operational-b2b',
     accent: 'bronze'
   },
   {
@@ -22,7 +22,7 @@ const PLANS = [
     title: 'Plan de dezvoltare Nova',
     eyebrow: 'Direcție strategică',
     description: 'Poziționare premium, servicii, PPF, B2B, școală și ordinea de implementare a inițiativelor.',
-    url: '/PLAN-DEZVOLTARE-NOVA.html',
+    url: '/api/admin/plans/development',
     accent: 'blue'
   }
 ];

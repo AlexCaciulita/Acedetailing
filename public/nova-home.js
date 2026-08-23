@@ -76,7 +76,7 @@ function sharedFooterMarkup() {
                         <a href="/" aria-label="Nova Detailing — Acasă">
                             <img src="/assets/logo.svg" alt="Nova Detailing" width="360" height="50" loading="lazy">
                         </a>
-                        <p>Detailing auto premium și școală profesională de detailing în București. Precizie, claritate, protecție.</p>
+                        <p>Detailing auto și cursuri practice în Domnești, pentru București și Ilfov. Precizie, claritate, protecție.</p>
                     </div>
                     <div>
                         <h3>Explorează</h3>

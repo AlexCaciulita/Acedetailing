@@ -49,6 +49,11 @@ test('CRM admin: import, pipeline, activity, inbound lead and customer conversio
             this.headersSent = true;
             resolve({ status: this.statusCode, payload, headers: responseHeaders });
             return this;
+          },
+          send(payload) {
+            this.headersSent = true;
+            resolve({ status: this.statusCode, payload, headers: responseHeaders });
+            return this;
           }
         };
         Promise.resolve(handler(req, res)).catch(reject);
@@ -61,6 +66,13 @@ test('CRM admin: import, pipeline, activity, inbound lead and customer conversio
     const login = await call('login', 'POST', { password: 'Nova-Test-Password-2026' }, false);
     assert.equal(login.status, 200);
     assert.match(cookie, /^nova_admin=/);
+
+    const plan = await call('plans/business-complete');
+    assert.equal(plan.status, 200);
+    assert.match(plan.payload, /<!DOCTYPE html>/i);
+    assert.match(plan.headers['content-type'], /^text\/html/);
+    assert.match(plan.headers['cache-control'], /no-store/);
+    assert.match(plan.headers['x-robots-tag'], /noindex/);
 
     const firstImport = await call('import-prospects', 'POST');
     assert.equal(firstImport.status, 200);
@@ -84,7 +96,7 @@ test('CRM admin: import, pipeline, activity, inbound lead and customer conversio
     const activity = await call('activities', 'POST', {
       opportunityId: firstOpportunity.id,
       type: 'apel',
-      occurredAt: new Date().toISOString(),
+      occurredAt: `${new Date().toLocaleDateString('en-CA')}T12:00:00`,
       outcome: 'Responsabilul a fost identificat.',
       nextStep: 'Trimite emailul pilot',
       nextActionDate: '2099-01-15',

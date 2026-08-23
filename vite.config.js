@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -10,6 +10,7 @@ import b2bLeadHandler from './api/create-b2b-lead.js'
 import chatProxyHandler from './api/chat-proxy.js'
 import adminHandler from './api/admin/index.js'
 import { createExpressLikeResponse } from './api/response-utils.js'
+import { articles } from './public/blog-data.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -118,14 +119,6 @@ const ROOT_STATIC_FILES = [
   'manifest.webmanifest'
 ];
 
-// Internal strategy documents live at the project root. Keep their stable
-// filenames in the production bundle so the authenticated admin library can
-// display them in an iframe without duplicating their source.
-const ROOT_DOCUMENT_FILES = [
-  'ANALIZA-OPERATIONAL-B2B-NOVA.html',
-  'PLAN-DEZVOLTARE-NOVA.html'
-];
-
 function rootStaticPlugin() {
   return {
     name: 'nova-detailing-root-static',
@@ -137,15 +130,6 @@ function rootStaticPlugin() {
         const from = path.resolve(__dirname, 'public', name);
         if (!fs.existsSync(from)) {
           this.warn(`root static file missing, not copied: ${name}`);
-          continue;
-        }
-        fs.copyFileSync(from, path.join(outDir, name));
-      }
-
-      for (const name of ROOT_DOCUMENT_FILES) {
-        const from = path.resolve(__dirname, name);
-        if (!fs.existsSync(from)) {
-          this.warn(`root document missing, not copied: ${name}`);
           continue;
         }
         fs.copyFileSync(from, path.join(outDir, name));
@@ -172,33 +156,86 @@ function rootStaticPlugin() {
   }
 }
 
-export default defineConfig({
-  root: 'public',
-  plugins: [apiPlugin(), rootStaticPlugin()],
-  build: {
-    outDir: '../dist',
-    emptyOutDir: true,
-    rollupOptions: {
-      input: {
-        main: 'public/index.html',
-        servicii: 'public/servicii.html',
-        companii: 'public/companii.html',
-        rezervare: 'public/rezervare.html',
-        scoala: 'public/scoala.html',
-        despre: 'public/despre.html',
-        blog: 'public/blog.html',
-        articol: 'public/articol.html',
-        contact: 'public/contact.html',
-        faq: 'public/faq.html',
-        politici: 'public/politici.html',
-        vin: 'public/vin.html',
-        admin: 'public/admin.html',
-        businessPlan: 'public/PLAN-BUSINESS-COMPLET-NOVA-2026.html'
+function measurementPlugin(env) {
+  const verification = String(env.VITE_GOOGLE_SITE_VERIFICATION || '').trim();
+  const measurementId = String(env.VITE_GA_MEASUREMENT_ID || '').trim();
+
+  return {
+    name: 'nova-seo-measurement',
+    transformIndexHtml(html, context) {
+      const tags = [];
+      const isIndexable = !/<meta[^>]+name=["']robots["'][^>]+noindex/i.test(html);
+      const isHome = path.basename(context.filename || '') === 'index.html';
+
+      if (verification && isHome) {
+        tags.push({
+          tag: 'meta',
+          attrs: { name: 'google-site-verification', content: verification },
+          injectTo: 'head'
+        });
       }
+
+      if (measurementId && isIndexable) {
+        tags.push(
+          {
+            tag: 'script',
+            attrs: {
+              async: true,
+              src: `https://www.googletagmanager.com/gtag/js?id=${measurementId}`
+            },
+            injectTo: 'head'
+          },
+          {
+            tag: 'script',
+            children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${measurementId}',{anonymize_ip:true});`,
+            injectTo: 'head'
+          }
+        );
+      }
+
+      return { html, tags };
     }
-  },
-  server: {
-    port: 3000,
-    open: true
-  }
+  };
+}
+
+const articleInputs = Object.fromEntries(
+  articles.map((article) => [
+    `article-${article.slug}`,
+    `public/articole/${article.slug}.html`
+  ])
+);
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, __dirname, 'VITE_');
+
+  return {
+    root: 'public',
+    plugins: [apiPlugin(), measurementPlugin(env), rootStaticPlugin()],
+    build: {
+      outDir: '../dist',
+      emptyOutDir: true,
+      rollupOptions: {
+        input: {
+          main: 'public/index.html',
+          servicii: 'public/servicii.html',
+          companii: 'public/companii.html',
+          rezervare: 'public/rezervare.html',
+          scoala: 'public/scoala.html',
+          despre: 'public/despre.html',
+          blog: 'public/blog.html',
+          contact: 'public/contact.html',
+          faq: 'public/faq.html',
+          politici: 'public/politici.html',
+          notFound: 'public/404.html',
+          vin: 'public/vin.html',
+          admin: 'public/admin.html',
+          ...articleInputs
+        }
+      }
+    },
+    server: {
+      port: 3000,
+      open: true
+    }
+  };
 })
