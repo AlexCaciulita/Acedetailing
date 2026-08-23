@@ -130,6 +130,14 @@ test('the public experience stays focused on individual customers', () => {
   assert.match(companyPage, /<meta name="robots" content="noindex, nofollow, noarchive">/);
 });
 
+test('mobile heroes use the compact shared height system', () => {
+  const styles = read('public/nova-premium.css');
+
+  assert.match(styles, /\.nova-home-page \.nova-hero-grid\s*\{[\s\S]*?height:\s*316px/);
+  assert.match(styles, /body\.nova-inner-page:not\(\.nova-page-article\) \.nova-inner-hero,[\s\S]*?height:\s*240px/);
+  assert.match(styles, /\.nova-home-page \.nova-proof-row\s*\{\s*display:\s*none/);
+});
+
 test('every customer page exposes the persistent WhatsApp contact control', () => {
   const sharedScript = read('public/nova-home.js');
   const sharedStyles = read('public/nova-premium.css');

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'nova-detailing-v13.0';
+const CACHE_NAME = 'nova-detailing-v14.0';
 const OFFLINE_URL = '/index.html';
 
 // Files to cache for offline functionality

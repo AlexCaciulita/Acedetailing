@@ -5068,3 +5068,161 @@ body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--me
         padding: 22px;
     }
 }
+
+/* Compact, consistent mobile heroes. The homepage keeps its image-led identity,
+   while every customer-facing inner page uses the same 240px introduction. */
+@media (max-width: 620px) {
+    .nova-home-page .nova-hero {
+        min-height: 0;
+        padding: 72px 0 12px;
+    }
+
+    .nova-home-page .nova-hero-grid {
+        height: 316px;
+        min-height: 316px;
+    }
+
+    .nova-home-page .nova-hero-content {
+        right: 16px;
+        bottom: 14px;
+        left: 16px;
+    }
+
+    .nova-home-page .nova-hero .nova-eyebrow {
+        margin-bottom: 10px;
+        padding: 6px 18px 6px 11px;
+        font-size: 0.54rem;
+    }
+
+    .nova-home-page .nova-hero h1 {
+        max-width: 310px;
+        margin-bottom: 9px;
+        font-size: clamp(2.12rem, 10.5vw, 2.55rem);
+        line-height: 0.96;
+        letter-spacing: -0.052em;
+    }
+
+    .nova-home-page .nova-hero-copy {
+        max-width: 320px;
+        margin-bottom: 10px;
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .nova-home-page .nova-hero-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    .nova-home-page .nova-hero-actions .nova-button {
+        min-height: 38px;
+        padding: 0 9px;
+        font-size: 0.68rem;
+        line-height: 1.15;
+        text-align: center;
+    }
+
+    .nova-home-page .nova-hero-actions .nova-arrow {
+        display: none;
+    }
+
+    .nova-home-page .nova-proof-row {
+        display: none;
+    }
+
+    .nova-home-page .nova-hero-frame img {
+        object-position: 67% center;
+    }
+
+    body.nova-inner-page:not(.nova-page-article) .nova-breadcrumb {
+        padding-top: 70px !important;
+        padding-bottom: 4px !important;
+    }
+
+    body.nova-inner-page:not(.nova-page-article).nova-has-breadcrumb .nova-inner-hero {
+        margin-top: 8px;
+    }
+
+    body.nova-inner-page:not(.nova-page-article):not(.nova-has-breadcrumb) .nova-inner-hero {
+        margin-top: 76px;
+    }
+
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero,
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero--media {
+        height: 240px;
+        min-height: 240px;
+        max-height: 240px;
+        border-radius: 18px !important;
+    }
+
+    body.nova-inner-page:not(.nova-page-article):not(.nova-page-school) .nova-inner-hero > div:not(.absolute) {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 18px 20px !important;
+        text-align: center;
+    }
+
+    body.nova-page-school .nova-inner-hero > .relative {
+        width: 100%;
+        height: 100%;
+        padding: 0 !important;
+    }
+
+    body.nova-page-school .nova-inner-hero > .relative > .relative {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 16px 20px !important;
+        text-align: center;
+    }
+
+    body.nova-page-contact .nova-inner-hero > div > div,
+    body.nova-page-faq .nova-inner-hero > div > div {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero h1,
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero h1 span {
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+        font-size: clamp(1.82rem, 8vw, 2.08rem) !important;
+        line-height: 1.02 !important;
+        letter-spacing: -0.04em !important;
+    }
+
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero p {
+        max-width: 330px;
+        margin: 0 auto 6px !important;
+        font-size: 0.78rem !important;
+        line-height: 1.4 !important;
+    }
+
+    body.nova-inner-page:not(.nova-page-article) .nova-inner-hero .gold-line {
+        display: none !important;
+    }
+
+    body.nova-page-school .nova-inner-hero .gap-4 {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px !important;
+        width: min(100%, 330px);
+        margin-top: 4px;
+    }
+
+    body.nova-page-school .nova-inner-hero :is(.btn-glass, .btn-glass-outline) {
+        width: 100%;
+        min-width: 0 !important;
+        min-height: 36px;
+        padding: 6px 8px !important;
+        font-size: 0.67rem !important;
+        line-height: 1.15;
+    }
+}
