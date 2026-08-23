@@ -5070,7 +5070,7 @@ body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--me
 }
 
 /* Compact, consistent mobile heroes. The homepage keeps its image-led identity,
-   while every customer-facing inner page uses the same 240px introduction. */
+   while every customer-facing inner page uses the same 196px introduction. */
 @media (max-width: 620px) {
     .nova-home-page .nova-hero {
         min-height: 0;
@@ -5149,9 +5149,9 @@ body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--me
 
     body.nova-inner-page:not(.nova-page-article) .nova-inner-hero,
     body.nova-inner-page:not(.nova-page-article) .nova-inner-hero--media {
-        height: 240px;
-        min-height: 240px;
-        max-height: 240px;
+        height: 196px;
+        min-height: 196px;
+        max-height: 196px;
         border-radius: 18px !important;
     }
 
@@ -5220,7 +5220,8 @@ body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--me
     body.nova-page-school .nova-inner-hero :is(.btn-glass, .btn-glass-outline) {
         width: 100%;
         min-width: 0 !important;
-        min-height: 36px;
+        height: 36px;
+        min-height: 36px !important;
         padding: 6px 8px !important;
         font-size: 0.67rem !important;
         line-height: 1.15;
