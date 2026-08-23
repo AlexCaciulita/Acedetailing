@@ -20,7 +20,6 @@ let revealObserver = null;
 const primaryPages = [
     { href: '/', label: 'Acasă', match: ['/', '/index.html'] },
     { href: '/servicii.html', label: 'Servicii', match: ['/servicii.html'] },
-    { href: '/companii.html', label: 'Companii', match: ['/companii.html'] },
     { href: '/scoala.html', label: 'Școala', match: ['/scoala.html'] },
     { href: '/despre.html', label: 'Despre', match: ['/despre.html'] },
     { href: '/contact.html', label: 'Contact', match: ['/contact.html'] }
@@ -79,13 +78,12 @@ function sharedFooterMarkup() {
                         <a href="/" aria-label="Nova Detailing — Acasă">
                             <img src="/assets/logo.svg" alt="Nova Detailing" width="360" height="50" loading="lazy">
                         </a>
-                        <p>Detailing auto și cursuri practice în Domnești, pentru București și Ilfov. Precizie, claritate, protecție.</p>
+                        <p>Detailing auto în Domnești, pentru București și Ilfov. Prețuri clare și rezervare online.</p>
                     </div>
                     <div>
                         <h3>Explorează</h3>
                         <ul>
                             <li><a href="/servicii.html">Servicii</a></li>
-                            <li><a href="/companii.html">Companii</a></li>
                             <li><a href="/rezervare.html">Rezervare</a></li>
                             <li><a href="/despre.html#portofoliu">Portofoliu</a></li>
                             <li><a href="/faq.html">Întrebări frecvente</a></li>

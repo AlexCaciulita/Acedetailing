@@ -1,11 +1,10 @@
-const CACHE_NAME = 'nova-detailing-v11.0';
+const CACHE_NAME = 'nova-detailing-v13.0';
 const OFFLINE_URL = '/index.html';
 
 // Files to cache for offline functionality
 const CORE_CACHE_FILES = [
   '/index.html',
   '/servicii.html',
-  '/companii.html',
   // configurator.html removed — merged into rezervare.html
   // galerie.html removed — merged into despre.html#portofoliu
   '/rezervare.html',

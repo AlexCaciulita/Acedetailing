@@ -98,6 +98,7 @@ test('SEO surfaces use static URLs, valid JSON-LD and no removed volume claims',
     assert.match(sitemap, new RegExp(`/articole/${name.replace('.', '\\.')}<`));
   });
   assert.doesNotMatch(sitemap, /articol\.html\?slug=/);
+  assert.doesNotMatch(sitemap, /\/companii\.html/);
 
   const indexablePages = [...publicFiles, ...articleFiles.map((name) => `articole/${name}`)]
     .filter((name) => !['admin.html', 'vin.html', '404.html'].includes(name));
@@ -114,6 +115,19 @@ test('SEO surfaces use static URLs, valid JSON-LD and no removed volume claims',
 
   assert.equal(fs.existsSync(path.join(projectRoot, 'public/PLAN-BUSINESS-COMPLET-NOVA-2026.html')), false);
   assert.doesNotMatch(read('vite.config.js'), /ROOT_DOCUMENT_FILES/);
+});
+
+test('the public experience stays focused on individual customers', () => {
+  const homepage = read('public/index.html');
+  const sharedLayout = read('public/nova-home.js');
+  const companyPage = read('public/companii.html');
+
+  assert.doesNotMatch(homepage, /href="\/companii\.html"/);
+  assert.doesNotMatch(sharedLayout, /href:\s*'\/companii\.html'/);
+  assert.doesNotMatch(sharedLayout, /href="\/companii\.html"/);
+  assert.doesNotMatch(homepage, /nova-home-b2b/);
+  assert.match(homepage, /Mașina ta,[\s\S]*îngrijită cum trebuie\./);
+  assert.match(companyPage, /<meta name="robots" content="noindex, nofollow, noarchive">/);
 });
 
 test('every customer page exposes the persistent WhatsApp contact control', () => {

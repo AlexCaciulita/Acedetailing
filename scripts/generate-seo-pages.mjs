@@ -146,7 +146,7 @@ ${articleSections(article)}
     <a href="/blog.html">Toate articolele</a>
     <a href="/contact.html">Contact Nova Detailing</a>
   </footer>
-  <script type="module" src="/nova-home.js?v=18"></script>
+  <script type="module" src="/nova-home.js?v=19"></script>
 </body>
 </html>
 `;
@@ -155,7 +155,6 @@ ${articleSections(article)}
 const staticPages = [
   { path: '/', lastmod: siteLastModified, changefreq: 'weekly' },
   { path: '/servicii.html', lastmod: siteLastModified, changefreq: 'monthly' },
-  { path: '/companii.html', lastmod: siteLastModified, changefreq: 'monthly' },
   { path: '/rezervare.html', lastmod: siteLastModified, changefreq: 'monthly' },
   { path: '/scoala.html', lastmod: siteLastModified, changefreq: 'monthly' },
   { path: '/despre.html', lastmod: siteLastModified, changefreq: 'monthly' },
