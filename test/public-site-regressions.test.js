@@ -130,6 +130,31 @@ test('the public experience stays focused on individual customers', () => {
   assert.match(companyPage, /<meta name="robots" content="noindex, nofollow, noarchive">/);
 });
 
+test('location details appear only on the contact page', () => {
+  const allowedExtensions = new Set(['.html', '.js', '.json', '.xml', '.txt', '.webmanifest']);
+  const files = [];
+  const collect = (directory, prefix = '') => {
+    fs.readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
+      const relativePath = path.join(prefix, entry.name);
+      const absolutePath = path.join(directory, entry.name);
+      if (entry.isDirectory()) collect(absolutePath, relativePath);
+      else if (allowedExtensions.has(path.extname(entry.name)) || entry.name.endsWith('.webmanifest')) files.push(relativePath);
+    });
+  };
+
+  collect(path.join(projectRoot, 'public'));
+  const locationPattern = /domne(?:ș|s)ti|bucure(?:ș|s)ti|ilfov|șoseaua de centură|soseaua de centura|077090|google\.com\/maps/i;
+
+  files.filter((name) => name !== 'contact.html').forEach((name) => {
+    assert.doesNotMatch(read(`public/${name}`), locationPattern, `${name} must not mention the location`);
+  });
+
+  const contact = read('public/contact.html');
+  assert.match(contact, /Șoseaua de Centură nr\. 100 A/);
+  assert.match(contact, /Domnești, Ilfov/);
+  assert.match(contact, /google\.com\/maps/);
+});
+
 test('mobile heroes use the compact shared height system', () => {
   const styles = read('public/nova-premium.css');
 
