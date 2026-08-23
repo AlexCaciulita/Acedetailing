@@ -5227,3 +5227,132 @@ body.nova-site-dark:is(.nova-page-school, .nova-page-about) .nova-inner-hero--me
         line-height: 1.15;
     }
 }
+
+/* Viewport-aware homepage introduction. On phones and tablets the hero stays
+   below the fixed navigation, while the proof strip becomes the first compact
+   piece of content revealed by scrolling. */
+@media (max-width: 1024px) {
+    .nova-home-page .nova-trust-bar {
+        margin-top: -4px;
+        padding-top: 10px;
+    }
+
+    .nova-home-page .nova-trust-panel {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border-radius: 12px;
+    }
+
+    .nova-home-page .nova-trust-item,
+    .nova-home-page .nova-trust-item:nth-child(2),
+    .nova-home-page .nova-trust-item:nth-child(-n + 2) {
+        min-height: 52px;
+        align-items: center;
+        padding: 7px 4px;
+        border-right: 1px solid var(--home-line) !important;
+        border-bottom: 0 !important;
+        text-align: center;
+    }
+
+    .nova-home-page .nova-trust-item:last-child {
+        border-right: 0 !important;
+    }
+
+    .nova-home-page .nova-trust-item::before {
+        display: none;
+    }
+
+    .nova-home-page .nova-trust-item strong {
+        font-size: clamp(0.68rem, 2vw, 0.82rem);
+        line-height: 1;
+        letter-spacing: -0.01em;
+    }
+
+    .nova-home-page .nova-trust-item span {
+        max-width: 74px;
+        margin-top: 3px;
+        font-size: clamp(0.46rem, 1.25vw, 0.58rem);
+        line-height: 1.15;
+    }
+}
+
+@media (min-width: 621px) and (max-width: 1024px) {
+    .nova-home-page .nova-hero {
+        min-height: 0;
+        padding: 98px 0 14px;
+    }
+
+    .nova-home-page .nova-hero-grid {
+        height: clamp(320px, calc(100dvh - 260px), 430px);
+        min-height: clamp(320px, calc(100dvh - 260px), 430px);
+        max-height: 430px;
+    }
+
+    .nova-home-page .nova-hero-content {
+        right: 32px;
+        bottom: 24px;
+        left: 32px;
+        max-width: 610px;
+    }
+
+    .nova-home-page .nova-hero .nova-eyebrow {
+        margin-bottom: 12px;
+        padding: 7px 22px 7px 14px;
+        font-size: 0.58rem;
+    }
+
+    .nova-home-page .nova-hero h1 {
+        max-width: 560px;
+        margin-bottom: 12px;
+        font-size: clamp(3.1rem, 7.3vw, 4.35rem);
+        line-height: 0.95;
+    }
+
+    .nova-home-page .nova-hero-copy {
+        max-width: 480px;
+        margin-bottom: 14px;
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    .nova-home-page .nova-hero-actions {
+        gap: 9px;
+    }
+
+    .nova-home-page .nova-hero-actions .nova-button {
+        min-height: 42px;
+        padding-inline: 16px;
+        font-size: 0.75rem;
+    }
+
+    .nova-home-page .nova-proof-row {
+        display: none;
+    }
+}
+
+@media (max-width: 620px) {
+    .nova-home-page .nova-hero {
+        padding-top: 80px;
+    }
+
+    .nova-home-page .nova-hero-grid {
+        height: clamp(260px, calc(100dvh - 252px), 316px);
+        min-height: clamp(260px, calc(100dvh - 252px), 316px);
+        max-height: 316px;
+    }
+}
+
+@media (max-width: 380px), (max-height: 540px) and (max-width: 620px) {
+    .nova-home-page .nova-hero h1 {
+        font-size: clamp(1.92rem, 10vw, 2.28rem);
+    }
+
+    .nova-home-page .nova-hero-copy {
+        font-size: 0.70rem;
+        line-height: 1.32;
+    }
+
+    .nova-home-page .nova-hero-actions .nova-button {
+        min-height: 34px;
+        font-size: 0.63rem;
+    }
+}

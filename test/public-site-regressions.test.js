@@ -155,10 +155,13 @@ test('location details appear only on the contact page', () => {
   assert.match(contact, /google\.com\/maps/);
 });
 
-test('mobile heroes use the compact shared height system', () => {
+test('mobile and tablet heroes use the compact viewport-aware height system', () => {
   const styles = read('public/nova-premium.css');
 
-  assert.match(styles, /\.nova-home-page \.nova-hero-grid\s*\{[\s\S]*?height:\s*316px/);
+  assert.match(styles, /height:\s*clamp\(260px,\s*calc\(100dvh - 252px\),\s*316px\)/);
+  assert.match(styles, /height:\s*clamp\(320px,\s*calc\(100dvh - 260px\),\s*430px\)/);
+  assert.match(styles, /\.nova-home-page \.nova-trust-panel\s*\{[\s\S]*?grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(styles, /\.nova-home-page \.nova-trust-item strong\s*\{[\s\S]*?font-size:\s*clamp\(0\.68rem/);
   assert.match(styles, /body\.nova-inner-page:not\(\.nova-page-article\) \.nova-inner-hero,[\s\S]*?height:\s*196px/);
   assert.match(styles, /\.nova-home-page \.nova-proof-row\s*\{\s*display:\s*none/);
 });
