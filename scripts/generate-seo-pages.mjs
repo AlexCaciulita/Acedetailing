@@ -98,7 +98,7 @@ function articlePage(article) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/tailwind.css?direct">
-  <link rel="stylesheet" href="/nova-premium.css?v=25">
+  <link rel="stylesheet" href="/nova-premium.css?v=26">
   <script type="application/ld+json">${safeJson(jsonLd)}</script>
 </head>
 <body class="nova-premium nova-inner-page nova-site-dark nova-page-article bg-light-50 text-light-950 font-body antialiased">
@@ -146,7 +146,7 @@ ${articleSections(article)}
     <a href="/blog.html">Toate articolele</a>
     <a href="/contact.html">Contact Nova Detailing</a>
   </footer>
-  <script type="module" src="/nova-home.js?v=17"></script>
+  <script type="module" src="/nova-home.js?v=18"></script>
 </body>
 </html>
 `;

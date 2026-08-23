@@ -1268,6 +1268,95 @@ body.nova-premium::selection {
     width: 100%;
 }
 
+.nova-whatsapp-float {
+    position: fixed;
+    z-index: 95;
+    right: max(22px, env(safe-area-inset-right));
+    bottom: max(22px, env(safe-area-inset-bottom));
+    display: grid;
+    width: 60px;
+    height: 60px;
+    place-items: center;
+    border: 1px solid rgba(218, 255, 230, 0.58);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.28), transparent 28%),
+        linear-gradient(145deg, #2ddd70 0%, #1db95a 58%, #159447 100%);
+    color: #fff;
+    box-shadow:
+        0 16px 38px rgba(0, 0, 0, 0.34),
+        0 8px 22px rgba(29, 185, 90, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.34);
+    isolation: isolate;
+    transition:
+        transform 220ms var(--nova-ease),
+        box-shadow 220ms var(--nova-ease),
+        filter 220ms var(--nova-ease),
+        bottom 320ms var(--nova-ease);
+}
+
+.nova-whatsapp-float::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -6px;
+    border: 1px solid rgba(73, 224, 128, 0.20);
+    border-radius: inherit;
+    background: rgba(5, 20, 12, 0.18);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.nova-whatsapp-float svg {
+    width: 29px;
+    height: 29px;
+    fill: currentColor;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.20));
+}
+
+.nova-whatsapp-float:hover,
+.nova-whatsapp-float:focus-visible {
+    color: #fff;
+    filter: saturate(1.08) brightness(1.04);
+    transform: translateY(-3px) scale(1.035);
+    box-shadow:
+        0 20px 46px rgba(0, 0, 0, 0.38),
+        0 10px 30px rgba(29, 185, 90, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.nova-whatsapp-float:focus-visible {
+    outline: 2px solid #dffff0;
+    outline-offset: 5px;
+}
+
+.nova-whatsapp-float__tooltip {
+    position: absolute;
+    right: calc(100% + 14px);
+    width: max-content;
+    padding: 9px 12px;
+    border: 1px solid rgba(211, 239, 221, 0.18);
+    border-radius: 10px;
+    background: rgba(4, 13, 9, 0.92);
+    color: #e7ffef;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    font-family: "Manrope", sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(8px);
+    transition: opacity 180ms ease, transform 180ms ease;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+.nova-whatsapp-float:hover .nova-whatsapp-float__tooltip,
+.nova-whatsapp-float:focus-visible .nova-whatsapp-float__tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 [data-reveal] {
     opacity: 0;
     transform: translate3d(0, 24px, 0);
@@ -1640,6 +1729,30 @@ body.nova-premium::selection {
 @media (max-width: 639px) {
     .nova-inner-page .nova-inner-hero .hidden.sm\:inline-flex {
         display: none !important;
+    }
+}
+
+@media (max-width: 860px) {
+    .nova-whatsapp-float {
+        right: max(16px, env(safe-area-inset-right));
+        bottom: max(18px, env(safe-area-inset-bottom));
+        width: 56px;
+        height: 56px;
+    }
+
+    .nova-whatsapp-float__tooltip {
+        display: none;
+    }
+
+    .nova-page-booking .nova-whatsapp-float,
+    [data-mobile-booking].is-visible ~ .nova-whatsapp-float {
+        bottom: calc(86px + env(safe-area-inset-bottom));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nova-whatsapp-float {
+        transition: none;
     }
 }
 

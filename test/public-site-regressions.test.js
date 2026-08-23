@@ -116,6 +116,29 @@ test('SEO surfaces use static URLs, valid JSON-LD and no removed volume claims',
   assert.doesNotMatch(read('vite.config.js'), /ROOT_DOCUMENT_FILES/);
 });
 
+test('every customer page exposes the persistent WhatsApp contact control', () => {
+  const sharedScript = read('public/nova-home.js');
+  const sharedStyles = read('public/nova-premium.css');
+  const pages = [
+    'index.html', 'servicii.html', 'companii.html', 'rezervare.html',
+    'scoala.html', 'despre.html', 'blog.html', 'contact.html', 'faq.html',
+    'politici.html', '404.html',
+    ...fs.readdirSync(path.join(projectRoot, 'public/articole')).map((name) => `articole/${name}`)
+  ];
+
+  assert.match(sharedScript, /WHATSAPP_NUMBER = '40742122222'/);
+  assert.match(sharedScript, /whatsappUrl\.searchParams\.set\('text', WHATSAPP_MESSAGE\)/);
+  assert.match(sharedScript, /data-whatsapp-float/);
+  assert.match(sharedStyles, /\.nova-whatsapp-float\s*\{/);
+  assert.match(sharedStyles, /position:\s*fixed/);
+
+  pages.forEach((page) => {
+    assert.match(read(`public/${page}`), /nova-home\.js/, `${page} must load the shared WhatsApp control`);
+  });
+
+  assert.doesNotMatch(read('public/contact.html'), /class="fixed bottom-6 right-6/);
+});
+
 test('booking selection and fields expose keyboard and label semantics', () => {
   const booking = read('public/rezervare.html');
   const ids = [
