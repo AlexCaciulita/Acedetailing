@@ -15,7 +15,7 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 COPY server.js ./
 COPY api/ ./api/
-COPY public/blog-data.js ./public/blog-data.js
+COPY public/blog-data.js public/services-data.js ./public/
 COPY data/records.json ./data/records.json
 COPY PLAN-BUSINESS-COMPLET-NOVA-2026.html ANALIZA-OPERATIONAL-B2B-NOVA.html PLAN-DEZVOLTARE-NOVA.html ./
 COPY --from=build /app/dist ./dist
