@@ -1,31 +1,23 @@
-FROM node:20-alpine
-
+FROM node:22-alpine AS build
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
+RUN npm ci
+COPY . .
+ARG VITE_GOOGLE_SITE_VERIFICATION
+ARG VITE_GA_MEASUREMENT_ID
+RUN npm run build
 
-# Install production dependencies only
-RUN npm ci --omit=dev
-
-# Copy server and API handlers
-COPY server.js ./
-COPY api/ ./api/
-
-# Record store read by api/get-record.js
-COPY data/ ./data/
-
-# Copy built static assets
-COPY dist/ ./dist/
-
-# Set environment
+FROM node:22-alpine
+WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8000
-
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY server.js ./
+COPY api/ ./api/
+COPY public/blog-data.js ./public/blog-data.js
+COPY data/records.json ./data/records.json
+COPY PLAN-BUSINESS-COMPLET-NOVA-2026.html ANALIZA-OPERATIONAL-B2B-NOVA.html PLAN-DEZVOLTARE-NOVA.html ./
+COPY --from=build /app/dist ./dist
 EXPOSE 8000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:8000/ || exit 1
-
 CMD ["node", "server.js"]

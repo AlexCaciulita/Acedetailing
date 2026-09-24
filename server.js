@@ -105,6 +105,17 @@ const buildRequestPathname = (req) => {
 const server = http.createServer((req, res) => {
   let pathname = buildRequestPathname(req);
 
+  if (pathname === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    res.end(JSON.stringify({ status: 'ok' }));
+    return;
+  }
+
+  if (pathname.startsWith('/api/')) {
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow, nosnippet');
+  }
+
   if (PRIVATE_DOCUMENT_PATHS.has(pathname.toLowerCase())) {
     res.writeHead(404, {
       'Content-Type': 'text/html; charset=utf-8',

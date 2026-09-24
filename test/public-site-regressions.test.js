@@ -21,6 +21,28 @@ function responseMock() {
   };
 }
 
+test('public site contains no Expert Detailing references', () => {
+  const allowedExtensions = new Set(['.html', '.js', '.json', '.xml', '.txt', '.webmanifest']);
+  const files = [];
+  const collect = (directory, prefix = '') => {
+    fs.readdirSync(directory, { withFileTypes: true }).forEach((entry) => {
+      const relativePath = path.join(prefix, entry.name);
+      const absolutePath = path.join(directory, entry.name);
+      if (entry.isDirectory()) collect(absolutePath, relativePath);
+      else if (allowedExtensions.has(path.extname(entry.name)) || entry.name.endsWith('.webmanifest')) files.push(relativePath);
+    });
+  };
+
+  collect(path.join(projectRoot, 'public'));
+  files.forEach((relativePath) => {
+    assert.doesNotMatch(
+      read(`public/${relativePath}`),
+      /expert(?:\s*|-)detailing/i,
+      `${relativePath} must not associate Nova with Expert Detailing`
+    );
+  });
+});
+
 test('public inner pages use local pinned assets and expose a main landmark', () => {
   const pages = [
     'servicii.html', 'rezervare.html', 'scoala.html', 'despre.html',
