@@ -26,7 +26,7 @@ Servicii disponibile (preturile depind de clasa vehiculului; valorile de mai jos
 - PREMIUM Complet: 2500-3500 lei; durata se confirma dupa inspectie (interior + exterior + polish + ceramica)
 - SIGNATURE Full: 4500-6000 lei, 2-3 zile (cel mai complet pachet)
 
-Add-on-uri: Polish Faruri (150 lei), Curatare Motor (300 lei), Tratament Piele (400 lei), Eliminare Mirosuri (200 lei), Curatare Tapiterie (300 lei), Detailing Jante (200 lei), Corectie Vopsea per panou (250 lei), Consultanta PPF (gratis).
+Add-on-uri: Polish faruri + folie PPF regenerabila (600-1000 lei, 2-3 ore), Curatare Motor (400 lei, 2-3 ore), Tratament Piele (de la 1000 lei la clasa mica; scaune fata, bord si fete de usi), Eliminare Mirosuri (200 lei), Curatare tapiterie prin injectie-extractie (de la 1000 lei, 5-6 ore), Detailing Jante (200 lei), Corectie Vopsea per panou (250 lei), Consultanta PPF (gratis), Reparatii parbriz (de la 100 lei / ciobitura, 20-30 min).
 
 Mentenanta: plan lunar 300-500 lei/luna sau plan personalizat ofertat dupa inspectie. Nu promite reduceri ori beneficii care nu apar in oferta scrisa.
 

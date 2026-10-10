@@ -256,12 +256,6 @@
                     class="gold-btn">
                     Pachete
                 </button>
-                <button type="button" @click="activeTab = 'comparatie'; document.getElementById('tab-comparatie').scrollIntoView({behavior:'smooth', block:'start'})"
-                    :class="{ active: activeTab === 'comparatie' }"
-                    :aria-pressed="String(activeTab === 'comparatie')"
-                    class="gold-btn">
-                    Comparatie
-                </button>
                 <button type="button" @click="activeTab = 'extra'; document.getElementById('tab-extra').scrollIntoView({behavior:'smooth', block:'start'})"
                     :class="{ active: activeTab === 'extra' }"
                     :aria-pressed="String(activeTab === 'extra')"
@@ -479,55 +473,6 @@
         </div>
     </section>
 
-    <!-- Comparison Table -->
-    <section id="tab-comparatie" class="py-16 bg-light-100 scroll-mt-28">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-heading font-bold text-light-950 mb-4 tracking-tight">Compara pachetele</h2>
-                <p class="text-light-700">Vezi rapid ce include fiecare pachet.</p>
-            </div>
-
-            <div class="overflow-x-auto -mx-4 sm:mx-0 sm:rounded-xl border border-light-300 bg-white">
-                <table class="w-full text-sm table-fixed" style="min-width:0">
-                    <colgroup>
-                        <col class="w-[38%] sm:w-[34%]">
-                        <col class="w-[20%] sm:w-[22%]">
-                        <col class="w-[22%] sm:w-[22%]">
-                        <col class="w-[20%] sm:w-[22%]">
-                    </colgroup>
-                    <thead class="sticky top-28 z-30 bg-white shadow-soft">
-                        <tr class="border-b-2 border-primary/20">
-                            <th class="text-left py-3 px-3 text-light-600 font-heading font-medium text-xs sm:text-sm bg-white sticky left-0 z-10"></th>
-                            <th class="text-center py-3 px-1 sm:px-3 text-light-950 font-heading font-semibold text-xs sm:text-sm bg-white">Prof.<span class="hidden sm:inline">esional</span><br><span class="text-primary text-[10px] sm:text-xs font-normal">1.800 lei</span></th>
-                            <th class="text-center py-3 px-1 sm:px-3 text-primary font-heading font-semibold text-xs sm:text-sm bg-primary/5">Premium<br><span class="text-[10px] sm:text-xs font-normal">2.500 lei</span></th>
-                            <th class="text-center py-3 px-1 sm:px-3 text-light-950 font-heading font-semibold text-xs sm:text-sm bg-white">Sign.<span class="hidden sm:inline">ature</span><br><span class="text-primary text-[10px] sm:text-xs font-normal">4.500 lei</span></th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-light-700 text-xs sm:text-sm">
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Spalare profesionala</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Decontaminare</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Clay bar</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Polish corectiv</td><td class="text-center py-2.5 px-1">Corectie</td><td class="text-center py-2.5 px-1 bg-primary/5">2 pasi</td><td class="text-center py-2.5 px-1 text-primary font-semibold">3 pasi</td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Protectie ceramica</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">1 strat</td><td class="text-center py-2.5 px-1 text-primary font-semibold">2 straturi</td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Garantie</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">12 luni</td><td class="text-center py-2.5 px-1 text-primary font-semibold">24 luni</td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Extractie tapiterie</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Tratament piele</td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td><td class="text-center py-2.5 px-1 bg-primary/5"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Detailing motor</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5">Basic</td><td class="text-center py-2.5 px-1 text-primary font-semibold">Complet</td></tr>
-                        <tr class="border-b border-light-200"><td class="py-2.5 px-3 sticky left-0 bg-white z-10">Inspectie 30 zile</td><td class="text-center py-2.5 px-1"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1 bg-primary/5"><span class="text-light-300">—</span></td><td class="text-center py-2.5 px-1"><svg class="w-4 h-4 sm:w-5 sm:h-5 text-primary mx-auto" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg></td></tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="border-t border-light-300 bg-light-50">
-                            <td class="py-3 px-3 sticky left-0 bg-light-50 z-10"></td>
-                            <td class="text-center py-3 px-1"><a href="/rezervare.html?pachet=detailing-interior" class="inline-block btn-glass-outline text-primary px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
-                            <td class="text-center py-3 px-1 bg-primary/5"><a href="/rezervare.html?pachet=premium-complet" class="inline-block btn-glass text-white px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
-                            <td class="text-center py-3 px-1"><a href="/rezervare.html?pachet=signature-full" class="inline-block btn-glass-outline text-primary px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-heading font-semibold">Alege</a></td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </section>
-
     <!-- Maintenance Plans -->
     <section id="tab-abonamente" class="py-16 bg-light-50 scroll-mt-28">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -586,23 +531,29 @@
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div id="reparatii-parbriz" class="bg-white rounded-xl border border-primary/40 shadow-soft p-5 hover:border-primary/60 transition-all scroll-mt-28">
+                    <h4 class="font-heading font-semibold text-light-950 mb-1">Reparații parbriz</h4>
+                    <p class="text-light-600 text-xs mb-2">20-30 min / ciobitură</p>
+                    <p class="text-light-700 text-sm mb-3">Reparăm ciobiturile din parbriz înainte să se extindă în fisuri. Prețul pornește de la 100 lei pentru fiecare ciobitură.</p>
+                    <span class="text-primary font-heading font-bold">de la 100 lei / ciobitură</span>
+                </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
-                    <h4 class="font-heading font-semibold text-light-950 mb-1">Polish Faruri</h4>
-                    <p class="text-light-600 text-xs mb-2">30-45 min</p>
-                    <p class="text-light-700 text-sm mb-3">Restaurare faruri matuite si ingalbenite.</p>
-                    <span class="text-primary font-heading font-bold">150 lei</span>
+                    <h4 class="font-heading font-semibold text-light-950 mb-1">Polish faruri + folie PPF regenerabilă</h4>
+                    <p class="text-light-600 text-xs mb-2">2-3 ore</p>
+                    <p class="text-light-700 text-sm mb-3">Redăm claritatea farurilor mate sau îngălbenite prin polish în mai mulți pași, apoi le protejăm cu folie PPF regenerabilă. Lumina devine mai puternică, iar folia le protejează de zgârieturi, sablare și matuire. Prețul final depinde de dimensiunea și starea farurilor.</p>
+                    <span class="text-primary font-heading font-bold">600–1000 lei</span>
                 </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
                     <h4 class="font-heading font-semibold text-light-950 mb-1">Curatare Motor Detaliata</h4>
-                    <p class="text-light-600 text-xs mb-2">60-90 min</p>
+                    <p class="text-light-600 text-xs mb-2">2-3 ore</p>
                     <p class="text-light-700 text-sm mb-3">Degresare si protectie completa compartiment motor.</p>
-                    <span class="text-primary font-heading font-bold">300 lei</span>
+                    <span class="text-primary font-heading font-bold">400 lei</span>
                 </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
                     <h4 class="font-heading font-semibold text-light-950 mb-1">Tratament Piele</h4>
                     <p class="text-light-600 text-xs mb-2">90-120 min</p>
-                    <p class="text-light-700 text-sm mb-3">Curatare, hidratare si protectie piele naturala/sintetica.</p>
-                    <span class="text-primary font-heading font-bold">400 lei</span>
+                    <p class="text-light-700 text-sm mb-3">Include curățarea, hidratarea și protecția scaunelor din față, a bordului și a fețelor de uși. Prețul pornește de la 1000 lei pentru mașinile din clasa mică.</p>
+                    <span class="text-primary font-heading font-bold">de la 1000 lei</span>
                 </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
                     <h4 class="font-heading font-semibold text-light-950 mb-1">Eliminare Mirosuri (Ozon)</h4>
@@ -611,10 +562,10 @@
                     <span class="text-primary font-heading font-bold">200 lei</span>
                 </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
-                    <h4 class="font-heading font-semibold text-light-950 mb-1">Curatare Tapiterie Extractie</h4>
-                    <p class="text-light-600 text-xs mb-2">90-120 min</p>
-                    <p class="text-light-700 text-sm mb-3">Curatare profunda cu extractie textil si uscare rapida.</p>
-                    <span class="text-primary font-heading font-bold">300 lei</span>
+                    <h4 class="font-heading font-semibold text-light-950 mb-1">Curățare tapițerie prin injecție-extracție</h4>
+                    <p class="text-light-600 text-xs mb-2">5-6 ore</p>
+                    <p class="text-light-700 text-sm mb-3">Murdăria nu rămâne doar la suprafață. Prin injecție-extracție profesională, scoatem murdăria din profunzimea fibrelor și redăm tapițeriei un aspect curat și îngrijit.</p>
+                    <span class="text-primary font-heading font-bold">de la 1000 lei</span>
                 </div>
                 <div class="bg-white rounded-xl border border-light-300 shadow-soft p-5 hover:border-primary/20 transition-all">
                     <h4 class="font-heading font-semibold text-light-950 mb-1">Detailing Jante Premium</h4>
@@ -703,8 +654,8 @@
 <script>
 // Section scroll observer - highlight the jump button for the section in view
 (function() {
-    var tabSections = ['tab-pachete', 'tab-comparatie', 'tab-extra', 'tab-abonamente'];
-    var tabNames = ['pachete', 'comparatie', 'extra', 'abonamente'];
+    var tabSections = ['tab-pachete', 'tab-extra', 'tab-abonamente'];
+    var tabNames = ['pachete', 'extra', 'abonamente'];
     if ('IntersectionObserver' in window) {
         var tabObs = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {

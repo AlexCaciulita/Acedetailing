@@ -248,3 +248,55 @@ test('public lead handlers reject incomplete or malformed submissions', async ()
   assert.equal(newsletterResponse.statusCode, 400);
   assert.equal(newsletterResponse.payload.success, false);
 });
+
+test('extra services show the approved headlight PPF and upholstery extraction offers', async () => {
+  const { addons } = await import('../public/services-data.js');
+  const headlights = addons.find((a) => a.id === 'polish-faruri');
+  assert.equal(headlights.price, 600);
+  assert.equal(headlights.priceMax, 1000);
+  assert.equal(headlights.duration, '2-3 ore');
+  assert.match(headlights.name, /PPF regenerabil/i);
+  assert.match(headlights.description, /protejează de zgârieturi, sablare și matuire/);
+  assert.doesNotMatch(headlights.description, /pietriș/);
+
+  const upholstery = addons.find((a) => a.id === 'curatare-tapiterie');
+  assert.equal(upholstery.name, 'Curățare tapițerie prin injecție-extracție');
+  assert.equal(upholstery.price, 1000);
+  assert.equal(upholstery.priceLabel, 'de la 1000 lei');
+  assert.equal(upholstery.duration, '5-6 ore');
+  assert.match(upholstery.description, /^Murdăria nu rămâne doar la suprafață\./);
+
+  const services = read('public/servicii.html');
+  assert.match(services, /600–1000 lei/);
+  assert.match(services, /de la 1000 lei/);
+  assert.doesNotMatch(services, /Curatare Tapiterie Extractie|>150 lei<|Restaurare faruri matuite si ingalbenite/);
+
+  const booking = read('public/rezervare.html');
+  assert.match(booking, /addonsTotalMax/);
+  assert.match(booking, /packagePrice\.max \+ this\.addonsTotalMax/);
+});
+
+test('approved October service changes: engine, leather, windshield hook, no comparison table', async () => {
+  const { addons } = await import('../public/services-data.js');
+  const byId = Object.fromEntries(addons.map((a) => [a.id, a]));
+  assert.equal(byId['curatare-motor'].price, 400);
+  assert.equal(byId['curatare-motor'].duration, '2-3 ore');
+  assert.equal(byId['tratament-piele'].price, 1000);
+  assert.match(byId['tratament-piele'].description, /scaunelor din față.*bordului.*fețelor de uși/);
+  assert.equal(byId['reparatie-parbriz'].price, 100);
+  assert.match(byId['reparatie-parbriz'].priceLabel, /ciobitură/);
+  assert.match(byId['reparatie-parbriz'].duration, /^20-30 min/);
+  assert.match(read('public/index.html'), /20–30 de minute/);
+
+  const home = read('public/index.html');
+  assert.doesNotMatch(home, /premium-complet|signature-full|Pachet premium complet|Signature full detail/);
+  assert.match(home, /id="reparatii-parbriz"/);
+  assert.match(home, /parbriz-inainte\.jpg/);
+  assert.match(home, /parbriz-dupa\.jpg/);
+  assert.ok(home.indexOf('id="reparatii-parbriz"') < home.indexOf('id="servicii"'), 'windshield hook sits above the services grid');
+  ['parbriz-inainte.jpg', 'parbriz-dupa.jpg'].forEach((f) => assert.ok(fs.existsSync(path.join(projectRoot, 'public/assets/services', f))));
+
+  const services = read('public/servicii.html');
+  assert.doesNotMatch(services, /tab-comparatie|Compara pachetele|activeTab = 'comparatie'/);
+  assert.match(services, /id="reparatii-parbriz"/);
+});

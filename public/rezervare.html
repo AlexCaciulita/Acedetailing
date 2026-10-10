@@ -380,7 +380,7 @@
                                         <div class="flex-1 min-w-0">
                                             <div class="flex items-center justify-between">
                                                 <span class="text-sm font-heading font-semibold" :class="isAddonExcluded(addon.id) ? 'text-green-700' : 'text-light-950'" x-text="addon.name"></span>
-                                                <span class="text-sm font-semibold ml-2 flex-shrink-0" :class="isAddonExcluded(addon.id) ? 'text-green-600' : 'text-primary'" x-text="isAddonExcluded(addon.id) ? 'Inclus' : addon.price > 0 ? '+' + addon.price + ' lei' : 'Gratis'"></span>
+                                                <span class="text-sm font-semibold ml-2 flex-shrink-0" :class="isAddonExcluded(addon.id) ? 'text-green-600' : 'text-primary'" x-text="isAddonExcluded(addon.id) ? 'Inclus' : addon.price > 0 ? '+' + (addon.priceLabel || (addon.price + ' lei')) : 'Gratis'"></span>
                                             </div>
                                             <p class="text-xs text-light-600 mt-0.5" x-text="addon.description"></p>
                                         </div>
@@ -530,7 +530,7 @@
                                         <template x-for="addonId in activeAddons()" :key="addonId">
                                             <li class="flex justify-between text-sm">
                                                 <span class="text-light-950" x-text="getAddonByIdLocal(addonId)?.name"></span>
-                                                <span class="text-primary font-heading font-medium" x-text="getAddonByIdLocal(addonId)?.price === 0 ? 'GRATIS' : '+' + getAddonByIdLocal(addonId)?.price + ' lei'"></span>
+                                                <span class="text-primary font-heading font-medium" x-text="getAddonByIdLocal(addonId)?.price === 0 ? 'GRATIS' : '+' + (getAddonByIdLocal(addonId)?.priceLabel || (getAddonByIdLocal(addonId)?.price + ' lei'))"></span>
                                             </li>
                                         </template>
                                     </ul>
@@ -557,7 +557,7 @@
                                     </div>
                                     <div x-show="addonsTotal > 0" class="flex justify-between items-center mb-2">
                                         <span class="text-sm text-light-700">Servicii extra</span>
-                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + ' lei'"></span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + (addonsTotalMax > addonsTotal ? ' – ' + formatNumber(addonsTotalMax) : '') + ' lei'"></span>
                                     </div>
                                     <div class="border-t border-primary/30 my-3"></div>
                                     <div class="flex justify-between items-center">
@@ -625,7 +625,7 @@
                                         <template x-for="addonId in activeAddons()" :key="addonId">
                                             <li class="flex justify-between text-xs">
                                                 <span class="text-light-700" x-text="getAddonByIdLocal(addonId)?.name"></span>
-                                                <span class="text-primary font-heading font-medium" x-text="'+' + (getAddonByIdLocal(addonId)?.price || 0) + ' lei'"></span>
+                                                <span class="text-primary font-heading font-medium" x-text="'+' + (getAddonByIdLocal(addonId)?.priceLabel || ((getAddonByIdLocal(addonId)?.price || 0) + ' lei'))"></span>
                                             </li>
                                         </template>
                                     </ul>
@@ -648,7 +648,7 @@
                                     </div>
                                     <div x-show="addonsTotal > 0" class="flex justify-between items-center mb-2">
                                         <span class="text-sm text-light-600">Extra</span>
-                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + ' lei'"></span>
+                                        <span class="text-sm font-heading font-medium text-light-950" x-text="'+' + formatNumber(addonsTotal) + (addonsTotalMax > addonsTotal ? ' – ' + formatNumber(addonsTotalMax) : '') + ' lei'"></span>
                                     </div>
                                     <div class="border-t border-light-400 my-3"></div>
                                     <div class="flex justify-between items-center">
@@ -1073,8 +1073,20 @@
                     return total;
                 },
 
+                // Range add-ons (e.g. headlight PPF) raise only the upper estimate.
+                get addonsTotalMax() {
+                    var total = 0;
+                    for (var i = 0; i < this.selectedAddons.length; i++) {
+                        if (!this.isAddonExcluded(this.selectedAddons[i])) {
+                            var a = this._getAddonById ? this._getAddonById(this.selectedAddons[i]) : null;
+                            if (a) total += (a.priceMax || a.price);
+                        }
+                    }
+                    return total;
+                },
+
                 get totalMin() { return this.packagePrice.min + this.addonsTotal; },
-                get totalMax() { return this.packagePrice.max + this.addonsTotal; },
+                get totalMax() { return this.packagePrice.max + this.addonsTotalMax; },
 
                 isValidPhone() {
                     var digits = this.phone.replace(/\D/g, '');

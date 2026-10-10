@@ -129,13 +129,14 @@ export const maintenancePlans = [
 ];
 
 export const addons = [
-    { id: 'polish-faruri', name: 'Polish Faruri', price: 150, duration: '30-45 min', description: 'Restaurare faruri matuite si ingalbenite.' },
-    { id: 'curatare-motor', name: 'Curatare Motor Detaliata', price: 300, duration: '60-90 min', description: 'Degresare si protectie completa compartiment motor.' },
-    { id: 'tratament-piele', name: 'Tratament Piele', price: 400, duration: '90-120 min', description: 'Curatare, hidratare si protectie piele naturala/sintetica.' },
+    { id: 'polish-faruri', name: 'Polish faruri + folie PPF regenerabilă', price: 600, priceMax: 1000, priceLabel: '600–1000 lei', duration: '2-3 ore', description: 'Redăm claritatea farurilor mate sau îngălbenite prin polish în mai mulți pași, apoi le protejăm cu folie PPF regenerabilă. Lumina devine mai puternică, iar folia le protejează de zgârieturi, sablare și matuire. Prețul final depinde de dimensiunea și starea farurilor.' },
+    { id: 'curatare-motor', name: 'Curatare Motor Detaliata', price: 400, duration: '2-3 ore', description: 'Degresare si protectie completa compartiment motor.' },
+    { id: 'tratament-piele', name: 'Tratament Piele', price: 1000, priceLabel: 'de la 1000 lei', priceFrom: true, duration: '90-120 min', description: 'Include curățarea, hidratarea și protecția scaunelor din față, a bordului și a fețelor de uși. Prețul pornește de la 1000 lei pentru mașinile din clasa mică.' },
     { id: 'eliminare-mirosuri', name: 'Eliminare Mirosuri (Ozon)', price: 200, duration: '60 min', description: 'Tratament ozon pentru eliminarea mirosurilor persistente.' },
-    { id: 'curatare-tapiterie', name: 'Curatare Tapiterie Extractie', price: 300, duration: '90-120 min', description: 'Curatare profunda cu extractie textil si uscare rapida.' },
+    { id: 'curatare-tapiterie', name: 'Curățare tapițerie prin injecție-extracție', price: 1000, priceLabel: 'de la 1000 lei', priceFrom: true, duration: '5-6 ore', description: 'Murdăria nu rămâne doar la suprafață. Prin injecție-extracție profesională, scoatem murdăria din profunzimea fibrelor și redăm tapițeriei un aspect curat și îngrijit.' },
     { id: 'detailing-jante', name: 'Detailing Jante Premium', price: 200, duration: '60 min', description: 'Curatare, decontaminare si protectie ceramica jante.' },
     { id: 'corectie-vopsea', name: 'Corectie Vopsea (per panou)', price: 250, duration: '60-90 min', description: 'Eliminare zgarieturi si swirl marks de pe un singur panou.' },
+    { id: 'reparatie-parbriz', name: 'Reparații parbriz', price: 100, priceLabel: 'de la 100 lei / ciobitură', priceFrom: true, duration: '20-30 min / ciobitură', description: 'Reparăm ciobiturile din parbriz înainte să se extindă în fisuri. Prețul pornește de la 100 lei pentru fiecare ciobitură.' },
     { id: 'ppf-consult', name: 'Consultanta PPF', price: 0, duration: '30 min', description: 'Consultatie gratuita pentru folie de protectie vopsea (PPF).' }
 ];
 
